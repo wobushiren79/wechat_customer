@@ -1,6 +1,6 @@
 {
   "pages": [
-    // "pages/test/test",
+    "pages/test/test",
     "pages/C_map/C_map",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",

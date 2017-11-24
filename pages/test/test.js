@@ -1,3 +1,4 @@
+var platHttp = require('../../utils/http/RequestForPlatform.js')
 // pages/test/test.js
 Page({
 
@@ -12,10 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var data = { userName: "xinxin", userPwd:"123"};
+    var callback={
+      success:function(data){
+        console.log("success");
+      }
+    }
+    platHttp.loginPlatform(data, callback);
   },
 
-  /**
+  /**&&&&$$$sadfasdfasdfasdfasdf      dsafdfasdfsadfsadfsdfasdf
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
