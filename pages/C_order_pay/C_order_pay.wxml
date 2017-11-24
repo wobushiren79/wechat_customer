@@ -1,0 +1,57 @@
+<view class="page">
+
+  <view class="page__bd">
+    <view class="weui-cells__title">缴纳详情</view>
+<block wx:for="{{list}}">
+    <view class="weui-panel weui-panel_access">
+    <block wx:if="{{item.payPurpose == 0}}">
+      <view class="weui-panel__hd">定金</view>
+    </block>
+    <block wx:if="{{item.payPurpose == 1}}">
+      <view class="weui-panel__hd">余款</view>
+    </block>
+    <block wx:if="{{item.payPurpose == 2}}">
+      <view class="weui-panel__hd">全款</view>
+    </block>
+      <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="../../images/icon_pay_card.png" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <view class="money">￥{{item.payAmount/100}}</view>
+              <block wx:if="{{item.payType == 1}}">
+              <view class="">现金-支付</view>
+              </block>
+            </view>
+
+          </view>
+          <view class="weui-media-box__desc">{{item.payDate}}</view>
+        </navigator>
+      </view>
+    </view>
+</block>
+
+
+    <!--<view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">定金</view>
+      <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="../../images/icon_pay_wx.png" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <view class="money">￥{{money}}</view>
+              <view class="">{{method_card}}-支付</view>
+            </view>
+
+          </view>
+          <view class="weui-media-box__desc">{{time}}</view>
+        </navigator>
+
+      </view>
+    </view>-->
+  </view>
+</view>

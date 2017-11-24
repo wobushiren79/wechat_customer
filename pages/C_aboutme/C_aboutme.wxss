@@ -1,0 +1,72 @@
+/* example/panel/panel.wxss */
+.money{
+  font-weight: 600;
+}
+.weui-media-box{
+  padding: 10px 15px;
+}
+.weui-media-box__title{
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 35rpx;
+  margin-bottom: 10rpx;
+}
+.weui-media-box__desc{
+  font-size: 24rpx;
+  color: #737373;
+}
+.weui-cells__title{
+  font-size: 30rpx;
+  color: #000000
+}
+.weui-media-box__hd_in-appmsg{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.weui-panel::after,
+.weui-panel::before{
+  border: none!important;
+}
+
+.userinfo{
+  font-size: 34rpx;
+  color: #000000;
+}
+.userinfo text{
+  color: #48cfad
+}
+.weui-media-box__title .other {
+  margin-top: 30rpx;  
+}
+.weui-media-box__title .other image{
+  width: 40rpx;
+  height: 30rpx;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 15rpx;
+  }
+
+  .weui-grids{
+    margin-top: 100rpx;
+  }
+      .weui-grids .weui-grid{
+        height: 182rpx;
+        box-sizing: border-box;
+        position: relative;
+        padding: 0;
+      }
+    .weui-grids .weui-grid image{
+      display: none;
+    }
+
+        .weui-grids .weui-grid .weui-grid__label{
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      margin: 0;
+      
+    }

@@ -1,0 +1,55 @@
+/* example/panel/panel.wxss */
+.weui-panel__hd{
+  font-size: 40rpx;
+  color: #000000;
+  height: 140rpx;
+  padding: 0 0 0 15px;
+  line-height: 140rpx;
+  font-weight: 600;
+}
+
+.weui-panel__hd navigator{
+  display: inline-block;
+  margin-right: 50rpx;
+
+}
+.weui-panel__hd navigator:nth-of-type(2){
+  font-size: 30rpx;
+}
+
+/*小箭头*/
+.weui-panel__hd navigator image{
+  display: inline-block;
+  width: 12px;
+  height: 12rpx;
+  margin-left: 15rpx;
+  vertical-align: middle;
+}
+.weui-media-box_appmsg{
+  /*align-items:inherit;*/
+  font-size: 34rpx;
+}
+.weui-media-box__hd_in-appmsg{
+  width: 80px;
+  height: 80px;
+}
+/*关键词*/
+.weui-media-box__desc{
+  margin-top: 10rpx;
+}
+.weui-media-box__desc text{
+  color: #48cfad;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+
+}
+.page__bd{
+  border: none!important;
+}
+
+.weui-media-box::before ,
+.weui-media-box::after,
+.weui-panel__bd::before ,
+.weui-panel__bd::after {
+  border: none;
+}

@@ -1,0 +1,77 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+
+
+    <view class="banner_wrap">
+      <image src="../../images/index_banner.png"></image>
+    </view>
+
+    <!--列表-->
+    <view class="weui-cells weui-cells_after-title">
+
+      <!--订单查询 -->
+      <navigator url="../C_order/C_order" class="" hover-class="">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <image src="{{icon_list}}" style=""></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title">订单查询</view>
+            <view class="text">治丧订单|公墓订单</view>
+          </view>
+          <view class="weui-cell__ft">
+            <image src="{{icon_right}}" style=""></image>
+          </view>
+        </view>
+      </navigator>
+
+      <!--墓位查询 -->
+      <navigator url="../C_cem/C_cem" class="" hover-class="">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <image src="{{icon_cem}}" style=""></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title">墓位查询</view>
+            <view class="text">查询墓位|缴纳管理费|方便快捷</view>
+          </view>
+          <view class="weui-cell__ft">
+            <image src="{{icon_right}}" style=""></image>
+          </view>
+        </view>
+      </navigator>
+
+      <!--产品订购 -->
+      <navigator url="../C_blank/C_blank" class="" hover-class="">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <image src="{{icon_goods}}" style=""></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title">产品订购</view>
+            <view class="text">专业服务|品质优选</view>
+          </view>
+          <view class="weui-cell__ft">
+            <image src="{{icon_right}}" style=""></image>
+          </view>
+        </view>
+      </navigator>
+
+      <!--客服帮助 -->
+      <navigator url="../new/new" class="" hover-class=""  bindtap="call_phone">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <image src="{{icon_help}}" style=""></image>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="title">客服帮助</view>
+            <view class="text">全天候的客服帮助</view>
+          </view>
+          <view class="weui-cell__ft">
+            <image src="{{icon_right}}" style=""></image>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

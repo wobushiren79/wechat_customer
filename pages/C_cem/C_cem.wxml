@@ -1,0 +1,65 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+<form bindsubmit="formSubmit">
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">所在公墓</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{GmList}}">
+            <view class="weui-select weui-select_in-select-after">{{GmList[countryIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title">以下选项请输入至少一条查询条件</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">经办人姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="姓名" name="agentManName"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">经办人电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="电话" name="agentManPhone"/>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">使用者</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="姓名" name="deadMan"/>
+        </view>
+      </view>
+    
+    </view>
+
+
+
+
+
+
+
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" formType="submit">查询</button>
+    </view>
+
+<!--页脚-->
+        <!--<navigator url="url" class="foot">
+            没有账户和密码?
+        </navigator>-->
+  </view>
+</form>
+</view>

@@ -1,0 +1,37 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+    <block wx:for="{{listData}}">
+      <navigator url="../C_cem_content/C_cem_content?key={{index}}" class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input weui-cell_head">
+          <view class="weui-cell__hd">
+            {{item.tombPositionText}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            使用者
+          </view>
+          <view class="weui-cell__bd">
+            {{item.orderDeath.name}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            管理费到期时间
+          </view>
+          <view class="weui-cell__bd">
+            {{item.managePayOverTime}}
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="button-sp-area">
+            <button class="weui-btn mini-btn" type="primary" size="mini">查看详情</button>
+          </view>
+        </view>
+      </navigator>
+    </block>
+
+  </view>
+</view>

@@ -1,0 +1,203 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+    <view class="ul1">
+      <!--订单详情-->
+      <view class="li" hover-class="weui-cell_active">
+
+        <!--头部-->
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            <text></text>订单详情
+          </view>
+          <view class="li_cell_bd">
+          <block wx:if="{{listData.order.orderStatus == 0}}">
+            <text>资料补充中</text>
+          </block>
+          <block wx:if="{{listData.order.orderStatus == 1}}">
+            <text>已下单</text>
+          </block>
+          <block wx:if="{{listData.order.orderStatus == 2}}">
+            <text>已定单</text>
+          </block>
+          <block wx:if="{{listData.order.orderStatus == 3}}">
+            <text>已完款</text>
+          </block>
+          <block wx:if="{{listData.order.orderStatus == 4}}">
+            <text>已安葬</text>
+          </block>
+          </view>
+        </view>
+
+        <!--墓穴成交价-->
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            墓穴成交价
+          </view>
+          <view class="li_cell_bd">￥{{listData.order.saleMoney/100}}</view>
+        </view>
+
+        <!--墓穴位置-->
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            墓穴位置
+          </view>
+          <view class="li_cell_bd">{{listData.tombPositionText}}</view>
+        </view>
+
+        <!--使用者-->
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            使用者
+          </view>
+          <view class="li_cell_bd">{{listData.orderDeath.name}}</view>
+        </view>
+
+        <!--订单时间-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            订单时间
+          </view>
+          <view class="li_cell_bd">{{listData.order.createDateTime}}</view>
+        </view>
+
+        <!--使用者-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            公墓接待
+          </view>
+          <view class="li_cell_bd">{{listData.order.cemeteryReceive}}</view>
+        </view>
+
+        <!--使用者-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            合同编号
+          </view>
+          <view class="li_cell_bd">{{listData.orderDeath.contractNo}}</view>
+        </view>
+
+        <!--墓穴证-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            墓穴证
+          </view>
+          <view class="li_cell_bd">{{listData.buryInfo.tombCertificateNo}}</view>
+        </view>
+
+        <!--安葬时间-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            安葬时间
+          </view>
+          <view class="li_cell_bd">{{listData.buryRecord.buryDatePre}}</view>
+        </view>
+
+        <!--经办人-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            经办人
+          </view>
+          <view class="li_cell_bd">{{listData.orderAgent.agentmanName}}</view>
+        </view>
+        <!--电话-->
+        <view class="li_cell color2">
+          <view class="li_cell_hd">
+            经办人电话
+          </view>
+          <view class="li_cell_bd">{{listData.orderAgent.agentmanPhone}}</view>
+        </view>
+        <!--尾部-->
+        <view class="li_cell li_ft">
+          <view>
+            <text bindtap="powerDrawer" data-statu="img_map_open">墓穴位置图</text>
+          </view>
+          <view>
+            <text bindtap="powerDrawer" data-statu="img_picture_open">墓碑照片</text>
+          </view>
+          <view>
+            <text bindtap="powerDrawer" data-statu="img_name_open">客户签名</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="ul2">
+      <!--缴费详情-->
+      <view class="li" hover-class="weui-cell_active">
+<navigator url="../C_order_pay/C_order_pay?orderId={{listData.order.orderId}}" class="" hover-class="">
+        <!--头部-->
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            缴费详情
+          </view>
+          <view class="li_cell_bd">
+            >
+          </view>
+        </view>
+</navigator>
+      </view>
+
+      <view class="li" hover-class="weui-cell_active">
+<navigator url="../C_order_payhistory/C_order_payhistory?orderId={{listData.order.orderId}}" class="" hover-class="">
+        <!--头部-->
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            管理费缴纳记录
+          </view>
+          <view class="li_cell_bd">
+            >
+          </view>
+        </view>
+</navigator>
+      </view>
+    </view>
+
+    <!--mask-->
+    <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus_mask}}"></view>
+
+    <!--content img 墓穴位置图-->
+    <!--使用animation属性指定需要执行的动画-->
+    <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus_img_map}}">
+
+      <!--drawer content-->
+      <view class="drawer_title">墓穴位置图</view>
+      <view class="drawer_content">
+        <view class="img_wrap">
+          <image src=""></image>
+        </view>
+      </view>
+      <view class="btn_ok" bindtap="powerDrawer" data-statu="close">关闭</view>
+    </view>
+
+    <!--content img 墓碑照片-->
+    <!--使用animation属性指定需要执行的动画-->
+    <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus_img_picture}}">
+
+      <!--drawer content-->
+      <view class="drawer_title">墓碑照片</view>
+      <view class="drawer_content">
+        <view class="img_wrap">
+          <image src="http://shianlife123.oss-cn-qingdao.aliyuncs.com/{{listData.buryInfo.stonePicIds}}"></image>
+        </view>
+      </view>
+      <view class="btn_ok" bindtap="powerDrawer" data-statu="close">关闭</view>
+    </view>
+
+    <!--content img 客户签名-->
+    <!--使用animation属性指定需要执行的动画-->
+    <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus_img_name}}">
+
+      <!--drawer content-->
+      <view class="drawer_title">客户签名</view>
+      <view class="drawer_content">
+        <view class="img_wrap">
+          <image src="http://shianlife123.oss-cn-qingdao.aliyuncs.com/{{listData.buryRecord.stonePicIds}}"></image>
+        </view>
+      </view>
+      <view class="btn_ok" bindtap="powerDrawer" data-statu="close">关闭</view>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,82 @@
+<view class="page">
+
+  <view class="page__bd">
+
+    <view class="weui-panel weui-panel_access userinfo">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{userInfoAvatar}}" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">
+              <view class="">您好，
+                <text>{{nickName}}</text>
+              </view>
+              <view class="other">
+                <image src="../../images/icon_about.png"></image> 优惠券
+                <text>{{num}}</text> 张</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+    <view class="weui-grids">
+
+      <navigator url="../C_blank/C_blank" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">预约记录</view>
+      </navigator>
+
+      <navigator url="../C_order/C_order" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">我的订单</view>
+      </navigator>
+
+      <navigator url="../C_blank/C_blank" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">我的评价</view>
+      </navigator>
+
+      <navigator url="../C_cem/C_cem" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">
+          <view>墓位位置</view>
+          <view>查询</view>
+        </view>
+      </navigator>
+
+      <navigator url="../C_cem/C_cem" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">
+          <view>缴纳墓位</view>
+          <view>管理费</view>
+        </view>
+      </navigator>
+
+      <navigator url="../C_wiki/C_wiki" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">殡葬百科</view>
+      </navigator>
+
+      <navigator url="../C_order/C_order" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">订单查询</view>
+      </navigator>
+
+      <navigator url="../C_blank/C_blank" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">投诉建议</view>
+      </navigator>
+
+      <navigator url="../C_blank/C_blank" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+        <view class="weui-grid__label">更多服务</view>
+      </navigator>
+
+    </view>
+  </view>
+</view>

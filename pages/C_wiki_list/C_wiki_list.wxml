@@ -1,0 +1,27 @@
+<view class="page">
+
+  <view class="page__bd">
+<block wx:for="{{array_a}}">
+    <!--分类标题-->
+    <view class="">
+      <!--一级标题-->
+      <view class="weui-cells__title">{{item.name}}</view>
+      <!--二级标题-->
+      
+      <view class="weui-grids">
+      <block wx:for="{{array_b}}" wx:for-item="data" wx:if="{{item.id == data.pid}}">
+        <view class="weui-grid" hover-class="weui-grid_active" bindtap="xuanzhe" data-Class_a="{{item.name}}" data-Class_b="{{data.name}}" data-id="{{data.id}}">
+        <block wx:if="{{Class_a == item.name && Class_b==data.name}}">
+          <view class="weui-grid__label active">{{data.name}}</view>
+        </block>
+        <block wx:if="{{Class_b!=data.name}}">
+          <view class="weui-grid__label">{{data.name}}</view>
+          </block>
+        </view>
+        </block>
+      </view>
+    </view>
+    </block>
+    <!--分类标题end-->
+  </view>
+</view>

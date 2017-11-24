@@ -1,0 +1,51 @@
+/* example/input/input.wxss */
+
+.weui-vcode-img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: -5px;
+}
+
+.weui-label {
+  width: 35px;
+}
+
+.weui-input {
+  font-size: 34rpx;
+  color: #b2b2b2;
+}
+
+button[size="mini"] {
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-top: 6px !important;
+  margin-right: 15px!important;
+  color: #48cfad!important;
+  border: 1px solid #48cfad!important;
+  background-color: transparent;
+  outline: none;
+}
+.page__bd_spacing{
+  /*margin-top: 50rpx;*/
+  margin-bottom: 20rpx;
+}
+.weui-cell::before {
+  border-color: #e5e5e5 !important;
+}
+
+.weui-cells::after, .weui-cells::before {
+  border: none;
+}
+.weui-cells__tips{
+  font-size: 28rpx;
+  color: #888888;
+  padding: 5px 20px;
+}
+form .weui-cells__tips{
+  min-height: 50rpx;
+  color: rgb(255, 46, 22);
+}
+.yzm{
+  position: relative;
+  z-index: 99;
+}

@@ -1,0 +1,25 @@
+/* example/panel/panel.wxss */
+.weui-panel{
+  margin-top: 0rpx;
+}
+.weui-media-box{
+  padding: 10px 15px;
+}
+.weui-media-box__title{
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 35rpx;
+  margin-bottom: 10rpx;
+}
+.weui-media-box__desc{
+  font-size: 24rpx;
+  color: #737373;
+}
+.weui-cells__title{
+  font-size: 30rpx;
+  color: #000000
+}
+.weui-media-box__hd_in-appmsg{
+  width: 80rpx;
+  height: 80rpx;
+}

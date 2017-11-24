@@ -1,0 +1,29 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class="content_hd">
+      <view class="title">
+        {{title}}
+      </view>
+      <view class="info">
+        <text>{{time}}</text><text>{{author}}</text>
+        </view>
+        <view class="keyword">
+        <block wx:for="{{keywords}}">
+          <text>{{item}}</text>
+        </block>
+        </view>
+    </view>
+    <view class="content_bd">
+      <view>
+      <!--引用wxParse插件转换类容文本中html页面标签-->
+        <span style="font-size:18px;">
+          <import src="../../wxParse/wxParse.wxml"/>   
+            <view class="wxParse">  
+                    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>  
+            </view>
+        </span> 
+      <!--end-->
+      </view>
+    </view>
+  </view>
+</view>

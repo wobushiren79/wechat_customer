@@ -1,0 +1,33 @@
+/* example/grid/grid.wxss */
+
+.weui-grid{
+  width: 25%;
+  padding: 0 5px;
+  
+  border-color: #f3f3f3;
+  /*background-color: #ffffff;*/
+ 
+}
+.active{
+  color: #48cfad;
+  
+}
+.weui-grids{
+  background-color: #ffffff;
+  border-top-color: #f3f3f3;
+  border-left: none;
+}
+.weui-grid__label{
+  margin-top: 0;
+  line-height: 72rpx;
+  height: 72rpx;
+   font-size: 26rpx;
+  color: #888888;
+}
+.weui-cells__title{
+  /*margin-top: 0;
+  margin-bottom: 0;*/
+  line-height: 60rpx;
+  height: 60rpx;
+  border-color: #f3f3f3;
+}

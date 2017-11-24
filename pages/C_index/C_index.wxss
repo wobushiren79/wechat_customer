@@ -1,0 +1,80 @@
+/**index.wxss**/
+page{
+    background-color: #ffffff;
+
+}
+.banner_wrap{
+  padding: 15px;
+  margin-bottom: 30px;
+}
+.banner_wrap image{
+  width: 100%;
+  height: 300rpx;
+}
+
+.weui-cells_after-title image {
+  position: relative;
+  top: -3px;  
+}
+
+.weui-cells_after-title{
+  margin-bottom: 0.3em;
+  margin-top: 0.77em;
+}
+/*list标题*/
+
+.weui-cell .weui-cell__bd .title {
+  color: #000;
+  font-size: 34rpx;
+}
+
+/*list文字*/
+
+.weui-cell .weui-cell__bd .text {
+  color: #a9a9a9;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+}
+
+/*list图片*/
+
+.weui-cell .weui-cell__hd image {
+  margin-right: 45rpx;
+  vertical-align: middle;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/*list分割线*/
+
+.weui-cell:first-child::before {
+  display: block;
+}
+
+/*右边小角*/
+
+.weui-cell .weui-cell__ft image {
+  vertical-align: middle;
+  width: 12rpx;
+  height: 24rpx;
+}
+
+.weui-cell::before{
+  border-color: #e3e3e3;
+}
+.weui-cell{
+  padding: 15px;
+}
+
+
+.placeholder{
+
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 2.3em;
+    line-height: 2.3em;
+    color: #cfcfcf;
+}
+
+

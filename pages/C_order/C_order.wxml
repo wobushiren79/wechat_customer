@@ -1,0 +1,73 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+
+    <form bindsubmit="formSubmit">
+      <view class="weui-cells weui-cells_after-title">
+    <form bindsubmit="formCode">
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <image class="weui-vcode-img" src="../../images/icon_phone.png"></image>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入经办人手机号" name="phone"/>
+          </view>
+          <view class="weui-cell__ft">
+            <button class="weui-btn yzm" type="primary" plain="true" size="mini" form-type="submit">获取验证码</button>
+
+          </view>
+        </view>
+      </form>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">
+              <image class="weui-vcode-img" src="../../images/icon_password.png"></image>
+            </view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入验证码" name="verificationCode"/>
+          </view>
+
+        </view>
+      </view>
+      <view class="weui-cells__tips">
+          <!--提示内容-->
+            <!--验证码错误-->
+          <block wx:if="{{yanzhengm}}">
+          <view class="">
+            验证码错误，请重新输入
+          </view>
+          </block>
+            <!--验证码错误-->
+          <block wx:if="{{yanzm}}">
+          <view class="">
+          验证码正确，经查询，本手机号无相关联的订单，请重新查询
+          </view>
+          </block>
+      </view>
+
+
+
+      <view class="page__bd_spacing">
+        <button class="weui-btn" type="primary" form-type="submit">查询订单</button>
+      </view>
+    </form>
+    <view class="weui-cells__tips">
+      <view class="">
+        · 查询您所有的订单详情，了解最新服务动态，全程保障您的利益。
+      </view>
+      <view class="">
+        · 获取圆满人生为您提供的智能便捷的互联网服务足不出户，就可以为您的亲人办理相关的手续资料既方便又安全。
+      </view>
+      <view class="">
+        · 实时获取亲人的纪念日信息，方便快捷。
+      </view>
+    </view>
+
+
+  </view>
+</view>

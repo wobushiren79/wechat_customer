@@ -1,0 +1,13 @@
+/**login.wxss**/
+.page__bd{
+   
+    text-align: center;
+}
+
+.page__bd text{
+  display: block;
+  text-align: center;
+  padding: 20px;
+    font-size: 30rpx;
+}
+

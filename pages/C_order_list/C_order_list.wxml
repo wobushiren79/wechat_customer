@@ -1,0 +1,150 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+  <view class="page__bd">
+    <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+    <view class="ul">
+
+
+      <!--治丧模板-->
+      
+      <!--<navigator url="" class="li" hover-class="weui-cell_active">
+
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            <image src="../../images/icon_plan.png"></image>
+          </view>
+          <view class="li_cell_bd">
+            ￥{{money}}
+          </view>
+        </view>
+
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            治丧地址：
+          </view>
+          <view class="li_cell_bd">{{address}}</view>
+        </view>
+
+
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            往生者：
+          </view>
+          <view class="li_cell_bd">{{name}}</view>
+        </view>
+
+        <view class="li_cell li_ft">
+          <view class="li_cell_hd">
+            已下单
+          </view>
+          <view class="li_cell_bd">
+            ></view>
+        </view>
+      </navigator>-->
+
+      <!--公墓模板-->
+      <block wx:for="{{orderData}}">
+      <navigator url="../C_order_content/C_order_content?key={{index}}&hc=order" class="li" hover-class="weui-cell_active">
+
+        <!--头部-->
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            <image src="../../images/icon_cem.png"></image>
+          </view>
+          <view class="li_cell_bd">
+            ￥{{item.order.saleMoney/100}}
+          </view>
+        </view>
+
+        <!--地址-->
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            墓穴位置：
+          </view>
+          <view class="li_cell_bd">{{item.tombPositionText}}</view>
+        </view>
+
+        <!--姓名-->
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            使用者：
+          </view>
+          <view class="li_cell_bd">{{item.orderDeath.name}}</view>
+        </view>
+
+        <!--尾部-->
+        <view class="li_cell li_ft">
+        <block wx:if="{{item.bespeakData.orderStatus  == 0}}">
+          <view class="li_cell_hd">
+            资料补充中
+          </view>
+        </block>
+        <block wx:if="{{item.bespeakData.orderStatus  == 1}}">
+          <view class="li_cell_hd">
+            已下单
+          </view>
+        </block>
+        <block wx:if="{{item.bespeakData.orderStatus  == 2}}">
+          <view class="li_cell_hd">
+            已定单
+          </view>
+        </block>
+        <block wx:if="{{item.bespeakData.orderStatus  == 3}}">
+          <view class="li_cell_hd">
+            已完款
+          </view>
+        </block>
+        <block wx:if="{{item.bespeakData.orderStatus  == 4}}">
+          <view class="li_cell_hd">
+            已安葬
+          </view>
+        </block>
+          <view class="li_cell_bd">
+            ></view>
+        </view>
+      </navigator>
+</block>
+      <!--其他单品模板-->
+      <!--<navigator url="" class="li" hover-class="weui-cell_active">
+
+
+        <view class="li_cell li_hd">
+          <view class="li_cell_hd">
+            <image src="../../images/icon_other.png"></image>
+          </view>
+          <view class="li_cell_bd">
+            ￥{{money}}
+          </view>
+        </view>
+
+
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            服务地址：
+          </view>
+          <view class="li_cell_bd">{{address}}</view>
+        </view>
+
+
+        <view class="li_cell">
+          <view class="li_cell_hd">
+            收货人：
+          </view>
+          <view class="li_cell_bd">{{name}}</view>
+        </view>
+
+
+        <view class="li_cell li_ft">
+          <view class="li_cell_hd">
+            待服务
+          </view>
+          <view class="li_cell_bd">
+            ></view>
+        </view>
+      </navigator>-->
+    </view>
+  </view>
+
+
+
+</view>

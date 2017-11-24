@@ -1,0 +1,58 @@
+/* example/input/input.wxss */
+
+.li {
+  background-color: #fff;
+  padding: 15rpx 15px;
+  margin: 15px;
+  border-radius: 6rpx;
+}
+
+.li_cell {
+  padding: 5rpx 0;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 28rpx;
+  -webkit-box-align: start;
+  -webkit-align-items: start;
+  align-items: start;
+}
+
+.li_cell_hd {
+  width: 150rpx !important;
+}
+
+.li_cell_bd {
+  width: 500rpx !important;
+  text-align: left;
+}
+
+.li_hd .li_cell_hd, .li_ft .li_cell_hd {
+  flex: 1;
+  text-align: left;
+}
+
+.li_hd .li_cell_hd image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.li_hd .li_cell_bd, .li_ft .li_cell_bd {
+  flex: 1;
+  text-align: right;
+  color: #48cfad;
+  font-size: 34rpx;
+}
+
+.li_ft {
+  color: #48cfad;
+}
+
+/*头部和尾部*/
+
+.li_hd, .li_ft {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}

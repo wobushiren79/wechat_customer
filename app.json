@@ -1,0 +1,33 @@
+{
+  "pages": [
+    // "pages/test/test",
+    "pages/C_map/C_map",
+    "pages/C_aboutme/C_aboutme",
+    "pages/C_wiki/C_wiki",
+    "pages/C_wiki_list/C_wiki_list",
+    "pages/C_wiki_content/C_wiki_content",
+    "pages/C_index/C_index",
+    "pages/C_cem/C_cem",
+    "pages/C_cem_content/C_cem_content",
+    "pages/C_order/C_order",
+    "pages/C_order_content/C_order_content",
+    "pages/C_order_list/C_order_list",
+    "pages/C_order_pay/C_order_pay",
+    "pages/C_order_payhistory/C_order_payhistory",
+    "pages/C_cem_list/C_cem_list",
+    "pages/C_blank/C_blank"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "圆满人生",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8"
+  },
+  "networkTimeout": {
+    "request": 100000,
+    "connectSocket": 100000,
+    "uploadFile": 100000,
+    "downloadFile": 100000
+  },
+  "debug": true
+}

@@ -1,0 +1,30 @@
+/**login.wxss**/
+@import "/wxParse/wxParse.wxss";
+.page__bd{
+    padding: 15px;
+}
+
+.title{
+    font-size: 42rpx;
+    color: #333333;
+    margin-bottom: 25rpx;
+    font-weight: 600;
+}
+.info{
+    font-size: 24rpx;
+    color: #7e7e7e
+}
+.info text{
+    margin-right:30rpx; 
+}
+.keyword {
+    margin-bottom: 30rpx
+}
+.keyword text{
+    font-size: 24rpx;
+    color: #48cfad;
+    border: 1px solid #48cfad;
+    padding: 0 8rpx;
+    margin-right: 20rpx;
+    border-radius: 5rpx;
+}
