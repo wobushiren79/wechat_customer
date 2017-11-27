@@ -1,5 +1,6 @@
 var platHttp = require('../../utils/http/RequestForPlatform.js')
 var goodsHttp = require('../../utils/http/RequestForGoods.js')
+var fileHttp = require('../../utils/http/RequestForFile.js')
 // pages/test/test.js
 Page({
 
@@ -14,8 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var data = { userName: "xinxin", userPwd:"123"}
-    platHttp.loginPlatform(data,null);
+   
   },
 
   /**

@@ -1,4 +1,4 @@
-var baseRequest = require('BaseRequest.js')
+var baseRequest = require('base/BaseRequest.js')
 var baseUrl = getApp().globalData.JavaGoodsUrl;
 
 /**
