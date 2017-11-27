@@ -12,25 +12,27 @@ function HttpRequestData(url, data, method, header) {
 /**
  * 发送post请求
  */
-function createPostHttpRequest(url, data, callback, header) {
+function createPostHttpRequest(url, data, callback, header, isDialog) {
   var jsonData = JSON.stringify(data);
   var httpData = new HttpRequestData(url, jsonData, "POST", header);
-  sendBaseHttp(httpData, callback);
+  sendBaseHttp(httpData, callback, isDialog);
 }
 
 /**
  * 发送get请求
  */
-function createGetHttpRequest(url, data, callback, header) {
+function createGetHttpRequest(url, data, callback, header, isDialog) {
   var jsonData = JSON.stringify(data);
   var httpData = new HttpRequestData(url, jsonData, "GET", header);
-  sendBaseHttp(httpData, callback);
+  sendBaseHttp(httpData, callback, isDialog);
 }
 /**
  * 发送http请求
  * 参数：HttpRequestData
  */
-function sendBaseHttp(httpData, callback) {
+function sendBaseHttp(httpData, callback, isDialog) {
+  if (isDialog)
+    wx.showLoading();
   console.log(httpData);
   wx.request({
     url: httpData.url,
@@ -86,6 +88,7 @@ function RespsoneFailDeal(res, callback) {
 function RespsoneCompleteDeal(res, callback) {
   // console.log("RespsoneComplete");
   // console.log(res);
+  wx.hideLoading()
 }
 
 

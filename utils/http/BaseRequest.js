@@ -4,7 +4,7 @@ var baseHttp = require('BaseHttpDeal.js')
 /**
  * 登陆专用post请求
  */
-function sendPostHttpForLogin(url, data, callback) {
+function sendPostHttpForLogin(url, data, callback,isDialog) {
   var contentData = {};
   var header = { 
     "client-Type": "wechatapp" ,
@@ -32,17 +32,17 @@ function sendPostHttpForLogin(url, data, callback) {
     }
   }
   if (url.indexOf(getApp().globalData.JavaPlatformUrl) >= 0) {
-    baseHttp.createPostHttpRequest(url, contentData, inCallBack);
+    baseHttp.createPostHttpRequest(url, contentData, inCallBack, header, isDialog);
   } else {
     url += ("?" + wx.getStorageSync("KI4SO_SERVER_EC"));
-    baseHttp.createGetHttpRequest(url, contentData, inCallBack, header);
+    baseHttp.createGetHttpRequest(url, contentData, inCallBack, header, isDialog);
   }
 }
 
 /**
  * 发送post请求并封装成content
  */
-function sendPostHttpForContent(url, data, callback) {
+function sendPostHttpForContent(url, data, callback, isDialog) {
   var contentData = {};
   var baseUrl = getBaseUrl(url);
   var cookies = wx.getStorageSync(baseUrl);
@@ -52,7 +52,7 @@ function sendPostHttpForContent(url, data, callback) {
   };
   if (data)
     contentData = { content: data };
-  baseHttp.createPostHttpRequest(url, contentData, callback, header);
+  baseHttp.createPostHttpRequest(url, contentData, callback, header, isDialog);
 }
 
 

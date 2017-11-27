@@ -5,7 +5,7 @@ var baseUrl = getApp().globalData.JavaPlatformUrl;
  * 登陆平台
  */
 function loginPlatform(data, callback){
-  baseRequest.sendPostHttpForLogin(baseUrl + "applogin", data, callback)
+  baseRequest.sendPostHttpForLogin(baseUrl + "applogin", data, callback, true)
 }
 
 /**
