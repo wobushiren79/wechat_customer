@@ -44,8 +44,8 @@ App({
     ByUrl: "https://t-cemetery-api.shianlife.cn/shianlife-adviser-1.0-SNAPSHOT/",
     GmUrl: "https://t-cemetery-api.shianlife.cn/shianlife-advisor-cemetery-1.0-SNAPSHOT/",
     // GmUrl:"http://192.168.0.37:8088/app/",
-    JavaGoodsUrl:"",
-    JavaPlatformUrl:"http://192.168.0.57:8080/ki4so-web/"
+    JavaGoodsUrl:"https://goods.shianlife.cn/",
+    JavaPlatformUrl:"https://platform.shianlife.cn/"
   }
   
 })

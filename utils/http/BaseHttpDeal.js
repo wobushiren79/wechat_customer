@@ -18,7 +18,14 @@ function createPostHttpRequest(url, data, callback, header) {
   sendBaseHttp(httpData, callback);
 }
 
-
+/**
+ * 发送get请求
+ */
+function createGetHttpRequest(url, data, callback, header) {
+  var jsonData = JSON.stringify(data);
+  var httpData = new HttpRequestData(url, jsonData, "GET", header);
+  sendBaseHttp(httpData, callback);
+}
 /**
  * 发送http请求
  * 参数：HttpRequestData
@@ -42,6 +49,7 @@ function sendBaseHttp(httpData, callback) {
   })
 }
 
+
 /**
  *  请求成功结果处理
  */
@@ -50,17 +58,15 @@ function respsoneSuccessDeal(res, callback) {
   console.log(res);
   if (!callback)
     return;
-  if (res.data) {
-    if (res.data.code)
-      if (res.data.code == 1000)
-        if (callback.success)
-          callback.success(res.data.content,res);
-        else
-          if (callback.fail)
-            callback.fail(res.data.message, res);
-          else
-            if (callback.success)
-              callback.success(null, res);
+  if (res.data && res.data.code) {
+    if (res.data.code == 1000) {
+      if (callback.success)
+        callback.success(res.data.content, res);
+    }
+    else {
+      if (callback.fail)
+        callback.fail(res.data.message, res);
+    }
   } else
     if (callback.success)
       callback.success(null, res);
@@ -84,3 +90,4 @@ function RespsoneCompleteDeal(res, callback) {
 
 
 module.exports.createPostHttpRequest = createPostHttpRequest;
+module.exports.createGetHttpRequest = createGetHttpRequest;
