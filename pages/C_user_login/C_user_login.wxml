@@ -1,0 +1,50 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__hd">
+    <view class="page__title">
+      <image src="{{logo_src}}"></image>
+    </view>
+
+  </view>
+  <view class="page__bd">
+    <form bindsubmit="formSubmit">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">账号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入账号" name="username" value="{{value3}}" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">密码</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="password" placeholder="请输入密码" name="password" value="{{value4}}" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="showTopTips" formType="submit">确定</button>
+      </view>
+    </form>
+
+    <image class='banner' src='../../images/login_banner.png' mode="widthFix"></image>
+
+    <!--页脚-->
+    <view class="foot">
+      <navigator url='../C_user_login_passreset/C_user_login_passreset'>
+        忘记密码
+      </navigator>
+      <navigator url="../C_user_login_create/C_user_login_create">
+        没有账户和密码?
+      </navigator>
+    </view>
+
+
+  </view>
+
+</view>

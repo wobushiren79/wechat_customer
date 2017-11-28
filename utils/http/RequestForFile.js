@@ -15,4 +15,5 @@ function uploadFileByAliyun(filePath, fileName, callback) {
   baseRequest.sendFileHttpForContent(baseUrl + "file/upload", filePath, fileName, callback, true)
 }
 
-module.exports.uploadFile = uploadFile;
+module.exports.uploadFileByQiniu = uploadFileByQiniu;
+module.exports.uploadFileByAliyun = uploadFileByAliyun;

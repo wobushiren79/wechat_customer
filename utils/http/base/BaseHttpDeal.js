@@ -45,7 +45,9 @@ function createFileHttpRequest(url,filePath,fileName,callback,header,isDialog){
  */
 function sendBaseHttp(httpData, callback, isDialog) {
   if (isDialog)
-    wx.showLoading();
+    wx.showLoading({
+      title: '加载中!请稍后',
+    });
   console.log(httpData);
   wx.request({
     url: httpData.url,
@@ -89,6 +91,7 @@ function sendBaseFileHttp(httpData, callback, isDialog) {
  *  请求成功结果处理
  */
 function respsoneSuccessDeal(res, callback) {
+  wx.hideLoading()
   console.log("RespsoneSuccess");
   console.log(res);
   if (!callback)
@@ -102,15 +105,24 @@ function respsoneSuccessDeal(res, callback) {
       if (callback.fail)
         callback.fail(res.data.message, res);
     }
-  } else
-    if (callback.success)
-      callback.success(null, res);
+  } else{
+    if (res.data.indexOf("html") >= 0){
+      wx.navigateTo({
+        url: '../../pages/C_user_login/C_user_login',
+      });
+    }else{
+      if (callback.success)
+        callback.success(res.data.content, res);
+    }
+  }
+   
 }
 
 /**
  *  请求失败结果处理
  */
 function RespsoneFailDeal(res, callback) {
+  wx.hideLoading()
   console.log("RespsoneFail");
   console.log(res);
   if (callback&&callback.fail)
@@ -123,7 +135,7 @@ function RespsoneFailDeal(res, callback) {
 function RespsoneCompleteDeal(res, callback) {
   // console.log("RespsoneComplete");
   // console.log(res);
-  wx.hideLoading()
+  
 }
 
 //-------------------------------------------------------------------------------------------------------------------

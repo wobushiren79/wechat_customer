@@ -1,4 +1,5 @@
 var baseHttp = require('BaseHttpDeal.js')
+var storageKey=require('../../storage/StorageKey.js');
 
 //-------------------------------------------------------------------------------------------------------------------
 /**
@@ -17,7 +18,7 @@ function sendPostHttpForLogin(url, data, callback, isDialog) {
     success: function (data, res) {
       if (url.indexOf(getApp().globalData.JavaPlatformUrl) >= 0) {
         var ec = getKi4soEc(res);
-        wx.setStorageSync("KI4SO_SERVER_EC", ec);
+        wx.setStorageSync(storageKey.KI4SO_SERVER_EC, ec);
       }
       var baseUrl = getBaseUrl(url);
       wx.setStorageSync(baseUrl, getSessionId(res));
@@ -34,9 +35,23 @@ function sendPostHttpForLogin(url, data, callback, isDialog) {
   if (url.indexOf(getApp().globalData.JavaPlatformUrl) >= 0) {
     baseHttp.createPostHttpRequest(url, contentData, inCallBack, header, isDialog);
   } else {
-    url += ("?" + wx.getStorageSync("KI4SO_SERVER_EC"));
+    url += ("?" + wx.getStorageSync(storageKey.KI4SO_SERVER_EC));
     baseHttp.createGetHttpRequest(url, contentData, inCallBack, header, isDialog);
   }
+}
+
+/**
+ * 发送post请求
+ */
+function sendPostHttp(url, data, callback, isDialog) {
+  var contentData = {};
+  var baseUrl = getBaseUrl(url);
+  var cookies = wx.getStorageSync(baseUrl);
+  var header = {
+    "Cookie": cookies,
+    'content-type': 'application/json',
+  };
+  baseHttp.createPostHttpRequest(url, contentData, callback, header, isDialog);
 }
 
 /**
@@ -71,7 +86,7 @@ function getKi4soEc(res) {
   var cookisarr = cookis.split(";");
   if (cookisarr != -1)
     for (var i = 0; i < cookisarr.length; i++) {
-      if (cookisarr[i].indexOf("KI4SO_SERVER_EC") >= 0) {
+      if (cookisarr[i].indexOf(storageKey.KI4SO_SERVER_EC) >= 0) {
         var temp = cookisarr[i].replace(" HttpOnly,", "");
         var returnTemp = temp.replace(",rememberMe=deleteMe", "");
         return returnTemp;
@@ -102,5 +117,6 @@ function getBaseUrl(url) {
 
 //-------------------------------------------------------------------------------------------------------------------
 module.exports.sendPostHttpForLogin = sendPostHttpForLogin;
+module.exports.sendPostHttp = sendPostHttp;
 module.exports.sendPostHttpForContent = sendPostHttpForContent;
 module.exports.sendFileHttpForContent = sendFileHttpForContent;

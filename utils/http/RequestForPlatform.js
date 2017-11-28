@@ -9,6 +9,13 @@ function loginPlatform(data, callback){
 }
 
 /**
+ * 修改密码发送短信验证
+ */
+function changeForPassWord(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/forgetKeys", data, callback, true)
+}
+
+/**
  * 提交投诉
  */
 function submitComplaints(data,callback){
@@ -33,4 +40,7 @@ function findListByUserId(data, callback) {
 
 
 module.exports.loginPlatform = loginPlatform;
+module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;
+module.exports.submitEvaluation = submitEvaluation;
+module.exports.findListByUserId = findListByUserId;

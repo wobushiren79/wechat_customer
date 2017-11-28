@@ -15,7 +15,10 @@
     "pages/C_order_pay/C_order_pay",
     "pages/C_order_payhistory/C_order_payhistory",
     "pages/C_cem_list/C_cem_list",
-    "pages/C_blank/C_blank"
+    "pages/C_blank/C_blank",
+    "pages/C_user_login/C_user_login",
+    "pages/C_user_login_create/C_user_login_create",
+    "pages/C_user_login_passreset/C_user_login_passreset"
   ],
   "window": {
     "navigationBarTextStyle": "black",

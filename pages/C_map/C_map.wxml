@@ -1,36 +1,37 @@
 <!-- map.wxml -->
-<map id="map" 
-longitude="104.1141600000" 
-latitude="30.6197300000" 
-scale="14" 
-markers="{{markers}}" 
-controls="{{controls}}"
-bindmarkertap="markertap" 
-bindcallouttap='callouttap'
-bindcontroltap="controltap" 
-show-location='true'> 
-</map>
+<view class='header'>
+  <!-- 我 -->
+  <navigator url='../C_aboutme/C_aboutme' class='me'>
+    <image src='../../images/map_me.png' mode="widthFix"></image>
+  </navigator>
+  <!-- 输入框 -->
+  <navigator url='../C_blank/C_blank' class='input'>
+    <image src='../../images/index_search.png' mode="widthFix"></image>
+  </navigator>
+  <!-- 更多 -->
+  <navigator url='../C_blank/C_blank' class='more'>
+    <image src='../../images/map_more.png' mode="widthFix"></image>
+  </navigator>
+</view>
+
+
+<view class='map_wrap'>
+<map id="map" longitude="104.1141600000" latitude="30.6197300000" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='callouttap' bindcontroltap="controltap" show-location='true'> </map>
+</view>
 
 <!-- 客服 -->
 <navigator class='take'>
   <image src='../../images/map_take.png' mode="widthFix"></image>
 </navigator>
-  <contact-button size="20" session-from="WeChat">
-      </contact-button>
+<contact-button size="20" session-from="WeChat">
+</contact-button>
+
+
 <!-- 电话 -->
 <navigator class='phone' bindtap='bindcallphone'>
   <image src='../../images/map_phone.png' mode="widthFix"></image>
 </navigator>
 
-<!-- 我 -->
-<navigator url='../C_aboutme/C_aboutme' class='me'>
-  <image src='../../images/map_me.png' mode="widthFix"></image>
-</navigator>
-
-<!-- 更多 -->
-<navigator url='../C_blank/C_blank' class='more'>
-  <image src='../../images/map_more.png' mode="widthFix"></image>
-</navigator>
 
 <!-- 预约顾问 -->
 <navigator url='../C_blank/C_blank' class='server'>

@@ -1,0 +1,108 @@
+/**login.wxss**/
+
+/*logo*/
+
+.page__title image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.page__hd {
+  padding: 100rpx;
+}
+
+/*按钮*/
+
+.weui-btn-area {
+  margin-top: 60rpx;
+}
+
+.weui-btn-area button {
+  background-color: #48cfad;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+/*下划线*/
+
+.weui-cell::before {
+  right: 15px;
+}
+
+.phonenum button {
+  font-size: 16px;
+  border-color: #48cfad;
+  color: #48cfad;
+  width: 230rpx;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.phonenum button.hidden {
+  display: none;
+}
+
+/*页脚*/
+
+.foot {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #48cfad;
+  position: fixed;
+  bottom: 80rpx;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.foot navigator {
+  display: inline-block;
+  padding: 0 5px;
+  border-left: 1px solid #48cfad;
+  font-size: 17px;
+  line-height: 17px;
+}
+
+.foot navigator:first-of-type {
+  border-left: none;
+}
+
+.weui-cells {
+  background-color: transparent;
+}
+
+.weui-cells::after, .weui-cells::before {
+  border: none;
+}
+
+.weui-cells {
+  margin-bottom: 30px;
+}
+
+/*.weui-cell:first-child::before{
+  display: block;
+}*/
+
+.weui-cell::before {
+  display: block !important;
+  top: 44px;
+  border-top: 1rpx solid #d9d9d9;
+}
+
+.weui-cells {
+  margin-bottom: 15px;
+}
+
+.weui-flex {
+  margin-bottom: 30px;
+}
+
+.weui-flex .weui-flex__item {
+  padding: 0 15px;
+}
+
+.weui-flex .weui-flex__item:first-of-type {
+  text-align: right;
+}
