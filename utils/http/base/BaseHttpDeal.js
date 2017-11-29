@@ -108,7 +108,7 @@ function respsoneSuccessDeal(res, callback) {
   } else{
     if (res.data.indexOf("html") >= 0){
       wx.navigateTo({
-        url: '../../pages/C_user_login/C_user_login',
+        url: '../../../pages/C_user_login/C_user_login',
       });
     }else{
       if (callback.success)

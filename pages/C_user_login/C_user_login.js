@@ -44,8 +44,6 @@ Page({
     content.loginPlatForm(loginPlatData);
   },
 
-
-
   /**
    * 登陆平台
    */

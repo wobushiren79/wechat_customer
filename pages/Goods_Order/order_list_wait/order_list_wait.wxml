@@ -1,0 +1,82 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd page_service_order page_allot_order_list page_mystroe_order_list">
+    <!--选项卡-->
+    <view class="tab">
+      <view>
+        <navigator url="../order_list_wait/order_list_wait" class="active" open-type="redirect">待付款</navigator>
+      </view>
+      <view>
+        <navigator url="../order_list_reservation/order_list_reservation" open-type="redirect">已预订</navigator>
+      </view>
+      <view>
+        <navigator url="../order_list_processing/order_list_processing" open-type="redirect">服务中</navigator>
+      </view>
+      <view>
+        <navigator url="../order_list_finish/order_list_finish" open-type="redirect">已服务</navigator>
+      </view>
+    </view>
+    <!-- 列表 -->
+    <block wx:for="{{listdata}}">
+      <view class="list">
+        <view class="ul">
+          <view class="li">
+            <view class='li_name'>
+              <image src='../../../images/icon_mystroe.png' mode='widthFix'></image>
+              {{item.store_name == null?'平台':item.store_name}}
+            </view>
+            <view class="li_header">
+              <view class="header">单号： {{item.order_number}}
+              </view>
+              <view class="footer">
+                ￥
+                <text>{{item.show_total_price/100}}</text>
+              </view>
+            </view>
+            <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">
+              <image src="../../../images/right.png" class="icon"></image>
+              <view>
+                <view class="header">
+                  客户姓名：
+                </view>
+                <view class="body">
+                  {{item.customer_name}}
+                </view>
+              </view>
+              <view>
+                <view class="header">
+                  收货地址：
+                </view>
+                <view class="body">
+                  {{item.service_location}}
+                </view>
+              </view>
+              <view>
+                <view class="header">
+                  下单时间：
+                </view>
+                <view class="body">
+                  {{item.book_time}}
+                </view>
+              </view>
+            </navigator>
+            <view class="li_footer">
+              <view class="header">
+              </view>
+              <view class="footer">
+                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>付款</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <navigator class='fix_new' url='../../new_/new_'>
+      <text>＋</text>
+    </navigator>
+  </view>
+  <block wx:if="{{notNumber}}">
+    <view class='prompt'>
+      <text>没有更多订单啦</text>
+    </view>
+  </block>
+</view>
