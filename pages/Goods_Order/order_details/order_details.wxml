@@ -61,7 +61,14 @@
           </view>
           <view class="footer ">
             总计：
-            <text>{{listData.goodsItemPerforms != null && listData.goodsPackages != null?listData.goodsItemPerforms.length+listData.goodsPackages.length:listData.goodsItemPerforms == null && listData.goodsPackages != null?listData.goodsPackages.length:listData.goodsItemPerforms != null && listData.goodsPackages == nul?goodsItemPerforms.length:0}}</text>件
+            <!-- 商品不为空,套餐不为空  -->
+            <text wx:if="{{listData.goodsItemPerforms != null && listData.goodsPackages != null}}"></text>
+            <!--商品不为空,套餐为空  -->
+            <text wx:elif="{{listData.goodsItemPerforms != null && listData.goodsPackages == null}}">{{listData.goodsItemPerforms.length}}</text>
+            <!-- 商品为空,套餐不为空  -->
+            <text wx:elif="{{listData.goodsItemPerforms == null &&listData.goodsPackages != null}}">{{listData.goodsPackages.length}}</text>
+            <!-- 都为空  -->
+            <text wx:else>0</text>件
           </view>
         </view>
       </view>
@@ -160,7 +167,7 @@
                   <text>{{item.specOrderedNum}}</text>
                 </view>
                 <view class="action">
-                <text >
+                  <text>
                 查看详情
                 </text>
                 </view>
@@ -231,15 +238,15 @@
           </view>
         </view>
         <block wx:if="{{!amateurLevel}}">
-        <view class="dd width">
-          <view class="header ">
-            应付圆满金额
+          <view class="dd width">
+            <view class="header ">
+              应付圆满金额
+            </view>
+            <view class="footer ">
+              ￥
+              <text>{{listData.goodsOrder.totalPrice/100}}</text>
+            </view>
           </view>
-          <view class="footer ">
-            ￥
-            <text>{{listData.goodsOrder.totalPrice/100}}</text>
-          </view>
-        </view>
         </block>
         <!-- <view class="dd width">
           <view class="header ">
@@ -270,26 +277,29 @@
 
           </view>
           <block wx:if="{{amateurLevel}}">
-          <view class="footer ">
-            <view class="img_wrap {{img_wrap?'show':'hide'}} " bindtap='bind_img'><image src='../../images/icon_money.png' mode='widthFix'></image><text>提成:¥{{listData.goodsOrder.commissionPrice/100}}</text></view> 实付订单金额
-            <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
-              <text> 订单未支付</text>
-            </black>
-            <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
-              <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
-            </black>
-          </view>
+            <view class="footer ">
+              <view class="img_wrap {{img_wrap?'show':'hide'}} " bindtap='bind_img'>
+                <image src='../../images/icon_money.png' mode='widthFix'></image>
+                <text>提成:¥{{listData.goodsOrder.commissionPrice/100}}</text>
+              </view> 实付订单金额
+              <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
+                <text> 订单未支付</text>
+              </black>
+              <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
+                <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
+              </black>
+            </view>
           </block>
           <block wx:else>
-           <view class="footer ">
-            实付圆满金额
-            <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
-              <text> 订单未支付</text>
-            </black>
-            <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
-              <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
-            </black>
-          </view>
+            <view class="footer ">
+              实付圆满金额
+              <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
+                <text> 订单未支付</text>
+              </black>
+              <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
+                <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
+              </black>
+            </view>
           </block>
         </view>
         <view class="dd other">
@@ -508,7 +518,7 @@
         <block wx:for="{{get_goodsItemPerforms}}">
           <view class='package_view_c clearfix'>
             <view class='package_view_d'>
-               <image class='package_img' src='https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}'></image> 
+              <image class='package_img' src='https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}'></image>
               <!-- <image class='package_img' src='http://192.168.0.89/shian_goods/Public/Uploads/{{item.titleImg}}'></image> -->
             </view>
             <view class='package_view_a'>

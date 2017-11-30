@@ -12,8 +12,11 @@ Page({
     content = this
     content.getListData();
   },
-  onLoad: function () {96
+  onLoad: function () {
+
   },
+
+
   tel: function (e) {
     var tel = e.currentTarget.dataset.tel
     wx.makePhoneCall({
@@ -29,8 +32,10 @@ Page({
    */
   getListData: function () {
     var pageData = pageUtil.getPageData();
+    
     pageData.content={};
     pageData.content.payStatus=0;
+    
     var pageCallBack = pageUtil.getPageCallBack(
       function getDataSuccess(data,res,isLast) {
         content.setData({
@@ -42,6 +47,7 @@ Page({
       function getDataFail(data,res) {
         wx.stopPullDownRefresh()
       });
+
     goodsHttp.getGoodsOrderList(pageData, pageCallBack);
   },
 
