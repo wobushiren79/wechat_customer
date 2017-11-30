@@ -2,6 +2,7 @@ var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var content;
 var orderId;
 Page({
+  
   data: {
     list_show: false,
     img_wrap:false,
