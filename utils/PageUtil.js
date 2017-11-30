@@ -1,5 +1,7 @@
+var pageSizeValue = 10;
+
 var pageData = {
-  pageSize: 5,
+  pageSize: pageSizeValue,
   pageNumber: 1
 }
 var listData = new Array();
@@ -25,8 +27,9 @@ function getPageCallBack(dataSuccess, dataFail) {
   var pageCallBack = {
     success: function (data, res) {
       var isLast = false;
-      if (data && data.content ) {
-        if (data.totalPage == data.pageNumber || data.pageNumber==0) {
+      if (data && data.content) {
+        //java 后台page类型处理
+        if (data.totalPage == data.pageNumber || data.pageNumber == 0) {
           isLast = true;
         }
         pageData.pageNumber = data.pageNumber;
@@ -34,6 +37,14 @@ function getPageCallBack(dataSuccess, dataFail) {
           setListaData(data.content);
         }
         nextPage();
+      } else if (data) {
+        //php 后台page类型处理
+        if (!data.length || data.length == 0) {
+          isLast = true;
+        }else{
+          setListaData(data);
+          nextPage();
+        }
       }
       dataSuccess(listData, res, isLast);
     },

@@ -19,7 +19,13 @@ function createPostHttpRequest(url, data, callback, header, isDialog) {
   var httpData = new HttpRequestData(url, jsonData, "POST", header);
   sendBaseHttp(httpData, callback, isDialog);
 }
-
+/**
+ * 发送post请求formdata
+ */
+function createPostHttpRequestForFormData(url, data, callback, header, isDialog) {
+  var httpData = new HttpRequestData(url, data, "POST", header);
+  sendBaseHttp(httpData, callback, isDialog);
+}
 /**
  * 发送get请求
  */
@@ -140,5 +146,6 @@ function RespsoneCompleteDeal(res, callback) {
 
 //-------------------------------------------------------------------------------------------------------------------
 module.exports.createPostHttpRequest = createPostHttpRequest;
+module.exports.createPostHttpRequestForFormData = createPostHttpRequestForFormData;
 module.exports.createGetHttpRequest = createGetHttpRequest;
 module.exports.createFileHttpRequest = createFileHttpRequest;

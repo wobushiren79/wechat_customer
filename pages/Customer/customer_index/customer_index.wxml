@@ -1,0 +1,77 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+
+    <!-- 门店信息 star-->
+    <view class='userinfo'>
+
+      <!-- 基本信息 -->
+      <view class='info'>
+        <view class='img'>
+          <image src='../../../images/dog.png' mode='widthFix'></image>
+        </view>
+
+        <view class='text'>
+          <view class='stroe'>{{shop_name}}</view>
+          <view class='name'>
+            <image src='../../../images/mystroe_index_name.png' mode='widthFix'></image>服务顾问：
+            <text>{{consultant_name}}</text>
+          </view>
+          <view class='num'>
+            <image src='../../../images/mystroe_index_num.png' mode='widthFix'></image>顾问星级：
+            <text>五星</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 地址 -->
+      <view class='address'>
+        <!-- <image class='dashed' src='../../../images/mystroe_index_dashed.png' mode='widthFix'></image> -->
+        <view class='text aui-ellipsis-1'>
+          <image src='../../../images/mystroe_index_address.png' mode='widthFix'></image>
+          <text>{{shop_location}}</text>
+        </view>
+        <!-- <image class='dashed' src='../../../images/mystroe_index_dashed.png' mode='widthFix'></image> -->
+      </view>
+
+    </view>
+    <!-- 门店信息 end-->
+
+    <!-- tab star -->
+    <view class='tab_hd'>
+      <view class='active'>
+        <text>商品</text>
+      </view>
+      <view>
+        <text>评价(4.8)</text>
+      </view>
+    </view>
+    <view class='tab_bd'>
+      <scroll-view scroll-x="true" class='tab_bd_title'>
+        <block wx:for="{{listGoodsClass}}">
+          <view class="{{tab_bd_title == item.id?'active':''}}" data-tab_bd_title="{{item.id}}" bindtap="bingd_tab_bd_title">{{item.name}}</view>    
+        </block>
+      </scroll-view>
+      <view class='tab_bd_list'>
+        <view class='ul clearfix'>
+        <block wx:for="{{listGoods}}">
+           <view class='li'>
+            <image src='{{item.picUrl}}' mode='widthFix'></image>
+            <view>
+              <text>{{item.name}}</text>
+            </view>
+            <view>￥
+              <text>{{item.total}}</text>
+            </view>
+          </view>
+        </block>       
+        </view>
+      </view>
+    </view>
+    <!-- tab end -->
+
+
+
+
+  </view>
+
+</view>

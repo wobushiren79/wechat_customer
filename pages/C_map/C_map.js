@@ -95,9 +95,9 @@ Page({
    * 弹窗点击
    */
   callouttap(e) {
-    var id = e.markerId
-    wx.reLaunch({
-      url: '../' 
+    var storeId = e.markerId;
+    wx.navigateTo({
+      url: '../Customer/customer_index/customer_index?storeId=' + storeId
     })
   },
 
