@@ -1,0 +1,130 @@
+/* 基本信息 */
+
+.userinfo {
+  background: #48cfad;
+  padding: 0 65rpx;
+}
+
+image {
+  width: 100%;
+}
+
+.userinfo .info {
+  display: flex;
+  align-items: center;
+  padding: 35rpx 0;
+}
+
+.userinfo .img {
+  flex-basis: 130rpx;
+}
+
+.userinfo .img image {
+  width: 115rpx;
+  height: 115rpx;
+  border-radius: 10rpx;
+}
+
+.userinfo .text {
+  color: #fff;
+}
+
+.userinfo .text image {
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 20rpx;
+}
+
+.userinfo .text .stroe {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+
+.userinfo .text .name, .userinfo .text .num {
+  font-size: 28rpx;
+}
+
+/* 地址 */
+
+.userinfo .address {
+  box-sizing: border-box;
+}
+
+.userinfo .address .dashed {
+  display: block;
+  margin: 10rpx 0;
+}
+
+.userinfo .address .text {
+  padding: 0 90rpx 0 12rpx;
+  overflow: hidden;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 1px dashed rgba(255, 255, 255, 0.6);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.6);
+}
+
+/* tab */
+
+/* tab_hd */
+
+.tab_hd {
+  text-align: center;
+  display: flex;
+  background: #48cfad;
+}
+
+.tab_hd view {
+  flex: 1;
+}
+
+.tab_hd view text {
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.tab_hd view.active text {
+  border-bottom: 6rpx solid #fff;
+  color: rgba(255, 255, 255, 1);
+  display: inline-block;
+}
+
+.tab_bd .tab_bd_title {
+  height: 80rpx;
+  background: #fff;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.tab_bd .tab_bd_title view {
+  display: inline-block;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  color: rgba(120, 120, 120, 0.8);
+}
+
+.tab_bd .tab_bd_title view.active {
+  color: #41b396;
+}
+
+.tab_bd_list {
+  padding: 12rpx;
+  background: #fff;
+}
+
+.tab_bd_list .li {
+  padding: 12rpx;
+  background: #fff;
+  width: 50%;
+  float: left;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  color: #353535;
+}
+
+.tab_bd_list .li image {
+  height: 339rpx !important;
+}

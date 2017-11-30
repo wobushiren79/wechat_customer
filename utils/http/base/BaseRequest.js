@@ -44,14 +44,25 @@ function sendPostHttpForLogin(url, data, callback, isDialog) {
  * 发送post请求
  */
 function sendPostHttp(url, data, callback, isDialog) {
-  var contentData = {};
   var baseUrl = getBaseUrl(url);
   var cookies = wx.getStorageSync(baseUrl);
   var header = {
     "Cookie": cookies,
     'content-type': 'application/json',
   };
-  baseHttp.createPostHttpRequest(url, contentData, callback, header, isDialog);
+  baseHttp.createPostHttpRequest(url, data, callback, header, isDialog);
+}
+/**
+ * 发送post请求form表单提交
+ */
+function sendPostHttpForForm(url, data, callback, isDialog) {
+  var baseUrl = getBaseUrl(url);
+  var cookies = wx.getStorageSync(baseUrl);
+  var header = {
+    "Cookie": cookies,
+    "content-type":"application/x-www-form-urlencoded"
+  };
+  baseHttp.createPostHttpRequestForFormData(url, data, callback, header, isDialog);
 }
 
 /**
@@ -118,5 +129,6 @@ function getBaseUrl(url) {
 //-------------------------------------------------------------------------------------------------------------------
 module.exports.sendPostHttpForLogin = sendPostHttpForLogin;
 module.exports.sendPostHttp = sendPostHttp;
+module.exports.sendPostHttpForForm = sendPostHttpForForm;
 module.exports.sendPostHttpForContent = sendPostHttpForContent;
 module.exports.sendFileHttpForContent = sendFileHttpForContent;
