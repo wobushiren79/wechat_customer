@@ -93,6 +93,7 @@ Page({
               listDetails[j].specNum = content.shoppingCartList[i].specNum
               // totla_price += parseFloat(content.shoppingCartList[i].specNum) * parseFloat(listDetails[j].spec_price)
               itemData = Object.assign({}, listDetails[j]);
+              
             }
           }
           itemData.storeName = content.shoppingCartList[i].storeName;

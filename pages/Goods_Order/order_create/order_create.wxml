@@ -7,7 +7,7 @@
 
         <!-- 填写前 -->
         <black wx:if="{{!show}}">
-          <navigator url="../service_goods_address/service_goods_address">
+          <navigator url="../order_service_info/order_service_info">
             <view class="show clearfix">
               <image src="../../../images/icon_edit.png" class="img"></image>
               <view class="info">
@@ -21,7 +21,7 @@
 
         <!-- 填写后 -->
         <black wx:if="{{show}}">
-          <navigator url="../service_goods_address/service_goods_address">
+          <navigator url="../order_service_info/order_service_info">
             <view class="hide clearfix">
               <image src="../../../images/icon_money_my.png" class="img "></image>
 
@@ -165,7 +165,7 @@
       <!-- 购置物品 -->
       <view class="goods_other list ">
         <view class="dl ">
-          <navigator url="../service_invoice_address/service_invoice_address">
+          <navigator url="../order_service_invoice/order_service_invoice">
             <view class="dd ">
               <view class="header ">
                 发票信息
@@ -179,14 +179,14 @@
             </view>
           </navigator>
           <black wx:if="{{xuyao == '需要发票'}}">
-            <view class="dt">
+            <!-- <view class="dt">
               <view class="header ">
                 抬头
               </view>
               <view class="footer ">
                 {{fapiao.title != ''?fapiao.title:'个人'}}
               </view>
-            </view>
+            </view> -->
           </black>
           <view class="dd ">
             <view class="header ">
@@ -210,11 +210,6 @@
 
       <!-- 固定底部 star -->
       <view class="footerfix clearfix">
-
-        <view class="home">
-          
-          <navigator url="../index/index" open-type="switchTab"><image src="../../../images/right.png"></image>首页</navigator>
-        </view>
 
         <!-- 合计 -->
         <block wx:if="{{!levelId}}">

@@ -11,7 +11,7 @@ function findAdviserStoreList(data, callback) {
 /**
  * 获取门店详情
  */
-function findStoreInfoByStoreId(data,callback){
+function findStoreInfoByStoreId(data, callback) {
   baseRequest.sendPostHttpForForm(baseUrl + "Api/Stores/storesInfo", data, callback, true)
 }
 
@@ -37,8 +37,15 @@ function findGoodsDetails(data, callback) {
   baseRequest.sendPostHttpForForm(baseUrl + "Api/getgoods/getattrgoods", data, callback, true)
 }
 
+/**
+ * 获取商品详情
+ */
+function findGoodsInfo(data, callback) {
+  baseRequest.sendPostHttpForForm(baseUrl + "Api/Goods/details", data, callback, true)
+}
 module.exports.findAdviserStoreList = findAdviserStoreList;
 module.exports.findStoreInfoByStoreId = findStoreInfoByStoreId;
 module.exports.findStoreGoodsClass = findStoreGoodsClass;
 module.exports.findStoreGoods = findStoreGoods;
 module.exports.findGoodsDetails = findGoodsDetails;
+module.exports.findGoodsInfo = findGoodsInfo;

@@ -43,9 +43,17 @@ function removeShoppingCartGoods(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/goods/shopping/remove", data, callback, true)
 }
 
+/**
+ * 创建订单
+ */
+function createGoodsOrder(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/save", data, callback, true)
+}
+
 module.exports.loginGoods = loginGoods;
 module.exports.getGoodsOrderList = getGoodsOrderList;
 module.exports.getGoodsOrderDetails = getGoodsOrderDetails;
 module.exports.getGoodsShoppingList = getGoodsShoppingList;
 module.exports.upShopingCartNum = upShopingCartNum;
 module.exports.removeShoppingCartGoods = removeShoppingCartGoods;
+module.exports.createGoodsOrder = createGoodsOrder;

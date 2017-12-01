@@ -1,0 +1,299 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+
+    <form bindsubmit="formSubmit">
+      <!-- 发票信息 -->
+      <view class="goods_buy list ">
+        <view class="dl ">
+
+          <!-- 是否需要发票 -->
+          <radio-group>
+            <view class="dd width_300">
+              <view class="header ">
+                不需要发票
+              </view>
+              <view class="footer ">
+                <radio class="" name="" checked="checked" bindtap="bind_need" data-need="0" />
+              </view>
+            </view>
+
+            <view class="dd">
+              <view class="header ">
+                需要发票
+              </view>
+              <view class="footer ">
+                <radio class="" name="" bindtap="bind_need" data-need="1" />
+              </view>
+            </view>
+          </radio-group>
+
+          <!-- 不需要发票 star -->
+          <black wx:if="{{!need}}">
+            <!-- 发票抬头 -->
+            <view class="dt">
+              <view class="header">
+                发票抬头
+              </view>
+              <view class="footer">
+              </view>
+            </view>
+            <radio-group>
+              <view class="dd bc_dis">
+                <view class="header ">
+                  <radio class="" name="" data-head="0" disabled/>个人
+                </view>
+                <view class="footer ">
+
+                </view>
+              </view>
+
+              <view class="dd bc_dis">
+                <view class="header ">
+                  <radio class="" name="" data-head="1" disabled />单位
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="请输入全称" disabled/>
+                </view>
+              </view>
+
+            </radio-group>
+
+
+              <view class="dd radio_hide bc_dis">
+                <view class="header ">
+                  <radio class="" name="" />税号
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="请输入税务编号" disabled/>
+                </view>
+              </view>
+
+              <view class="dd radio_hide bc_dis">
+                <view class="header ">
+                  <radio class="" name="" />备注
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="若为一般纳税人 请补充填写开户行信息与账号" disabled/>
+                </view>
+              </view>
+
+
+  
+
+            <view class="dt">
+              <view class="header ">
+                发票寄送信息
+              </view>
+              <view class="footer ">
+
+              </view>
+            </view>
+            <view class="dd radio_hide width_300 bc_dis">
+              <view class="header ">
+                <radio class="" name="" disabled/>收件人
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="请输入收件人姓名" disabled/>
+              </view>
+            </view>
+            <view class="dd radio_hide width_300 bc_dis">
+              <view class="header ">
+                <radio class="" name="" disabled/>收件人电话
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="请输入收件人电话" disabled/>
+              </view>
+            </view>
+
+            <view class="dd radio_hide width_300 bc_dis">
+              <view class="header ">
+                <radio class="" name="" disabled/>收件人地址
+              </view>
+              <view class="footer ">
+                <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" disabled/>
+              </view>
+              <image src="../../../images/right.png" class="icon"></image>
+            </view>
+
+            <view class="dd radio_hide width_300 bc_dis">
+              <view class="header ">
+                <radio class="" name="" disabled/>详细地址
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="街道、小区、楼牌号等" disabled/>
+              </view>
+            </view>
+          </black>
+          <!-- 不需要发票 end -->
+
+          <!-- 需要发票 star -->
+          <black wx:if="{{need}}">
+            <!-- 发票抬头 -->
+            <view class="dt">
+              <view class="header">
+                发票抬头
+              </view>
+              <view class="footer">
+              </view>
+            </view>
+            <radio-group>
+              <view class="dd">
+                <view class="header ">
+                  <radio class="" name="" checked="checked" data-head="0" bindtap="bind_head"/>个人
+                </view>
+                <view class="footer ">
+
+                </view>
+              </view>
+
+              <view class="dd">
+                <view class="header ">
+                  <radio class="" name="" data-head="1" bindtap="bind_head"/>单位
+                </view>
+                <view class="footer ">
+                  <black wx:if="{{!head}}">
+                    <input type="text" placeholder="请输入全称" disabled/>
+                  </black>
+                  <black wx:if="{{head}}">
+                    <input type="text" placeholder="请输入全称"  name="title"/>
+                  </black>
+
+                </view>
+              </view>
+
+            </radio-group>
+
+            <!-- 不需要抬头-个人 star -->
+            <black wx:if="{{!head}}">
+              <view class="dd radio_hide bc_dis">
+                <view class="header ">
+                  <radio class="" name="" disabled/>税号
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="请输入税务编号" disabled/>
+                </view>
+              </view>
+
+              <view class="dd radio_hide bc_dis">
+                <view class="header ">
+                  <radio class="" name="" disabled/>备注
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="若为一般纳税人 请补充填写开户行信息与账号" disabled/>
+                </view>
+              </view>
+            </black>
+            <!-- 不需要抬头-个人 end -->
+
+            <!-- 需要抬头-单位 star -->
+            <black wx:if="{{head}}">
+              <view class="dd radio_hide">
+                <view class="header ">
+                  <radio class="" name="" />税号
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="请输入税务编号"  name="companyTaxId"/>
+                </view>
+              </view>
+
+              <view class="dd radio_hide">
+                <view class="header ">
+                  <radio class="" name="" />备注
+                </view>
+                <view class="footer ">
+                  <input type="text" placeholder="若为一般纳税人 请补充填写开户行信息与账号"  name="invoiceRemark"/>
+                </view>
+              </view>
+            </black>
+            <!-- 需要抬头-单位 end -->
+
+
+            <view class="dt">
+              <view class="header ">
+                发票寄送信息
+              </view>
+              <view class="footer ">
+
+              </view>
+            </view>
+            <view class="dd radio_hide width_300">
+              <view class="header ">
+                <radio class="" name="" />收件人
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="请输入收件人姓名"  name="receiptName"/>
+              </view>
+            </view>
+            <view class="dd radio_hide width_300">
+              <view class="header ">
+                <radio class="" name="" />收件人电话
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="请输入收件人电话" name="receiptPhone"/>
+              </view>
+            </view>
+
+            <view class="dd radio_hide width_300">
+              <view class="header ">
+                <radio class="" name="" />收件人地址
+              </view>
+              <view class="footer ">
+                <input placeholder="选择" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open" name="receiptLocation"/>
+              </view>
+              <image src="../../images/right.png" class="icon"></image>
+            </view>
+
+            <view class="dd radio_hide width_300">
+              <view class="header ">
+                <radio class="" name="" />详细地址
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="街道、小区、楼牌号等" name="location"/>
+              </view>
+            </view>
+          </black>
+          <!-- 需要发票 end -->
+
+        </view>
+      </view>
+
+
+      <!-- 省市区三级联动 star -->
+      <view wx:if="{{condition}}" class="citypicker">
+        <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+          <view class="cityheader">
+            <view bindtap="open" class="city-cancel">取消</view>
+            <view bindtap="open" class="city-true">确定</view>
+          </view>
+          <picker-view-column>
+            <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+            <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+      <!-- 省市区三级联动 end -->
+
+      <!-- 固定底部 star -->
+      <black wx:if="{{footer}}">
+        <view class="footerfix clearfix">
+          <!-- 保存 -->
+          <button class="keep" form-type="submit">保存</button>
+        </view>
+      </black>
+      <!-- 固定底部 end -->
+
+    </form>
+
+
+
+
+
+
+
+  </view>
+</view>

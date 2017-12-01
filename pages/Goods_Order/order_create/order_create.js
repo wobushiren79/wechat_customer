@@ -3,6 +3,7 @@ var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
 var storageKey = require('../../../utils/storage/StorageKey.js');
+var formData;
 var content;
 Page({
   data: {
@@ -17,96 +18,75 @@ Page({
   },
   bind_list: function () {
     var that = this;
-    that.setData({
-      list_show: (!that.data.list_show)
+    content.setData({
+      list_show: (!content.data.list_show)
     })
   },
 
   onLoad: function () {
     content = this;
-    var formData = wx.getStorageSync(storageKey.STORE_BUY_GOODS);
-    var goodsnumber = formData.length
+    formData = wx.getStorageSync(storageKey.STORE_BUY_GOODS);
+    var goodsnumber = 0;
     var specPrice = 0;
+    var adviserPrice=0;
+    var goodsClassNameList = content.getGoodsClassNameList();
+
     for (var i in formData) {
       specPrice += formData[i].spec_price * formData[i].specNum
+      adviserPrice += formData[i].adviser_price * formData[i].specNum
+      goodsnumber += formData[i].specNum;
     }
+
     content.setData({
       formData: formData,
       goodsnumber: goodsnumber,
-      totla_price: specPrice
+      totla_price: specPrice,
+      adviser_Price: adviserPrice,
+      class_name: goodsClassNameList
     })
-
-    content.setData({
-      class_name: ress.data
-    })
-    // // 取出购物车数据
-    // wx.getStorage({
-    //   key: 'formData',
-    //   success: function (res) {
-    //     var formData = res.data
-    //     // console.log(res.data)
-    //     //缓存结算列表
-    //     wx.setStorageSync('getdatalist', formData)
-    //     // wx.getStorageSync(key)
-
-    //     //顾问总金额
-    //     var dviser_Price = 0
-    //     for (var i in formData) {
-    //       dviser_Price += formData[i].adviser_price * formData[i].specNum
-
-    //     }
-    //     that.setData({
-    //       formData: formData,
-    //       goodsnumber: goodsnumber,
-    //       dviser_Price: dviser_Price
-    //     })
-    //     //取出分类
-    //     wx.getStorage({
-    //       key: 'class_name',
-    //       success: function (ress) {
-    //         that.setData({
-    //           class_name: ress.data
-    //         })
-    //       }
-    //     })
-    //     //取出总价格
-    //     wx.getStorage({
-    //       key: 'totla_price',
-    //       success: function (r) {
-    //         that.setData({
-    //           totla_price: r.data
-    //         })
-    //       }
-    //     })
-    //   }
-    // })
   },
+
+  /**
+   * 获取商品分类名称
+   */
+  getGoodsClassNameList() {
+    var goodsClassNameList = new Array();
+    if (formData) {
+      for (var i in formData) {
+        goodsClassNameList.push(formData[i].class_name)
+      }
+    }
+    return Array.from(new Set(goodsClassNameList));
+  },
+
+
   onShow: function () {
-    var that = this
     //取出客户信息
     wx.getStorage({
-      key: 'kehu',
+      key: storageKey.ORDER_SERVICE_INFO,
       success: function (r) {
-        that.setData({
+        content.setData({
           kehu: r.data,
           show: true
         })
       },
       fail: function () {
-        kehu: false
+        content.setData({
+          show: false
+        })
       }
     })
     //取出发票信息
     wx.getStorage({
-      key: 'fapiao',
+      key: storageKey.ORDER_INVOICE_INFO,
       success: function (r) {
         if (r.data.needInvoice == 0) {
-          that.setData({
+          content.setData({
             fapiao: r.data,
             xuyao: '不需要发票'
           })
         } else {
-          that.setData({
+          content.setData({
             fapiao: r.data,
             xuyao: '需要发票'
           })
@@ -152,6 +132,8 @@ Page({
       goodsOrder.orderComment = e.detail.value.orderComment
       goodsOrder.customerName = kehu.contact
       goodsOrder.customerPhone = kehu.contactPhone
+      goodsOrder.storeId = formData[0].storeId
+      goodsOrder.storeUserId = formData[0].storeUserId
       // goodsOrder.test = 1111111111111111111
       //是否职业顾问
       // wx.getStorage({
@@ -194,7 +176,7 @@ Page({
         }
       }
       //顾问总金额
-      var totalPrice = that.data.dviser_Price
+      var totalPrice = that.data.adviser_Price
       goodsOrder.totalPrice = totalPrice * 100
       getdata.goodsOrder = goodsOrder
       // console.log(formData)
@@ -392,44 +374,20 @@ Page({
         goodsServiceInfo.serviceLocation = kehu.serviceLocation
 
       }
+
       getdata.goodsServiceInfo = goodsServiceInfo
       orderdata = { content: getdata }
-      var OrderData = JSON.stringify(orderdata)
-      console.log(orderdata)
-      var javaApi = getApp().globalData.javaApi
-      // console.log(OrderData)
-      wx.request({
-        url: javaApi + 'api/goods/order/save',
-        method: "POST",
-        data: orderdata,
-        header: {
-          // "Content-Type": "application/x-www-form-urlencodeed",
-          'content-type': 'application/json',
-          "Cookie": JSESSIONID
-        },
-        success: function (res) {
-          if (res.data.code == 1000) {
-            wx.reLaunch({
-              url: '../service_goods_order/service_goods_order?orderId=' + res.data.content.orderId
-            })
-          } else {
-            wx.showToast({
-              title: res.data.message,
-              image: '../../images/icon_info.png',
-              // mask: true,
-              duration: 2000
-            })
-          }
-        },
-        fail: function () {
-          wx.showToast({
-            title: '请求失败',
-            image: '../../images/icon_info.png',
-            // mask: true,
-            duration: 2000
+      var createOrderCallBack = {
+        success: function (data, res) {
+          wx.reLaunch({
+            url: '../service_goods_order/service_goods_order?orderId=' + res.data.content.orderId
           })
+        },
+        fail: function (data, res) {
+
         }
-      })
+      }
+      goodsHttp.createGoodsOrder(getdata, createOrderCallBack)
     } else {
       wx.showToast({
         title: '未填服务信息',
@@ -441,15 +399,7 @@ Page({
     // console.log(orderdata)
   },
   price: function () {
-    var price = this.data.price
-    this.setData({
-      price: !price
-    })
+   
+   
   },
-  // prices:function(){
-  //   this.setData({
-  //     price:false
-  //   })
-  // }
-
 });

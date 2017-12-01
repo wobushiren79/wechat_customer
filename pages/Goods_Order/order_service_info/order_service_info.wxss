@@ -1,0 +1,116 @@
+
+.icon {
+  width: 14rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 50%;
+  right: 16rpx;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+
+.btn{
+  display: inline-block;
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  color: #8b8b8b;
+  box-sizing: border-box;
+  line-height: 60rpx;
+  border: 1px solid #c4c4c4;
+  border-radius: 6rpx;
+  text-align: center;
+  margin-left: 20rpx;
+  margin-top: 2rpx;
+}
+.btn.active{
+  color: #48cfad;
+  border-color: #48cfad;
+}
+.list .dl .dd, .list .dl .dt {
+  display: flex;
+  line-height: 96rpx;
+  min-height: 96rrpx;
+  border-top: 1px solid #efefef;
+  position: relative;
+  background: #fff;
+}
+.list .dl .dd input, .list .dl .dt input{
+  display: block;
+  line-height: 96rpx;
+  height: 96rpx;
+  background: #fff;
+  color: #353535;
+  font-size: 24rpx;
+}
+.list .dl .dd:first-of-type, .list .dl .dt:first-of-type {
+  border-top: none;
+}
+
+.list .dl .dd .header, .list .dl .dt .header {
+  flex-basis: 150rpx;
+  padding-left: 16rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #353535;
+}
+
+.list .dl .dd .footer, .list .dl .dt .footer {
+  /* flex-basis: 300rpx; */
+  text-align: right;
+  flex: 1;
+  padding-right: 50rpx;
+  box-sizing: border-box;
+  color: #353535;
+  font-size: 24rpx;
+}
+
+.list .dl .dt {
+  background: transparent;
+  flex-basis: 150rpx;
+}
+
+.list .dl .dt .header {
+  flex-basis: 300rpx;
+  font-size: 24rpx;
+  color: #727272;
+}
+
+.order_time{
+  border-top: 1px solid #efefef!important;
+}
+
+
+
+.goods_other.list .dl .dd:last-of-type .footer {
+  font-size: 30rpx !important;
+}
+
+.goods_other.list .dl .dd:last-of-type text {
+  font-weight: 600;
+  color: #fc8383;
+}
+
+
+
+.footerfix {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #efefef;
+}
+
+
+.footerfix .keep {
+  height: 100rpx;
+
+  color: #ffffff;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  background: linear-gradient(to left, #3eb99a, #269080);
+}
