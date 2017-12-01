@@ -1,0 +1,228 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+
+
+
+    <!-- 轮播 -->
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{list.imgs}}">
+        <swiper-item>
+          <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.pic_add}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- 商品基本信息 star-->
+    <view class="goods_info">
+      <!-- 商品名字和一句话描述 -->
+      <view class="nametext">
+        <text class="name">{{list.name}}</text>\r
+        <block wx:if="{{list.is_package == 1}}">
+          <text class="text">{{list.package_slogan}}</text>
+        </block>
+        <block wx:else>
+          <text class="text">{{list.goods_slogan}}</text>
+        </block>
+      </view>
+
+      <!-- 价格 -->
+      <view class="money">
+        推荐价:
+        <text>{{list.price}}</text>
+        <!-- <image src="../../images/icon_money.png" bindtap="popup"></image> -->
+      </view>
+
+      <!-- 其他信息 -->
+      <view class="other">
+        <view class="moneyed">
+          原价：￥
+          <view class="">
+            <text>{{list.total}}</text>
+            <text class="hr"></text>
+          </view>
+        </view>
+        <view class="num">
+          已销售：
+          <text>{{list.sale_amount}}</text>件
+        </view>
+        <view class="address">
+          适用区域：
+          <black wx:for="{{list.apply_area}}">
+            <text>
+              <black wx:if="{{index != 0}}">/</black>{{item.name}}</text>
+          </black>
+        </view>
+      </view>
+    </view>
+    <!-- 商品基本信息 end-->
+
+    <!-- 规格选择 stra-->
+    <black wx:if="{{chatxian}}">
+      <view class="goods_size">
+        <block wx:if="{{list.is_package == 1}}">
+          <view class="show">
+            选择套餐规格 \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n ¥{{spec_price}}
+          </view>
+        </block>
+        <block wx:else>
+          <view class="show">
+            选择商品规格 \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n ¥{{spec_price}}
+          </view>
+        </block>
+        <view class="hide">
+          <view class="item">
+            <view class="title">{{list.spec_alias}}</view>
+            <view class="content">
+              <black wx:for="{{list.specprice}}">
+                <text class="btn" wx:if="{{item.spec_stock > 0 && xuanzhe !=index}}" bindtap="xuanzhe" data-index="{{index}}">{{item.spec_name}}</text>
+                <text class="btn btn_dis" wx:elif="{{item.spec_stock == 0 || item.spec_stock < 0}}">{{item.spec_name}}</text>
+                <text class="btn btn_active" wx:elif="{{item.spec_stock > 0 && xuanzhe == index}}">{{item.spec_name}}</text>
+                <!--<text class="btn btn_active" >{{item.spec_name}}</text>-->
+              </black>
+            </view>
+          </view>
+
+          <view class="num">
+            <view class="title">数量</view>
+            <view class="content">
+              <button bindtap="reduce" data-goods_number="{{goods_number}}">-</button>
+              <text>{{goods_number}}</text>
+              <button bindtap="add" data-goods_number="{{goods_number}}">+</button>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 规格选择 end-->
+    </black>
+
+    <!-- 适用信息 star -->
+    <block wx:if="{{list.is_package  == 1}}">
+    <view class="useinfo">
+      <view class="dl">
+        <navigator class="dt" url='../service_goods_list/service_goods_list'>套餐规格商品详情列表
+          <image src='../../images/right.png' class='icon'></image>
+        </navigator>
+
+      </view>
+    </view>
+    </block>
+    <!-- 适用信息 end-->
+
+    <!-- 适用信息 star -->
+    <view class="useinfo">
+      <view class="dl">
+        <view class="dt">适用信息</view>
+        <view class="dd">
+          <view>
+            <text>适用葬礼习俗</text>
+          </view>
+          <view>
+            <text>{{list.apply_custom}}</text>
+          </view>
+        </view>
+        <view class="dd">
+          <view>
+            <text>适用人群</text>
+          </view>
+          <view>
+            <text>{{list.apply_user}}</text>
+          </view>
+        </view>
+        <view class="dd">
+          <view>
+            <text>适用阶段</text>
+          </view>
+          <view>
+            <text>{{list.apply_stage}}</text>
+          </view>
+        </view>
+        <view class="dd">
+          <view>
+            <text>适用年龄</text>
+          </view>
+          <view>
+            <text>{{list.apply_age}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 适用信息 end-->
+
+    <!-- 商品详情 star -->
+    <view class="goods_content">
+      <span style="font-size:24rpx;">
+        <import src="../../../wxParse/wxParse.wxml" />
+
+        <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:descrip_detail.nodes}}" />
+        </view>
+      </span>
+    </view>
+    <!-- 商品详情 end-->
+
+
+    <!-- 固定底部 star -->
+    <view class="footerfix clearfix">
+      <!-- 客服 -->
+      <!--<button class="server" open-type="contact" session-from="wechat" bindtap="contact">
+        <image src="../../images/icon_server.png"></image>
+        <text>客服</text>
+      </button>-->
+      <view class="server">
+        <image src="../../images/icon_server.png"></image>
+        <text>客服</text>
+      </view>
+      <contact-button size="20" session-from="WeChat">
+      </contact-button>
+      <!-- 购物车 -->
+      <view class="shop" bindtap="cartlist">
+        <image src="../../images/icon_shop.png"></image>
+        <text>服务车</text>
+        <black wx:if="{{shoppingTotalNumber>0}}">
+          <text class="num" wx:if="{{shoppingTotalNumber >99}}">99+</text>
+          <text class="num" wx:else>{{shoppingTotalNumber}}</text>
+        </black>
+      </view>
+      <black wx:if="{{chatxian}}">
+        <!-- 加入购物车 -->
+        <view class="shopping" bindtap="cart">
+          加入服务车
+        </view>
+        <!-- 直接购买 -->
+        <view class="buy" bindtap="purchase">
+          直接购买
+        </view>
+      </black>
+    </view>
+    <!-- 固定底部 end -->
+
+    <black wx:if="{{popup}}">
+      <!-- 遮罩层 star -->
+      <view class="mask" bindtap="popup_close"></view>
+      <!-- 遮罩层 end -->.
+
+      <!-- 弹窗 star -->
+      <view class="popup" bindtap="popupdata">
+        <view class="dl">
+          <view class="dt">{{amateurLevel == 10000 ?'圆满价格':'提成金额'}}</view>
+          <black wx:for="{{list.specprice}}">
+            <view class="dd">
+              <view class="name">
+                <text>{{item.spec_alias}}</text>-
+                <text>{{item.spec_name}}</text>
+              </view>
+              <view class="money">
+                ￥
+                <text>{{amateurLevel == 10000?item.adviser_price:item.spec_price+'*'+amateurLevel}}</text>
+              </view>
+            </view>
+          </black>
+
+          <!--</view>-->
+        </view>
+      </view>
+      <!-- 弹窗 end -->
+    </black>
+
+  </view>
+</view>
