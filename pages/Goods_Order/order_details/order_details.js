@@ -70,13 +70,13 @@ Page({
     }
     var detilasCallBack={
       success:function(data){
-        console.log(data)
+        
         content.setData({
           listData:data
         })
       },
       fail:function(){
-
+        wx.stopPullDownRefresh()
       }
     }
     goodsHttp.getGoodsOrderDetails(detailsRequest, detilasCallBack);

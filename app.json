@@ -1,12 +1,13 @@
 {
   "pages": [
+    "pages/User/user_register/user_register",
+    "pages/Goods_Order/order_list_wait/order_list_wait",
+    "pages/Goods_Order/order_details/order_details",
     "pages/C_map/C_map",
     "pages/Customer/customer_index/customer_index",
-    "pages/Goods_Order/order_list_wait/order_list_wait",
     "pages/Goods_Order/order_list_finish/order_list_finish",
     "pages/Goods_Order/order_list_processing/order_list_processing",
     "pages/Goods_Order/order_list_reservation/order_list_reservation",
-    "pages/Goods_Order/order_details/order_details",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",

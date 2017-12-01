@@ -62,7 +62,7 @@
           <view class="footer ">
             总计：
             <!-- 商品不为空,套餐不为空  -->
-            <text wx:if="{{listData.goodsItemPerforms != null && listData.goodsPackages != null}}"></text>
+            <text wx:if="{{listData.goodsItemPerforms != null && listData.goodsPackages != null}}">{{listData.goodsItemPerforms.length+listData.goodsPackages.length}}</text>
             <!--商品不为空,套餐为空  -->
             <text wx:elif="{{listData.goodsItemPerforms != null && listData.goodsPackages == null}}">{{listData.goodsItemPerforms.length}}</text>
             <!-- 商品为空,套餐不为空  -->
