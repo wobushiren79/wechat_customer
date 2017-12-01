@@ -21,6 +21,10 @@ Page({
     content.storeId = evet.storeId;
     content.getStoreInfo(evet.storeId);
     content.getStoreGoodsClass(evet.storeId);
+    content.setData({
+      storeId: evet.storeId
+    })
+    console.log(evet.storeId)
   },
   //下拉刷新页面
   onPullDownRefresh: function () {

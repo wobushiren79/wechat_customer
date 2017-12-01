@@ -7,6 +7,7 @@
     "pages/Goods_Order/order_list_processing/order_list_processing",
     "pages/Goods_Order/order_list_reservation/order_list_reservation",
     "pages/Goods_Order/order_details/order_details",
+    "pages/Goods_Order/order_goods_content/order_goods_content",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",

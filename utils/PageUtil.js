@@ -1,4 +1,4 @@
-var pageSizeValue = 10;
+var pageSizeValue = 4;
 
 var pageData = {
   pageSize: pageSizeValue,

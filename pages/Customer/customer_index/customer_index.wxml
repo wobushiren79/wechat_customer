@@ -54,6 +54,8 @@
       <view class='tab_bd_list'>
         <view class='ul clearfix'>
         <block wx:for="{{listGoods}}">
+        <navigator url="../../Goods_Order/order_goods_content/order_goods_content?storeId={{storeId}}&goods_id={{item.id}}&is_package={{item.is_package}}">
+
            <view class='li'>
             <image src='{{item.picUrl}}' mode='widthFix'></image>
             <view>
@@ -63,6 +65,7 @@
               <text>{{item.total}}</text>
             </view>
           </view>
+          </navigator>
         </block>       
         </view>
       </view>
