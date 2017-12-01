@@ -38,9 +38,18 @@ function findListByUserId(data, callback) {
 }
 
 
+/**
+ * 根据手机号获取验证码(注册)
+ */
+function sendVerificationCode(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/registerAccount", data, callback)
+}
+
+
 
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;
 module.exports.submitEvaluation = submitEvaluation;
 module.exports.findListByUserId = findListByUserId;
+module.exports.sendVerificationCode = sendVerificationCode;

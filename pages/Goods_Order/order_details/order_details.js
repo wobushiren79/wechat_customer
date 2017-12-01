@@ -2,7 +2,7 @@ var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var content;
 var orderId;
 Page({
-  
+
   data: {
     list_show: false,
     img_wrap:false,
@@ -69,11 +69,14 @@ Page({
       id: content.orderId
     }
     var detilasCallBack={
-      success:function(){
-
+      success:function(data){
+        
+        content.setData({
+          listData:data
+        })
       },
       fail:function(){
-
+        wx.stopPullDownRefresh()
       }
     }
     goodsHttp.getGoodsOrderDetails(detailsRequest, detilasCallBack);
