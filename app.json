@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/Goods_Order/order_shopping_cart/order_shopping_cart",
     "pages/C_map/C_map",
     "pages/Customer/customer_index/customer_index",
     "pages/Goods_Order/order_list_wait/order_list_wait",
@@ -7,6 +8,7 @@
     "pages/Goods_Order/order_list_processing/order_list_processing",
     "pages/Goods_Order/order_list_reservation/order_list_reservation",
     "pages/Goods_Order/order_details/order_details",
+    "pages/Goods_Order/order_create/order_create",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",
