@@ -4,7 +4,7 @@
  */
 function showToast(title, duration, success, fail, complete, image) {
   var showTitle = '';
-  var showImage = '../../images/icon_info.png'
+  var showImage = '../../../images/icon_info.png'
   var showDuration = 3000;
 
   if (title)

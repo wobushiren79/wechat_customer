@@ -1,0 +1,252 @@
+<form bindsubmit="bindFormSubmit">
+  <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd clearfix">
+
+      <!-- 填写服务信息 star -->
+      <view class="goods_address ">
+
+        <!-- 填写前 -->
+        <black wx:if="{{!show}}">
+          <navigator url="../service_goods_address/service_goods_address">
+            <view class="show clearfix">
+              <image src="../../../images/icon_edit.png" class="img"></image>
+              <view class="info">
+                <view class="title">填写服务信息</view>
+                <view class="content">请根据提示依次填入客户信息</view>
+              </view>
+              <image src="../../../images/right.png" class="icon"></image>
+            </view>
+          </navigator>
+        </black>
+
+        <!-- 填写后 -->
+        <black wx:if="{{show}}">
+          <navigator url="../service_goods_address/service_goods_address">
+            <view class="hide clearfix">
+              <image src="../../../images/icon_money_my.png" class="img "></image>
+
+              <!-- 信息 -->
+              <view class="info clearfix ">
+
+                <!-- 姓名 -->
+                <view class="title ">
+                  客户：
+                  <text>{{kehu.contact}}</text>
+                  <text class="phone ">{{kehu.contactPhone}}</text>
+                </view>
+                <view class="content ">
+
+                  <!-- 地址 -->
+                  <view class=" ">
+                    地址：
+                    <text>{{kehu.serviceLocation}}</text>
+                  </view>
+
+                  <!-- 服务时间 -->
+                  <view class=" ">
+                    服务时间：
+                    <text>{{kehu.bookTime}}</text>
+                  </view>
+                </view>
+              </view>
+              <image src="../../../images/right.png " class="icon "></image>
+            </view>
+          </navigator>
+        </black>
+
+        <!-- 分割线 -->
+        <image src="../../../images/hr.png " class="hr "></image>
+      </view>
+      <!-- 填写服务信息 end -->
+
+      <!-- 购置物品 -->
+      <view class="goods_buy list ">
+        <view class="dl ">
+          <view class="dd">
+            <view class="header ">
+              购置商品
+            </view>
+            <view class="footer ">
+              总计：
+              <text>{{goodsnumber}}</text>件
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 查看详情列表 -->
+      <view class="goods_list list ">
+        <view class="dl {{list_show?'show':'hide'}}">
+          <view class="dt" bindtap="bind_list">
+            <view class="header ">
+              查看详细列表
+            </view>
+            <image src="../../../images/right.png " class="icon "></image>
+          </view>
+          <black wx:for="{{class_name}}">
+            <!-- 详情列表 star -->
+            <view class="group">
+              <view class="group_title clearfix">
+                <view class="checkbox_wrap">
+                  <checkbox value="value" checked="" />
+                </view>
+                <view class="name aui-ellipsis-2">
+                  {{item}}
+                </view>
+              </view>
+
+              <block wx:for="{{formData}}" wx:for-item="ite" wx:if="{{ite.class_name == item}}">
+              <block wx:if="{{ite.is_package == 0}}">
+                <view class="group_item clearfix">
+                  <view class="checkbox_wrap">
+                    <checkbox value="value" checked="" />
+                  </view>
+                  <view class="img_wrap">
+                    <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+                  </view>
+                  <view class="info show">
+                    <view class="name aui-ellipsis-2">
+                      <text>{{ite.goods_name}}</text>\r\n
+                      <text>{{ite.goods_slogan}}</text>
+                    </view>
+                    <view class="size">
+                      <text>{{ite.spec_alias}}</text>：
+                      <text>{{ite.spec_name}}</text>
+                    </view>
+                    <view class="money">
+                      ￥
+                      <text>{{ite.spec_price}}</text>
+                    </view>
+                    <view class="num">
+                      {{ite.specNum}}{{ite.unit}}
+                    </view>
+                  </view>
+                </view>
+              </block>
+              <block wx:if="{{ite.is_package == 1}}">
+              <navigator url="../service_goods_pay_goodslist/service_goods_pay_goodslist?id={{ite.id}}">
+                <view class="group_item clearfix">
+                  <view class="checkbox_wrap">
+                    <checkbox value="value" checked="" />
+                  </view>
+                  <view class="img_wrap">
+                    <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+                                            <!-- 套餐IQ -->
+            <image src='../../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
+                  </view>
+                  <view class="info show">
+                    <view class="name aui-ellipsis-2">
+                      <text>{{ite.package_name}}</text>\r\n
+                      <text>{{ite.package_slogan}}</text>
+                    </view>
+                    <view class="size">
+                      <text>{{ite.spec_alias}}</text>：
+                      <text>{{ite.spec_name}}</text>
+                    </view>
+                    <view class="money">
+                      ￥
+                      <text>{{ite.spec_price}}</text>
+                    </view>
+                    <view class="num">
+                      {{ite.specNum}}{{ite.unit}}
+                    </view>
+                  </view>
+                </view>
+                </navigator>
+              </block>
+              </block>
+            </view>
+          </black>
+          <!-- 详情列表 end -->
+
+        </view>
+      </view>
+
+      <!-- 购置物品 -->
+      <view class="goods_other list ">
+        <view class="dl ">
+          <navigator url="../service_invoice_address/service_invoice_address">
+            <view class="dd ">
+              <view class="header ">
+                发票信息
+              </view>
+
+              <view class="footer ">
+                <text>{{xuyao}}</text>
+              </view>
+
+              <image src="../../../images/right.png " class="icon "></image>
+            </view>
+          </navigator>
+          <black wx:if="{{xuyao == '需要发票'}}">
+            <view class="dt">
+              <view class="header ">
+                抬头
+              </view>
+              <view class="footer ">
+                {{fapiao.title != ''?fapiao.title:'个人'}}
+              </view>
+            </view>
+          </black>
+          <view class="dd ">
+            <view class="header ">
+              备注
+            </view>
+            <view class="footer ">
+              <textarea placeholder="请填写订单备注信息 " name="orderComment" />
+            </view>
+          </view>
+          <view class="dd ">
+            <view class="header ">
+            </view>
+            <!-- <view class="footer ">
+              客户应付金额
+              <text> ￥</text>
+              <text>{{totla_price}}</text>
+            </view> -->
+          </view>
+        </view>
+      </view>
+
+      <!-- 固定底部 star -->
+      <view class="footerfix clearfix">
+
+        <view class="home">
+          
+          <navigator url="../index/index" open-type="switchTab"><image src="../../../images/right.png"></image>首页</navigator>
+        </view>
+
+        <!-- 合计 -->
+        <block wx:if="{{!levelId}}">
+        <view class="count" bindlongtap="price">
+          <black wx:if="{{price}}">
+            应付圆满金额：
+
+            <text>￥</text>
+            <text>{{adviser_Price}}</text>
+          </black>
+          <black wx:else>
+            客户支付金额:
+            <text>￥</text>
+            <text>{{totla_price}}</text>
+          </black>
+
+        </view>
+        </block>
+        <block wx:else>
+        <view class="count" >
+            客户支付金额:
+            <text>￥</text>
+            <text>{{totla_price}}</text>
+        </view>
+        </block>
+        <!-- 直接购买 -->
+        <button class="buy" form-type="submit">
+        下一步
+      </button>
+      </view>
+      <!-- 固定底部 end -->
+
+    </view>
+  </view>
+</form>

@@ -112,7 +112,7 @@ function respsoneSuccessDeal(res, callback) {
         callback.fail(res.data.message, res);
     }
   } else{
-    if (res.data.indexOf("html") >= 0){
+    if (res.data.indexOf("登录") >= 0){
       wx.navigateTo({
         url: '../../../pages/C_user_login/C_user_login',
       });
