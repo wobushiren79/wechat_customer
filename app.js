@@ -50,6 +50,9 @@ App({
     JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/"
     // JavaGoodsUrl:"https://goods.shianlife.cn/",
     // JavaPlatformUrl:"https://platform.shianlife.cn/"
+  },
+  pagesPositionUrl:{
+	  "C_aboutme": "/pages/C_aboutme/C_aboutme",
+	  "complain_customer":"/pages/others/complain_customer/complain_customer"
   }
-
 })

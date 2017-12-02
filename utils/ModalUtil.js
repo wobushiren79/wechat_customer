@@ -16,9 +16,9 @@ function showModal(title,content,btnConfirm,btnCancel){
     content: showContent,
     success: function (res) {
       if (res.confirm) {
-        btnConfirm;
+        btnConfirm();
       } else if (res.cancel) {
-        btnCancel;
+        btnCancel();
       }
     }
   })

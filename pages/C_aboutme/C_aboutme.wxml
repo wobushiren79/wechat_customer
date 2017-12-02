@@ -67,7 +67,7 @@
         <view class="weui-grid__label">订单查询</view>
       </navigator>
 
-      <navigator url="../C_blank/C_blank" class="weui-grid" hover-class="weui-grid_active">
+      <navigator url="{{pagesPositionUrl['complain_customer']}}" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
         <view class="weui-grid__label">投诉建议</view>
       </navigator>
