@@ -1,0 +1,105 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+
+    <form>
+      <!-- 购置物品 -->
+      <view class="goods_buy list ">
+        <view class="dl ">
+
+          <!-- 联系人 -->
+          <view class="dd list_header">
+            <view class="header ">
+              订单编号
+            </view>
+            <view class="body ">
+              {{orderNumber}}
+            </view>
+
+          </view>
+
+          <navigator url="">
+            <view class="dd">
+              <view class="header ">
+                {{amateurLevel?'订单金额':'订单金额'}}
+              </view>
+              <view class="body ">
+                ￥
+                <text>{{amateurLevel?showTotalPrice/100:totalPrice/100*1.00}}</text>
+              </view>
+              <!--<view class="footer ">
+                结算明细
+                <image src="../../images/right.png" class="icon"></image>
+              </view>-->
+            </view>
+          </navigator>
+
+          <navigator url="">
+            <!-- <view class="dd">
+              <view class="header ">
+                优惠券
+              </view>
+              <view class="body ">
+                -￥
+                <text>0.00</text>
+              </view>
+              <view class="footer ">
+                使用优惠券
+                <image src="../../images/right.png" class="icon"></image>
+              </view>
+            </view> -->
+          </navigator>
+
+          <view class="dd">
+            <view class="header ">
+              运费
+            </view>
+            <view class="body ">
+              ￥
+              <text>0.00</text>
+            </view>
+          </view>
+          <view class="dd">
+            <!-- <view class="header ">
+              积分
+            </view>
+            <view class="footer ">
+              <text>0</text>分
+            </view> -->
+          </view>
+          <view class="dd list_footer">
+            <view class="header ">
+              {{amateurLevel?'应付订单金额':'应付订单金额'}}
+            </view>
+            <view class="footer money">
+              ￥
+              <text>{{amateurLevel?showTotalPrice/100:totalPrice/100*1.00}}</text>
+            </view>
+          </view>
+
+
+        </view>
+      </view>
+
+
+
+
+      <!-- 固定底部 star -->
+
+      <view class="footerfix clearfix">
+
+        <!-- 保存 -->
+        <button class="keep" bindtap="fukuang" data-orderid="{{orderId}}">提交订单</button>
+
+      </view>
+
+      <!-- 固定底部 end -->
+    </form>
+
+
+
+
+
+
+
+  </view>
+</view>

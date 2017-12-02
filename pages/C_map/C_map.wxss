@@ -2,20 +2,17 @@
 page{height:100%}
 map{
   width: 100%;
-  height: 90%;
-
+  height: 100%;
 }
 .map_wrap{
   width: 100%;
-  height: 90%;
+  height: 100%;
      position: relative;
-  z-index: 1; 
+  /* z-index: 1;  */
 }
-navigator{
-  position: absolute;
-  z-index: 99999!important;
-}
-navigator image{
+
+navigator image,
+cover-view image{
   display: block;
   width: 100%;
 }
@@ -26,40 +23,77 @@ navigator image{
 .phone,
 .me,
 .more,
+.address,
 contact-button{
   position: absolute;
   width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
-  z-index: 9;
 }
 /* 客服 */
 .take,
 contact-button{
   right: 20rpx;
-  bottom: 50rpx;
+  bottom: 150rpx;
 }
 contact-button{
-  display: block;
-  opacity: 0;
-  z-index: 10;
+  position: absolute;
+  display: none;
+  opacity: 1;
+  /* z-index: 10; */
 }
 /* 电话 */
-.phone{
-  right: 20rpx;
+.address{
+  left: 20rpx;
   bottom: 150rpx;
 }
 
+/* 门店信息 */
+.info{
+  display: flex;
+  position: absolute;
+  width: 710rpx;
+  left: 50%;
+  bottom: 150rpx;
+  transform: translateX(-50%);
+  background: #ffffff;
+   z-index: 999; 
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.info_wrap.hidden{
+   display: none; 
+}
+.info_wrap.show{
+  display: block;
+}
+.info .info_img{
+  width: 140rpx;
+  height: 140rpx;
+   margin-right: 20rpx; 
+}
 
-
+.info .info_text .info_stroe{
+  font-size: 30rpx;
+  color: #000;
+}
+.info .info_text{
+  font-size: 26rpx;
+  color: #666;
+}
+.info .info_text cover-view{
+  line-height: 1.5;
+}
 
 /* 预约顾问 */
 .server{
   position: absolute;
-  bottom: 50rpx;
+  bottom: 150rpx;
   left: 50%;
   transform: translate(-50%,0);
-  width: 200rpx;
-  padding: 10rpx;
+  width: 500rpx;
+  padding: 20rpx 0;
   text-align: center;
   background: #48cfad;
   color: #ffffff;
@@ -70,6 +104,9 @@ contact-button{
   height: 100rpx;
   position: relative
 }
+.header navigator{
+    position: absolute;
+  }
 .header .input{
   top: 50%;
   left: 50%;

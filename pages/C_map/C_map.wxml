@@ -16,24 +16,37 @@
 
 
 <view class='map_wrap'>
-<map id="map" longitude="104.1141600000" latitude="30.6197300000" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='callouttap' bindcontroltap="controltap" show-location='true'> </map>
+  <map id="map" hidden='' longitude="104.1141600000" latitude="30.6197300000" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='callouttap' bindcontroltap="controltap" bindregionchange="bind_info_show" show-location>
+    <!-- <cover-view> -->
+    <!-- 定位 -->
+    <cover-image src='../../images/map_address.png' mode="widthFix" class='address' bindtap='moveToLocation'>
+    </cover-image>
+
+    <!-- 客服 -->
+    <cover-image src='../../images/map_take.png' mode="widthFix" class='take' bindtap='bind_phone'>
+    </cover-image>
+
+    <!-- <cover-view  class='take_btn'>
+      <contact-button size="20" session-from="WeChat">
+      </contact-button>
+    </cover-view> -->
+
+
+
+    <!-- 预约 -->
+    <cover-view class='server' bindtap='bind_phone'>一键呼救</cover-view>
+
+    <!-- 门店简介 -->
+    <cover-view class='info_wrap {{maker?"show":"hidden"}}'>
+      <cover-view class='info ' bindtap='bind_go' data-url='{{info_url}}'>
+        <cover-image class='info_img' src='{{info_img}}'></cover-image>
+        <cover-view class='info_text'>
+          <cover-view class='info_stroe'>{{info_stroe}}</cover-view>
+          <cover-view class='info_name'>{{info_name}}</cover-view>
+          <cover-view class='info_address'>{{info_address}}</cover-view>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+
+  </map>
 </view>
-
-<!-- 客服 -->
-<navigator class='take'>
-  <image src='../../images/map_take.png' mode="widthFix"></image>
-</navigator>
-<contact-button size="20" session-from="WeChat">
-</contact-button>
-
-
-<!-- 电话 -->
-<navigator class='phone' bindtap='bindcallphone'>
-  <image src='../../images/map_phone.png' mode="widthFix"></image>
-</navigator>
-
-
-<!-- 预约顾问 -->
-<navigator url='../C_blank/C_blank' class='server'>
-  预约顾问
-</navigator>

@@ -5,13 +5,13 @@ Page({
   data: {
   },
 
-  onLoad:function(){
+  onLoad: function () {
     content = this;
     this.getListData()
   },
 
   onReady: function () {
-  var page= getCurrentPages();
+    this.mapCtx = wx.createMapContext('myMap')
   },
 
   onUnload: function () {
@@ -58,10 +58,12 @@ Page({
    * 获取单个marker点
    */
   getMarkerItemByData: function (item) {
+    var storeId = item.id;
+    var naviUrl = '../Customer/customer_index/customer_index?storeId=' + storeId + "&consultantId=" + item.consultant_id;
     var markerItem =
       {
         iconPath: "../../images/zuobiao.png",
-        id: item.id,
+        id: [naviUrl, item.shop_name, item.consultant_name, item.shop_location, item.shop_img, item.id],
         alpha: 0.5,
         callout: {
           content: item.shop_name,
@@ -81,34 +83,67 @@ Page({
   },
 
 
-  
-  
+
+
   /**
    * marker点击事件
    */
   markertap(e) {
-    
+    var array = e.markerId
+    this.setData(
+      {
+        maker: true,
+        info_url: array[0],
+        info_stroe: array[1],
+        info_name: array[2],
+        info_address: array[3],
+        info_img: array[4]
+      }
+    );
   },
 
 
-  /**
-   * 弹窗点击
-   */
   callouttap(e) {
-    var storeId = e.markerId;
-    wx.navigateTo({
-      url: '../Customer/customer_index/customer_index?storeId=' + storeId
+    var array = e.markerId
+    this.setData(
+      {
+        maker: true,
+        info_url: array[0],
+        info_stroe: array[1],
+        info_name: array[2],
+        info_address: array[3],
+        info_img: array[4]
+      }
+    );
+  },
+  bind_info_show(e) {
+    this.setData(
+      {
+        maker: false
+      }
+    );
+  },
+  /**
+   * 客户电话
+   */
+  bind_phone(e) {
+    wx.makePhoneCall({
+      phoneNumber: "966188"
     })
   },
-
-
   /**
-   * 绑定客户电话
+   * 门店跳转
    */
-  bindcallphone: function () {
-    wx.makePhoneCall({
-      phoneNumber: '966188'
+  bind_go(e) {
+    var navigateUrl = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: navigateUrl
     })
-  }
-
+  },
+  /**
+   * 定位
+   */
+  moveToLocation: function () {
+    this.mapCtx.moveToLocation()
+  },
 })

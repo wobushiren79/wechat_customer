@@ -23,6 +23,13 @@ function getGoodsOrderDetails(data, callback) {
 }
 
 /**
+ * 添加到购物车
+ */
+function addGoodsShopping(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/shopping/save", data, callback, true)
+}
+
+/**
  * 获取购物车列表 
  */
 function getGoodsShoppingList(data, callback) {
@@ -50,10 +57,35 @@ function createGoodsOrder(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/save", data, callback, true)
 }
 
+/**
+ * 根据orderID获取订单
+ */
+function findGoodsOrderByOrderId(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/findById", data, callback, true)
+}
+
+/**
+ *提交订单
+ */
+function confirmGoodsOrder(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/submit", data, callback, true)
+}
+
+/**
+ *提交订单
+ */
+function payOffLine(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/offlinePayment", data, callback, true)
+}
+
 module.exports.loginGoods = loginGoods;
 module.exports.getGoodsOrderList = getGoodsOrderList;
 module.exports.getGoodsOrderDetails = getGoodsOrderDetails;
+module.exports.addGoodsShopping = addGoodsShopping;
 module.exports.getGoodsShoppingList = getGoodsShoppingList;
 module.exports.upShopingCartNum = upShopingCartNum;
 module.exports.removeShoppingCartGoods = removeShoppingCartGoods;
 module.exports.createGoodsOrder = createGoodsOrder;
+module.exports.findGoodsOrderByOrderId = findGoodsOrderByOrderId;
+module.exports.confirmGoodsOrder = confirmGoodsOrder;
+module.exports.payOffLine = payOffLine;

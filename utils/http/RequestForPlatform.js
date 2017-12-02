@@ -33,7 +33,7 @@ function submitEvaluation(data, callback) {
 /**
  * 根据评价对象ID查询评价list
  */
-function findListByUserId(data, callback) {
+function findEvaluationListByUserId(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/opinions/list_evaluation", data, callback)
 }
 
@@ -51,5 +51,5 @@ module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;
 module.exports.submitEvaluation = submitEvaluation;
-module.exports.findListByUserId = findListByUserId;
+module.exports.findEvaluationListByUserId = findEvaluationListByUserId;
 module.exports.sendVerificationCode = sendVerificationCode;

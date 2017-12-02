@@ -85,7 +85,7 @@ Page({
           for (var j in listDetails) {
             if (content.shoppingCartList[i].goodsId == parseInt(listDetails[j].goods_id)
               && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
-              && licontent.shoppingCartListst[i].channelId == parseInt(listDetails[j].channel_id)
+              && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)
               || content.shoppingCartList[i].goodsId == parseInt(listDetails[j].package_id)
               && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
               && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)) {

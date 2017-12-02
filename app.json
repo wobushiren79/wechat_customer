@@ -1,5 +1,6 @@
 {
   "pages": [
+      "pages/Goods_Order/service_goods_pay/service_goods_pay",
     "pages/C_map/C_map",
     "pages/Goods_Order/order_shopping_cart/order_shopping_cart",
     "pages/Customer/customer_index/customer_index",
@@ -12,6 +13,9 @@
     "pages/Goods_Order/order_goods_content/order_goods_content",
     "pages/Goods_Order/order_service_info/order_service_info",
     "pages/Goods_Order/order_service_invoice/order_service_invoice",
+    "pages/Goods_Order/order_confirm/order_confirm",
+    "pages/Goods_Order/service_goods_pay_error/service_goods_pay_error",
+    "pages/Goods_Order/service_goods_pay_succeed/service_goods_pay_succeed",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",

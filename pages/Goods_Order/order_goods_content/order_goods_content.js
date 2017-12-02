@@ -1,5 +1,8 @@
 var WxParse = require('../../../wxParse/wxParse.js');
-var goodsPHPHttp=require('../../../utils/http/RequestForPHPGoods.js')
+var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js')
+var goodsHttp = require('../../../utils/http/RequestForGoods.js');
+var storageKey=require('../../../utils/storage/StorageKey.js');
+var toastUtil = require('../../../utils/ToastUtil.js');
 var app = getApp()
 Page({
   data: {
@@ -45,57 +48,57 @@ Page({
     })
     // console.log(event)
     // if (event.storeId){
-      var storeId = event.storeId
+    var storeId = event.storeId
     // }
     var goods_id = event.goods_id
     if (event.is_package) {
       var is_package = event.is_package
     }
-    var getData={}
-    if (is_package == 0){
+    var getData = {}
+    if (is_package == 0) {
       getData.goods_id = goods_id
-    }else if(is_package == 1){
+    } else if (is_package == 1) {
       getData.package_id = goods_id
     }
 
 
     var amateurLevel = 0
-    var findGoodsInfoCallBack={
-      success:function(data,res){
+    var findGoodsInfoCallBack = {
+      success: function (data, res) {
         var list = res.data.list
-                  if (list.is_package == 0) {
-                    var goods_cate_id = res.data.list.goods_cate_id
-                  } else {
-                    var goods_cate_id = res.data.list.package_cate_id
-                  }
-        WxParse.wxParse('descrip_detail', 'html', list.descrip_detail, that, );
-        if (list.specprice.length>0){
-          wx.setStorageSync('speclist', res.data.list.specprice)
-                          that.setData({
-                            list: list,
-                            channel: 4,
-                            amateurLevel: parseFloat(amateurLevel),
-                            goods_spec: res.data.list.specprice,
-                            xuanzhe: 0,
-                            xuanzhedata: res.data.list.specprice[0],
-                            spec_price: res.data.list.specprice[0].spec_price,
-                            // shoppingTotalNumber: shoppingTotalNumber,
-                            storeId: storeId,
-                            goods_number: 1,
-                            goods_cate_id: goods_cate_id,
-                            spec_attr_id: res.data.list.spec_attr_id,
-                            goods_id: goods_id,
-                            chatxian: true
-                          })
-                          console.log(storeId)
-                          wx.hideLoading()
+        if (list.is_package == 0) {
+          var goods_cate_id = res.data.list.goods_cate_id
+        } else {
+          var goods_cate_id = res.data.list.package_cate_id
         }
-         that.setData({
-           list: res.data.list
-         })
+        WxParse.wxParse('descrip_detail', 'html', list.descrip_detail, that, );
+        if (list.specprice.length > 0) {
+          wx.setStorageSync('speclist', res.data.list.specprice)
+          that.setData({
+            list: list,
+            channel: 4,
+            amateurLevel: parseFloat(amateurLevel),
+            goods_spec: res.data.list.specprice,
+            xuanzhe: 0,
+            xuanzhedata: res.data.list.specprice[0],
+            spec_price: res.data.list.specprice[0].spec_price,
+            // shoppingTotalNumber: shoppingTotalNumber,
+            storeId: storeId,
+            goods_number: 1,
+            goods_cate_id: goods_cate_id,
+            spec_attr_id: res.data.list.spec_attr_id,
+            goods_id: goods_id,
+            chatxian: true
+          })
+          console.log(storeId)
+          wx.hideLoading()
+        }
+        that.setData({
+          list: res.data.list
+        })
       },
-      fail:function(meg,res){
-        
+      fail: function (meg, res) {
+
       }
     }
     goodsPHPHttp.findGoodsInfo(getData, findGoodsInfoCallBack);
@@ -335,68 +338,55 @@ Page({
     }
 
   },
+  /**
+   *  直接购买
+   */
   purchase: function () {
-    wx.showLoading({
-      title: '加载中',
-      mask: true,
-    })
     var that = this
     var goods_number = that.data.goods_number
     var xuanzhedata = that.data.xuanzhedata
     xuanzhedata.number = goods_number
-    var LocalUrl = getApp().globalData.LocalUrl
-    var content = {}
 
-    content.channelId = xuanzhedata.channel_id
+    var findGoodsDetailsRequest = {
+      channelId: xuanzhedata.channel_id
+    }
     if (xuanzhedata.goods_id) {
-      content.goodsId = xuanzhedata.goods_id
-      content.goodsSpecId = xuanzhedata.goods_spec_id
+      findGoodsDetailsRequest.goodsId = xuanzhedata.goods_id
+      findGoodsDetailsRequest.goodsSpecId = xuanzhedata.goods_spec_id
     } else {
-      content.packageId = xuanzhedata.package_id
-      content.packageSpecId = xuanzhedata.package_spec_id
+      findGoodsDetailsRequest.packageId = xuanzhedata.package_id
+      findGoodsDetailsRequest.packageSpecId = xuanzhedata.package_spec_id
     }
     var getData = {}
-    wx.request({
-      url: LocalUrl + 'Getgoods/getattrgoods',
-      method: "POST",
-      data: content,
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        // 'content-type': 'application/json',
-        // "Cookie": "sid=" + res.data.content.sessionId
-      },
-      success: function (res) {
+    var findGoodsDetailsCallBack = {
+      success: function (data, res) {
         // console.log(res)
         var totla_price = 0;
         //分类名称
-        wx.setStorageSync('class_name', res.data.class_name)
-        if (res.data.code == 1000) {
-          for (var i in res.data.list) {
-            res.data.list[i].specNum = goods_number
-            totla_price += parseFloat(res.data.list[i].specNum) * parseFloat(res.data.list[i].spec_price)
-          }
-          //结算购物车数据
-          wx.setStorageSync('formData', res.data.list)
-          //缓存购物车列表
-          wx.setStorageSync('getdatalist', res.data.list)
-          //总价格
-          wx.setStorageSync('totla_price', totla_price)
-          wx.hideLoading()
-          wx.navigateTo({
-            url: '../service_money/service_money'
-          })
+        for (var i in res.data.list) {
+          res.data.list[i].specNum = goods_number
+          totla_price += parseFloat(res.data.list[i].specNum) * parseFloat(res.data.list[i].spec_price)
         }
+        //结算购物车数据
+        wx.setStorageSync(storageKey.STORE_BUY_GOODS, res.data.list)
+        //总价格
+        wx.setStorageSync(storageKey.STORE_BUY_TOTAL_PRICE, totla_price)
+        wx.hideLoading()
+        wx.redirectTo({
+          url: '../order_create/order_create'
+        })
+      },
+      fail: function (data, res) {
+        toastUtil.showToast(data);
       }
-    })
-
+    }
+    goodsPHPHttp.findGoodsDetails(findGoodsDetailsRequest, findGoodsDetailsCallBack);
   },
+  /**
+   *  加入购物车
+   */
   cart: function () {
     var that = this
-    // wx.showLoading({
-    //   title: '加载中',
-    //   mask: true,
-    // })
-    
     var goods_number = that.data.goods_number
     var Goodsdata = that.data.xuanzhedata
     var setlist = that.data.list
@@ -422,13 +412,23 @@ Page({
 
     var list = []
     list.push(formdata)
-    var formDataa = { list: list }
-    var aaaa = { content: formDataa }
+    var addGoodsShoppingRequest = { list: list }
+    var addGoodsShoppingCallBack = {
+      success: function () {
+        toastUtil.showToast("加入成功");
+      },
+      fail: function () {
+        toastUtil.showToast("加入失败");
+      }
+    }
+    goodsHttp.addGoodsShopping(addGoodsShoppingRequest, addGoodsShoppingCallBack);
+
+    // var aaaa = { content: formDataa }
     //转换字符串
-    var ForData = JSON.stringify(aaaa)
+    // var ForData = JSON.stringify(aaaa)
     // console.log(ForData)
-    var javaApi = getApp().globalData.javaApi
-    console.log(list)
+    // var javaApi = getApp().globalData.javaApi
+    // console.log(list)
     // wx.getStorage({
     //   key: 'JSESSIONID',
     //   success: function (res) {
@@ -483,8 +483,8 @@ Page({
   },
   cartlist: function () {
     //頁面跳轉
-    wx.reLaunch({
-      url: '../service_buy/service_buy'
+    wx.redirectTo({
+      url: '../order_shopping_cart/order_shopping_cart'
     })
   }
 })  
