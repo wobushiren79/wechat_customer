@@ -29,7 +29,9 @@
     "pages/C_blank/C_blank",
     "pages/C_user_login/C_user_login",
     "pages/C_user_login_create/C_user_login_create",
-    "pages/C_user_login_passreset/C_user_login_passreset"
+    "pages/C_user_login_passreset/C_user_login_passreset",
+    "pages/others/complain_customer/complain_customer",
+    "pages/others/complain_customer/complain_customer"
   ],
   "window": {
     "navigationBarTextStyle": "black",
