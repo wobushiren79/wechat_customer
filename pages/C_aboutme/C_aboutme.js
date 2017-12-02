@@ -9,7 +9,8 @@ Page({
       method_card: "银行卡",
       nickName:"",
       userInfoAvatar:"",
-      num:"8"
+      num:"8",
+	 pagesPositionUrl:null
     },
   onLoad: function () {
     var that = this;
@@ -30,5 +31,9 @@ Page({
         console.log("获取用户信息完成！")
       }
     })
+    var pagesPositionUrlObj=getApp().pagesPositionUrl;
+    this.setData({
+	    pagesPositionUrl: pagesPositionUrlObj
+    });
   }
 });

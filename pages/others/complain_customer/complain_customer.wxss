@@ -1,1 +1,154 @@
 /* pages/others/complain_customer.wxss */
+.list .dl .dd, .list .dl .dt {
+  display: flex;
+  line-height: 40rpx;
+  min-height: 40rrpx;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  border-top: 1px solid #efefef;
+  position: relative;
+  background: #fff;
+}
+
+.list .dl .dd input, .list .dl .dt input {
+  display: block;
+  line-height: 40rpx;
+  height: 40rpx;
+  background: #fff;
+  color: #353535;
+  font-size: 24rpx;
+  min-height: 40rpx;
+}
+
+.list .dl .dd:first-of-type, .list .dl .dt:first-of-type {
+  border-top: none;
+}
+
+.list .dl .dd .header, .list .dl .dt .header {
+  flex-basis: 200rpx;
+  padding-left: 36rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #353535;
+  line-height: 40rpx;
+}
+
+.list .dl .dd .footer, .list .dl .dt .footer {
+  /* flex-basis: 300rpx; */
+  text-align: right;
+  flex: 1;
+  padding-right: 50rpx;
+  box-sizing: border-box;
+  color: #353535;
+  font-size: 24rpx;
+}
+
+.list .dl .dd .footer textarea {
+  width: auto;
+  text-align: left;
+}
+
+.list .dl .dt {
+  background: transparent;
+  flex-basis: 150rpx;
+}
+
+.list .dl .dt .header {
+  flex-basis: 300rpx;
+  font-size: 24rpx;
+  color: #727272;
+}
+
+.list .dl .dd.fuid {
+  display: block;
+}
+
+.list .dl .dd.fuid .header {
+  width: 100%;
+}
+
+.list .dl .dd.fuid .footer {
+  width: 100%;
+  padding-left: 16rpx;
+}
+
+.list .dl .dd.fuid.note .footer textarea {
+  overflow: auto;
+  height: 100px;
+}
+
+.footer_btn {
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  height: 100rpx;
+  text-align: center;
+  background: #fff;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border: none;
+  outline: none;
+  border-radius: 0;
+}
+
+.footer_btn.return {
+  left: 0;
+  background: linear-gradient(to left, #48cfad, #85ecdc);
+}
+
+.footer_btn.submit {
+  right: 0;
+  background: linear-gradient(to left, #3eb99a, #269080);
+}
+.list .dl .dd.fuid.note .footer.files_img {
+  padding-right: 30rpx;
+  padding-left:30rpx;
+}
+.list .dl .dd.fuid.note .footer.files_img .img_wrap{
+  float: left;
+  width: 33.3333%;
+  box-sizing: border-box;
+  padding: 5px;
+  position: relative;
+}
+.list .dl .dd.fuid.note .footer.files_img .img_wrap image{
+  display: block;
+  width: 100%;
+}
+.list .dl .dd.fuid.note .footer.files_img .img_wrap image.close{
+  display: block;
+  width: 50rpx;
+  position: absolute;
+  top: 0rpx;
+  right: 0rpx;
+}
+
+
+/* .dd.required .header{
+  position: relative;
+}
+.dd.required .header::after{
+  content: "*";
+  display: inline-block!important;
+  color: #ff0000!important;
+  position: absolute!important;
+  left: -20rpx;
+  top: 50%;
+  transform: translate(0,-50%);
+  margin-top: 6rpx;
+} */
+.dd.required .header{
+   position: relative; 
+  /* padding-left: 20rpx; */
+}
+.dd.required .header::after{
+  content: "*";
+  display: inline-block!important;
+  color: #ff0000!important;
+  position: absolute!important;
+  left: 15rpx;
+  top: 50%;
+  transform: translate(0,-50%);
+  margin-top: 6rpx;
+}

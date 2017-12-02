@@ -1,2 +1,65 @@
 <!--pages/others/complain_customer.wxml-->
-<text>pages/others/complain_customer.wxml</text>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+      <form bindsubmit="formData">
+        <view class="goods_buy list ">
+          <view class="dl ">
+		  <view class="dd required">
+              <view class="header ">
+                类型
+              </view>
+              <view class="footer ">
+                <picker mode='selector' bindchange='complaintTypeChange' range-key='text' name="complaintT"
+			  value='{{complaintType_SelectedIndex}}' range='{{complaintType_Set}}'>
+		    		<text>{{complaintType_Set[complaintType_SelectedIndex].text}}</text>
+			 </picker>
+			</view>
+            </view>
+            <view class="dd required">
+              <view class="header ">
+                ni对象
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="ni对象" name="complaintObjcet" />
+              </view>
+            </view>            
+		  <view class="dd fuid note required">
+              <view class="header ">
+                图片上传
+              </view>
+              <view class="footer files_img clearfix">
+                <!-- <input type="text" placeholder="意见反馈" /> -->
+                <block wx:for="{{files}}">
+                  <view class='img_wrap'>
+                    <image class='close' src='../../../images/icon_info.png' bindtap='deleteImage' mode='widthFix' data-img='{{item}}'></image>
+                    <image src='http://oq6rkq859.bkt.clouddn.com/{{item}}'  mode='widthFix'></image>
+                  </view>
+                </block>
+                <view class='img_wrap'>
+                  <image src='../../../images/ispackage.png' bindtap='uploadImage' mode='widthFix'></image>
+                </view>
+              </view>
+            </view>
+            <view class="dd fuid note required">
+              <view class="header ">
+                内容
+              </view>
+              <view class="footer ">
+                <!-- <input type="text" /> -->
+                <textarea maxlength='10000' placeholder="反馈内容" name="complaintContent"></textarea>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 固定底部 star -->
+        <button class="footer_btn return" form-type="submit">
+	   	提交
+        </button>
+      </form>
+      <!-- 固定底部 end -->
+	 <!-- 保存 -->
+      <button class="footer_btn submit" bindtap='cancelComplain'>
+        取消
+      </button>
+  </view>
+</view>
