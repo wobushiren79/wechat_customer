@@ -9,7 +9,7 @@ Page({
       fail: function (res) {
         wx.showToast({
           title: '拨打电话失败',
-          image: '../../images/icon_info.png',
+          image: '../../../images/icon_info.png',
           duration: 3000
         })
       }

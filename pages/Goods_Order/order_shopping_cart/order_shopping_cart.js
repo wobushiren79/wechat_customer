@@ -98,6 +98,7 @@ Page({
           }
           itemData.storeName = content.shoppingCartList[i].storeName;
           itemData.storeId = content.shoppingCartList[i].storeId;
+          itemData.storeUserId = content.shoppingCartList[i].storeUserId;
           itemData.isCheck = false;
           formData.push(itemData)
         }

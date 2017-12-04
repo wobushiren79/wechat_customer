@@ -32,7 +32,7 @@
                 <text>{{item.show_total_price/100}}</text>
               </view>
             </view>
-            <navigator class="li_body" url="/pages/allot/order_content/order_content?orderId={{item.workOrder.id}}" hover-class="active">
+            <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">
               <image src="../../../images/right.png" class="icon"></image>
               <view>
                 <view class="header">
@@ -79,8 +79,7 @@
                 </view>
               </view>
               <view class="footer">
-                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.workOrder.id}}'>修改价格</text>
-                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.workOrder.id}}'>付结算价</text>
+                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>确认定单</text>
               </view>
             </view>
           </view>
@@ -88,9 +87,6 @@
         </view>
       </view>
     </block>
-    <navigator class='fix_new' url='../../new_/new_'>
-      <text>＋</text>
-    </navigator>
   </view>
   <block wx:if="{{notNumber}}">
     <view class='prompt'>

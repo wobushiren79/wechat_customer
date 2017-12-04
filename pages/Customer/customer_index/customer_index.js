@@ -4,6 +4,7 @@ var toastUtil = require('../../../utils/ToastUtil.js')
 var pageUtil = require('../../../utils/PageUtil.js')
 var content;
 var storeId;
+var storeUserId;
 var goodsClassId;
 var consultantId;
 Page({
@@ -36,12 +37,15 @@ Page({
 
   onLoad: function (evet) {
     content = this;
+    pageUtil.initData();
     storeId = evet.storeId;
+    storeUserId=evet.storeUserId;
     consultantId = evet.consultantId;
     content.getStoreInfo(evet.storeId);
     content.getStoreGoodsClass(evet.storeId);
     content.setData({
-      storeId: evet.storeId
+      storeId: evet.storeId,
+      storeUserId:evet.storeUserId
     })
     console.log(evet.storeId)
   },

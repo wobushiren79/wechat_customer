@@ -1,0 +1,65 @@
+page{
+  background: #fff;
+}
+.user_info{
+  width: 100%;
+  height: 360rpx;
+  position: relative;
+  background: #48cfad;
+}
+.user_info .content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.user_info .content image{
+  display: block;
+  width: 120rpx;
+  border-radius: 50%;
+  margin: 0 auto 10rpx auto;
+}
+.user_info .content text{
+  display: block;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.weui-cells{
+  margin-top: 25rpx;
+}
+.weui-cells::after,
+.weui-cells::before,
+.weui-cell::before,
+.weui-cell::after{
+  display: none;
+}
+.weui-cell{
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: #353535;
+  padding: 0 60rpx;
+}
+.weui-cell .weui-cell__hd image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 50rpx;
+  vertical-align: middle;
+}
+
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 7.5%;
+  width: 85%;
+  border-top: 1px solid #efefef;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #353535;
+  text-align: center;
+}
+.footer:active{
+  opacity: 0.7
+}

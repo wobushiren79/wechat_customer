@@ -78,6 +78,20 @@ function payOffLine(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/offlinePayment", data, callback, true)
 }
 
+/**
+ * 关联微信支付订单
+ */
+function updateOutTradeNo(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/order/updateOutTradeNo", data, callback, true)
+}
+
+/**
+ * 查询财务信息
+ */
+function findFinanceDetailByOrderId(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/order/findFinanceDetailById', data, callback, true)
+}
+
 module.exports.loginGoods = loginGoods;
 module.exports.getGoodsOrderList = getGoodsOrderList;
 module.exports.getGoodsOrderDetails = getGoodsOrderDetails;
@@ -89,3 +103,5 @@ module.exports.createGoodsOrder = createGoodsOrder;
 module.exports.findGoodsOrderByOrderId = findGoodsOrderByOrderId;
 module.exports.confirmGoodsOrder = confirmGoodsOrder;
 module.exports.payOffLine = payOffLine;
+module.exports.updateOutTradeNo = updateOutTradeNo;
+module.exports.findFinanceDetailByOrderId = findFinanceDetailByOrderId;

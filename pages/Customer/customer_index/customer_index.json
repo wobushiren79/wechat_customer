@@ -1,3 +1,5 @@
 {
-    "navigationBarTitleText": "单项服务"
+  "navigationBarTextStyle": "#ffffff",
+  "navigationBarTitleText": "门店",
+  "navigationBarBackgroundColor": "#48cfad"
 }

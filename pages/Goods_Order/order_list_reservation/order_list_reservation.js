@@ -53,6 +53,15 @@ Page({
   //上拉添加记录条数
   onReachBottom() {
     content.getListData();
-  }
+  },
 
+  /**
+   * 确认定单
+   */
+  orsers: function (e) {
+    var orderId = e.target.dataset.orderid
+    wx.navigateTo({
+      url: '../order_confirm/order_confirm?orderId=' + orderId,
+    })
+  }
 });

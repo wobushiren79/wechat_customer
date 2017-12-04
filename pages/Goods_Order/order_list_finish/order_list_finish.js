@@ -53,6 +53,14 @@ Page({
   //上拉添加记录条数
   onReachBottom() {
     content.getListData();
+  },
+  /**
+   * 付款
+   */
+  orsers: function (e) {
+    var orderId = e.target.dataset.orderid
+    wx.navigateTo({
+      url: '../service_goods_pay/service_goods_pay?orderId=' + orderId,
+    })
   }
-
 });

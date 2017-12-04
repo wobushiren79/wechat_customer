@@ -70,9 +70,6 @@
         </view>
       </view>
     </block>
-    <navigator class='fix_new' url='../../new_/new_'>
-      <text>＋</text>
-    </navigator>
   </view>
   <block wx:if="{{notNumber}}">
     <view class='prompt'>

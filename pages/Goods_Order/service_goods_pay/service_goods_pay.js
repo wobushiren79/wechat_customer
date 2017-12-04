@@ -1,6 +1,6 @@
 
 var goodsHttp = require('../../../utils/http/RequestForGoods.js');
-var goodsPHPHttp=require('../../../utils/http/RequestForPHPGoods.js');
+var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
 var toastUtil = require('../../../utils/ToastUtil.js')
 var content;
 var orderId;
@@ -91,75 +91,28 @@ Page({
    * 查询财务信息
    */
   orver: function () {
-    wx.showLoading({
-      title: '查询中...',
-      icon: 'loading',
-    });
-    var that = this
-    var JSESSIONID = that.data.JSESSIONID
-    var javaApi = getApp().globalData.javaApi
-    var content = {}
-    content.id = that.data.orderId
-    var setData = {}
-    setData.content = content
-    wx.request({
-      url: javaApi + 'api/goods/order/findFinanceDetailById',
-      method: "POST",
-      data: setData,
-      header: {
-        // "Content-Type": "application/x-www-form-urlencodeed",
-        'content-type': 'application/json',
-        "Cookie": JSESSIONID
-      },
-      success: function (da) {
-        if (da.data.code == 1000) {
-          var paymentStatus = da.data.content.paymentStatus
-          if (paymentStatus == 0) {
-            wx.showModal({
-              title: '圆满人生提示您',
-              content: '订单未支付',
-              confirmText: '返回首页',
-              success: function (res) {
-                if (res.confirm) {
-                  wx.reLaunch({
-                    url: '../index/index',
-                  })
-                } else if (res.cancel) {
-                  console.log('用户点击取消')
-                }
-              }
-            })
-            wx.hideLoading()
-          } else {
-            wx.showModal({
-              title: '圆满人生提示您',
-              content: '订单已支付成功',
-              confirmText: '返回首页',
-              success: function (res) {
-                if (res.confirm) {
-                  wx.reLaunch({
-                    url: '../index/index',
-                  })
-                } else if (res.cancel) {
-                  console.log('用户点击取消')
-                }
-              }
-            })
-            wx.hideLoading()
-          }
+    var findFinanceDetailRequest = {
+      id: orderId
+    }
+    var findFinanceDetailCallBack = {
+      success: function (data, res) {
+        var paymentStatus = data.paymentStatus
+        if (paymentStatus == 0) {
+
         }
-        wx.hideLoading()
-        // console.log(da)
       },
-    })
-    // console.log('查询支付结果')
+      fail: function (data, res) {
+        toastUtil.showToast(data);
+      }
+    }
+
+    goodsHttp.findFinanceDetailByOrderId(findFinanceDetailRequest, findFinanceDetailCallBack);
   },
 
   /**
    * 微信支付
    */
   wechats: function () {
-    
     wx.login({
       success: function (e) {
         var wechatPayRequest = {
@@ -168,60 +121,10 @@ Page({
           code: e.code
         }
         var wechatPayCallBack = {
-          success: function (data,res) {
-              var codeUrl = res.data.list
-              var coedData = res.data.data
-              that.setData({
-                codeUrl: codeUrl,
-                coedData: coedData,
-                isShowImg: true
-              })
-
-
-              var orderId = that.data.orderId
-              var out_trade_no = res.data.out_trade_no;
-              var setData = {}
-              var sett = {}
-              sett.orderId = orderId
-              sett.outTradeNo = out_trade_no
-              setData.content = sett
-              wx.request({
-                url: javaApi + 'api/goods/order/updateOutTradeNo',
-                method: "POST",
-                data: setData,
-                header: {
-                  // "Content-Type": "application/x-www-form-urlencodeed",
-                  'content-type': 'application/json',
-                  "Cookie": JSESSIONID
-                },
-                success: function (da) {
-                  if (da.data.code == 1000) {
-                    var st = setTimeout(function () {
-                      var size = that.setCanvasSize();
-                      var codeUrl = that.data.codeUrl
-                      //绘制二维码
-                      that.createQrCode(codeUrl, "mycanvas", size.w, size.h);
-                      that.setData({
-                        maskHidden: true
-                      });
-                      clearTimeout(st);
-                    }, 2000)
-                    that.setData({
-                      chaxun: true
-                    })
-                    wx.hideLoading()
-                  } else {
-                    wx.hideLoading()
-                    wx.showToast({
-                      title: res.data.message,
-                      image: '../../images/icon_info.png',
-                      duration: 3000
-                    })
-                  }
-                }
-              })
+          success: function (data, res) {
+            content.relationGoodsAndWechatPay(orderId, data.out_trade_no);
           },
-          fail: function (data) { 
+          fail: function (data, res) {
             toastUtil.showToast(data);
           }
         }
@@ -230,13 +133,58 @@ Page({
     })
   },
 
+
+  /**
+   * 关联支付与工单
+   */
+  relationGoodsAndWechatPay: function (orderId, outTradeNo) {
+    var updateOutTradeNoRequest = {
+      orderId: this.orderId,
+      outTradeNo: this.outTradeNo
+    }
+
+    var updateOutTradeNoCallBack = {
+      success: function (data, res) {
+        wx.requestPayment({
+          'timeStamp': '' + res.data.list.timeStamp + '',
+          'nonceStr': res.data.list.nonceStr,
+          'package': res.data.list.package,
+          'signType': res.data.list.signType,
+          'paySign': res.data.list.paySign,
+          'success': function (res) {
+            if (res.errMsg == 'requestPayment:ok') {
+              wx.redirectTo({
+                url: '../service_goods_pay_succeed/service_goods_pay_succeed'
+              })
+            } else {
+              toastUtil.showToast('系统繁忙');
+            }
+          },
+          'fail': function (res) {
+            if (res.errMsg == 'requestPayment:fail') {
+              wx.navigateTo({
+                url: '../service_goods_pay_error/service_goods_pay_error'
+              })
+            }
+          }
+        })
+      },
+      fail: function (data, res) {
+        toastUtil.showToast(data);
+      }
+    }
+
+    goodsHttp.updateOutTradeNo(updateOutTradeNoRequest, updateOutTradeNoCallBack)
+  },
+
+
   /**
    * 获取订单详情
    */
   getGoodsOrder: function () {
     var findGoodsOrderRequest = {
       // orderId: orderId
-      orderId: 21
+      orderId: orderId
     }
     var findGoodsOrderCallBack = {
       success: function (data, res) {
@@ -264,13 +212,14 @@ Page({
     };
     var payOffLineCallBack = {
       success: function (data, res) {
+
         wx.redirectTo({
-          url: '../service_goods_pay_succeed/service_goods_pay_succeed'
+          url: '../service_goods_pay_succeed/service_goods_pay_succeed',
         })
       },
       fail: function (data, res) {
-        wx.navigateTo({
-          url: '../service_goods_pay_error/service_goods_pay_error'
+        wx.redirectTo({
+          url: '../service_goods_pay_error/service_goods_pay_error',
         })
       }
     }

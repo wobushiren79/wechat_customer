@@ -1,0 +1,52 @@
+<view class="page">
+
+  <view class="page__bd">
+
+    <!-- 个人信息 -->
+    <view class='user_info'>
+      <view class='content'>
+        <image class="weui-media-box__thumb" src="{{userInfoAvatar}}" mode='widthFix' />
+        <text>{{nickName}}</text>
+        <text>1212121212</text>
+      </view>
+    </view>
+
+    <!-- 列表 -->
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="../../Goods_Order/order_shopping_cart/order_shopping_cart" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{icon}}"></image>
+        </view>
+        <view class="weui-cell__bd">购物车</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="../../Goods_Order/order_list_wait/order_list_wait" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{icon}}"></image>
+        </view>
+        <view class="weui-cell__bd">我的订单</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{icon}}"></image>
+        </view>
+        <view class="weui-cell__bd">管理费缴纳记录</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="{{icon}}"></image>
+        </view>
+        <view class="weui-cell__bd">优惠券</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+
+    <navigator url="../../C_user_login/C_user_login" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class='footer'>
+        切换账号
+      </view>
+    </navigator>
+  </view>
+</view>

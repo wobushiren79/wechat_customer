@@ -32,19 +32,19 @@ Page({
    */
   getListData: function () {
     var pageData = pageUtil.getPageData();
-    
-    pageData.content={};
-    pageData.content.payStatus=0;
-    
+
+    pageData.content = {};
+    pageData.content.payStatus = 0;
+
     var pageCallBack = pageUtil.getPageCallBack(
-      function getDataSuccess(data,res,isLast) {
+      function getDataSuccess(data, res, isLast) {
         content.setData({
           listdata: data,
           notNumber: isLast,
         })
         wx.stopPullDownRefresh()
       },
-      function getDataFail(data,res) {
+      function getDataFail(data, res) {
         wx.stopPullDownRefresh()
       });
 
@@ -56,8 +56,17 @@ Page({
     content.onShow()
   },
   //上拉添加记录条数
-  onReachBottom() {
+  onReachBottom: function () {
     content.getListData();
-  }
+  },
 
+  /**
+   * 付款
+   */
+  orsers:function (e) {
+    var orderId = e.target.dataset.orderid
+    wx.navigateTo({
+      url: '../service_goods_pay/service_goods_pay?orderId='+orderId,
+    })
+  }
 });

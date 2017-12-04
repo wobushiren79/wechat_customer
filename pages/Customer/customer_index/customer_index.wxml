@@ -70,7 +70,7 @@
         <view class='tab_bd_list'>
           <view class='ul clearfix '>
             <block wx:for="{{listGoods}}">
-              <navigator url="../../Goods_Order/order_goods_content/order_goods_content?storeId={{storeId}}&goods_id={{item.id}}&is_package={{item.is_package}}">
+              <navigator url="../../Goods_Order/order_goods_content/order_goods_content?storeId={{storeId}}&storeUserId={{storeUserId}}&goods_id={{item.id}}&is_package={{item.is_package}}">
 
                 <view class='li'>
                   <view class='img_wrap'>

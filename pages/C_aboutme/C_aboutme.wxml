@@ -31,7 +31,7 @@
         <view class="weui-grid__label">预约记录</view>
       </navigator>
 
-      <navigator url="../C_order/C_order" class="weui-grid" hover-class="weui-grid_active">
+      <navigator url="../Goods_Order/order_list_wait/order_list_wait" class="weui-grid" hover-class="weui-grid_active">
         <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
         <view class="weui-grid__label">我的订单</view>
       </navigator>

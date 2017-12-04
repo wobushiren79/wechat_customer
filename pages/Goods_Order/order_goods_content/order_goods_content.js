@@ -49,6 +49,7 @@ Page({
     // console.log(event)
     // if (event.storeId){
     var storeId = event.storeId
+    var storeUserId=event.storeUserId
     // }
     var goods_id = event.goods_id
     if (event.is_package) {
@@ -84,6 +85,7 @@ Page({
             spec_price: res.data.list.specprice[0].spec_price,
             // shoppingTotalNumber: shoppingTotalNumber,
             storeId: storeId,
+            storeUserId: storeUserId,
             goods_number: 1,
             goods_cate_id: goods_cate_id,
             spec_attr_id: res.data.list.spec_attr_id,
@@ -362,10 +364,14 @@ Page({
       success: function (data, res) {
         // console.log(res)
         var totla_price = 0;
+        var storeId = that.data.storeId
+        var storeUserId = that.data.storeUserId
         //分类名称
         for (var i in res.data.list) {
           res.data.list[i].specNum = goods_number
           totla_price += parseFloat(res.data.list[i].specNum) * parseFloat(res.data.list[i].spec_price)
+          res.data.list[i].storeId = storeId;
+          res.data.list[i].storeUserId = storeUserId;
         }
         //结算购物车数据
         wx.setStorageSync(storageKey.STORE_BUY_GOODS, res.data.list)
@@ -393,6 +399,7 @@ Page({
     var spec_attr_id = that.data.spec_attr_id
     var goods_cate_id = that.data.goods_cate_id
     var storeId = that.data.storeId
+    var storeUserId = that.data.storeUserId
     // console.log(storeId)
     var formdata = {}
     if (setlist.is_package == 1) {
@@ -409,7 +416,7 @@ Page({
     formdata.channelId = Goodsdata.channel_id
     formdata.isPackage = setlist.is_package
     formdata.storeId = storeId
-
+    formdata.storeUserId = storeUserId
     var list = []
     list.push(formdata)
     var addGoodsShoppingRequest = { list: list }

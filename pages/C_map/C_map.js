@@ -59,7 +59,8 @@ Page({
    */
   getMarkerItemByData: function (item) {
     var storeId = item.id;
-    var naviUrl = '../Customer/customer_index/customer_index?storeId=' + storeId + "&consultantId=" + item.consultant_id;
+    var storeUserId = item.consultant_id
+    var naviUrl = '../Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId+"&consultantId=" + item.consultant_id;
     var markerItem =
       {
         iconPath: "../../images/zuobiao.png",

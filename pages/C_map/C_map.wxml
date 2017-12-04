@@ -1,7 +1,7 @@
 <!-- map.wxml -->
 <view class='header'>
   <!-- 我 -->
-  <navigator url='../C_aboutme/C_aboutme' class='me'>
+  <navigator url='../User/user_aboutme/user_aboutme' class='me'>
     <image src='../../images/map_me.png' mode="widthFix"></image>
   </navigator>
   <!-- 输入框 -->
