@@ -1,8 +1,9 @@
 var WxParse = require('../../../wxParse/wxParse.js');
 var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js')
 var goodsHttp = require('../../../utils/http/RequestForGoods.js');
-var storageKey=require('../../../utils/storage/StorageKey.js');
+var storageKey = require('../../../utils/storage/StorageKey.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
+var content;
 var app = getApp()
 Page({
   data: {
@@ -41,6 +42,7 @@ Page({
   //   }
   // },
   onLoad: function (event) {
+    content=this;
     var that = this
     wx.showLoading({
       title: '加载中',
@@ -49,7 +51,7 @@ Page({
     // console.log(event)
     // if (event.storeId){
     var storeId = event.storeId
-    var storeUserId=event.storeUserId
+    var storeUserId = event.storeUserId
     // }
     var goods_id = event.goods_id
     if (event.is_package) {
@@ -92,8 +94,7 @@ Page({
             goods_id: goods_id,
             chatxian: true
           })
-          console.log(storeId)
-          wx.hideLoading()
+          content.getShoppingCartNumber()
         }
         that.setData({
           list: res.data.list
@@ -104,195 +105,6 @@ Page({
       }
     }
     goodsPHPHttp.findGoodsInfo(getData, findGoodsInfoCallBack);
-    //取出单项登录权限
-    // wx.getStorage({
-    //   key: 'resourceCodes',
-    //   success: function (res) {
-
-    //     var goods_id = e.goods_id
-    //     var package_id = e.package_id
-    //     if (e.goods_id) {
-    //       var goods_ids = goods_id
-    //     } else {
-    //       var goods_ids = package_id
-    //     }
-    //     var LocalUrl = getApp().globalData.LocalUrl
-    //     var javaApi = getApp().globalData.javaApi
-    //     var JSESSIONID = ''
-    //     wx.getStorage({
-    //       key: 'JSESSIONID',
-    //       success: function (res) {
-    //         JSESSIONID = res.data
-    //         // console.log(JSESSIONID)
-    //         that.setData({
-    //           JSESSIONID: JSESSIONID
-    //         })
-    //       },
-    //       fail: function () {
-    //         wx.redirectTo({
-    //           url: '../login/login',
-    //         })
-    //       }
-    //     })
-    //     // 取出渠道信息
-    //     wx.getStorage({
-    //       key: 'channel',
-    //       success: function (res) {
-    //         var channel = {}
-    //         channel.channel_id = res.data.id
-    //         if (goods_id) {
-    //           channel.goods_id = goods_id
-    //         } else {
-    //           channel.package_id = package_id
-    //         }
-    //         // console.log(channel)
-    //         var content = {}
-    //         content.content = '钟明坏蛋'
-    //         //查询分类接口
-    //         wx.request({
-    //           url: LocalUrl + 'Goods/details',
-    //           method: "POST",
-    //           data: channel,
-    //           header: {
-    //             "Content-Type": "application/x-www-form-urlencoded",
-    //             // "Cookie": "sid=" + res.data.content.sessionId
-    //           },
-    //           success: function (res) {
-    //             if (res.data.code == 1000) {
-    //               // console.log(res.data.list)
-    //               var list = res.data.list
-    //               wx.getStorage({
-    //                 key: 'amateurLevel',
-    //                 success: function(resss) {
-    //                   // console.log(resss.data)
-    //                   if (resss.data == null){
-    //                      amateurLevel = 0
-    //                    }else{
-    //                     for (var i in res.data.list.commission){
-    //                       if (res.data.list.commission[i].amateur_id == resss.data[0].systemLevel.id){
-    //                          amateurLevel = res.data.list.commission[i].commission
-    //                          }
-    //                      }
-    //                    }
-    //                 },
-    //                 fail:function(){
-    //                    amateurLevel=10000
-    //                 }
-    //               })
-    //               // console.log(list)
-    //               if (list.is_package == 0) {
-    //                 var goods_cate_id = res.data.list.goods_cate_id
-    //                 // var spec_attr_id=res.data.list.spec_attr_id
-    //               } else {
-    //                 var goods_cate_id = res.data.list.package_cate_id
-    //                 // var spec_attr_id = res.data.list.spec_attr_id
-    //               }
-    //               WxParse.wxParse('descrip_detail', 'html', list.descrip_detail, that, );
-    //               if (res.data.list.specprice.length > 0) {
-    //                 wx.setStorageSync('speclist', res.data.list.specprice)
-    //                 wx.request({
-    //                   url: javaApi + 'api/goods/shopping/getShoppingNumber',
-    //                   method: "POST",
-    //                   data: '',
-    //                   header: {
-    //                     // "Content-Type": "application/x-www-form-urlencodeed",
-    //                     'content-type': 'application/json',
-    //                     "Cookie": JSESSIONID
-    //                   },
-    //                   success: function (dat) {
-    //                     // console.log(dat)
-    //                     if (dat.data.code == 1000) {
-    //                       var shoppingTotalNumber = dat.data.content.shoppingTotalNumber
-    //                       that.setData({
-    //                         list: list,
-    //                         channel: channel,
-    //                         amateurLevel: parseFloat(amateurLevel),
-    //                         goods_spec: res.data.list.specprice,
-    //                         xuanzhe: 0,
-    //                         xuanzhedata: res.data.list.specprice[0],
-    //                         spec_price: res.data.list.specprice[0].spec_price,
-    //                         shoppingTotalNumber: shoppingTotalNumber,
-    //                         goods_number: 1,
-    //                         goods_cate_id: goods_cate_id,
-    //                         spec_attr_id: res.data.list.spec_attr_id,
-    //                         goods_id: goods_ids,
-    //                         chatxian: true
-    //                       })
-    //                       wx.hideLoading()
-    //                     } else {
-    //                       wx.showToast({
-    //                         title: dat.data.message,
-    //                         image: '../../images/icon_info.png',
-    //                         duration: 2000,
-    //                         // mask:true,
-    //                       })
-    //                     }
-    //                   }
-    //                 })
-    //               } else {
-    //                 wx.request({
-    //                   url: javaApi + 'api/goods/shopping/getShoppingNumber',
-    //                   method: "POST",
-    //                   data: '',
-    //                   header: {
-    //                     // "Content-Type": "application/x-www-form-urlencodeed",
-    //                     'content-type': 'application/json',
-    //                     "Cookie": JSESSIONID
-    //                   },
-
-    //                   success: function (dat) {
-    //                     if (dat.data.code == 1000) {
-    //                       var shoppingTotalNumber = dat.data.content.shoppingTotalNumber
-    //                       that.setData({
-    //                         list: list,
-    //                         channel: channel,
-    //                         goods_spec: res.data.list.specprice,
-    //                         xuanzhe: 0,
-    //                         // xuanzhedata: res.data.list.specprice[0],
-    //                         // spec_price: res.data.list.specprice[0].spec_price,
-    //                         shoppingTotalNumber: shoppingTotalNumber,
-    //                         // goods_number: 1,
-    //                         goods_cate_id: goods_cate_id,
-    //                         spec_attr_id: res.data.list.spec_attr_id,
-    //                         goods_id: goods_ids,
-    //                         chatxian: true
-    //                       })
-    //                       wx.hideLoading()
-    //                     } else {
-    //                       wx.showToast({
-    //                         title: dat.data.message,
-    //                         duration: 2000,
-    //                         image: '../../images/icon_info.png',
-    //                         // mask:true,
-    //                       })
-    //                     }
-    //                   }
-    //                 })
-    //               }
-    //             } else {
-    //               wx.showToast({
-    //                 title: res.data.message,
-    //                 image: '../../images/icon_info.png',
-    //                 duration: 2000
-    //               })
-    //             }
-    //           }
-    //         })
-    //       },
-    //       fail: function () {
-    //         //如果获取缓存不成功就跳转登录页面
-    //         wx.redirectTo({
-    //           url: '../index/index',
-    //         })
-    //       }
-    //     })
-    //   },
-    //   fail: function () {
-    //     wx.redirectTo({
-    //       url: '../login/login',
-    //     })
-    //   }
-    // })
   },
   popup: function () {
     var that = this
@@ -422,6 +234,7 @@ Page({
     var addGoodsShoppingRequest = { list: list }
     var addGoodsShoppingCallBack = {
       success: function () {
+        content.getShoppingCartNumber();
         toastUtil.showToast("加入成功");
       },
       fail: function () {
@@ -429,65 +242,26 @@ Page({
       }
     }
     goodsHttp.addGoodsShopping(addGoodsShoppingRequest, addGoodsShoppingCallBack);
-
-    // var aaaa = { content: formDataa }
-    //转换字符串
-    // var ForData = JSON.stringify(aaaa)
-    // console.log(ForData)
-    // var javaApi = getApp().globalData.javaApi
-    // console.log(list)
-    // wx.getStorage({
-    //   key: 'JSESSIONID',
-    //   success: function (res) {
-    //     var JSESSIONID = res.data
-    //     wx.request({
-    //       url: javaApi + 'api/goods/shopping/save',
-    //       method: "POST",
-    //       data: ForData,
-    //       header: {
-    //         // "Content-Type": "application/x-www-form-urlencoded",
-    //         'content-type': 'application/json',
-    //         "Cookie": JSESSIONID
-    //       },
-    //       success: function (res) {
-    //         //  console.log(res)
-    //         if (res.data.code == 1000) {
-    //           wx.request({
-    //             url: javaApi + 'api/goods/shopping/getShoppingNumber',
-    //             method: "POST",
-    //             data: '',
-    //             header: {
-    //               // "Content-Type": "application/x-www-form-urlencodeed",
-    //               'content-type': 'application/json',
-    //               "Cookie": JSESSIONID
-    //             },
-
-    //             success: function (dat) {
-    //               if (dat.data.code == 1000) {
-    //                 var shoppingTotalNumber = dat.data.content.shoppingTotalNumber
-    //                 that.setData({
-    //                   shoppingTotalNumber: shoppingTotalNumber,
-    //                 })
-    //                 wx.showToast({
-    //                   title: '加入成功',
-    //                   duration: 2000
-    //                 })
-    //               } else {
-    //                 wx.showToast({
-    //                   title: dat.data.message,
-    //                   image: '../../images/icon_info.png',
-    //                   duration: 2000,
-    //                   // mask: true,
-    //                 })
-    //               }
-    //             }
-    //           })
-    //         }
-    //       }
-    //     })
-    //   },
-    // })
   },
+
+  /**
+   * 获取购物车数量
+   */
+  getShoppingCartNumber: function () {
+    var getShoppingNumberCallBack = {
+      success: function (data, res) {
+        var shoppingTotalNumber = data.shoppingTotalNumber
+        content.setData({
+          shoppingTotalNumber: shoppingTotalNumber,
+        })
+      },
+      fail: function () {
+
+      }
+    }
+    goodsHttp.getShoppingNumber(null, getShoppingNumberCallBack);
+  },
+
   cartlist: function () {
     //頁面跳轉
     wx.redirectTo({

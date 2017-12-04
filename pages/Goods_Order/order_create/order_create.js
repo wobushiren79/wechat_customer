@@ -151,10 +151,10 @@ Page({
       //     goodsOrder.orderType = 1
       //   }
       // })
-      goodsOrder.levelName = that.data.levelName
-      goodsOrder.levelType = that.data.levelType
-      goodsOrder.levelId = that.data.levelId ? that.data.levelId : ''
-      goodsOrder.orderType = that.data.orderType
+      // goodsOrder.levelName = that.data.levelName
+      // goodsOrder.levelType = that.data.levelType
+      // goodsOrder.levelId = that.data.levelId ? that.data.levelId : ''
+      goodsOrder.orderType = 3
       //是否需要发票
       if (fapiao) {
         goodsOrder.needInvoice = fapiao.needInvoice

@@ -88,4 +88,3 @@ function setListaData(newListData) {
 module.exports.initData = initData;
 module.exports.getPageData = getPageData;
 module.exports.getPageCallBack = getPageCallBack;
-module.exports.pageData=pageData;

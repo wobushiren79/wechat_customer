@@ -2,6 +2,7 @@
   "pages": [
     "pages/C_map/C_map",
     "pages/Goods_Order/service_goods_pay/service_goods_pay",
+    "pages/Customer/customer_store_search/customer_store_search",
     "pages/User/user_aboutme/user_aboutme",
     "pages/Goods_Order/order_shopping_cart/order_shopping_cart",
     "pages/Customer/customer_index/customer_index",

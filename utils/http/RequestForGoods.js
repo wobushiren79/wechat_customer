@@ -51,6 +51,13 @@ function removeShoppingCartGoods(data, callback) {
 }
 
 /**
+ * 删除购物车物品
+ */
+function getShoppingNumber(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/goods/shopping/getShoppingNumber", data, callback, true)
+}
+
+/**
  * 创建订单
  */
 function createGoodsOrder(data, callback) {
@@ -92,6 +99,13 @@ function findFinanceDetailByOrderId(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/order/findFinanceDetailById', data, callback, true)
 }
 
+/**
+ * 查询财务信息
+ */
+function findPerformInfoByPerformId(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/order/findPerformInfoByPerformId', data, callback, true)
+}
+
 module.exports.loginGoods = loginGoods;
 module.exports.getGoodsOrderList = getGoodsOrderList;
 module.exports.getGoodsOrderDetails = getGoodsOrderDetails;
@@ -105,3 +119,5 @@ module.exports.confirmGoodsOrder = confirmGoodsOrder;
 module.exports.payOffLine = payOffLine;
 module.exports.updateOutTradeNo = updateOutTradeNo;
 module.exports.findFinanceDetailByOrderId = findFinanceDetailByOrderId;
+module.exports.getShoppingNumber = getShoppingNumber;
+module.exports.findPerformInfoByPerformId = findPerformInfoByPerformId;

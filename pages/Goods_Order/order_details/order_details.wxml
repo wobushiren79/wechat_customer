@@ -7,7 +7,7 @@
 
 
       <view class="hide clearfix">
-        <image src="../../images/icon_money_my.png" class="img "></image>
+        <image src="../../../images/icon_money_my.png" class="img "></image>
 
         <!-- 信息 -->
         <view class="info clearfix ">
@@ -48,7 +48,7 @@
 
 
       <!-- 分割线 -->
-      <image src="../../images/hr.png " class="hr "></image>
+      <image src="../../../images/hr.png " class="hr "></image>
     </view>
     <!-- 填写服务信息 end -->
 
@@ -81,7 +81,7 @@
           <view class="header ">
             查看详细列表
           </view>
-          <image src="../../images/right.png " class="icon "></image>
+          <image src="../../../images/right.png " class="icon "></image>
         </view>
 
         <!-- 详情列表 star -->
@@ -132,7 +132,7 @@
                   </black>
                 </view>
                 <black wx:if="{{item.performStatu == 2 || item.performStatu == 3 || item.performStatu == 4 || item.performStatu == 5}}">
-                  <image bindtap="popup" class="info" src="../../images/icon_info.png" bindtap="zhixing" data-id="{{item.id}}"></image>
+                  <image bindtap="popup" class="info" src="../../../images/icon_info.png" bindtap="zhixing" data-id="{{item.id}}"></image>
                 </black>
               </view>
 
@@ -147,7 +147,7 @@
               <view class="img_wrap">
                 <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}"></image>
                 <!-- 套餐IQ -->
-                <image src='../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
+                <image src='../../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
               </view>
               <view class="info show">
                 <view class="name">
@@ -237,7 +237,7 @@
             <text>{{listData.goodsOrder.showTotalPrice/100}}</text>
           </view>
         </view>
-        <block wx:if="{{!amateurLevel}}">
+        <!-- <block wx:if="{{!amateurLevel}}">
           <view class="dd width">
             <view class="header ">
               应付圆满金额
@@ -247,7 +247,7 @@
               <text>{{listData.goodsOrder.totalPrice/100}}</text>
             </view>
           </view>
-        </block>
+        </block> -->
         <!-- <view class="dd width">
           <view class="header ">
             优惠信息
@@ -276,7 +276,7 @@
           <view class="header ">
 
           </view>
-          <block wx:if="{{amateurLevel}}">
+          <!-- <block wx:if="{{amateurLevel}}">
             <view class="footer ">
               <view class="img_wrap {{img_wrap?'show':'hide'}} " bindtap='bind_img'>
                 <image src='../../images/icon_money.png' mode='widthFix'></image>
@@ -289,18 +289,18 @@
                 <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
               </black>
             </view>
-          </block>
-          <block wx:else>
-            <view class="footer ">
-              实付圆满金额
-              <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
-                <text> 订单未支付</text>
-              </black>
-              <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
-                <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
-              </black>
-            </view>
-          </block>
+          </block> -->
+          <!-- <block wx:else> -->
+          <view class="footer ">
+            实付金额
+            <black wx:if="{{listData.goodsFinance.actualPayment  == null}}">
+              <text> 订单未支付</text>
+            </black>
+            <black wx:if="{{listData.goodsFinance.actualPayment  != null}}">
+              <text> ￥{{listData.goodsFinance.actualPayment/100}}</text>
+            </black>
+          </view>
+          <!-- </block> -->
         </view>
         <view class="dd other">
           <view class="header ">
@@ -363,9 +363,11 @@
 
       <contact-button size="20" session-from="WeChat">
       </contact-button>
-      <view class="shopping" bindtap="queren" data-orderid="{{listData.goodsOrder.id}}">
+      <view class="shopping" bindtap="online" data-orderid="{{listData.goodsOrder.id}}">
         在线客服
       </view>
+      <!-- <contact-button size="20" session-from="WeChat">
+      </contact-button> -->
       <view class="buy" bindtap="kehuphone">
         电话客服
       </view>

@@ -9,7 +9,7 @@
     <image src='../../images/index_search.png' mode="widthFix"></image>
   </navigator>
   <!-- 更多 -->
-  <navigator url='../C_blank/C_blank' class='more'>
+  <navigator url='../Customer/customer_store_search/customer_store_search' class='more'>
     <image src='../../images/map_more.png' mode="widthFix"></image>
   </navigator>
 </view>

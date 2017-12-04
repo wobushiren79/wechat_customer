@@ -58,6 +58,13 @@ function updateOutTradeNo(data, callback) {
   baseRequest.sendPostHttpForForm(baseUrl + "api/goods/order/updateOutTradeNo", data, callback, true)
 }
 
+/**
+ * 门店搜索
+ */
+function storesSearch(data, callback) {
+  baseRequest.sendPostHttpForForm(baseUrl + "api/Stores/StoresSearch", data, callback, true)
+}
+
 module.exports.findAdviserStoreList = findAdviserStoreList;
 module.exports.findStoreInfoByStoreId = findStoreInfoByStoreId;
 module.exports.findStoreGoodsClass = findStoreGoodsClass;
@@ -66,3 +73,4 @@ module.exports.findGoodsDetails = findGoodsDetails;
 module.exports.findGoodsInfo = findGoodsInfo;
 module.exports.wechatPay = wechatPay;
 module.exports.updateOutTradeNo = updateOutTradeNo;
+module.exports.storesSearch = storesSearch;
