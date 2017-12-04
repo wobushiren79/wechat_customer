@@ -47,12 +47,16 @@ App({
     PHPGoodsUrl: "http://192.168.0.54/shian_goods/",
     PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
     JavaGoodsUrl: "http://192.168.0.59:8080/goods/",
-    JavaPlatformUrl: "http://192.168.0.59:8099/ki4so-web/"
+    JavaPlatformUrl: "http://192.168.0.59:8099/ki4so-web/",
     // JavaGoodsUrl:"https://goods.shianlife.cn/",
     // JavaPlatformUrl:"https://platform.shianlife.cn/"
+    QiniuFilePathPrefix:"http://oq6rkq859.bkt.clouddn.com/",
+    UploadFileNamePrefix:"customer_wechatSmallApp",
+    AliyunFilePathPrefix: ""
   },
   pagesPositionUrl:{
 	  "C_aboutme": "/pages/C_aboutme/C_aboutme",
-	  "complain_customer":"/pages/others/complain_customer/complain_customer"
+	  "complain_customer":"/pages/others/complain_customer/complain_customer",
+      "evaluation_customer":"/pages/others/evaluation_customer/evaluation_customer"
   }
 })
