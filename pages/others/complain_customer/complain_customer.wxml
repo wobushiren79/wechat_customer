@@ -1,7 +1,7 @@
 <!--pages/others/complain_customer.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
   <view class="page__bd clearfix">
-      <form bindsubmit="formData">
+      <form id='formInfo' bindsubmit="formData">
         <view class="goods_buy list ">
           <view class="dl ">
 		  <view class="dd required">
@@ -9,7 +9,7 @@
                 类型
               </view>
               <view class="footer ">
-                <picker mode='selector' bindchange='complaintTypeChange' range-key='text' name="complaintT"
+                <picker mode='selector' bindchange='complaintTypeChange' range-key='text'
 			  value='{{complaintType_SelectedIndex}}' range='{{complaintType_Set}}'>
 		    		<text>{{complaintType_Set[complaintType_SelectedIndex].text}}</text>
 			 </picker>
@@ -17,10 +17,10 @@
             </view>
             <view class="dd required">
               <view class="header ">
-                ni对象
+                名称
               </view>
               <view class="footer ">
-                <input type="text" placeholder="ni对象" name="complaintObjcet" />
+                <input type="text" placeholder="名称" name="complaintObjcet" />
               </view>
             </view>            
 		  <view class="dd fuid note required">
