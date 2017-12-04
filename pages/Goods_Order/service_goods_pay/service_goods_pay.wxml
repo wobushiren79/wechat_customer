@@ -1,0 +1,67 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+
+    <form>
+      <!-- 购置物品 -->
+      <block wx:if="{{isShowImg}}">
+        <view class='ewm'>
+          <view>
+            <text>支付方式</text>
+          </view>
+          <view>
+            <text>请使用微信扫码支付!</text>
+          </view>
+          <canvas bindlongpress="previewImg" hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+        </view>
+      </block>
+
+
+
+      <block wx:else>
+
+        <view class="content">
+          <image src="../../../images/service_goods_pay.png"></image>
+          <view class="text">
+
+
+            <view class="num">
+              订单编号：
+              <text>{{orderNumber}}</text>
+            </view>
+            <view class="pay">
+              支付订单金额
+            </view>
+            <view class="money">
+              ￥
+              <text>{{showTotalPrice}}</text>
+            </view>
+
+          </view>
+        </view>
+      </block>
+
+
+
+
+      <!-- 固定底部 star -->
+      <view class="footerfix clearfix">
+        <block wx:if="{{!chaxun}}">
+          <button class="keep pay_up" bindtap="wechats">微信支付</button>
+          <button class="keep pay_down" bindtap="bind_moda">线下支付</button>
+        </block>
+        <block>
+          <button class="keep pay_jieguo" bindtap="orver">查询支付结果</button>
+        </block>
+      </view>
+      <!-- 固定底部 end -->
+
+    </form>
+
+
+
+
+
+
+
+  </view>
+</view>

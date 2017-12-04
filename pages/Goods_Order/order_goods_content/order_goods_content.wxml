@@ -29,7 +29,7 @@
       <view class="money">
         推荐价:
         <text>{{list.price}}</text>
-        <!-- <image src="../../images/icon_money.png" bindtap="popup"></image> -->
+        <!-- <image src="../../../images/icon_money.png" bindtap="popup"></image> -->
       </view>
 
       <!-- 其他信息 -->
@@ -100,7 +100,7 @@
     <view class="useinfo">
       <view class="dl">
         <navigator class="dt" url='../service_goods_list/service_goods_list'>套餐规格商品详情列表
-          <image src='../../images/right.png' class='icon'></image>
+          <image src='../../../images/right.png' class='icon'></image>
         </navigator>
 
       </view>
@@ -169,15 +169,15 @@
         <text>客服</text>
       </button>-->
       <view class="server">
-        <image src="../../images/icon_server.png"></image>
+        <image src="../../../images/icon_server.png"></image>
         <text>客服</text>
       </view>
       <contact-button size="20" session-from="WeChat">
       </contact-button>
       <!-- 购物车 -->
       <view class="shop" bindtap="cartlist">
-        <image src="../../images/icon_shop.png"></image>
-        <text>服务车</text>
+        <image src="../../../images/icon_shop.png"></image>
+        <text>购物车</text>
         <black wx:if="{{shoppingTotalNumber>0}}">
           <text class="num" wx:if="{{shoppingTotalNumber >99}}">99+</text>
           <text class="num" wx:else>{{shoppingTotalNumber}}</text>
@@ -186,7 +186,7 @@
       <black wx:if="{{chatxian}}">
         <!-- 加入购物车 -->
         <view class="shopping" bindtap="cart">
-          加入服务车
+          加入购物车
         </view>
         <!-- 直接购买 -->
         <view class="buy" bindtap="purchase">

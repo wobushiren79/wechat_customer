@@ -1,0 +1,86 @@
+.content {
+  text-align: center;
+  margin-top: 90rpx;
+  font-size: 32rpx;
+  position: relative;
+}
+
+.content image {
+  height: 680rpx;
+  width: 620rpx;
+}
+
+.content .text {
+  position: absolute;
+  top: 300rpx;
+  width: 100%;
+}
+
+.content .text .num {
+  color: #48cfad;
+}
+
+.content .text .num text {
+  color: #353535;
+}
+
+.content .text .pay {
+  margin: 20rpx 0 30rpx 0;
+  color: #48cfad
+}
+
+.content .text .money {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #696969;
+}
+.content .index{
+  text-align: center
+}
+.content .index navigator{
+  display: inline-block;
+  color: #48cfad;
+  font-size: 30rpx;
+}
+
+
+.footerfix {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  background: #fff;
+  border-top: 1px solid #efefef;
+}
+
+.footerfix .keep {
+  width: 50%;
+  height: 100rpx;
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.footerfix .keep.pay_up{
+  background: linear-gradient(to left, #48cfad, #85ecdc);
+}
+.footerfix .keep.pay_down{
+ background: linear-gradient(to left, #3eb99a, #269080);
+}
+
+.footerfix .keep.pay_jieguo{
+  width: 100%;
+  background: linear-gradient(to left, #48cfad, #85ecdc);
+}
+
+form .ewm view{
+  text-align: center;
+}
+form .ewm canvas{
+  background: #f8f8f8!important;
+}

@@ -379,8 +379,8 @@ Page({
       orderdata = { content: getdata }
       var createOrderCallBack = {
         success: function (data, res) {
-          wx.reLaunch({
-            url: '../service_goods_order/service_goods_order?orderId=' + res.data.content.orderId
+          wx.redirectTo({
+            url: '../order_confirm/order_confirm?orderId=' + res.data.content.orderId
           })
         },
         fail: function (data, res) {

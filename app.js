@@ -46,8 +46,8 @@ App({
     // GmUrl:"http://192.168.0.37:8088/app/",
     PHPGoodsUrl: "http://192.168.0.54/shian_goods/",
     PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
-    JavaGoodsUrl: "http://192.168.0.59:8080/goods/",
-    JavaPlatformUrl: "http://192.168.0.59:8099/ki4so-web/"
+    JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
+    JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/"
     // JavaGoodsUrl:"https://goods.shianlife.cn/",
     // JavaPlatformUrl:"https://platform.shianlife.cn/"
   },

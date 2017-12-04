@@ -1,0 +1,34 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+
+
+      <view class="content">
+        <view class="title">您已付款成功</view>
+        <view class="text">
+          如对价格有异议，请拨打<text bindtap="bind_call">966188</text>
+        </view>
+        <image src="../../images/succeed.png"></image>
+      </view>
+
+
+      <!-- 固定底部 star -->
+
+      <view class="footerfix clearfix">
+        <!-- 保存 -->
+        <navigator url="../index/index" open-type="reLaunch">
+            <button class="keep">返回首页</button>
+        </navigator>
+        
+      </view>
+
+      <!-- 固定底部 end -->
+
+
+
+
+
+
+
+
+  </view>
+</view>
