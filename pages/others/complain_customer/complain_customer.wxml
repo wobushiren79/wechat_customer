@@ -22,23 +22,6 @@
               <view class="footer ">
                 <input type="text" placeholder="名称" name="complaintObjcet" />
               </view>
-            </view>            
-		  <view class="dd fuid note required">
-              <view class="header ">
-                图片上传
-              </view>
-              <view class="footer files_img clearfix">
-                <!-- <input type="text" placeholder="意见反馈" /> -->
-                <block wx:for="{{files}}">
-                  <view class='img_wrap'>
-                    <image class='close' src='../../../images/icon_info.png' bindtap='deleteImage' mode='widthFix' data-img='{{item}}'></image>
-                    <image src='http://oq6rkq859.bkt.clouddn.com/{{item}}'  mode='widthFix'></image>
-                  </view>
-                </block>
-                <view class='img_wrap'>
-                  <image src='../../../images/ispackage.png' bindtap='uploadImage' mode='widthFix'></image>
-                </view>
-              </view>
             </view>
             <view class="dd fuid note required">
               <view class="header ">
@@ -47,6 +30,23 @@
               <view class="footer ">
                 <!-- <input type="text" /> -->
                 <textarea maxlength='10000' placeholder="反馈内容" name="complaintContent"></textarea>
+              </view>
+            </view>
+		  <view class="dd fuid note">
+              <view class="header ">
+                图片上传
+              </view>
+              <view class="footer files_img clearfix">
+                <!-- <input type="text" placeholder="意见反馈" /> -->
+                <block wx:for="{{imageFiles}}">
+                  <view class='img_wrap'>
+                    <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
+                    <image src='{{item.tempFilePath}}'  mode='widthFix'></image>
+                  </view>
+                </block>
+                <view class='img_wrap'>
+                  <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
+                </view>
               </view>
             </view>
           </view>

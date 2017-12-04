@@ -1,7 +1,8 @@
 // pages/others/complain_customer.js
 var modalUtil = require('../../../utils/ModalUtil.js');
 var toastUtil= require('../../../utils/ToastUtil.js');
-var platformUrl=require('../../../utils/http/RequestForPlatform.js');
+var platformUtil=require('../../../utils/http/RequestForPlatform.js');
+var fileUploadUtil = require('../../../utils/http/RequestForFile.js');
 Page({
   /**
    * 页面的初始数据
@@ -16,7 +17,10 @@ Page({
 	],
 	complaintType: null,
 	pagesPositionUrl: null,
-	complaintPicture:null
+	imageFiles:[],
+	filePathPrefix:null,
+	uploadFileNamePrefix:null,
+	uploadFileStatus:true
   },
 
   /**
@@ -24,8 +28,12 @@ Page({
    */
   onLoad: function (options) {
 	  var pagesPositionUrlObj = getApp().pagesPositionUrl;
+	  var filePathPrefixUrl = getApp().globalData.QiniuFilePathPrefix;
+	  var uploadFileNamePrefixNick = getApp().globalData.UploadFileNamePrefix;
 	  this.setData({
-		  pagesPositionUrl: pagesPositionUrlObj
+		  pagesPositionUrl: pagesPositionUrlObj,
+		  filePathPrefix: filePathPrefixUrl,
+		  uploadFileNamePrefix: uploadFileNamePrefixNick
 	  });
   },
 
@@ -126,29 +134,140 @@ Page({
   formData: function (e) {
 	  var formDataObj = e.detail.value;
 	  formDataObj.complaintType = this.data.complaintType;
-	  formDataObj.complaintPicture = this.data.complaintPicture;
 	  var requireFormData = this.requireFormDataWire();
 	  var isRealy=this.valideFormData(formDataObj, requireFormData);
 	  if (!isRealy){
 		  return;
 	  }
-	  var resp={
-		  success:function(data,res){
-			  console.log(res);
-		  },
-		  fail:function(data,res){
-			  console.log(res);
+	  if (formDataObj.complaintType==0){
+		  toastUtil.showToast('未选择类型');
+		  return;
+	  }
+	  var files = this.data.imageFiles;
+	  if (files.length>0){
+		  var filePathSpellStr="";
+		  for (var i = 0; i < files.length; i++) {
+			  var filePath=files[i];
+			  if(i>0){
+				  filePathSpellStr +=",";
+			  }
+			  filePathSpellStr += filePath.remoteFilePath;
 		  }
-	  };	
-	  platformUrl.submitComplaints(formDataObj, resp);
+		  formDataObj.complaintPicture = filePathSpellStr;
+	  }
+	  var respObj={
+		  success: function (dataContent,res){
+			  wx.hideLoading();
+			  console.log(res);
+			  toastUtil.showToast('ok');
+		  },
+		  fail: function (dataContent,res){
+			  wx.hideLoading();
+			  console.log(res);
+			  toastUtil.showToast('no');
+		  }
+	  };
+	  console.log(JSON.stringify(formDataObj));
+	  wx.showLoading({
+		  title: '提交中...'
+	  });
+	  platformUtil.submitComplaints(formDataObj, respObj);
   },
-  cancelComplain: function(e){
+  cancelComplain: function (e) {
+	  var methodFunc = this;
 	  modalUtil.showModal('提示','需要取消？', function(){
-		  var C_aboutme = pagesPositionUrl['C_aboutme'];
-		  wx.redirectTo({
-			  url: C_aboutme
+		  var C_aboutme = methodFunc.data.pagesPositionUrl['C_aboutme'];
+		  wx.navigateBack({
+			  delta:1
 		  });
 	  }, function(){		  
 	  });
- }
+  },
+  uploadAndWireImgArray: function (imgIndex, tempFilePaths){
+	  var methodFunc = this;
+	  var fileNamePrefix = methodFunc.data.uploadFileNamePrefix;
+	  var filePath = tempFilePaths[imgIndex];	  
+	  var respObj = {
+		  success: function (dataContent, resp) {
+			  var respData = JSON.parse(resp.data);
+			  if (respData.code != 1000) {
+				  wx.hideLoading();
+				  var msg = '图片上传失败';
+				  if (imgIndex > 0) {
+					  msg = '部分'.concat(msg);
+				  }
+				  toastUtil.showToast(msg); 
+				  methodFunc.setData({
+					  uploadFileStatus: false
+				  });
+			  }			  
+			  var fileObj = {
+				  index: imgIndex,
+				  tempFilePath: filePath,
+				  remoteFilePath: null
+			  };
+			  fileObj.remoteFilePath = respData.content.nameMap[fileNamePrefix];
+			  var tempImagesFilesArray = [];
+			  tempImagesFilesArray.push(fileObj);
+			  var chooseImages = methodFunc.data.imageFiles;
+			  chooseImages = chooseImages.concat(tempImagesFilesArray);
+			  methodFunc.setData({
+				  imageFiles: chooseImages
+			  });
+			  if (imgIndex == (tempFilePaths.length - 1)) {
+				  wx.hideLoading();
+			  }
+		  },
+		  fail: function (data, res) {
+			  wx.hideLoading();
+			  var msg = '图片上传失败';
+			  if (imgIndex > 0) {
+				  msg = '部分'.concat(msg);
+			  }
+			  toastUtil.showToast(msg);
+			  methodFunc.setData({
+				  uploadFileStatus: false
+			  });
+		  }
+	  };
+	  fileUploadUtil.uploadFileByQiniu(filePath, fileNamePrefix, respObj);
+  },
+  uploadImagesReady: function (tempFilePaths){
+	  if (tempFilePaths == null || tempFilePaths.length==0){
+		  toastUtil.showToast('请重试');
+	  }
+	  wx.showLoading({
+		  title: '图片上传中...'
+	  });
+	  var methodFunc = this;
+	  for (var i = 0; i < tempFilePaths.length; i++) {
+		  var uploadStatus = methodFunc.data.uploadFileStatus;
+		  if (!uploadStatus){
+			  break;
+		  }
+		  methodFunc.uploadAndWireImgArray(i, tempFilePaths);  
+	  }	  
+  },
+  chooseImage: function (e) {
+	  var methodFunc=this;
+	  var objParams={
+		//   count:1,
+		  success:function(res){
+			  methodFunc.uploadImagesReady(res.tempFilePaths);
+		  },
+		  fail: function (res) {
+			  toastUtil.showToast('没有选择图片');
+		  }
+	  };
+	  wx.chooseImage(objParams);
+  },
+  deleteImage: function (e) {
+	  var fileObj=e.target.dataset;
+	  var fileIndex = fileObj.index;
+	  var files = this.data.imageFiles;
+	  files.splice(fileIndex,1);
+	  this.setData({
+		  imageFiles: files
+	  });
+  }
 })
