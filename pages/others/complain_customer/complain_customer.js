@@ -3,6 +3,7 @@ var modalUtil = require('../../../utils/ModalUtil.js');
 var toastUtil= require('../../../utils/ToastUtil.js');
 var platformUtil=require('../../../utils/http/RequestForPlatform.js');
 var fileUploadUtil = require('../../../utils/http/RequestForFile.js');
+var formValideTool = require('../../../utils/formValideTool.js');
 Page({
   /**
    * 页面的初始数据
@@ -19,7 +20,6 @@ Page({
 	pagesPositionUrl: null,
 	imageFiles:[],
 	filePathPrefix:null,
-	uploadFileNamePrefix:null,
 	uploadFileStatus:true
   },
 
@@ -29,11 +29,9 @@ Page({
   onLoad: function (options) {
 	  var pagesPositionUrlObj = getApp().pagesPositionUrl;
 	  var filePathPrefixUrl = getApp().globalData.QiniuFilePathPrefix;
-	  var uploadFileNamePrefixNick = getApp().globalData.UploadFileNamePrefix;
 	  this.setData({
 		  pagesPositionUrl: pagesPositionUrlObj,
-		  filePathPrefix: filePathPrefixUrl,
-		  uploadFileNamePrefix: uploadFileNamePrefixNick
+		  filePathPrefix: filePathPrefixUrl
 	  });
   },
 
@@ -96,46 +94,18 @@ Page({
 		  complaintType: selectItem.id
 	  });
   },
-  wireValideFormObj: function(name, msg){
-	var obj={};
-	obj.name=name;
-	obj.msg=msg;
-	return obj;
-  },
   requireFormDataWire: function(){
 	  var requireFormData = [];
-	  requireFormData.push(this.wireValideFormObj('complaintType','类型，需要选择'));
-	  requireFormData.push(this.wireValideFormObj('complaintObjcet', '名称，未填入'));
-	  requireFormData.push(this.wireValideFormObj('complaintContent', '内容，未填入'));
+	  requireFormData.push(formValideTool.formValideWireObj('complaintType','类型，需要选择'));
+	  requireFormData.push(formValideTool.formValideWireObj('complaintObjcet', '名称，未填入'));
+	  requireFormData.push(formValideTool.formValideWireObj('complaintContent', '内容，未填入'));
 	  return requireFormData;
-  },
-  valideFormData: function (formDataObj, requireFormData) {
-	  if (formDataObj == null || requireFormData == null ||
-		  requireFormData.length == null || requireFormData.length == 0) {
-		  return false;
-	  }
-	  var isFill=true;
-	  var msg=null;
-	  for (var i in requireFormData) {
-		  var item=requireFormData[i];
-		  var itemVal = formDataObj[item.name];
-		  if (itemVal == null || (typeof (itemVal)=='string'&& itemVal.length == 0)){
-			  isFill = false;
-			  msg = item.msg;
-			  break;
-		  }
-	  }
-	  if (!isFill){
-		  toastUtil.showToast(msg);
-		  return false;
-	  }
-	  return true;
-  },
+  },  
   formData: function (e) {
 	  var formDataObj = e.detail.value;
 	  formDataObj.complaintType = this.data.complaintType;
 	  var requireFormData = this.requireFormDataWire();
-	  var isRealy=this.valideFormData(formDataObj, requireFormData);
+	  var isRealy = formValideTool.formValideRequireData(formDataObj, requireFormData);
 	  if (!isRealy){
 		  return;
 	  }
@@ -176,7 +146,6 @@ Page({
   cancelComplain: function (e) {
 	  var methodFunc = this;
 	  modalUtil.showModal('提示','需要取消？', function(){
-		  var C_aboutme = methodFunc.data.pagesPositionUrl['C_aboutme'];
 		  wx.navigateBack({
 			  delta:1
 		  });
@@ -185,7 +154,7 @@ Page({
   },
   uploadAndWireImgArray: function (imgIndex, tempFilePaths){
 	  var methodFunc = this;
-	  var fileNamePrefix = methodFunc.data.uploadFileNamePrefix;
+	  var fileNamePrefix = getApp().globalData.uploadFileNamePrefix;
 	  var filePath = tempFilePaths[imgIndex];	  
 	  var respObj = {
 		  success: function (dataContent, resp) {
