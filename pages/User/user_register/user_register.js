@@ -1,4 +1,5 @@
 var platformHttp = require('../../../utils/http/RequestForPlatform.js');
+var modalUtil = require('../../../utils/ModalUtil.js');
 //index.js
 //获取应用实例
 var app = getApp()
@@ -72,7 +73,6 @@ Page({
 
   },
   formSubmit: function (e) {
-    console.log(e.detail)
     var formValues = e.detail.value
     if (formValues.mobile == "") {
       wx.showToast({
@@ -97,29 +97,26 @@ Page({
         duration: 3000,
         // mask:true
       })
-    }else{
+    } else {
       //注册
-      var dataRequest={
-        mobile:formValues.mobile,
+      var dataRequest = {
+        mobile: formValues.mobile,
         keys: formValues.password,
         msgCode: formValues.msgCode
       }
       var detilasCallBack = {
         success: function (msg) {
-          console.log(msg)
           wx.hideLoading()
-          // that.setData({
-          //   selected: true,
-          //   selected1: false,
-          //   isSendMsg: true,
-          //   second: 60,
-          // })
           // countdown(that)
-          wx.showToast({
-            title: "注册成功!",
-            duration: 3000,
-            // mask:true
-          })
+          function btnConfirm() {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+          modalUtil.showModal("提示", "注册成功", btnConfirm);
+          // wx.navigateTo({
+          //   url: '../../C_user_login/C_user_login',
+          // })
         },
         fail: function (msg) {
           wx.showToast({
@@ -134,7 +131,7 @@ Page({
     }
   }
 
-,
+  ,
   //设置页面转发功能
   onShareAppMessage: function () {
     return {

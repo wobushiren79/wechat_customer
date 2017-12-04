@@ -39,7 +39,7 @@
       <navigator url='../C_user_login_passreset/C_user_login_passreset'>
         忘记密码
       </navigator>
-      <navigator url="../C_user_login_create/C_user_login_create">
+      <navigator url="../User/user_register/user_register">
         没有账户和密码?
       </navigator>
     </view>

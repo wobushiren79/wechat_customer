@@ -6,7 +6,6 @@ var storageKey = require('../../../utils/storage/StorageKey.js');
 var content;
 var shoppingCartList;
 Page({
-
   data: {
     edit: true,
     totla_price: 0,
