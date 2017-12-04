@@ -71,14 +71,14 @@
 
 
     <!--页脚-->
-    <view class="foot">
+    <!-- <view class="foot">
       <navigator url='../password_reset/password_reset'>
         忘记密码
       </navigator>
       <navigator url="../zs/zs">
         没有账户和密码?
       </navigator>
-    </view>
+    </view> -->
 
 
   </view>
