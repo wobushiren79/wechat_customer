@@ -45,8 +45,12 @@ function sendVerificationCode(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/registerAccount", data, callback)
 }
 
-
-
+/**
+ * 通过类型查询标签列表
+ */
+function queryTagsListByType(data, callback) {
+	baseRequest.sendPostHttpForContent(baseUrl + "api/tags/listByType", data, callback)
+}
 
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
@@ -54,3 +58,4 @@ module.exports.submitComplaints = submitComplaints;
 module.exports.submitEvaluation = submitEvaluation;
 module.exports.findEvaluationListByUserId = findEvaluationListByUserId;
 module.exports.sendVerificationCode = sendVerificationCode;
+module.exports.queryTagsListByType = queryTagsListByType;

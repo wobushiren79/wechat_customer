@@ -110,7 +110,7 @@ Page({
 		  return;
 	  }
 	  if (formDataObj.complaintType==0){
-		  toastUtil.showToast('未选择类型');
+		  toastUtil.showToastReWrite('未选择类型', 'icon_info');
 		  return;
 	  }
 	  var files = this.data.imageFiles;
@@ -128,12 +128,16 @@ Page({
 	  var respObj={
 		  success: function (dataContent,res){
 			  wx.hideLoading();
-			  console.log(res);
-			  toastUtil.showToast('ok');
+			  toastUtil.showToastReWrite('感谢反馈', null, function () {				  
+				  setTimeout(function(){
+					  wx.navigateBack({
+						  delta: 1
+					  });
+				  },500);
+			  }, 'success');
 		  },
 		  fail: function (dataContent,res){
 			  wx.hideLoading();
-			  console.log(res);
 			  toastUtil.showToast('no');
 		  }
 	  };
@@ -154,7 +158,7 @@ Page({
   },
   uploadAndWireImgArray: function (imgIndex, tempFilePaths){
 	  var methodFunc = this;
-	  var fileNamePrefix = getApp().globalData.uploadFileNamePrefix;
+	  var fileNamePrefix = getApp().globalData.UploadFileNamePrefix;
 	  var filePath = tempFilePaths[imgIndex];	  
 	  var respObj = {
 		  success: function (dataContent, resp) {
@@ -165,7 +169,7 @@ Page({
 				  if (imgIndex > 0) {
 					  msg = '部分'.concat(msg);
 				  }
-				  toastUtil.showToast(msg); 
+				  toastUtil.showToastReWrite(msg, 'icon_info'); 
 				  methodFunc.setData({
 					  uploadFileStatus: false
 				  });
@@ -193,7 +197,7 @@ Page({
 			  if (imgIndex > 0) {
 				  msg = '部分'.concat(msg);
 			  }
-			  toastUtil.showToast(msg);
+			  toastUtil.showToastReWrite(msg, 'icon_info');
 			  methodFunc.setData({
 				  uploadFileStatus: false
 			  });
@@ -203,7 +207,7 @@ Page({
   },
   uploadImagesReady: function (tempFilePaths){
 	  if (tempFilePaths == null || tempFilePaths.length==0){
-		  toastUtil.showToast('请重试');
+		  toastUtil.showToastReWrite('请重试', 'icon_info');
 	  }
 	  wx.showLoading({
 		  title: '图片上传中...'
@@ -225,7 +229,7 @@ Page({
 			  methodFunc.uploadImagesReady(res.tempFilePaths);
 		  },
 		  fail: function (res) {
-			  toastUtil.showToast('没有选择图片');
+			  toastUtil.showToastReWrite('没有选择图片', 'icon_info');
 		  }
 	  };
 	  wx.chooseImage(objParams);

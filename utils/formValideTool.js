@@ -32,7 +32,7 @@ function formValideRequireData(formDataObj, requireFormData) {
 		}
 	}
 	if (!isFill) {
-		toastUtil.showToast(msg);
+		toastUtil.showToastReWrite(msg, 'icon_info');
 		return false;
 	}
 	return true;

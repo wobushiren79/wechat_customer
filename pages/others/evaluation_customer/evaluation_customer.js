@@ -76,7 +76,7 @@ Page({
   },
   uploadAndWireImgArray: function (imgIndex, tempFilePaths) {
 	  var methodFunc = this;
-	  var fileNamePrefix = getApp().globalData.uploadFileNamePrefix;
+	  var fileNamePrefix = getApp().globalData.UploadFileNamePrefix;
 	  var filePath = tempFilePaths[imgIndex];
 	  var respObj = {
 		  success: function (dataContent, resp) {
