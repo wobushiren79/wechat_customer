@@ -1,2 +1,54 @@
 <!--pages/others/evaluation_customer/evaluation_customer.wxml-->
-<text>pages/others/evaluation_customer/evaluation_customer.wxml</text>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd clearfix">
+      <form id='formInfo' bindsubmit="formData">
+        <view class="goods_buy list ">
+          <view class="dl ">
+		  <view class="dd ">
+              <view class="header ">
+                评分
+              </view>
+              <view class="footer ">
+                <input type="text" placeholder="名称" name="" />
+              </view>
+            </view>
+            <view class="dd fuid note required">
+              <view class="header ">
+                内容
+              </view>
+              <view class="footer ">
+                <!-- <input type="text" /> -->
+                <textarea maxlength='10000' placeholder="反馈内容" name="evaluationContent"></textarea>
+              </view>
+            </view>
+		  <view class="dd fuid note">
+              <view class="header ">
+                图片上传
+              </view>
+              <view class="footer files_img clearfix">
+                <!-- <input type="text" placeholder="意见反馈" /> -->
+                <block wx:for="{{imageFiles}}">
+                  <view class='img_wrap'>
+                    <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
+                    <image src='{{item.tempFilePath}}'  mode='widthFix'></image>
+                  </view>
+                </block>
+                <view class='img_wrap'>
+                  <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 固定底部 star -->
+        <button class="footer_btn return" form-type="submit">
+	   	提交
+        </button>
+      </form>
+      <!-- 固定底部 end -->
+	 <!-- 保存 -->
+      <button class="footer_btn submit" bindtap='cancelComplain'>
+        取消
+      </button>
+  </view>
+</view>
