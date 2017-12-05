@@ -53,6 +53,7 @@ function sendBaseHttp(httpData, callback, isDialog) {
   if (isDialog)
     wx.showLoading({
       title: '加载中!请稍后',
+      mask:true
     });
   console.log(httpData);
   wx.request({

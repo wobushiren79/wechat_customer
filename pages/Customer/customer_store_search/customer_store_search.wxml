@@ -1,57 +1,31 @@
-<view class="page">
-    <view class="page__hd">
-        <view class="page__title">Preview</view>
-        <view class="page__desc">表单预览</view>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">
+        <image src='{{userInfoAvatar}}' class="user"></image>
+        <input type='text' placeholder='搜索位置查找门店' bindconfirm="bindconfirm" ></input>
+        <image src='{{icon_blank}}' class='home'></image>
+      </view>
+      <view class="weui-panel__bd">
+        <block wx:for="{{listStore}}">
+          <navigator url="../customer_index/customer_index?storeId={{item.id}}&storeUserId={{item.consultant_id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="{{item.shop_img}}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{item.shop_name}}</view>
+              <view class="weui-media-box__desc">
+                <view>
+                  <image src='../../../images/appraise_address.png' mode='widthFix'></image>{{item.shop_location}}
+                </view>
+                <view>
+                  <image src='../../../images/appraise_name.png' mode='widthFix'></image>{{item.consultant_name}}
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </block>
+      </view>
     </view>
-    <view class="page__bd">
-        <view class="weui-form-preview">
-            <view class="weui-form-preview__hd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">付款金额</view>
-                    <view class="weui-form-preview__value_in-hd">¥2400.00</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__bd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">商品</view>
-                    <view class="weui-form-preview__value">电动打蛋机</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">标题标题</view>
-                    <view class="weui-form-preview__value">名字名字名字</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">标题标题</view>
-                    <view class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__ft">
-                <navigator url="" class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
-            </view>
-        </view>
-        <view class="weui-form-preview">
-            <view class="weui-form-preview__hd">
-                <view class="weui-form-preview__label">付款金额</view>
-                <view class="weui-form-preview__value_in-hd">¥2400.00</view>
-            </view>
-            <view class="weui-form-preview__bd">
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">商品</view>
-                    <view class="weui-form-preview__value">电动打蛋机</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">标题标题</view>
-                    <view class="weui-form-preview__value">名字名字名字</view>
-                </view>
-                <view class="weui-form-preview__item">
-                    <view class="weui-form-preview__label">标题标题</view>
-                    <view class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</view>
-                </view>
-            </view>
-            <view class="weui-form-preview__ft">
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_default" hover-class="weui-form-preview__btn_active">辅助操作</navigator>
-                <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">操作</navigator>
-            </view>
-        </view>
-    </view>
+  </view>
 </view>

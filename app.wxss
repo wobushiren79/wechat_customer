@@ -445,9 +445,9 @@ input {
 
 /* 分单系统订单列表 star */
 
-.page_allot_order_list .tab view {
+/* .page_allot_order_list .tab view {
   width: 25%;
-}
+} */
 
 .page_allot_order_list .list .ul .li .li_header .header,
 .page_allot_order_list .list .ul .li .li_footer .header {

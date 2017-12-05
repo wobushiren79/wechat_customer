@@ -288,8 +288,9 @@ Page({
     wx.setStorageSync(storageKey.STORE_BUY_GOODS, submitData)
     //总价格
     wx.setStorageSync(storageKey.STORE_BUY_TOTAL_PRICE, totlaPrice)
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../order_create/order_create'
+
     })
   }
 })  

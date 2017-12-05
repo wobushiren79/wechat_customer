@@ -1,2 +1,11 @@
 <!--pages/test/test.wxml-->
-<text>pages/test/test.wxml</text>
+<view>
+  <view>
+    <map id="map" show-location style="width: 100%; height: 500px;">
+    </map>
+  </view>
+
+  <view>
+  <text>sdfasdf</text>
+  </view>
+</view>

@@ -6,13 +6,18 @@ var content;
 var storeId;
 var storeUserId;
 var goodsClassId;
-var consultantId;
+
 Page({
   data: {
     tab_bd_title: 1,
     tab_hd: 1
   },
-
+  bind_label: function (e) {
+    console.log(e.target.dataset.tab_hd)
+    this.setData({
+      label: e.target.dataset.label
+    })
+  },
   bind_tab_hd: function (e) {
     console.log(e.target.dataset.tab_hd)
     this.setData({
@@ -22,7 +27,7 @@ Page({
     if (e.target.dataset.tab_hd == 1) {
       content.getStoreGoodsClass(storeId);
     } else if (e.target.dataset.tab_hd == 2) {
-      content.getEvaluationList(consultantId)
+      content.getEvaluationList(storeUserId)
     }
   },
 
@@ -39,13 +44,12 @@ Page({
     content = this;
     pageUtil.initData();
     storeId = evet.storeId;
-    storeUserId=evet.storeUserId;
-    consultantId = evet.consultantId;
+    storeUserId = evet.storeUserId;
     content.getStoreInfo(evet.storeId);
     content.getStoreGoodsClass(evet.storeId);
     content.setData({
       storeId: evet.storeId,
-      storeUserId:evet.storeUserId
+      storeUserId: evet.storeUserId
     })
     console.log(evet.storeId)
   },
@@ -90,7 +94,8 @@ Page({
     var storeGoodsClassCallBack = {
       success: function (data, res) {
         content.setData({
-          listGoodsClass: data
+          listGoodsClass: data,
+          tab_bd_title: data[0].id
         })
         if (data[0]) {
           content.goodsClassId = data[0].id
@@ -137,9 +142,16 @@ Page({
 
     var evaluationListCallBack = pageUtil.getPageCallBack(
       function (data, res, isLast) {
-          content.setData({
-            evaluationList: data
-          })
+        for (var i = 0; i < data.length; i++) {
+          var picList = data[i].evaluationPicture.split(",");
+          for (var j = 0; j < picList.length; j++) {
+            picList[j] = getApp().globalData.QiniuFilePathPrefix + picList[j];
+          }
+          data[i].picList = picList
+        }
+        content.setData({
+          evaluationList: data
+        })
       },
       function (data, res) {
 

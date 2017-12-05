@@ -26,6 +26,7 @@ Page({
   getListData: function () {
     var getListCallBack = {
       success: function (data, res) {
+        console.log("callBackData:"+data);
         content.setListData(data);
       },
       fail: function (data, res) {
@@ -90,6 +91,7 @@ Page({
    * marker点击事件
    */
   markertap(e) {
+    console.log("test:" + e.markerId);
     var array = e.markerId
     this.setData(
       {

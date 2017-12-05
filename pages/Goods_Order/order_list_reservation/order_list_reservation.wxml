@@ -14,6 +14,9 @@
       <view>
         <navigator url="../order_list_finish/order_list_finish" open-type="redirect">已服务</navigator>
       </view>
+      <view>
+        <navigator url="../order_list_close/order_list_close" open-type="redirect">已关闭</navigator>
+      </view>
     </view>
     <!-- 列表 -->
     <block wx:for="{{listdata}}">
@@ -74,12 +77,9 @@
             </navigator>
             <view class="li_footer">
               <view class="header">
-                <view bindtap="tel" data-tel="{{item.customer_phone}}">
-                  <image src="../../../images/icon_call_phone.png"></image>联系客户
-                </view>
+              
               </view>
               <view class="footer">
-                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>确认定单</text>
               </view>
             </view>
           </view>

@@ -10,6 +10,10 @@ var listData = new Array();
  * 初始化数据
  */
 function initData() {
+  pageData={
+    pageSize: pageSizeValue,
+    pageNumber: 1
+  }
   listData = new Array();
   onePage();
 }

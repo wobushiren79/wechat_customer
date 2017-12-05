@@ -9,13 +9,13 @@
         <navigator url="../order_list_reservation/order_list_reservation" open-type="redirect">已预订</navigator>
       </view>
       <view>
-        <navigator url="../order_list_processing/order_list_processing" class="active" open-type="redirect">服务中</navigator>
+        <navigator url="../order_list_processing/order_list_processing" open-type="redirect">服务中</navigator>
       </view>
       <view>
         <navigator url="../order_list_finish/order_list_finish" open-type="redirect">已服务</navigator>
       </view>
       <view>
-        <navigator url="../order_list_close/order_list_close" open-type="redirect">已关闭</navigator>
+        <navigator url="../order_list_close/order_list_close" open-type="redirect" class="active">已关闭</navigator>
       </view>
     </view>
     <!-- 列表 -->
@@ -42,7 +42,7 @@
                   服务对象：
                 </view>
                 <view class="body">
-                 {{item.customer_name}}
+                  {{item.customer_name}}
                 </view>
               </view>
               <view>
@@ -61,29 +61,15 @@
                   {{item.book_time}}
                 </view>
               </view>
-              <view class='active'>
-                <view class="header">
-                  付款状态：
-                </view>
-                <view class="body">
-                   <block wx:if="{{item.payment_status == 0}}">
-                    <text >客户未付款</text>
-                 </block>
-                  <block wx:elif="{{item.payment_status == 1}}">
-                     <text >客户已付款</text>
-                 </block>
-                </view>
-              </view>
             </navigator>
             <view class="li_footer">
               <view class="header">
-             
               </view>
               <view class="footer">
+                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>评价</text>
               </view>
             </view>
           </view>
-
         </view>
       </view>
     </block>

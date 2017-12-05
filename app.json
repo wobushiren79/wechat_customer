@@ -10,6 +10,7 @@
     "pages/Goods_Order/order_list_finish/order_list_finish",
     "pages/Goods_Order/order_list_processing/order_list_processing",
     "pages/Goods_Order/order_list_reservation/order_list_reservation",
+    "pages/Goods_Order/order_list_close/order_list_close",
     "pages/Goods_Order/order_details/order_details",
     "pages/Goods_Order/order_create/order_create",
     "pages/Goods_Order/order_goods_content/order_goods_content",

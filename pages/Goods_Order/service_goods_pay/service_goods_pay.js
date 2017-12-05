@@ -117,7 +117,7 @@ Page({
       success: function (e) {
         var wechatPayRequest = {
           orderId: orderId,
-          total_fee: content.data.showTotalPrice,
+          total_fee: content.data.showTotalPrice*100,
           code: e.code
         }
         var wechatPayCallBack = {

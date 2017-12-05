@@ -61,7 +61,7 @@
     <view class='tab_bd'>
 
       <!-- 商品 -->
-      <view class="tab_bd_item {{tab_hd == 1?'active':''}}" data-tab_hd="1">
+      <view class="tab_bd_item tab_bd_item1 {{tab_hd == 1?'active':''}}">
         <scroll-view scroll-x="true" class='tab_bd_title'>
           <block wx:for="{{listGoodsClass}}">
             <view class="{{tab_bd_title == item.id?'active':''}}" data-tab_bd_title="{{item.id}}" bindtap="bingd_tab_bd_title">{{item.name}}</view>
@@ -78,6 +78,7 @@
                   </view>
                   <view>
                     <text>{{item.name}}</text>
+                    <text class='aui-ellipsis-1 '>{{item.goods_slogan}}</text>
                   </view>
                   <view class='num'>￥
                     <text>{{item.total}}</text>
@@ -90,41 +91,62 @@
       </view>
 
       <!-- 评论 -->
-      <view class="tab_bd_item {{tab_hd == 2?'active':''}}" data-tab_hd="1">
+      <view class="tab_bd_item tab_bd_item2 {{tab_hd == 2?'active':''}}">
+        <view class='tab_bd_title'>
+          <view class='num_wrap'>
+            <text class='num'>4.8</text>
+            <text class='name'>门店评价</text>
+          </view>
+          <view class='label_wrap'>
+            <view class="label {{label == 1?'active':''}}" bindtap='bind_label' data-label='1'>
+              全部(200)
+            </view>
+            <view class="label {{label == 2?'active':''}}" bindtap='bind_label' data-label='2'>
+              有图评价(150)
+            </view>
+            <view class="label {{label == 3?'active':''}}" bindtap='bind_label' data-label='3'>
+              好评(200)
+            </view>
+            <view class="label {{label == 4?'active':''}}" bindtap='bind_label' data-label='4'>
+              更多
+            </view>
+          </view>
+        </view>
 
-        <view class="weui-panel weui-panel_access">
-
-          <block wx:for="{{evaluationList}}">
-            <view class="weui-panel__hd"></view>
-            <view class="weui-panel__bd">
-              <view class="weui-media-box weui-media-box_appmsg">
-                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                  <image class="weui-media-box__thumb" src="../../../images/dog_chang.jpg" />
-                </view>
-                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                  <view class="weui-media-box__title">{{item.appraiserName}}</view>
-                  <view class="weui-media-box__desc">
-                    <!-- 评分 -->
+        <view class='tab_bd_list'>
+          <view class='ul'>
+            <block wx:for="{{evaluationList}}">
+              <view class='li'>
+                <view class='li_hd'>
+                  <view class='info'>
+                    <image src='../../../images/dog_chang.jpg'></image>
+                    <text>{{item.appraiserName}}</text>
+                  </view>
+                  <view class='other'>
+                    <view class='time'>{{item.createdAt}}</view>
                     <view class='star'>
-                      <image src='../../../images/mystroe_index_name.png' mode='widthFix'></image>
-                      <image src='../../../images/mystroe_index_name.png' mode='widthFix'></image>
-                      <text>{{item.createdAt}}</text>
-                    </view>
-                    <!-- 评论文字 -->
-                    <view class='text'>
-                     {{item.evaluationContent}}
+                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
+                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
+                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
+                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
+                      <image src='../../../images/mystroe_index_star0.png' mode='widthFix'></image>
                     </view>
                   </view>
                 </view>
+                <view class='li_bd'>
+                  <view class='text'>
+                    <text>{{item.evaluationContent}}</text>
+                  </view>
+
+                  <view class='img'>
+                    <block wx:for="{{item.picList}}" wx:for-item="jtem">
+                      <image src='{{jtem}}'></image>
+                    </block>
+                  </view>
+                </view>
               </view>
-            </view>
-            <!-- <view class="weui-panel__ft">
-            <view class="weui-cell weui-cell_access weui-cell_link">
-              <view class="weui-cell__bd">查看更多</view>
-              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </view>
-          </view> -->
-          </block>
+            </block>
+          </view>
         </view>
       </view>
     </view>

@@ -28,7 +28,7 @@ Page({
     formData = wx.getStorageSync(storageKey.STORE_BUY_GOODS);
     var goodsnumber = 0;
     var specPrice = 0;
-    var adviserPrice=0;
+    var adviserPrice = 0;
     var goodsClassNameList = content.getGoodsClassNameList();
 
     for (var i in formData) {
@@ -134,6 +134,7 @@ Page({
       goodsOrder.customerPhone = kehu.contactPhone
       goodsOrder.storeId = formData[0].storeId
       goodsOrder.storeUserId = formData[0].storeUserId
+      goodsOrder.orderStatus = 1
       // goodsOrder.test = 1111111111111111111
       //是否职业顾问
       // wx.getStorage({
@@ -380,7 +381,7 @@ Page({
       var createOrderCallBack = {
         success: function (data, res) {
           wx.redirectTo({
-            url: '../order_confirm/order_confirm?orderId=' + res.data.content.orderId
+            url: '../service_goods_pay/service_goods_pay?orderId=' + res.data.content.orderId
           })
         },
         fail: function (data, res) {
@@ -399,7 +400,7 @@ Page({
     // console.log(orderdata)
   },
   price: function () {
-   
-   
+
+
   },
 });

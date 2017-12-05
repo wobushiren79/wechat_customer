@@ -31,7 +31,7 @@ Page({
   getListData: function () {
     var pageData = pageUtil.getPageData();
     pageData.content = {};
-    pageData.content.orderStatus = [1, 2, 3];
+    pageData.content.orderStatus = [ 2, 3];
     var pageCallBack = pageUtil.getPageCallBack(
       function getDataSuccess(data, res, isLast) {
         content.setData({

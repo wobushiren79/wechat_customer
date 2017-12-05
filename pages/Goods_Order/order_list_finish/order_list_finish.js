@@ -31,7 +31,7 @@ Page({
   getListData: function () {
     var pageData = pageUtil.getPageData();
     pageData.content = {};
-    pageData.content.orderStatus = [10];
+    pageData.content.orderStatus = [4];
     var pageCallBack = pageUtil.getPageCallBack(
       function getDataSuccess(data, res, isLast) {
         content.setData({
@@ -59,8 +59,8 @@ Page({
    */
   orsers: function (e) {
     var orderId = e.target.dataset.orderid
-    wx.navigateTo({
-      url: '../service_goods_pay/service_goods_pay?orderId=' + orderId,
-    })
+    // wx.navigateTo({
+    //   url: '../service_goods_pay/service_goods_pay?orderId=' + orderId,
+    // })
   }
 });

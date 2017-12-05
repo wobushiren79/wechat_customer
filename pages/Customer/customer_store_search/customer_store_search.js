@@ -18,6 +18,8 @@ Page({
    */
   onLoad: function (options) {
     content = this;
+    pageUtil.initData();
+    content.startSearch(null);
   },
 
   /**
@@ -33,7 +35,6 @@ Page({
   onShow: function () {
 
   },
-
   //下拉刷新页面
   onPullDownRefresh: function () {
     pageUtil.initData();
@@ -49,18 +50,25 @@ Page({
    */
   startSearch: function (searchData) {
     var storesSearchRequest = pageUtil.getPageData();
-    if (searchData) {
+    if (searchData&&searchData.length>0) {
       storesSearchRequest.search = searchData;
     }
     var storesSearchCallBack = pageUtil.getPageCallBack(
       function (data, res, isLast) {
-
+        content.setData({
+          listStore: data
+        })
       },
       function (data, res) {
 
       }
     );
     goodsPHPHttp.storesSearch(storesSearchRequest, storesSearchCallBack)
-  }
+  },
 
+   bindconfirm:function(e){
+     var searchData = e.detail.value
+     pageUtil.initData();
+     content.startSearch(searchData);
+   }
 })
