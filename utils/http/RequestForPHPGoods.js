@@ -48,7 +48,7 @@ function findGoodsInfo(data, callback) {
  * 微信支付
  */
 function wechatPay(data,callback){
-  baseRequest.sendPostHttpForForm(baseUrl + "Weixing/token_code", data, callback, true)
+  baseRequest.sendPostHttpForForm(baseUrl + "api/Weixing/Ctoken", data, callback, true)
 }
 
 /**

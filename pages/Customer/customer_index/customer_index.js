@@ -40,6 +40,9 @@ Page({
     content.getStoreGoods(storeId, content.goodsClassId);
   },
 
+  onShow: function () {
+    content.getUserStarts();
+  },
   onLoad: function (evet) {
     content = this;
     pageUtil.initData();
@@ -148,6 +151,16 @@ Page({
             picList[j] = getApp().globalData.QiniuFilePathPrefix + picList[j];
           }
           data[i].picList = picList
+          var tempMark = Math.floor(parseFloat(data[i].evaluationMark) / 2);
+          data[i].starts = new Array();
+          for (var y = 0; y < 5; y++) {
+            if (y < tempMark) {
+              data[i].starts.push(2);
+            } else {
+              data[i].starts.push(0);
+            }
+          }
+
         }
         content.setData({
           evaluationList: data
@@ -157,5 +170,43 @@ Page({
 
       })
     platformHttp.findEvaluationListByUserId(evaluationListRequest, evaluationListCallBack);
+  },
+
+  /**
+   * 查询用户星级
+   */
+  getUserStarts: function () {
+    var findUserStartsRequest = {
+      userId: storeUserId
+    };
+    var findUserStartsCallBack = {
+      success: function (data, res) {
+        var starts = Math.floor(parseFloat(data.startsAve) / 2);
+        content.setData({
+          user_scoring: data.startsAve,
+          user_starts: starts + "星"
+
+        })
+      },
+      fail: function (data, res) {
+
+      }
+    }
+    platformHttp.findUserStarts(findUserStartsRequest, findUserStartsCallBack);
   }
+
+
+  //     wx.getLocation({
+  //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+  //   success: function (res) {
+  //     console.log(res)
+  //     var latitude = res.latitude;
+  //     var longitude = res.longitude;
+  //     wx.openLocation({
+  //       latitude: latitude,
+  //       longitude: longitude,
+  //       scale: 1
+  //     })
+  //   }
+  // });
 })

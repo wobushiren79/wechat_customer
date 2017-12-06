@@ -4,6 +4,7 @@ var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
 var toastUtil = require('../../../utils/ToastUtil.js')
 var content;
 var orderId;
+var payInfo;
 //获取应用实例
 var QR = require("../../../utils/qrcode.js");
 var util = require('../../../utils/util.js')
@@ -122,7 +123,8 @@ Page({
         }
         var wechatPayCallBack = {
           success: function (data, res) {
-            content.relationGoodsAndWechatPay(orderId, data.out_trade_no);
+            payInfo=res.data.list
+            content.relationGoodsAndWechatPay(orderId, res.data.out_trade_no);
           },
           fail: function (data, res) {
             toastUtil.showToast(data);
@@ -139,18 +141,18 @@ Page({
    */
   relationGoodsAndWechatPay: function (orderId, outTradeNo) {
     var updateOutTradeNoRequest = {
-      orderId: this.orderId,
-      outTradeNo: this.outTradeNo
+      orderId: orderId,
+      outTradeNo: outTradeNo
     }
 
     var updateOutTradeNoCallBack = {
       success: function (data, res) {
         wx.requestPayment({
-          'timeStamp': '' + res.data.list.timeStamp + '',
-          'nonceStr': res.data.list.nonceStr,
-          'package': res.data.list.package,
-          'signType': res.data.list.signType,
-          'paySign': res.data.list.paySign,
+          'timeStamp': '' + payInfo.timeStamp + '',
+          'nonceStr': payInfo.nonceStr,
+          'package': payInfo.package,
+          'signType': payInfo.signType,
+          'paySign': payInfo.paySign,
           'success': function (res) {
             if (res.errMsg == 'requestPayment:ok') {
               wx.redirectTo({

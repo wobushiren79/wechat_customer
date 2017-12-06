@@ -18,7 +18,7 @@
           </view>
           <view class='num'>
             <image src='../../../images/mystroe_index_num.png' mode='widthFix'></image>顾问星级：
-            <text>五星</text>
+            <text>{{user_starts}}</text>
           </view>
         </view>
 
@@ -40,7 +40,7 @@
           <text class=' aui-ellipsis-1'>{{shop_location}}</text>
         </view>
 
-        <view class='btn'>
+        <view class='btn' bindtap="navigationLocation">
           导航
         </view>
         <!-- <image class='dashed' src='../../../images/mystroe_index_dashed.png' mode='widthFix'></image> -->
@@ -55,7 +55,7 @@
         <text data-tab_hd="1" bindtap="bind_tab_hd">商品</text>
       </view>
       <view class="{{tab_hd == 2?'active':''}}">
-        <text data-tab_hd="2" bindtap="bind_tab_hd">评价(4.8)</text>
+        <text data-tab_hd="2" bindtap="bind_tab_hd">评价({{user_scoring}})</text>
       </view>
     </view>
     <view class='tab_bd'>
@@ -94,7 +94,7 @@
       <view class="tab_bd_item tab_bd_item2 {{tab_hd == 2?'active':''}}">
         <view class='tab_bd_title'>
           <view class='num_wrap'>
-            <text class='num'>4.8</text>
+            <text class='num'>{{user_scoring}}</text>
             <text class='name'>门店评价</text>
           </view>
           <view class='label_wrap'>
@@ -125,11 +125,14 @@
                   <view class='other'>
                     <view class='time'>{{item.createdAt}}</view>
                     <view class='star'>
-                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
-                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
-                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
-                      <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
-                      <image src='../../../images/mystroe_index_star0.png' mode='widthFix'></image>
+                      <block wx:for="{{item.starts}}" wx:for-item="jtem">
+                        <block wx:if="{{jtem==2}}">
+                          <image src='../../../images/mystroe_index_star1.png' mode='widthFix'></image>
+                        </block>
+                        <block wx:elif="{{jtem==0}}">
+                          <image src='../../../images/mystroe_index_star0.png' mode='widthFix'></image>
+                        </block>
+                      </block>
                     </view>
                   </view>
                 </view>
