@@ -98,18 +98,11 @@
             <text class='name'>门店评价</text>
           </view>
           <view class='label_wrap'>
-            <view class="label {{label == 1?'active':''}}" bindtap='bind_label' data-label='1'>
-              全部(200)
-            </view>
-            <view class="label {{label == 2?'active':''}}" bindtap='bind_label' data-label='2'>
-              有图评价(150)
-            </view>
-            <view class="label {{label == 3?'active':''}}" bindtap='bind_label' data-label='3'>
-              好评(200)
-            </view>
-            <view class="label {{label == 4?'active':''}}" bindtap='bind_label' data-label='4'>
-              更多
-            </view>
+            <block wx:for="{{labelList}}">
+              <view class="label {{label == item.id?'active':''}}" bindtap='bind_label' data-label='{{item.id}}'>
+                {{item.name}}({{item.total}})
+              </view>
+            </block>
           </view>
         </view>
 

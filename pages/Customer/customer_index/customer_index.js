@@ -13,10 +13,11 @@ Page({
     tab_hd: 1
   },
   bind_label: function (e) {
-    console.log(e.target.dataset.tab_hd)
     this.setData({
       label: e.target.dataset.label
     })
+    pageUtil.initData();
+    content.getEvaluationList(storeUserId, e.target.dataset.label)
   },
   bind_tab_hd: function (e) {
     console.log(e.target.dataset.tab_hd)
@@ -27,7 +28,9 @@ Page({
     if (e.target.dataset.tab_hd == 1) {
       content.getStoreGoodsClass(storeId);
     } else if (e.target.dataset.tab_hd == 2) {
-      content.getEvaluationList(storeUserId)
+      pageUtil.initData();
+      content.getListByEvaluateTag();
+      content.getEvaluationList(storeUserId,null)
     }
   },
 
@@ -77,7 +80,9 @@ Page({
           shop_name: data.shop_name,
           consultant_name: data.consultant_name,
           consultant_tel: data.consultant_tel,
-          shop_location: data.shop_location
+          shop_location: data.shop_location,
+          shop_latitude: data.shop_latitude,
+          shop_longitude: data.shop_longitude
         })
       },
       fail: function (data, res) {
@@ -139,17 +144,22 @@ Page({
   /**
    * 获取评价列表
    */
-  getEvaluationList: function (evaluationId) {
+  getEvaluationList: function (evaluationId, tagId) {
     var evaluationListRequest = pageUtil.getPageData();
-    evaluationListRequest.params = { evaluationId: evaluationId };
-
+    evaluationListRequest.params = {
+      evaluationId: evaluationId,
+      tagId: tagId
+    };
     var evaluationListCallBack = pageUtil.getPageCallBack(
       function (data, res, isLast) {
         for (var i = 0; i < data.length; i++) {
-          var picList = data[i].evaluationPicture.split(",");
-          for (var j = 0; j < picList.length; j++) {
-            picList[j] = getApp().globalData.QiniuFilePathPrefix + picList[j];
+          if (data[i].evaluationPicture!=null){
+            var picList = data[i].evaluationPicture.split(",");
+            for (var j = 0; j < picList.length; j++) {
+              picList[j] = getApp().globalData.QiniuFilePathPrefix + picList[j];
+            }
           }
+      
           data[i].picList = picList
           var tempMark = Math.floor(parseFloat(data[i].evaluationMark) / 2);
           data[i].starts = new Array();
@@ -193,20 +203,53 @@ Page({
       }
     }
     platformHttp.findUserStarts(findUserStartsRequest, findUserStartsCallBack);
+  },
+
+  /**
+   * 获取标签列表
+   */
+  getListByEvaluateTag: function () {
+    var evaluateTagRequest = {
+      tagType: 'evaluate',
+      evaluateUserId: parseInt(storeUserId)
+    }
+    var evaluateTagCallBack = {
+      success: function (data, res) {
+        content.setData({
+          labelList: data
+        })
+      },
+      fail: function (data, res) {
+
+      }
+    }
+    platformHttp.findListByEvaluateTag(evaluateTagRequest, evaluateTagCallBack);
+  },
+
+  /**
+   * 导航
+   */
+  navigationLocation: function (e) {
+    // wx.getLocation({
+    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+    //   success: function (res) {
+    //     console.log(res)
+    //     var latitude = res.latitude;
+    //     var longitude = res.longitude;
+    //     wx.openLocation({
+    //       latitude: latitude,
+    //       longitude: longitude,
+    //       scale: 1
+    //     })
+    //   }
+    // });
+    var latitude = content.data.shop_latitude;
+    var longitude = content.data.shop_longitude;
+    wx.openLocation({
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+      scale: 1
+    })
   }
 
-
-  //     wx.getLocation({
-  //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-  //   success: function (res) {
-  //     console.log(res)
-  //     var latitude = res.latitude;
-  //     var longitude = res.longitude;
-  //     wx.openLocation({
-  //       latitude: latitude,
-  //       longitude: longitude,
-  //       scale: 1
-  //     })
-  //   }
-  // });
 })

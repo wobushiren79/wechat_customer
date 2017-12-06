@@ -7,6 +7,15 @@ Page({
 
   onLoad: function () {
     content = this;
+    
+    wx.getLocation({
+      success: function (res) {
+        content.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+      }
+    })
     this.getListData()
   },
 
@@ -143,10 +152,22 @@ Page({
       url: navigateUrl
     })
   },
-  /**
-   * 定位
-   */
-  moveToLocation: function () {
-    this.mapCtx.moveToLocation()
+  bind_address: function () {
+    var that = this
+    wx.chooseLocation({
+      success: function (res) {
+        var Address = res.address
+        var latitude = res.latitude
+        var longitude = res.longitude
+        that.setData({
+          latitude: latitude,
+          longitude: longitude,
+        })
+      }
+    })
   },
+  bind_location: function () {
+    var that = this
+    that.onLoad()
+  }
 })

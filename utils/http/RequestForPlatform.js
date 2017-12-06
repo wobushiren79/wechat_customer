@@ -59,6 +59,14 @@ function findUserStarts(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/advisorservice/findByUserId", data, callback)
 }
 
+/**
+ * 查询评价标签
+ */
+function findListByEvaluateTag(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/tags/listByEvaluateTag", data, callback)
+}
+
+
 
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
@@ -68,3 +76,4 @@ module.exports.findEvaluationListByUserId = findEvaluationListByUserId;
 module.exports.sendVerificationCode = sendVerificationCode;
 module.exports.queryTagsListByType = queryTagsListByType;
 module.exports.findUserStarts = findUserStarts;
+module.exports.findListByEvaluateTag = findListByEvaluateTag;

@@ -44,10 +44,13 @@ App({
     ByUrl: "https://t-cemetery-api.shianlife.cn/shianlife-adviser-1.0-SNAPSHOT/",
     GmUrl: "https://t-cemetery-api.shianlife.cn/shianlife-advisor-cemetery-1.0-SNAPSHOT/",
     // GmUrl:"http://192.168.0.37:8088/app/",
-    PHPGoodsUrl: "http://192.168.0.54/shian_goods/",
-    PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
-    JavaGoodsUrl: "http://192.168.0.59:8080/goods/",
-    JavaPlatformUrl: "http://192.168.0.59:8099/ki4so-web/",
+    // PHPGoodsUrl: "http://192.168.0.54/shian_goods/",
+    // PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
+
+    PHPGoodsUrl: "https://goodsmgr.e-funeral.cn/",
+    PHPGoodsPicUrl: "https://goodsmgr.e-funeral.cn/Public/Uploads/",
+    JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
+    JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
     // JavaGoodsUrl:"https://goods.shianlife.cn/",
     // JavaPlatformUrl:"https://platform.shianlife.cn/"
     QiniuFilePathPrefix:"http://oq6rkq859.bkt.clouddn.com/",
