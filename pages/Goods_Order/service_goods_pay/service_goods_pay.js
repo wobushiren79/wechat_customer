@@ -191,8 +191,10 @@ Page({
     var findGoodsOrderCallBack = {
       success: function (data, res) {
         content.setData({
-          showTotalPrice: data.showTotalPrice / 100,
-          totalPrice: data.totalPrice / 100,
+          // showTotalPrice: data.showTotalPrice / 100,
+          showTotalPrice: data.orderPrice / 100,
+          // totalPrice: data.totalPrice / 100,
+          totalPrice: data.orderPrice / 100,
           orderNumber: data.orderNumber,
           orderId: orderId
         })

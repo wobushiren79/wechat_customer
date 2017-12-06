@@ -62,11 +62,11 @@ contact-button{
   box-sizing: border-box;
   padding: 40rpx;
 }
-.info_wrap.hidden{
-   display: none; 
+.hidden{
+   display: none!important; 
 }
-.info_wrap.show{
-  display: block;
+.show{
+  display: flex!important;
 }
 .info .info_img{
   width: 140rpx;
@@ -102,7 +102,8 @@ contact-button{
 
 .header{
   height: 100rpx;
-  position: relative
+  position: relative;
+  /* display: none; */
 }
 .header navigator{
     position: absolute;
@@ -127,4 +128,12 @@ contact-button{
 /* 更多 */
 .more{
   right: 20rpx;
+}
+
+.center{
+  width: 40rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
