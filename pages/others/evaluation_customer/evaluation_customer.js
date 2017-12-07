@@ -76,7 +76,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-	  this.queryTagsList();  
+	  var methodFunc = this;
+	  var tagLoadStatusVal=methodFunc.data.tagLoadStatus;
+	  if (!tagLoadStatusVal) {
+		  methodFunc.queryTagsList();
+	  }  
   },
 
   /**
@@ -126,7 +130,7 @@ Page({
 				  if (imgIndex > 0) {
 					  msg = '部分'.concat(msg);
 				  }
-				  toastUtil.showToast(msg);
+				  toastUtil.showToastReWrite(msg, 'icon_info');
 				  methodFunc.setData({
 					  uploadFileStatus: false
 				  });
@@ -152,7 +156,7 @@ Page({
 			  if (imgIndex > 0) {
 				  msg = '部分'.concat(msg);
 			  }
-			  toastUtil.showToast(msg);
+			  toastUtil.showToastReWrite(msg, 'icon_info');
 			  methodFunc.setData({
 				  uploadFileStatus: false
 			  });
@@ -162,7 +166,7 @@ Page({
   },
   uploadImagesReady: function (tempFilePaths) {
 	  if (tempFilePaths == null || tempFilePaths.length == 0) {
-		  toastUtil.showToast('请重试');
+		  toastUtil.showToastReWrite('请重试', 'icon_info');
 	  }
 	  wx.showLoading({
 		  title: '图片上传中...',
@@ -182,10 +186,13 @@ Page({
 	  var objParams = {
 		  //   count:1,
 		  success: function (res) {
+			  methodFunc.setData({
+				  uploadFileStatus: true
+			  });
 			  methodFunc.uploadImagesReady(res.tempFilePaths);
 		  },
 		  fail: function (res) {
-			  toastUtil.showToast('没有选择图片');
+			  toastUtil.showToastReWrite('没有选择图片', 'icon_info');
 		  }
 	  };
 	  wx.chooseImage(objParams);
@@ -212,7 +219,7 @@ Page({
 	  var reqParams = e.detail.value;
 	  var markVal = this.data.evaluationMark;
 	  if (markVal ==0){
-		  toastUtil.showToastReWrite('未选择服务评分');
+		  toastUtil.showToastReWrite('未选择服务评分', 'icon_info');
 		  return;
 	  }
 	  reqParams.evaluationMark = markVal;
@@ -255,7 +262,7 @@ Page({
 		  },
 		  fail: function (dataContent, res) {
 			  wx.hideLoading();
-			  toastUtil.showToastReWrite('提交失败');
+			  toastUtil.showToastReWrite('提交失败', 'icon_info');
 		  }
 	  };
 	  wx.showLoading({
