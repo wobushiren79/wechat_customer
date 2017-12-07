@@ -62,11 +62,11 @@
                 </view>
               </view>
             </navigator>
-            <view class="li_footer">
+            <view class="li_footer" style='display:{{item.store_id!=null&& item.evaluation_id==null?"inner-display":"none"}}'>
               <view class="header">
               </view>
               <view class="footer">
-                <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>评价</text>
+                <text type="primary" bindtap='evaluation' class="btn" data-orderid='{{item.id}}' data-storeuserid='{{item.store_user_id}}' data-storename='{{item.store_name}}'>评价</text>
               </view>
             </view>
           </view>
