@@ -65,10 +65,10 @@ function sendBaseHttp(httpData, callback, isDialog) {
       respsoneSuccessDeal(res, callback);
     },
     fail: function (res) {
-      RespsoneFailDeal(res, callback);
+      respsoneFailDeal(res, callback);
     },
     complete: function (res) {
-      RespsoneCompleteDeal(res, callback);
+      respsoneCompleteDeal(res, callback);
     }
   })
 }
@@ -86,10 +86,10 @@ function sendBaseFileHttp(httpData, callback, isDialog) {
       respsoneSuccessDeal(res, callback);
     },
     fail: function (res) {
-      RespsoneFailDeal(res, callback);
+      respsoneFailDeal(res, callback);
     },
     complete: function (res) {
-      RespsoneCompleteDeal(res, callback);
+      respsoneCompleteDeal(res, callback);
     }
   })
 }
@@ -128,7 +128,7 @@ function respsoneSuccessDeal(res, callback) {
 /**
  *  请求失败结果处理
  */
-function RespsoneFailDeal(res, callback) {
+function respsoneFailDeal(res, callback) {
   wx.hideLoading()
   console.log("RespsoneFail");
   console.log(res);
@@ -139,7 +139,7 @@ function RespsoneFailDeal(res, callback) {
 /**
  *  请求完成结果处理
  */
-function RespsoneCompleteDeal(res, callback) {
+function respsoneCompleteDeal(res, callback) {
   // console.log("RespsoneComplete");
   // console.log(res);
   

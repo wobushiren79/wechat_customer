@@ -132,6 +132,8 @@ contact-button{
 
 .center{
   width: 40rpx;
+   height: 70rpx; 
+  line-height: 1;
   position: absolute;
   top: 50%;
   left: 50%;

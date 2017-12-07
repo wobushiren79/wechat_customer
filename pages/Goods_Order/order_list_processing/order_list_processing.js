@@ -51,8 +51,15 @@ Page({
     content.onShow()
   },
   //上拉添加记录条数
-  onReachBottom() {
+  onReachBottom: function () {
     content.getListData();
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '微信小程序联盟',
+      desc: '最具人气的小程序开发联盟!',
+      path: '/page/user?id=123'
+    }
   }
 
 });
