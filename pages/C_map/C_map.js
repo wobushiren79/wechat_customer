@@ -35,7 +35,6 @@ Page({
   getListData: function () {
     var getListCallBack = {
       success: function (data, res) {
-        console.log("callBackData:"+data);
         content.setListData(data);
       },
       fail: function (data, res) {
@@ -129,11 +128,19 @@ Page({
     );
   },
   bind_info_show(e) {
+    var mapcontent = wx.createMapContext("map")
+    mapcontent.getCenterLocation({
+      success: function (res) {
+        console.log(res.latitude)
+        console.log(res.longitude)
+      }
+    })
     this.setData(
       {
         maker: false
       }
     );
+    this.getListData()
   },
   /**
    * 客户电话
@@ -163,6 +170,7 @@ Page({
           latitude: latitude,
           longitude: longitude,
         })
+        this.getListData()
       }
     })
   },

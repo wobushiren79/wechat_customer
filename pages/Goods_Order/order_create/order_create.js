@@ -178,6 +178,8 @@ Page({
       }
       //顾问总金额
       var totalPrice = that.data.adviser_Price
+
+      goodsOrder.orderPrice = totla_price* 100
       goodsOrder.totalPrice = totalPrice * 100
       getdata.goodsOrder = goodsOrder
       // console.log(formData)

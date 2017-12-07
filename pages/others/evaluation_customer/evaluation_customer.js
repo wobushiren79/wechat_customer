@@ -13,17 +13,56 @@ Page({
 	  pagesPositionUrl: null,
 	  imageFiles: [],
 	  filePathPrefix: null,
-	  uploadFileStatus: true
+	  uploadFileStatus: true,
+	  extent_Set:[
+		  {index: 0, name: '好评', isChecked: true, img:"../../../images/love1.png"},
+		  {index: 1, name: '中评', isChecked: false, img:"../../../images/love0.png"},
+		  {index: 2, name: '差评', isChecked: false, img:"../../../images/love0.png"}
+	  ],
+	  extent: '好评',
+	  tag_Set:null,
+	  tagLoadStatus:false,
+	  evaluationUserId: null,
+	  orderId: null,
+	  storeName: null,
+	  mark_set: [],
+	  evaluationMark: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+	  var userIdVal =options.storeUserId;
+	  var orderIdVal =options.orderId;
+	  var storeNameVal = options.storeName;
+	  if (orderIdVal == null || userIdVal == null ||
+	   orderIdVal.length == 0 || userIdVal.length==0){
+		  toastUtil.showToastReWrite('参数有误', null, function () {
+			  setTimeout(function () {
+				  wx.navigateBack({
+					  delta: 1
+				  });
+			  }, 1000);
+		  });
+		  return;
+	  }
+	  userIdVal = parseInt(userIdVal);
+	  orderIdVal = parseInt(orderIdVal);
+	  if (storeNameVal == null || storeNameVal.length==0){
+		  storeNameVal ='--未定义--';
+	  }
+	  this.queryTagsList();
+	  var pagesPositionUrlObj = getApp().pagesPositionUrl;
 	  var filePathPrefixUrl = getApp().globalData.QiniuFilePathPrefix;
 	  this.setData({
-		  filePathPrefix: filePathPrefixUrl
+		  pagesPositionUrl: pagesPositionUrlObj,
+		  filePathPrefix: filePathPrefixUrl,
+		  evaluationUserId: userIdVal,
+		  orderId: orderIdVal,
+		  storeName: storeNameVal
 	  });
+	  this.markArrayStar(-1);
   },
 
   /**
@@ -37,7 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+	  this.queryTagsList();  
   },
 
   /**
@@ -98,10 +137,8 @@ Page({
 				  remoteFilePath: null
 			  };
 			  fileObj.remoteFilePath = respData.content.nameMap[fileNamePrefix];
-			  var tempImagesFilesArray = [];
-			  tempImagesFilesArray.push(fileObj);
 			  var chooseImages = methodFunc.data.imageFiles;
-			  chooseImages = chooseImages.concat(tempImagesFilesArray);
+			  chooseImages.push(fileObj);
 			  methodFunc.setData({
 				  imageFiles: chooseImages
 			  });
@@ -128,7 +165,8 @@ Page({
 		  toastUtil.showToast('请重试');
 	  }
 	  wx.showLoading({
-		  title: '图片上传中...'
+		  title: '图片上传中...',
+		  mask: true
 	  });
 	  var methodFunc = this;
 	  for (var i = 0; i < tempFilePaths.length; i++) {
@@ -170,18 +208,17 @@ Page({
 	  }, function () {
 	  });
   },
-  requireFormDataWire: function () {
-	  var requireFormData = [];
-	  requireFormData.push(formValideTool.formValideWireObj('evaluationContent', '内容，未填入'));
-	  return requireFormData;
-  },
   formData: function (e) {
-	  var formDataObj = e.detail.value;
-	  var requireFormData = this.requireFormDataWire();
-	  var isRealy = formValideTool.formValideRequireData(formDataObj, requireFormData);
-	  if (!isRealy) {
+	  var reqParams = e.detail.value;
+	  var markVal = this.data.evaluationMark;
+	  if (markVal ==0){
+		  toastUtil.showToastReWrite('未选择服务评分');
 		  return;
 	  }
+	  reqParams.evaluationMark = markVal;
+	  reqParams.extent = this.data.extent;
+	  reqParams.evaluationId=this.data.evaluationUserId;
+	  reqParams.orderId = this.data.orderId;
 	  var files = this.data.imageFiles;
 	  if (files.length > 0) {
 		  var filePathSpellStr = "";
@@ -192,24 +229,129 @@ Page({
 			  }
 			  filePathSpellStr += filePath.remoteFilePath;
 		  }
-		  formDataObj.evaluationPicture = filePathSpellStr;
+		  reqParams.evaluationPicture = filePathSpellStr;
+	  }
+	  var tags = this.data.tag_Set;
+	  if (tags !=null&& tags.length > 0) {
+		  var tagIds=[];
+		  for (var i = 0; i < tags.length; i++) {
+			  var obj = tags[i];
+			  if (obj.isSelected){
+				  tagIds.push(obj.id);
+			  }
+		  }
+		  reqParams.tagIds = tagIds;
 	  }
 	  var respObj = {
 		  success: function (dataContent, res) {
 			  wx.hideLoading();
-			  console.log(res);
-			  toastUtil.showToast('ok');
+			  toastUtil.showToastReWrite('提交成功', null, function () {
+				  setTimeout(function () {
+					  wx.navigateBack({
+						  delta: 1
+					  });
+				  }, 500);
+			  }, 'success');
 		  },
 		  fail: function (dataContent, res) {
 			  wx.hideLoading();
-			  console.log(res);
-			  toastUtil.showToast('no');
+			  toastUtil.showToastReWrite('提交失败');
 		  }
 	  };
-	  console.log(JSON.stringify(formDataObj));
 	  wx.showLoading({
-		  title: '提交中...'
+		  title: '提交中...',
+		  mask:true
 	  });
-	  platformUtil.submitEvaluation(formDataObj, respObj);
+	  platformUtil.submitEvaluation(reqParams, respObj);
+  },
+  extentArray: function (index){
+	  var extentItems = this.data.extent_Set;
+	  var extents=[];
+	  for (var i = 0; i < extentItems.length;i++){
+		  var item = extentItems[i];
+		  	item.isChecked = false;
+		  if (i == index){
+			  item.isChecked=true;			  
+		  }
+		  extents.push(item);
+	  }
+	  this.setData({
+		  extent_Set: extents
+	  });
+  },
+  extentChange: function (e) {
+	  var props = e.currentTarget.dataset;
+	  var indexVal = props.index;
+	  var extentVal = props.extent;
+	  this.extentArray(indexVal);
+	  this.setData({
+		  extent: extentVal
+	  });
+  },
+  queryTagsList: function () {
+	  var methodFunc = this;
+	  var reqParams={};
+	  reqParams.tagType ='evaluate';
+	  var respObj={
+		  success: function (dataContent, res) {
+			  if (dataContent == null || dataContent.length == 0){
+				  return;
+			  }
+			  methodFunc.setData({
+				  tagLoadStatus:true,
+				  tag_Set:dataContent
+			  });
+		  },
+		  fail: function (dataContent, res) {
+		  } 
+	  };
+	  platformUtil.queryTagsListByType(reqParams, respObj);
+  },
+  tagChange: function (e) {
+	  var props = e.currentTarget.dataset;
+	  var checkedIdVal = props.id;
+	  var tags = this.data.tag_Set;
+	  var tagArray=[];
+	  for (var i = 0; i < tags.length;i++){
+		  var obj = tags[i];
+		  if (obj.id == checkedIdVal && (obj.isSelected == null || !obj.isSelected)){
+			  obj.isSelected =true;
+		  } else if (obj.id == checkedIdVal && obj.isSelected){
+			  obj.isSelected = false;
+		  }
+		  tagArray.push(obj);
+	  }
+	  this.setData({
+		  tag_Set: tagArray
+	  });
+  },
+  markArrayStar:function(index){
+	  var grayStarSrc ="../../../images/mystroe_index_star0.png";
+	  var lightStarSrc = "../../../images/mystroe_index_star1.png";
+	  var starts=[];
+	  for(var i=0; i<5;i++){
+		  var starObj={};
+		  starObj.index=i;
+		  starObj.score=i*2+2;
+		  if (i <= index){
+			  starObj.star = lightStarSrc;
+			  starts.push(starObj);
+			  continue;
+		  }
+		  starObj.star = grayStarSrc;
+		  starts.push(starObj);
+	  }
+	  this.setData({
+		mark_set: starts
+	  });
+  },
+  markClickStar:function(e){
+	  var props=e.target.dataset;
+	  var indexVal = props.index;
+	  var scoreVal = parseInt(props.score);
+	  this.markArrayStar(indexVal);
+	  this.setData({
+		  evaluationMark: scoreVal
+	  });
   }
 })

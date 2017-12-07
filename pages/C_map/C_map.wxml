@@ -23,28 +23,29 @@
     </cover-image>
 
     <!-- 客服 -->
-    <cover-image src='../../images/map_take.png' mode="widthFix" class='take' bindtap='bind_phone'>
+    <cover-image src='../../images/map_take.png'  class='take' bindtap='bind_phone'>
     </cover-image>
 
     <!-- <cover-view  class='take_btn'>
       <contact-button size="20" session-from="WeChat">
       </contact-button>
     </cover-view> -->
+    <!-- 中心点 -->
+    <cover-image class='center ' src="../../images/map_center.png" ></cover-image>
 
 
 
     <!-- 预约 -->
     <cover-view class='server'>预约顾问</cover-view>
 
-    <!-- 门店简介 -->
-    <cover-view class='info_wrap {{maker?"show":"hidden"}}'>
-      <cover-view class='info ' bindtap='bind_go' data-url='{{info_url}}'>
-        <cover-image class='info_img' src='{{info_img}}'></cover-image>
-        <cover-view class='info_text'>
-          <cover-view class='info_stroe'>{{info_stroe}}</cover-view>
-          <cover-view class='info_name'>{{info_name}}</cover-view>
-          <cover-view class='info_address'>{{info_address}}</cover-view>
-        </cover-view>
+ <!-- 门店简介 -->
+
+    <cover-view class=' info {{maker? "show": "hidden"}} ' bindtap='bind_go' data-url='{{info_url}} '>
+      <cover-image class='info_img ' src="{{info_img}}"></cover-image>
+      <cover-view class='info_text '>
+        <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
+        <cover-view class='info_name '>{{info_name}}</cover-view>
+        <cover-view class='info_address '>{{info_address}}</cover-view>
       </cover-view>
     </cover-view>
 

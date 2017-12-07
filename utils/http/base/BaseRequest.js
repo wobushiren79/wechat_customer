@@ -1,5 +1,5 @@
 var baseHttp = require('BaseHttpDeal.js')
-var storageKey=require('../../storage/StorageKey.js');
+var storageKey = require('../../storage/StorageKey.js');
 
 //-------------------------------------------------------------------------------------------------------------------
 /**
@@ -60,7 +60,7 @@ function sendPostHttpForForm(url, data, callback, isDialog) {
   var cookies = wx.getStorageSync(baseUrl);
   var header = {
     "Cookie": cookies,
-    "content-type":"application/x-www-form-urlencoded"
+    "content-type": "application/x-www-form-urlencoded"
   };
   baseHttp.createPostHttpRequestForFormData(url, data, callback, header, isDialog);
 }
@@ -84,7 +84,7 @@ function sendPostHttpForContent(url, data, callback, isDialog) {
 /**
  * 发送post请求并封装成content
  */
-function sendFileHttpForContent(url, filePath,fileName, callback, isDialog) {
+function sendFileHttpForContent(url, filePath, fileName, callback, isDialog) {
   baseHttp.createFileHttpRequest(url, filePath, fileName, callback, null, isDialog);
 }
 
@@ -99,7 +99,8 @@ function getKi4soEc(res) {
     for (var i = 0; i < cookisarr.length; i++) {
       if (cookisarr[i].indexOf(storageKey.KI4SO_SERVER_EC) >= 0) {
         var temp = cookisarr[i].replace(" HttpOnly,", "");
-        var returnTemp = temp.replace(",rememberMe=deleteMe", "");
+        var tempRemember = temp.replace("rememberMe=deleteMe", "");
+        var returnTemp = tempRemember.replace(",", "").replace(" ","");
         return returnTemp;
       }
     }

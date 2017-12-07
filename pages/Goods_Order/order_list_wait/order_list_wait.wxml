@@ -32,7 +32,7 @@
               </view>
               <view class="footer">
                 ￥
-                <text>{{item.show_total_price/100}}</text>
+                <text>{{item.order_price/100}}</text>
               </view>
             </view>
             <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">

@@ -3,6 +3,7 @@ var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var content;
 Page({
   data: {
+      pagesPositionUrl: null
   },
   onReady: function () {
 
@@ -13,7 +14,10 @@ Page({
     content.getListData();
   },
   onLoad: function () {
-
+	  var pagesPositionUrlObj = getApp().pagesPositionUrl;
+	  this.setData({
+		  pagesPositionUrl: pagesPositionUrlObj
+	  });
   },
   tel: function (e) {
     var tel = e.currentTarget.dataset.tel
@@ -57,10 +61,17 @@ Page({
   /**
    * 付款
    */
-  orsers: function (e) {
-    var orderId = e.target.dataset.orderid
-    // wx.navigateTo({
-    //   url: '../service_goods_pay/service_goods_pay?orderId=' + orderId,
-    // })
+  evaluation: function (e) {
+	  var storeUserIdVal = e.target.dataset.storeuserid;
+	  var orderIdVal = e.target.dataset.orderid;
+	  var storeNameVal = e.target.dataset.storename;
+	  var url = content.data.pagesPositionUrl["evaluation_customer"];
+	  var params = "?storeUserId=".concat(storeUserIdVal);
+	  params += "&orderId=".concat(orderIdVal);
+	  params += "&storeName=".concat(storeNameVal);
+	  url = url.concat(params);
+     wx.navigateTo({
+		url: url,
+     });
   }
 });
