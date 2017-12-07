@@ -5,25 +5,25 @@
     <image src='../../images/map_me.png' mode="widthFix"></image>
   </navigator>
   <!-- 输入框 -->
-  <navigator  class='input' bindtap='bind_address'>
+  <navigator class='input' bindtap='bind_address'>
     <image src='../../images/index_search.png' mode="widthFix"></image>
   </navigator>
-  <!-- 更多 -->
-  <navigator url='../Customer/customer_store_search/customer_store_search' class='more'>
-    <image src='../../images/map_more.png' mode="widthFix"></image>
+  <!-- list -->
+  <navigator url='../Customer/customer_store_search/customer_store_search' class='list'>
+    <image src='../../images/map_list.png' mode="widthFix"></image>
   </navigator>
 </view>
 
 
 <view class='map_wrap'>
-  <map id="map" hidden='' longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='markertap'  bindregionchange="bind_info_show" show-location='true'>
+  <map id="map" hidden='' longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='markertap' bindregionchange="bind_info_show" show-location='true'>
     <!-- <cover-view> -->
     <!-- 定位 -->
     <cover-image src='../../images/map_address.png' mode="widthFix" class='address' bindtap='bind_location'>
     </cover-image>
 
-    <!-- 客服 -->
-    <cover-image src='../../images/map_take.png'  class='take' bindtap='bind_phone'>
+    <!-- 更多 -->
+    <cover-image src='../../images/map_more.png' mode="widthFix" class='more' bindtap=''>
     </cover-image>
 
     <!-- <cover-view  class='take_btn'>
@@ -31,15 +31,41 @@
       </contact-button>
     </cover-view> -->
     <!-- 中心点 -->
-    <cover-image class='center ' src="../../images/map_center.png" ></cover-image>
+    <cover-image class='center ' src="../../images/map_center.png"></cover-image>
 
 
 
-    <!-- 预约 -->
-    <cover-view class='server'>预约顾问</cover-view>
+   <!-- 预约 -->
+    <cover-view class='server' bindtap='bind_phone'>
+      <cover-view class='server_text'>
+        一键呼叫
+      </cover-view>
+    </cover-view>
 
- <!-- 门店简介 -->
-    <cover-view class=' info {{maker? "show": "hidden"}} ' bindtap='bind_go' data-url='{{info_url}} '>
+    <!-- 门店简介
+    <cover-view class=' info {{showDiv}} ' bindtap='bind_go' data-url='{{info_url}} '>
+      <cover-image class='info_img ' src="{{info_img}}"></cover-image>
+      <cover-view class='info_text '>
+        <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
+        <cover-view class='info_name '>{{info_name}}</cover-view>
+        <cover-view class='info_address '>{{info_address}}</cover-view>
+      </cover-view>
+    </cover-view>
+ -->
+
+    <!-- {{showDiv}} -->
+    <!-- <cover-view class='info' style='{{showDiv2}}' bindtap='bind_go' data-url='{{info_url}} '>
+      <cover-view class='info_text'>
+        <cover-view class='info_stroe {{showDiv}}'>xxx</cover-view>
+        <cover-view class='info_name {{showDiv}}'>fff</cover-view>
+        <cover-view class='info_address {{showDiv}}'>ccc</cover-view>
+      </cover-view>
+    </cover-view> -->
+
+    <!-- 门店简介  -->
+
+    <cover-view class='info' bindtap='bind_go' data-url='{{info_url}} ' wx:if="{{showDiv==1}}">
+
       <cover-image class='info_img ' src="{{info_img}}"></cover-image>
       <cover-view class='info_text '>
         <cover-view class='info_stroe '>{{info_stroe}}</cover-view>

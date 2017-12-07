@@ -101,6 +101,7 @@ Page({
     this.setData(
       {
         maker: true,
+        showDiv: 1,
         info_url: array[0],
         info_stroe: array[1],
         info_name: array[2],
@@ -116,6 +117,7 @@ Page({
     this.setData(
       {
         maker: true,
+        showDiv: 1,
         info_url: array[0],
         info_stroe: array[1],
         info_name: array[2],
@@ -133,7 +135,8 @@ Page({
     })
     this.setData(
       {
-        maker: false
+        maker: false,
+        showDiv: 0,
       }
     );
   },

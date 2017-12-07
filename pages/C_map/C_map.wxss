@@ -19,42 +19,40 @@ cover-view image{
 
 
 
-.take,
+.more,
 .phone,
 .me,
-.more,
+.list,
 .address,
 contact-button{
   position: absolute;
-  width: 80rpx;
-  height: 80rpx;
   border-radius: 50%;
 }
-/* 客服 */
-.take,
-contact-button{
-  right: 20rpx;
-  bottom: 150rpx;
+/* 更多 */
+.more{
+  overflow:  visible;
+  width: 130rpx;
+  height: 100rpx;
+  right: 0rpx;
+  bottom: 240rpx;
+  border-radius: 0;
 }
-contact-button{
-  position: absolute;
-  display: none;
-  opacity: 1;
-  /* z-index: 10; */
-}
+
 /* 电话 */
 .address{
-  left: 20rpx;
-  bottom: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
+  left: 4rpx;
+  bottom: 240rpx;
 }
 
 /* 门店信息 */
 .info{
   display: flex;
   position: absolute;
-  width: 710rpx;
+  width: 724rpx;
   left: 50%;
-  bottom: 150rpx;
+  bottom: 120rpx;
   transform: translateX(-50%);
   background: #ffffff;
    z-index: 999; 
@@ -89,11 +87,17 @@ contact-button{
 /* 预约顾问 */
 .server{
   position: absolute;
-  bottom: 150rpx;
+  bottom: 120rpx;
   left: 50%;
   transform: translate(-50%,0);
-  width: 500rpx;
-  padding: 20rpx 0;
+  width: 100%;
+  padding: 0 14rpx;
+  box-sizing: border-box;
+
+}
+.server .server_text{
+  display: block;
+  padding: 28rpx 0;
   text-align: center;
   background: #48cfad;
   color: #ffffff;
@@ -112,30 +116,32 @@ contact-button{
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 450rpx;
+  width: 520rpx;
 }
 .header .me,
-.header .more{
-  width: 60rpx;
+.header .list{
+  width: 70rpx;
   top: 50%;
   transform: translateY(-50%)
+}
+.header image{
+  display: block;
 }
 /* 我 */
 .me{
   left: 20rpx;
 }
 
-/* 更多 */
-.more{
+/* list */
+.list{
   right: 20rpx;
 }
 
 .center{
   width: 40rpx;
-   height: 70rpx; 
-  line-height: 1;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
 }
+
