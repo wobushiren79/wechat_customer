@@ -1,7 +1,8 @@
 
 Page({
     data:{
-      icon:"../../../images/dog.png"
+	    icon: "../../../images/dog.png",
+	    pagesPositionUrl: null
     },
   onLoad: function () {
     var that = this;
@@ -22,5 +23,9 @@ Page({
         console.log("获取用户信息完成！")
       }
     })
+    var pagesPositionUrlObj = getApp().pagesPositionUrl;
+    this.setData({
+	    pagesPositionUrl: pagesPositionUrlObj
+    });
   }
 });

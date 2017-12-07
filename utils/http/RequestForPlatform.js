@@ -66,8 +66,12 @@ function findListByEvaluateTag(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/tags/listByEvaluateTag", data, callback)
 }
 
-
-
+/**
+ * 通过系统枚举id查询公墓列表
+ */
+function queryCemeterySubsysListBySysEnumId(data, callback) {
+	baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemList", data, callback);
+}
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;
@@ -77,3 +81,4 @@ module.exports.sendVerificationCode = sendVerificationCode;
 module.exports.queryTagsListByType = queryTagsListByType;
 module.exports.findUserStarts = findUserStarts;
 module.exports.findListByEvaluateTag = findListByEvaluateTag;
+module.exports.queryCemeterySubsysListBySysEnumId = queryCemeterySubsysListBySysEnumId;

@@ -20,7 +20,13 @@ Page({
 	pagesPositionUrl: null,
 	imageFiles:[],
 	filePathPrefix:null,
-	uploadFileStatus:true
+	uploadFileStatus:true,
+	isSelectedAdviser:false,
+	isSelectedCemetery:false,
+	cemeterySubsys_Index:0,
+	cemeterySubsys_Set:null,
+	cemeterySubsysLoadStatus: false,
+	cemeteryName:null
   },
 
   /**
@@ -86,25 +92,60 @@ Page({
   /**
    * 类型选择
    */
-  complaintTypeChange: function(e){	  
+  complaintTypeChange: function (e) {
+	  var methodFunc = this;	  
 	  var selectIndex = parseInt(e.detail.value);
-	  var selectItem = this.data.complaintType_Set[selectIndex];
-	  this.setData({
+	  var selectItem = methodFunc.data.complaintType_Set[selectIndex];
+	  var selectIdVal = selectItem.id;
+	  var selectedAdviser = false;
+	  var selectedCemetery=false;
+	  var cemeteryLoadStatusVal = methodFunc.data.cemeterySubsysLoadStatus;
+	  if (selectIdVal == 3){
+		//   人员
+		  selectedAdviser = true;
+	  } else if (selectIdVal == 1){
+		//   公墓
+		  selectedCemetery = true;
+		  if (!cemeteryLoadStatusVal){
+			  methodFunc.queryCemeterySubsysList();
+		  }
+	  }
+	  methodFunc.setData({
 		  complaintType_SelectedIndex: selectIndex,
-		  complaintType: selectItem.id
+		  complaintType: selectIdVal,
+		  isSelectedAdviser: selectedAdviser,
+		  isSelectedCemetery: selectedCemetery
 	  });
   },
   requireFormDataWire: function(){
 	  var requireFormData = [];
-	  requireFormData.push(formValideTool.formValideWireObj('complaintType','类型，需要选择'));
-	  requireFormData.push(formValideTool.formValideWireObj('complaintObjcet', '名称，未填入'));
 	  requireFormData.push(formValideTool.formValideWireObj('complaintContent', '内容，未填入'));
 	  return requireFormData;
   },  
   formData: function (e) {
+	  var methodFunc = this;
 	  var formDataObj = e.detail.value;
-	  formDataObj.complaintType = this.data.complaintType;
-	  var requireFormData = this.requireFormDataWire();
+	  var cotype=methodFunc.data.complaintType;
+	  if (cotype == null || cotype ==0){
+		  toastUtil.showToastReWrite('未选择类目', 'icon_info');
+		  return;
+	  }
+	  formDataObj.complaintType = cotype;
+	  var requireFormData = methodFunc.requireFormDataWire();
+	  var complaintTypeIndexVal = methodFunc.data.complaintType_SelectedIndex;
+	  if (complaintTypeIndexVal == 3) {
+		  //   人员
+		  requireFormData.push(formValideTool.formValideWireObj('complaintObjcet', '姓名，未填入'));
+	  } else if (complaintTypeIndexVal == 1) {
+		  //   公墓
+		  var cename = methodFunc.data.cemeteryName;
+		 if (cename == null || cename.length==0){
+			 toastUtil.showToastReWrite('未选择公墓', 'icon_info');
+			 return;
+		 }else{
+			 formDataObj.remark = cename;
+		 }
+	  }
 	  var isRealy = formValideTool.formValideRequireData(formDataObj, requireFormData);
 	  if (!isRealy){
 		  return;
@@ -125,6 +166,7 @@ Page({
 		  }
 		  formDataObj.complaintPicture = filePathSpellStr;
 	  }
+
 	  var respObj={
 		  success: function (dataContent,res){
 			  wx.hideLoading();
@@ -138,12 +180,12 @@ Page({
 		  },
 		  fail: function (dataContent,res){
 			  wx.hideLoading();
-			  toastUtil.showToast('no');
+			  toastUtil.showToastReWrite('提交失败', 'icon_info');
 		  }
 	  };
-	  console.log(JSON.stringify(formDataObj));
 	  wx.showLoading({
-		  title: '提交中...'
+		  title: '提交中...',
+		  mask: true
 	  });
 	  platformUtil.submitComplaints(formDataObj, respObj);
   },
@@ -179,11 +221,9 @@ Page({
 				  tempFilePath: filePath,
 				  remoteFilePath: null
 			  };
-			  fileObj.remoteFilePath = respData.content.nameMap[fileNamePrefix];
-			  var tempImagesFilesArray = [];
-			  tempImagesFilesArray.push(fileObj);
+			  fileObj.remoteFilePath = respData.content.nameMap[fileNamePrefix];			
 			  var chooseImages = methodFunc.data.imageFiles;
-			  chooseImages = chooseImages.concat(tempImagesFilesArray);
+			  chooseImages.push(fileObj);
 			  methodFunc.setData({
 				  imageFiles: chooseImages
 			  });
@@ -210,7 +250,8 @@ Page({
 		  toastUtil.showToastReWrite('请重试', 'icon_info');
 	  }
 	  wx.showLoading({
-		  title: '图片上传中...'
+		  title: '图片上传中...',
+		  mask: true
 	  });
 	  var methodFunc = this;
 	  for (var i = 0; i < tempFilePaths.length; i++) {
@@ -226,6 +267,9 @@ Page({
 	  var objParams={
 		//   count:1,
 		  success:function(res){
+			  methodFunc.setData({
+				  uploadFileStatus: true
+			  });
 			  methodFunc.uploadImagesReady(res.tempFilePaths);
 		  },
 		  fail: function (res) {
@@ -242,5 +286,36 @@ Page({
 	  this.setData({
 		  imageFiles: files
 	  });
+  },
+  queryCemeterySubsysList: function () {
+	  var methodFunc = this;
+	  var reqParams = {}
+	  reqParams.systemIndex = 1;
+	  var respObj = {
+		  success: function (dataContent, res) {
+			  if (dataContent == null || dataContent.length == 0) {
+				  return;
+			  }
+			  methodFunc.setData({
+				  cemeterySubsysLoadStatus: true,
+				  cemeterySubsys_Set: dataContent
+			  });
+		  },
+		  fail: function (dataContent, res) {
+			  toastUtil.showToastReWrite('切换类目重试', 'icon_info');
+		  }
+	  };
+	  platformUtil.queryCemeterySubsysListBySysEnumId(reqParams, respObj);
+  },
+  cemeterySubsysChange: function (e) {
+	  var methodFunc = this;
+	  var selectIndex = parseInt(e.detail.value);
+	  var selectItem = methodFunc.data.cemeterySubsys_Set[selectIndex];
+	  var name = selectItem.name;
+	  name ='公墓名称：'.concat(name);
+	  methodFunc.setData({
+		  cemeterySubsys_Index: selectIndex,
+		  cemeteryName: name
+	  })
   }
 })
