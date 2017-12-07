@@ -13,6 +13,7 @@
     "pages/Goods_Order/order_list_close/order_list_close",
     "pages/Goods_Order/order_details/order_details",
     "pages/Goods_Order/order_create/order_create",
+    "pages/User/user_register/user_register",
     "pages/Goods_Order/order_goods_content/order_goods_content",
     "pages/Goods_Order/order_service_info/order_service_info",
     "pages/Goods_Order/order_service_invoice/order_service_invoice",

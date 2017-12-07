@@ -64,7 +64,7 @@ Page({
         }
       },
       fail: function (data, res) {
-        toastUtil.showToast("账号不正确")
+        toastUtil.showToast("账号或密码错误")
       }
     }
     platHttp.loginPlatform(loginPlatData, loginPlatCallBack)
