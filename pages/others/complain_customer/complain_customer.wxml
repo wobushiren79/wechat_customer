@@ -1,65 +1,59 @@
 <!--pages/others/complain_customer.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
-  <view class="page__bd clearfix">
-      <form id='formInfo' bindsubmit="formData">
-        <view class="goods_buy list ">
-          <view class="dl ">
-		  <view class="dd required">
-              <view class="header ">
-                类型
-              </view>
-              <view class="footer ">
-                <picker mode='selector' bindchange='complaintTypeChange' range-key='text'
-			  value='{{complaintType_SelectedIndex}}' range='{{complaintType_Set}}'>
-		    		<text>{{complaintType_Set[complaintType_SelectedIndex].text}}</text>
-			 </picker>
-			</view>
-            </view>
-            <view class="dd required">
-              <view class="header ">
-                名称
-              </view>
-              <view class="footer ">
-                <input type="text" placeholder="名称" name="complaintObjcet" />
-              </view>
-            </view>
-            <view class="dd fuid note required">
-              <view class="header ">
-                内容
-              </view>
-              <view class="footer ">
-                <!-- <input type="text" /> -->
-                <textarea maxlength='10000' placeholder="反馈内容" name="complaintContent"></textarea>
-              </view>
-            </view>
-		  <view class="dd fuid note">
-              <view class="header ">
-                图片上传
-              </view>
-              <view class="footer files_img clearfix">
-                <!-- <input type="text" placeholder="意见反馈" /> -->
-                <block wx:for="{{imageFiles}}">
-                  <view class='img_wrap'>
-                    <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
-                    <image src='{{item.tempFilePath}}'  mode='widthFix'></image>
-                  </view>
-                </block>
-                <view class='img_wrap'>
-                  <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
-                </view>
-              </view>
-            </view>
+  <view class="page__bd">
+    <form bindsubmit="formData">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_select">
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">类目</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="complaintTypeChange" value="{{complaintType_SelectedIndex}}" range="{{complaintType_Set}}" range-key='text'>
+              <view class="weui-select weui-select_in-select-after">{{complaintType_Set[complaintType_SelectedIndex].text}}</view>
+            </picker>
           </view>
         </view>
-        <!-- 固定底部 star -->
-        <button class="footer_btn return" form-type="submit">
-	   	提交
-        </button>
-      </form>
-      <!-- 固定底部 end -->
-	 <!-- 保存 -->
-      <button class="footer_btn submit" bindtap='cancelComplain'>
-        取消
+        <view class="weui-cell weui-cell_select" style='display:{{isSelectedCemetery?"inner-display":"none"}}'>
+          <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">选择公墓</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker bindchange="cemeterySubsysChange" value="{{cemeterySubsys_Index}}" range="{{cemeterySubsys_Set}}" range-key='name'>
+              <view class="weui-select weui-select_in-select-after">{{cemeterySubsys_Set[cemeterySubsys_Index].name}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input"  style='display:{{isSelectedAdviser?"inner-display":"none"}}'>
+          <view class="weui-cell__hd">
+            <view class="weui-label">顾问姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="输入姓名" name='complaintObjcet'/>
+          </view>
+        </view>
+        <view class='weui-cell textarea_wrap'>
+          <textarea placeholder='输入内容' placeholder-class='placeholder' name='complaintContent'></textarea>
+        </view>
+	   <view class='files_img_wrap'>
+	   	<view class="display_flex">
+		   图片上传
+		</view>
+		<view class="files_img display_flex">
+			<block wx:for="{{imageFiles}}">
+                    <view class='img_wrap'>
+                         <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
+                         <image src='{{item.tempFilePath}}' mode='widthFix'></image>
+                    </view>
+               </block>
+               <view class='img_wrap'>
+                    <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
+               </view>
+          </view>
+       </view>
+      </view>
+      <button class='footer' form-type="submit">
+        提交评价
       </button>
+    </form>
   </view>
 </view>

@@ -1,122 +1,90 @@
 /* pages/others/complain_customer.wxss */
-.list .dl .dd, .list .dl .dt {
-  display: flex;
-  line-height: 40rpx;
-  min-height: 40rrpx;
-  padding-top: 28rpx;
-  padding-bottom: 28rpx;
-  border-top: 1px solid #efefef;
-  position: relative;
+page {
   background: #fff;
+  padding-bottom: 100rpx;
+}
+.display_flex {
+  padding: 0 48rpx;
 }
 
-.list .dl .dd input, .list .dl .dt input {
-  display: block;
-  line-height: 40rpx;
-  height: 40rpx;
-  background: #fff;
+.weui-cell {
+  height: 96rpx;
+  font-size: 28rpx;
+}
+
+.weui-cell_input {
+  padding: 0 48rpx;
+}
+
+.weui-cell__hd {
   color: #353535;
-  font-size: 24rpx;
-  min-height: 40rpx;
 }
 
-.list .dl .dd:first-of-type, .list .dl .dt:first-of-type {
-  border-top: none;
-}
-
-.list .dl .dd .header, .list .dl .dt .header {
-  flex-basis: 200rpx;
-  padding-left: 36rpx;
-  box-sizing: border-box;
-  font-size: 30rpx;
-  color: #353535;
-  line-height: 40rpx;
-}
-
-.list .dl .dd .footer, .list .dl .dt .footer {
-  /* flex-basis: 300rpx; */
+.weui-cell__bd {
+  color: #7e7e7e;
   text-align: right;
-  flex: 1;
-  padding-right: 50rpx;
-  box-sizing: border-box;
-  color: #353535;
-  font-size: 24rpx;
 }
 
-.list .dl .dd .footer textarea {
-  width: auto;
-  text-align: left;
-}
-
-.list .dl .dt {
-  background: transparent;
-  flex-basis: 150rpx;
-}
-
-.list .dl .dt .header {
-  flex-basis: 300rpx;
-  font-size: 24rpx;
-  color: #727272;
-}
-
-.list .dl .dd.fuid {
-  display: block;
-}
-
-.list .dl .dd.fuid .header {
-  width: 100%;
-}
-
-.list .dl .dd.fuid .footer {
-  width: 100%;
-  padding-left: 16rpx;
-}
-
-.list .dl .dd.fuid.note .footer textarea {
-  overflow: auto;
-  height: 100px;
-}
-
-.footer_btn {
-  position: fixed;
-  bottom: 0;
-  width: 50%;
-  height: 100rpx;
-  text-align: center;
-  background: #fff;
-  color: #fff;
-  font-size: 32rpx;
-  line-height: 100rpx;
+.weui-select {
   border: none;
-  outline: none;
-  border-radius: 0;
+  padding-right: 48rpx;
 }
 
-.footer_btn.return {
-  left: 0;
-  background: linear-gradient(to left, #48cfad, #85ecdc);
+.weui-cell__hd_in-select-after, .weui-cell__bd_in-select-before {
+  padding-left: 48rpx;
 }
 
-.footer_btn.submit {
-  right: 0;
-  background: linear-gradient(to left, #3eb99a, #269080);
+.weui-cell:before {
+  left: 48rpx;
+  border-color: #e3e3e3;
 }
-.list .dl .dd.fuid.note .footer.files_img {
-  padding-right: 30rpx;
-  padding-left:30rpx;
+
+.weui-cells:before {
+  display: none;
 }
-.list .dl .dd.fuid.note .footer.files_img .img_wrap{
-  float: left;
+
+.textarea_wrap {
+  height: auto;
+  padding: 76rpx 48rpx;
+}
+
+.textarea_wrap textarea {
+  display: block;
+  width: 100%;
+  background: #efefef;
+  border-radius: 8rpx;
+  height: 280rpx;
+  padding: 25rpx 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #686868;
+}
+
+.textarea_wrap placeholder {
+  font-size: 28rpx;
+  color: #686868;
+}
+
+.files_img_wrap{
+  margin-top: 20rpx;
+}
+.files_img {
+  margin-left: -5rpx;
+  margin-right: -5rpx;
+}
+.files_img .img_wrap{
   width: 33.3333%;
   box-sizing: border-box;
   padding: 5px;
   position: relative;
 }
-.list .dl .dd.fuid.note .footer.files_img .img_wrap image{
+.files_img .img_wrap image{
   display: block;
   width: 100%;
+  height: 150rpx;
+  border-radius: 6rpx;
 }
-.list .dl .dd.fuid.note .footer.files_img .img_wrap image.close{
+.files_img .img_wrap image.close{
   display: block;
   width: 50rpx;
   position: absolute;
@@ -124,31 +92,26 @@
   right: 0rpx;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 7.5%;
+  width: 85%;
+  border: none;
+  border-top: 1px solid #efefef;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  color: #353535;
+  text-align: center;
+  background: transparent;
+  outline: none;
+  border-radius: 0;
+}
 
-/* .dd.required .header{
-  position: relative;
+.footer::after {
+  display: none;
 }
-.dd.required .header::after{
-  content: "*";
-  display: inline-block!important;
-  color: #ff0000!important;
-  position: absolute!important;
-  left: -20rpx;
-  top: 50%;
-  transform: translate(0,-50%);
-  margin-top: 6rpx;
-} */
-.dd.required .header{
-   position: relative; 
-  /* padding-left: 20rpx; */
-}
-.dd.required .header::after{
-  content: "*";
-  display: inline-block!important;
-  color: #ff0000!important;
-  position: absolute!important;
-  left: 15rpx;
-  top: 50%;
-  transform: translate(0,-50%);
-  margin-top: 6rpx;
+
+.footer:active {
+  opacity: 0.7;
 }
