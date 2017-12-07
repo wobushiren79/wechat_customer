@@ -35,6 +35,7 @@ Page({
 
     pageData.content = {};
     pageData.content.payStatus = 0;
+    pageData.content.sourceChannels = 1;
 
     var pageCallBack = pageUtil.getPageCallBack(
       function getDataSuccess(data, res, isLast) {

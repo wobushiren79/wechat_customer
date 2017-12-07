@@ -23,8 +23,10 @@
         </view>
 
         <view>
+        
           <view class='share'>
-            <image src='../../../images/mystroe_index_share.png' mode='widthFix'></image>分享
+            <button type='button'  open-type="share" ></button>
+            <image src='../../../images/mystroe_index_share.png' mode='widthFix' ></image>分享
           </view>
           <view class='content'>
             <image src='../../../images/mystroe_index_content.png' mode='widthFix'></image>详情

@@ -27,6 +27,20 @@ image {
   margin-right: 8rpx;
 }
 
+
+.userinfo .info .share {
+position: relative;
+}
+.userinfo .info .share button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+
 .userinfo .info .content {
   margin-top: 30rpx;
   color: #186b56;

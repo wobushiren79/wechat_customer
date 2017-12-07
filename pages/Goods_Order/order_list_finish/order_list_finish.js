@@ -36,6 +36,7 @@ Page({
     var pageData = pageUtil.getPageData();
     pageData.content = {};
     pageData.content.orderStatus = [3,4];
+    pageData.content.sourceChannels = 1;
     var pageCallBack = pageUtil.getPageCallBack(
       function getDataSuccess(data, res, isLast) {
         content.setData({

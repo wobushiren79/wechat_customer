@@ -39,7 +39,6 @@
     <cover-view class='server'>预约顾问</cover-view>
 
  <!-- 门店简介 -->
-
     <cover-view class=' info {{maker? "show": "hidden"}} ' bindtap='bind_go' data-url='{{info_url}} '>
       <cover-image class='info_img ' src="{{info_img}}"></cover-image>
       <cover-view class='info_text '>

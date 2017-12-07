@@ -30,7 +30,7 @@ Page({
     } else if (e.target.dataset.tab_hd == 2) {
       pageUtil.initData();
       content.getListByEvaluateTag();
-      content.getEvaluationList(storeUserId,null)
+      content.getEvaluationList(storeUserId, null)
     }
   },
 
@@ -64,7 +64,7 @@ Page({
     content.onLoad()
   },
   //上拉添加记录条数
-  onReachBottom() {
+  onReachBottom: function () {
     content.getStoreGoods(storeId, content.goodsClassId);
   },
   /**
@@ -153,13 +153,13 @@ Page({
     var evaluationListCallBack = pageUtil.getPageCallBack(
       function (data, res, isLast) {
         for (var i = 0; i < data.length; i++) {
-          if (data[i].evaluationPicture!=null){
+          if (data[i].evaluationPicture != null) {
             var picList = data[i].evaluationPicture.split(",");
             for (var j = 0; j < picList.length; j++) {
               picList[j] = getApp().globalData.QiniuFilePathPrefix + picList[j];
             }
           }
-      
+
           data[i].picList = picList
           var tempMark = Math.floor(parseFloat(data[i].evaluationMark) / 2);
           data[i].starts = new Array();
@@ -230,26 +230,23 @@ Page({
    * 导航
    */
   navigationLocation: function (e) {
-    // wx.getLocation({
-    //   type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-    //   success: function (res) {
-    //     console.log(res)
-    //     var latitude = res.latitude;
-    //     var longitude = res.longitude;
-    //     wx.openLocation({
-    //       latitude: latitude,
-    //       longitude: longitude,
-    //       scale: 1
-    //     })
-    //   }
-    // });
+
     var latitude = content.data.shop_latitude;
     var longitude = content.data.shop_longitude;
     wx.openLocation({
       latitude: parseFloat(latitude),
       longitude: parseFloat(longitude),
-      scale: 1
+      scale: 18
     })
+  },
+  /**
+   * 分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '顾问门店',
+      desc: '顾问门店详情',
+      path: '/pages/Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId
+    }
   }
-
 })

@@ -30,9 +30,13 @@ Page({
    * 获取购物车列表
    */
   getGoodsShoppingList() {
+    var content={
+      sourceChannels: 1
+    }
     var goodsShoppingListRequest = {
       pageSize: 1000,
-      pageNumber: 1
+      pageNumber: 1,
+      content: content
     }
     var goodsShoppingListCallBack = {
       success: function (data, res) {

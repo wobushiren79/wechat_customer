@@ -7,32 +7,29 @@ Page({
 
   onLoad: function () {
     content = this;
-    
     wx.getLocation({
       success: function (res) {
         content.setData({
           latitude: res.latitude,
           longitude: res.longitude,
         })
+        content.getListData(res.latitude, res.longitude)
       }
     })
-    this.getListData()
+
   },
 
-  onReady: function () {
-    this.mapCtx = wx.createMapContext('myMap')
-  },
-
-  onUnload: function () {
-    content = this;
-    this.getListData()
-  },
 
   //-----------------------------------------------------------------------------------------
   /**
    * 获取顾问门店列表数据
    */
-  getListData: function () {
+  getListData: function (latitude, longitude) {
+    var getListRequest = {
+      latitude: latitude,
+      longitude: longitude,
+      distance: 5
+    }
     var getListCallBack = {
       success: function (data, res) {
         content.setListData(data);
@@ -43,7 +40,7 @@ Page({
         })
       }
     };
-    phpGoodsHttp.findAdviserStoreList(null, getListCallBack);
+    phpGoodsHttp.findAdviserStoreList(getListRequest, getListCallBack);
   },
 
   /**
@@ -69,7 +66,7 @@ Page({
   getMarkerItemByData: function (item) {
     var storeId = item.id;
     var storeUserId = item.consultant_id
-    var naviUrl = '../Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId+"&consultantId=" + item.consultant_id;
+    var naviUrl = '../Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId + "&consultantId=" + item.consultant_id;
     var markerItem =
       {
         iconPath: "../../images/zuobiao.png",
@@ -131,8 +128,7 @@ Page({
     var mapcontent = wx.createMapContext("map")
     mapcontent.getCenterLocation({
       success: function (res) {
-        console.log(res.latitude)
-        console.log(res.longitude)
+        content.getListData(res.latitude, res.longitude)
       }
     })
     this.setData(
@@ -140,7 +136,6 @@ Page({
         maker: false
       }
     );
-    this.getListData()
   },
   /**
    * 客户电话
@@ -170,7 +165,7 @@ Page({
           latitude: latitude,
           longitude: longitude,
         })
-        this.getListData()
+        content.getListData(latitude, longitude)
       }
     })
   },

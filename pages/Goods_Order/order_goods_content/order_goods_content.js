@@ -5,6 +5,11 @@ var storageKey = require('../../../utils/storage/StorageKey.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
 var content;
 var app = getApp()
+
+var storeId;
+var storeUserId;
+var is_package;
+var goods_id;
 Page({
   data: {
     goods_number: 1,
@@ -42,7 +47,7 @@ Page({
   //   }
   // },
   onLoad: function (event) {
-    content=this;
+    content = this;
     var that = this
     wx.showLoading({
       title: '加载中',
@@ -50,12 +55,12 @@ Page({
     })
     // console.log(event)
     // if (event.storeId){
-    var storeId = event.storeId
-    var storeUserId = event.storeUserId
+    storeId = event.storeId
+    storeUserId = event.storeUserId
     // }
-    var goods_id = event.goods_id
+    goods_id = event.goods_id
     if (event.is_package) {
-      var is_package = event.is_package
+      is_package = event.is_package
     }
     var getData = {}
     if (is_package == 0) {
@@ -248,6 +253,9 @@ Page({
    * 获取购物车数量
    */
   getShoppingCartNumber: function () {
+    var getShoppingNumberRequest={
+      sourceChannels: 1
+    }
     var getShoppingNumberCallBack = {
       success: function (data, res) {
         var shoppingTotalNumber = data.shoppingTotalNumber
@@ -259,7 +267,7 @@ Page({
 
       }
     }
-    goodsHttp.getShoppingNumber(null, getShoppingNumberCallBack);
+    goodsHttp.getShoppingNumber(getShoppingNumberRequest, getShoppingNumberCallBack);
   },
 
   cartlist: function () {
@@ -267,5 +275,20 @@ Page({
     wx.redirectTo({
       url: '../order_shopping_cart/order_shopping_cart'
     })
+  },
+
+  /**
+ * 分享
+ */
+  onShareAppMessage: function () {
+    return {
+      title: '顾问门店',
+      desc: '顾问门店详情',
+      path: '/pages/Goods_Order/order_goods_content/order_goods_content?'
+      + 'storeId=' + storeId
+      + "&storeUserId=" + storeUserId
+      + "&is_package=" + is_package
+      + "&goods_id=" + goods_id
+    }
   }
 })  
