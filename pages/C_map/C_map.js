@@ -28,7 +28,7 @@ Page({
     var getListRequest = {
       latitude: latitude,
       longitude: longitude,
-      distance: 5
+      distance: 2
     }
     var getListCallBack = {
       success: function (data, res) {

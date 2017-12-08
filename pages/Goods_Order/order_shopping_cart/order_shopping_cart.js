@@ -26,17 +26,63 @@ Page({
     content = this;
     content.getGoodsShoppingList();
   },
+  onLoad: function () {
+    content = this;
+  },
+  /**
+   * 获取商品详情
+   */
+  getGoodsListDetails: function (requestData) {
+    var getGoodsListDetailsCallBack = {
+      success: function (data, res) {
+        var listDetails = res.data.list;
+        var class_name = res.data.class_name;
+        var totla_price = 0;
+        var formData = new Array();
+        for (var i = 0; i < content.shoppingCartList.length; i++) {
+          var itemData = new Object();
+          for (var j in listDetails) {
+            if (content.shoppingCartList[i].goodsId == parseInt(listDetails[j].goods_id)
+              && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
+              && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)
+              || content.shoppingCartList[i].goodsId == parseInt(listDetails[j].package_id)
+              && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
+              && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)) {
+              listDetails[j].id = content.shoppingCartList[i].id
+              listDetails[j].specNum = content.shoppingCartList[i].specNum
+              // totla_price += parseFloat(content.shoppingCartList[i].specNum) * parseFloat(listDetails[j].spec_price)
+              itemData = Object.assign({}, listDetails[j]);
+
+            }
+          }
+          itemData.storeName = content.shoppingCartList[i].storeName;
+          itemData.storeId = content.shoppingCartList[i].storeId;
+          itemData.storeUserId = content.shoppingCartList[i].storeUserId;
+          itemData.isCheck = false;
+          formData.push(itemData)
+        }
+        content.setData({
+          class_name: content.getStoreNames(),
+          // totla_price: totla_price,
+          formData: formData
+        })
+        content.setGoodsTotalPrice();
+      },
+      fail: function () {
+
+      }
+    }
+    goodsPHPHttp.findGoodsDetails(requestData, getGoodsListDetailsCallBack);
+  },
+
   /**
    * 获取购物车列表
    */
   getGoodsShoppingList() {
-    var content={
-      sourceChannels: 1
-    }
     var goodsShoppingListRequest = {
       pageSize: 1000,
       pageNumber: 1,
-      content: content
+      content: { sourceChannels: 1}
     }
     var goodsShoppingListCallBack = {
       success: function (data, res) {
@@ -73,51 +119,7 @@ Page({
     goodsHttp.getGoodsShoppingList(goodsShoppingListRequest, goodsShoppingListCallBack);
   },
 
-  /**
-   * 获取商品详情
-   */
-  getGoodsListDetails(requestData) {
-    var getGoodsListDetailsCallBack = {
-      success: function (data, res) {
-        var listDetails = res.data.list;
-        var class_name = res.data.class_name;
-        var totla_price = 0;
-        var formData = new Array();
-        for (var i = 0; i < content.shoppingCartList.length; i++) {
-          var itemData = new Object();
-          for (var j in listDetails) {
-            if (content.shoppingCartList[i].goodsId == parseInt(listDetails[j].goods_id)
-              && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
-              && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)
-              || content.shoppingCartList[i].goodsId == parseInt(listDetails[j].package_id)
-              && content.shoppingCartList[i].goodsSpecId == parseInt(listDetails[j].spec_id)
-              && content.shoppingCartList[i].channelId == parseInt(listDetails[j].channel_id)) {
-              listDetails[j].id = content.shoppingCartList[i].id
-              listDetails[j].specNum = content.shoppingCartList[i].specNum
-              // totla_price += parseFloat(content.shoppingCartList[i].specNum) * parseFloat(listDetails[j].spec_price)
-              itemData = Object.assign({}, listDetails[j]);
-              
-            }
-          }
-          itemData.storeName = content.shoppingCartList[i].storeName;
-          itemData.storeId = content.shoppingCartList[i].storeId;
-          itemData.storeUserId = content.shoppingCartList[i].storeUserId;
-          itemData.isCheck = false;
-          formData.push(itemData)
-        }
-        content.setData({
-          class_name: content.getStoreNames(),
-          // totla_price: totla_price,
-          formData: formData
-        })
-        content.setGoodsTotalPrice();
-      },
-      fail: function () {
 
-      }
-    }
-    goodsPHPHttp.findGoodsDetails(requestData, getGoodsListDetailsCallBack);
-  },
 
   /**
    * 获取商品门店列表
@@ -284,7 +286,7 @@ Page({
       toastUtil.showToast("未选择商品");
       return;
     }
-    if (Array.from(new Set(storeIds)).length>1){
+    if (Array.from(new Set(storeIds)).length > 1) {
       toastUtil.showToast("请在一家下单");
       return;
     }

@@ -23,10 +23,10 @@
         </view>
 
         <view>
-        
+
           <view class='share'>
-            <button type='button'  open-type="share" ></button>
-            <image src='../../../images/mystroe_index_share.png' mode='widthFix' ></image>分享
+            <button type='button' open-type="share"></button>
+            <image src='../../../images/mystroe_index_share.png' mode='widthFix'></image>分享
           </view>
           <view class='content'>
             <image src='../../../images/mystroe_index_content.png' mode='widthFix'></image>详情
@@ -151,6 +151,30 @@
     <!-- tab end -->
 
 
+    <!-- 快捷导航 -->
+    <view class='right_nav {{right_nav==1?"active":""}}'>
+      <view class='img_wrap'>
+        <view class='btn' bindtap='bind_right_nav'>
+          <image src='{{mystroe_right_nav_btn}}'></image>
+        </view>
+        <navigator class='btn1'>
+          <image src='../../../images/mystroe_right_nav_btn_index.png'></image>
+        </navigator>
+        <navigator class='btn2'>
+          <image src='../../../images/mystroe_right_nav_btn_my.png'></image>
+        </navigator>
+        <navigator class='btn3'>
+          <image src='../../../images/mystroe_right_nav_btn_shopping.png'></image>
+        </navigator>
+        <view class='btn4'>
+          <contact-button size="20" session-from="WeChat">
+          </contact-button>
+          <image src='../../../images/mystroe_right_nav_btn_server.png'></image>
+        </view>
+
+        <!-- <image src='../../../images/dog_chang.jpg' class='btn5'></image> -->
+      </view>
+    </view>
 
 
   </view>

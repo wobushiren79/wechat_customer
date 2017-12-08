@@ -1,0 +1,55 @@
+<form bindsubmit="bindFormSubmit">
+  <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__bd clearfix">
+
+
+
+      <!-- 套餐列表 -->
+      <view class="goods_list list ">
+        <!-- 套餐1 -->
+        <block wx:for="{{speclist}}">
+        <view class="dl {{list_show && indexs==index?'show':'hide'}}">
+
+          <!-- 套餐名字 -->
+          <view class="dt" bindtap="bind_list" data-indexs='{{index}}'>
+            <view class="header ">
+              {{item.spec_alias}}     {{item.spec_name}}
+            </view>
+            <view class='footer'>{{item.spec_price}}</view>
+            <image src="../../../images/right.png " class="icon "></image>
+          </view>
+          <block wx:for="{{item.spec_goods}}" wx:for-item="ite">
+          <view class="group">
+            <!-- 套餐商品 -->
+            <view class="group_item clearfix">
+
+              <view class="img_wrap">
+                <!-- <image src="http://www.shiangoods.com/Public/Uploads/{{ite.title_img}}" mode='widthFix'></image> -->
+                 <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}" mode='widthFix'></image> 
+              </view>
+              <view class="info show">
+                <view class="name aui-ellipsis-2">
+                  <text>商品</text>：
+                  <text>{{ite.name}}</text>
+                </view>
+                <view class="size aui-ellipsis-2">
+                  <text>规格</text>：
+                  <text>{{ite.spec_name}}</text>
+                </view>
+              </view>
+              <view class="num">
+                ×{{ite.goods_spec_number}}
+              </view>
+            </view>
+          </view>
+          </block>
+
+        </view>
+        </block>
+      </view>
+
+
+
+    </view>
+  </view>
+</form>

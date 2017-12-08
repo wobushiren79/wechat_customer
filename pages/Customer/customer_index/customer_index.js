@@ -10,8 +10,25 @@ var goodsClassId;
 Page({
   data: {
     tab_bd_title: 1,
-    tab_hd: 1
+    tab_hd: 1,
+    right_nav: false,
+    mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
+
   },
+  bind_right_nav: function (e) {
+    if (this.data.right_nav == 1) {
+      this.setData({
+        right_nav: 0,
+        mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
+      });
+    } else {
+      this.setData({
+        right_nav: 1,
+        mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn_close.png'
+      });
+    }
+  },
+
   bind_label: function (e) {
     this.setData({
       label: e.target.dataset.label

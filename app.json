@@ -20,6 +20,7 @@
     "pages/Goods_Order/order_confirm/order_confirm",
     "pages/Goods_Order/service_goods_pay_error/service_goods_pay_error",
     "pages/Goods_Order/service_goods_pay_succeed/service_goods_pay_succeed",
+    "pages/Goods_Order/service_goods_list/service_goods_list",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",
