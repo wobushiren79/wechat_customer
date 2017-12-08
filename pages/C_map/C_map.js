@@ -71,7 +71,7 @@ Page({
       {
         iconPath: "../../images/zuobiao.png",
         id: [naviUrl, item.shop_name, item.consultant_name, item.shop_location, item.shop_img, item.id],
-        alpha: 0.5,
+        alpha: 1,
         callout: {
           content: item.shop_name,
           color: "#353535",
