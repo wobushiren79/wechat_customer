@@ -56,7 +56,7 @@
 }
 
 .footerfix .keep {
-  width: 50%;
+  width: 100%;
   height: 100rpx;
   color: #fff;
   font-size: 32rpx;

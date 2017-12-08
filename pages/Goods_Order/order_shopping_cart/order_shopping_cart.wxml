@@ -139,7 +139,9 @@
     </view>
     <!-- 固定底部 end -->
 
-
+    <view class='prompt' >
+      <text>购物车为空</text>
+    </view>
 
     <black wx:if="{{popup}}">
       <!-- 遮罩层 star -->

@@ -134,6 +134,7 @@ Page({
 				  methodFunc.setData({
 					  uploadFileStatus: false
 				  });
+          return;
 			  }
 			  var fileObj = {
 				  index: imgIndex,

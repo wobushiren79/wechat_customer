@@ -1,0 +1,105 @@
+<view class="page">
+
+  <view class="page__bd">
+    <!-- 预约服务 -->
+    <view class='weui-grids_title'>预约服务</view>
+    <view class="weui-grids">
+      <navigator url="../../Goods_Order/order_shopping_cart/order_shopping_cart" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">购物车</view>
+        </view>
+      </navigator>
+      <navigator url="../../Goods_Order/order_list_wait/order_list_wait" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">我的订单</view>
+        </view>
+      </navigator>
+    </view>
+
+    <!-- 信息礼俗咨询 -->
+    <view class='weui-grids_title'>信息与咨询</view>
+    <view class="weui-grids">
+      <navigator url="../../C_blank/C_blank" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">殡葬百科</view>
+        </view>
+      </navigator>
+      <navigator url="../../C_blank/C_blank" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">惠民殡葬</view>
+        </view>
+      </navigator>
+      <view class="weui-grid">
+        <view>
+          <view class='contact_wrap'>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+            <contact-button type="default-light" size="27" session-from="weapp">
+            </contact-button>
+          </view>
+
+          <!-- <button open-type="contact" session-from="weapp">进入客服会话</button>   -->
+          <!-- <button wx:if="{{canIUse}}" open-type="contact"> 客服消息 </button>
+          <contact-button wx:else></contact-button> -->
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">在线客服</view>
+        </view>
+      </view>
+    </view>
+    <!-- 公墓服务 -->
+    <view class='weui-grids_title'>公墓服务</view>
+    <view class="weui-grids">
+      <navigator url="../../C_cem/C_cem" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">墓位位置</view>
+        </view>
+      </navigator>
+      <navigator class="weui-grid" url="../../C_blank/C_blank">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">管理费缴纳</view>
+        </view>
+      </navigator>
+      <navigator url="../../C_blank/C_blank" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">订购墓位</view>
+        </view>
+      </navigator>
+      <navigator url="../../C_order/C_order" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">购墓订单</view>
+        </view>
+      </navigator>
+      <navigator url="../../others/complain_customer/complain_customer" class="weui-grid">
+        <view>
+          <image class="weui-grid__icon" src="{{img_url}}" />
+          <view class="weui-grid__label">投诉建议</view>
+        </view>
+      </navigator>
+    </view>
+
+
+
+  </view>
+</view>

@@ -28,7 +28,7 @@ Page({
     var getListRequest = {
       latitude: latitude,
       longitude: longitude,
-      distance: 2
+      distance: 5
     }
     var getListCallBack = {
       success: function (data, res) {
@@ -83,8 +83,8 @@ Page({
         },
         latitude: item.shop_latitude,
         longitude: item.shop_longitude,
-        width: 25,
-        height: 25
+        width: 40,
+        height: 40
       };
     return markerItem;
   },
@@ -175,5 +175,11 @@ Page({
   bind_location: function () {
     var that = this
     that.onLoad()
+  }
+  ,
+  my_apply: function () {
+    wx.navigateTo({
+      url: '../User/user_apply/user_apply',
+    })
   }
 })

@@ -72,6 +72,12 @@ function findListByEvaluateTag(data, callback) {
 function queryCemeterySubsysListBySysEnumId(data, callback) {
 	baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemList", data, callback);
 }
+
+function queryUserInfoById(data, callback){
+  baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/queryById", data, callback)
+}
+
+
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;
@@ -82,3 +88,4 @@ module.exports.queryTagsListByType = queryTagsListByType;
 module.exports.findUserStarts = findUserStarts;
 module.exports.findListByEvaluateTag = findListByEvaluateTag;
 module.exports.queryCemeterySubsysListBySysEnumId = queryCemeterySubsysListBySysEnumId;
+module.exports.queryUserInfoById = queryUserInfoById;

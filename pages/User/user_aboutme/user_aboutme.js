@@ -1,16 +1,26 @@
-
+var platformHttp = require("../../../utils/http/RequestForPlatform.js")
+var storageKey = require("../../../utils/storage/StorageKey.js");
+var content;
 Page({
-    data:{
-	    icon: "../../../images/dog.png",
-	    pagesPositionUrl: null
-    },
+  data: {
+    icon: "../../../images/dog.png",
+    pagesPositionUrl: null
+  },
+  onShow: function () {
+    var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
+
+    content.setData({
+      nickName: userInfo.name,
+      userPhone: userInfo.phone
+    })
+
+  },
   onLoad: function () {
-    var that = this;
+    content = this;
     wx.getUserInfo({
       success: function (res) {
         // success
-        that.setData({
-          nickName: res.userInfo.nickName,
+        content.setData({
           userInfoAvatar: res.userInfo.avatarUrl
         })
       },
@@ -24,8 +34,40 @@ Page({
       }
     })
     var pagesPositionUrlObj = getApp().pagesPositionUrl;
-    this.setData({
-	    pagesPositionUrl: pagesPositionUrlObj
+    content.setData({
+      pagesPositionUrl: pagesPositionUrlObj
     });
+
+    var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
+    if (userInfo == null || userInfo.length == 0) {
+      wx.navigateTo({
+        url: '../../C_user_login/C_user_login',
+      })
+    } else {
+      content.setData({
+        nickName: userInfo.name,
+        userPhone: userInfo.phone
+      })
+    }
+  },
+
+
+  /**
+   * 获取用户数据
+   */
+  getUserInfo: function (userId) {
+    var queryUserInfoRequest = {
+      userId: userId
+    }
+    var queryUserInfoCallBack = {
+      success: function (data, res) {
+
+      },
+      fail: function (data, res) {
+
+      }
+    }
+
+    platformHttp.queryUserInfoById();
   }
 });

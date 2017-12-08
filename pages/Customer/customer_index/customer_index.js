@@ -39,13 +39,13 @@ Page({
   bind_tab_hd: function (e) {
     console.log(e.target.dataset.tab_hd)
     this.setData({
-      tab_hd: e.target.dataset.tab_hd
+      tab_hd: e.target.dataset.tab_hd,
+      label:''
     })
     pageUtil.initData();
     if (e.target.dataset.tab_hd == 1) {
       content.getStoreGoodsClass(storeId);
     } else if (e.target.dataset.tab_hd == 2) {
-      pageUtil.initData();
       content.getListByEvaluateTag();
       content.getEvaluationList(storeUserId, null)
     }
@@ -76,13 +76,23 @@ Page({
     })
     console.log(evet.storeId)
   },
-  //下拉刷新页面
-  onPullDownRefresh: function () {
-    content.onLoad()
-  },
+  // //下拉刷新页面
+  // onPullDownRefresh: function () {
+  //   if (content.data.tab_hd == 1) {
+
+  //   } else if (content.data.tab == 2) {
+
+  //   }
+  //   content.onLoad()
+  // },
   //上拉添加记录条数
   onReachBottom: function () {
-    content.getStoreGoods(storeId, content.goodsClassId);
+    if (content.data.tab_hd == 1) {
+      content.getStoreGoods(storeId, content.goodsClassId);
+    } else if (content.data.tab == 2) {
+      content.getEvaluationList(storeUserId, content.data.label)
+    }
+  
   },
   /**
    * 获取门店信息

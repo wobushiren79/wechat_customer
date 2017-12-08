@@ -6,7 +6,7 @@ page {
 
 .userinfo {
   background: #48cfad;
-  padding: 0 65rpx;
+  padding: 0 24rpx;
 }
 
 image {
@@ -27,7 +27,6 @@ image {
   margin-right: 8rpx;
 }
 
-
 .userinfo .info .share {
 position: relative;
 }
@@ -39,8 +38,6 @@ position: relative;
   height: 100%;
   opacity: 0;
 }
-
-
 .userinfo .info .content {
   margin-top: 30rpx;
   color: #186b56;
@@ -84,7 +81,7 @@ position: relative;
 .userinfo .address .btn {
   position: absolute;
   top: 50%;
-  right: -24rpx;
+  right: 0rpx;
   transform: translateY(-50%);
   width: 100rpx;
   height: 55rpx;
@@ -210,7 +207,8 @@ position: relative;
 .tab_bd_item1 .tab_bd_list .li .num {
   font-weight: bold;
 }
-.tab_bd_item1 .tab_bd_list .li .aui-ellipsis-1{
+
+.tab_bd_item1 .tab_bd_list .li .aui-ellipsis-1 {
   color: #7e7e7e;
 }
 
@@ -248,15 +246,17 @@ position: relative;
   padding: 0 20rpx;
   height: 50rpx;
   line-height: 50rpx;
-  border: 1px solid #7e7e7e;
+  border: 1px solid #c4c4c4;
   color: #7e7e7e;
   margin: 6rpx 12rpx;
   font-size: 24rpx;
   border-radius: 6rpx;
 }
-.tab_bd_item2 .tab_bd_title .label_wrap .label :active{
-  opacity: 0.7
+
+.tab_bd_item2 .tab_bd_title .label_wrap .label :active {
+  opacity: 0.7;
 }
+
 .tab_bd_item2 .tab_bd_title .label_wrap .label.active {
   color: #48cfad;
   border-color: #48cfad;
@@ -268,12 +268,12 @@ position: relative;
 }
 
 .tab_bd_item2 .tab_bd_list .ul .li {
-  padding: 24rpx 0;
+  padding: 24rpx 0 40rpx 0;
 }
 
 .tab_bd_item2 .tab_bd_list .ul .li_hd .info {
   display: flex;
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: #353535;
   margin-bottom: 20rpx;
   align-items: center;
@@ -307,9 +307,9 @@ position: relative;
 }
 
 .tab_bd_item2 .tab_bd_list .ul .li_bd .text {
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: #353535;
-  line-height: 36rpx;
+  line-height: 45rpx;
 }
 
 .tab_bd_item2 .tab_bd_list .ul .li_bd .img {
@@ -326,3 +326,4 @@ position: relative;
   border-radius: 4rpx;
   margin: 24rpx;
 }
+

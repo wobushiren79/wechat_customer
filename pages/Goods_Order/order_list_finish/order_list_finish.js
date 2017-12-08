@@ -60,7 +60,7 @@ Page({
     content.getListData();
   },
   /**
-   * 付款
+   * 评价
    */
   evaluation: function (e) {
 	  var storeUserIdVal = e.target.dataset.storeuserid;

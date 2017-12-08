@@ -7,7 +7,7 @@
       <view class='content'>
         <image class="weui-media-box__thumb" src="{{userInfoAvatar}}" mode='widthFix' />
         <text>{{nickName}}</text>
-        <text>1212121212</text>
+        <text>{{userPhone}}</text>
       </view>
     </view>
 
@@ -15,46 +15,46 @@
     <view class="weui-cells weui-cells_after-title">
       <navigator  open-type="navigateBack" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <image src="{{icon}}"></image>
+          <image src="../../../images/icon_aboutme1.png"></image>
         </view>
         <view class="weui-cell__bd">首页</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="../../Goods_Order/order_shopping_cart/order_shopping_cart" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <image src="{{icon}}"></image>
+          <image src="../../../images/icon_aboutme2.png"></image>
         </view>
         <view class="weui-cell__bd">购物车</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="../../Goods_Order/order_list_wait/order_list_wait" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <image src="{{icon}}"></image>
+          <image src="../../../images/icon_aboutme3.png"></image>
         </view>
         <view class="weui-cell__bd">我的订单</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <image src="{{icon}}"></image>
+          <image src="../../../images/icon_aboutme4.png"></image>
         </view>
         <view class="weui-cell__bd">管理费缴纳记录</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
       <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
-          <image src="{{icon}}"></image>
+          <image src="../../../images/icon_aboutme5.png"></image>
         </view>
         <view class="weui-cell__bd">优惠券</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
       </navigator>
-	 <navigator url="{{pagesPositionUrl['complain_customer']}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+	 <!-- <navigator url="{{pagesPositionUrl['complain_customer']}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
         <view class="weui-cell__hd">
           <image src="{{icon}}"></image>
         </view>
         <view class="weui-cell__bd">投诉建议</view>
         <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-      </navigator>
+      </navigator> -->
     </view>
 
     <navigator url="../../C_user_login/C_user_login" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

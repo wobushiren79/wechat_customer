@@ -1,0 +1,80 @@
+page {
+  background: #fff;
+}
+
+.page__bd {
+  padding: 48rpx;
+}
+
+/* 标题 */
+
+.weui-grids_title {
+  position: relative;
+  /* line-height: 30rpx; *//* padding: 40rpx 0rpx 30rpx 0; */
+  font-size: 28rpx;
+  color: #7e7e7e;
+  margin-top: 20rpx;
+}
+.weui-grids_title:first-of-type{
+  margin-top: 0
+}
+.weui-grids_title::after{
+  content: "";
+  display: block!important;
+  position: absolute!important;
+  top: 50%;
+  left: -24rpx;
+  transform: translateY(-50%);
+  width: 12rpx;
+  height: 28rpx;
+  background: #48cfad;
+  border-radius: 10rpx
+}
+.weui-grids {
+  border: none;
+}
+
+.weui-grids .weui-grid {
+  display: flex;
+  height: 208rpx;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+}
+.weui-grids .weui-grid .contact_wrap{
+  position: absolute;
+  width: 200rpx;
+  height: 208rpx;
+  z-index: 9999999;
+    background: #efefef;
+    opacity: 0;
+    top: 0;
+    left: 0
+}
+.weui-grids .weui-grid contact-button{
+  display: inline-block;
+  position: relative;
+  top: 0;
+  width: 27px;
+  height: 27px;
+}
+.weui-grids .weui-grid image {
+  display: block;
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.weui-grids .weui-grid .weui-grid__label {
+}
+
+.weui-grids .weui-grid:active {
+  background: transparent !important;
+  opacity: 0.7;
+}
+.weui-grids .weui-grid .weui-grid__label{
+  font-weight: bold;
+}

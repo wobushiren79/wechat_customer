@@ -23,7 +23,7 @@
     </cover-image>
 
     <!-- 更多 -->
-    <cover-image src='../../images/map_more.png' mode="widthFix" class='more' bindtap=''>
+    <cover-image src='../../images/map_more.png' mode="widthFix" class='more' bindtap='my_apply'>
     </cover-image>
 
     <!-- <cover-view  class='take_btn'>

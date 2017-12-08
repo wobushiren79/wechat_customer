@@ -52,7 +52,7 @@
        </view>
       </view>
       <button class='footer' form-type="submit">
-        提交评价
+        提交投诉
       </button>
     </form>
   </view>

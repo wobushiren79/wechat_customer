@@ -32,7 +32,7 @@ contact-button{
 .more{
   overflow:  visible;
   width: 130rpx;
-  height: 100rpx;
+  height: 113.5rpx;
   right: 0rpx;
   bottom: 240rpx;
   border-radius: 0;

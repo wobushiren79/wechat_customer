@@ -47,7 +47,6 @@
       <view class="footerfix clearfix">
         <block wx:if="{{!chaxun}}">
           <button class="keep pay_up" bindtap="wechats">微信支付</button>
-          <button class="keep pay_down" bindtap="bind_moda">线下支付</button>
         </block>
         <block>
           <button class="keep pay_jieguo" bindtap="orver">查询支付结果</button>

@@ -157,13 +157,13 @@
         <view class='btn' bindtap='bind_right_nav'>
           <image src='{{mystroe_right_nav_btn}}'></image>
         </view>
-        <navigator class='btn1'>
+        <navigator open-type="navigateBack" class='btn1' >
           <image src='../../../images/mystroe_right_nav_btn_index.png'></image>
         </navigator>
-        <navigator class='btn2'>
+        <navigator class='btn2' url="../../User/user_apply/user_apply">
           <image src='../../../images/mystroe_right_nav_btn_my.png'></image>
         </navigator>
-        <navigator class='btn3'>
+        <navigator class='btn3' url="../../Goods_Order/order_shopping_cart/order_shopping_cart">
           <image src='../../../images/mystroe_right_nav_btn_shopping.png'></image>
         </navigator>
         <view class='btn4'>
