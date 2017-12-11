@@ -51,6 +51,9 @@ Page({
     var loginPlatCallBack = {
       success: function (data, res) {
         if (data) {
+          //缓存用户名和密码
+          wx.setStorageSync(storageKey.LOGIN_USER_NAME, loginPlatData.userName)
+          wx.setStorageSync(storageKey.LOGIN_USER_PASS, loginPlatData.userPwd)
           //缓存平台登录用户ID
           if (data.userId)
             wx.setStorageSync(storageKey.PLATFORM_USER_ID, data.userId)

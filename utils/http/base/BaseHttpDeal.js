@@ -1,3 +1,4 @@
+
 /**
  * http请求bean
  */
@@ -38,9 +39,9 @@ function createGetHttpRequest(url, data, callback, header, isDialog) {
 /**
  * 发送file上传请求
  */
-function createFileHttpRequest(url,filePath,fileName,callback,header,isDialog){
+function createFileHttpRequest(url, filePath, fileName, callback, header, isDialog) {
   var httpData = new HttpRequestData(url, null, "POST", header);
-  httpData.filePath=filePath;
+  httpData.filePath = filePath;
   httpData.fileName = fileName;
   sendBaseFileHttp(httpData, callback, isDialog)
 }
@@ -53,7 +54,7 @@ function sendBaseHttp(httpData, callback, isDialog) {
   if (isDialog)
     wx.showLoading({
       title: '加载中!请稍后',
-      mask:true
+      mask: true
     });
   console.log(httpData);
   wx.request({
@@ -112,17 +113,20 @@ function respsoneSuccessDeal(res, callback) {
       if (callback.fail)
         callback.fail(res.data.message, res);
     }
-  } else{
-    if (res.data.indexOf("登录") >= 0){
-      wx.navigateTo({
-        url: '../../../pages/C_user_login/C_user_login',
-      });
-    }else{
+  } else {
+    if (res.data.indexOf("登录") >= 0) {
+      if(callback.loginAgain){
+        callback.loginAgain();
+      }
+      // wx.navigateTo({
+      //   url: '../../../pages/C_user_login/C_user_login',
+      // });
+    } else {
       if (callback.success)
         callback.success(res.data.content, res);
     }
   }
-   
+
 }
 
 /**
@@ -132,8 +136,8 @@ function respsoneFailDeal(res, callback) {
   wx.hideLoading()
   console.log("RespsoneFail");
   console.log(res);
-  if (callback&&callback.fail)
-  callback.fail("网络请求异常");
+  if (callback && callback.fail)
+    callback.fail("网络请求异常");
 }
 
 /**
@@ -142,10 +146,13 @@ function respsoneFailDeal(res, callback) {
 function respsoneCompleteDeal(res, callback) {
   // console.log("RespsoneComplete");
   // console.log(res);
-  
+
 }
 
 //-------------------------------------------------------------------------------------------------------------------
+
+
+
 module.exports.createPostHttpRequest = createPostHttpRequest;
 module.exports.createPostHttpRequestForFormData = createPostHttpRequestForFormData;
 module.exports.createGetHttpRequest = createGetHttpRequest;
