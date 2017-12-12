@@ -23,33 +23,33 @@
             </picker>
           </view>
         </view>
-        <view class="weui-cell weui-cell_input"  style='display:{{isSelectedAdviser?"inner-display":"none"}}'>
+        <view class="weui-cell weui-cell_input" style='display:{{isSelectedAdviser?"inner-display":"none"}}'>
           <view class="weui-cell__hd">
             <view class="weui-label">顾问姓名</view>
           </view>
           <view class="weui-cell__bd">
-            <input class="weui-input" placeholder="输入姓名" name='complaintObjcet'/>
+            <input class="weui-input" placeholder="输入姓名" name='complaintObjcet' />
           </view>
         </view>
         <view class='weui-cell textarea_wrap'>
-          <textarea placeholder='输入内容' placeholder-class='placeholder' name='complaintContent'></textarea>
+          <textarea placeholder='请输入投诉内容' placeholder-class='placeholder' name='complaintContent'></textarea>
         </view>
-	   <view class='files_img_wrap'>
-	   	<view class="display_flex">
-		   图片上传
-		</view>
-		<view class="files_img display_flex">
-			<block wx:for="{{imageFiles}}">
-                    <view class='img_wrap'>
-                         <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
-                         <image src='{{item.tempFilePath}}' mode='widthFix'></image>
-                    </view>
-               </block>
-               <view class='img_wrap'>
-                    <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
-               </view>
+        <view class='files_img_wrap'>
+          <view class="display_flex">
+            图片上传
           </view>
-       </view>
+          <view class="files_img display_flex">
+            <block wx:for="{{imageFiles}}">
+              <view class='img_wrap'>
+                <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
+                <image src='{{item.tempFilePath}}' mode='widthFix'></image>
+              </view>
+            </block>
+            <view class='img_wrap'>
+              <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
+            </view>
+          </view>
+        </view>
       </view>
       <button class='footer' form-type="submit">
         提交投诉

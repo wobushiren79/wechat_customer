@@ -99,7 +99,7 @@ Page({
             goods_id: goods_id,
             chatxian: true
           })
-          content.getShoppingCartNumber()
+          // content.getShoppingCartNumber()
         }
         that.setData({
           list: res.data.list

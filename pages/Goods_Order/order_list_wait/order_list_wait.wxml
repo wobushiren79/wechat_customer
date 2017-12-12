@@ -63,7 +63,8 @@
               </view>
             </navigator>
             <view class="li_footer">
-              <view class="header">
+              <view class="header" bindtap="tel" data-tel="{{item.store_user_phone}}">
+                <image src="../../../images/icon_call_phone.png"></image>联系顾问
               </view>
               <view class="footer">
                 <text type="primary" bindtap='orsers' class="btn" data-orderId='{{item.id}}'>付款</text>

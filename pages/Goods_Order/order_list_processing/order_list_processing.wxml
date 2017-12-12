@@ -35,14 +35,14 @@
                 <text>{{item.order_price/100}}</text>
               </view>
             </view>
-            <navigator class="li_body"  url="../order_details/order_details?orderId={{item.id}}"hover-class="active">
+            <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">
               <image src="../../../images/right.png" class="icon"></image>
               <view>
                 <view class="header">
                   服务对象：
                 </view>
                 <view class="body">
-                 {{item.customer_name}}
+                  {{item.customer_name}}
                 </view>
               </view>
               <view>
@@ -66,18 +66,18 @@
                   付款状态：
                 </view>
                 <view class="body">
-                   <block wx:if="{{item.payment_status == 0}}">
-                    <text >客户未付款</text>
-                 </block>
+                  <block wx:if="{{item.payment_status == 0}}">
+                    <text>客户未付款</text>
+                  </block>
                   <block wx:elif="{{item.payment_status == 1}}">
-                     <text >客户已付款</text>
-                 </block>
+                    <text>客户已付款</text>
+                  </block>
                 </view>
               </view>
             </navigator>
             <view class="li_footer">
-              <view class="header">
-             
+            <view class="header" bindtap="tel" data-tel="{{item.store_user_phone}}">
+                <image src="../../../images/icon_call_phone.png"></image>联系顾问
               </view>
               <view class="footer">
               </view>

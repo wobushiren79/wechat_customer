@@ -24,8 +24,8 @@
         <view class="ul">
           <view class="li">
             <view class='li_name'>
-              <image src='../../../images/icon_mystroe.png' mode='widthFix'></image> 
-                {{item.store_name == null?'平台':item.store_name}}
+              <image src='../../../images/icon_mystroe.png' mode='widthFix'></image>
+              {{item.store_name == null?'平台':item.store_name}}
             </view>
             <view class="li_header">
               <view class="header">单号： {{item.order_number}}
@@ -50,7 +50,7 @@
                   服务地址：
                 </view>
                 <view class="body">
-                 {{item.service_location}}
+                  {{item.service_location}}
                 </view>
               </view>
               <view>
@@ -66,18 +66,18 @@
                   付款状态：
                 </view>
                 <view class="body">
-                 <block wx:if="{{item.payment_status == 0}}">
-                    <text >客户未付款</text>
-                 </block>
+                  <block wx:if="{{item.payment_status == 0}}">
+                    <text>客户未付款</text>
+                  </block>
                   <block wx:elif="{{item.payment_status == 1}}">
-                     <text >客户已付款</text>
-                 </block>
+                    <text>客户已付款</text>
+                  </block>
                 </view>
               </view>
             </navigator>
             <view class="li_footer">
-              <view class="header">
-              
+              <view class="header" bindtap="tel" data-tel="{{item.store_user_phone}}">
+                <image src="../../../images/icon_call_phone.png"></image>联系顾问
               </view>
               <view class="footer">
               </view>

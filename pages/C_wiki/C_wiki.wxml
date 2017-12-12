@@ -3,12 +3,12 @@
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">
       <view class="weui-panel__hd">
-        <navigator url="../C_wiki_list/C_wiki_list?Class_a={{Class_a}}&Class_b={{Class_b}}" >
+        <navigator url="../C_wiki_list/C_wiki_list?Class_a={{Class_a}}&Class_b={{Class_b}}"  open-type="redirectTo">
           <text>{{Class_a}}</text>
           <image src="../../images/icon_down.png"></image>
         </navigator>
 
-        <navigator url="../C_wiki_list/C_wiki_list?Class_a={{Class_a}}&Class_b={{Class_b}}" >
+        <navigator url="../C_wiki_list/C_wiki_list?Class_a={{Class_a}}&Class_b={{Class_b}}"  open-type="redirectTo">
           <text>{{Class_b}}</text>
           <image src="../../images/icon_down.png"></image>
         </navigator>

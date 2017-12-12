@@ -21,7 +21,7 @@
     "pages/Goods_Order/service_goods_pay_error/service_goods_pay_error",
     "pages/Goods_Order/service_goods_pay_succeed/service_goods_pay_succeed",
     "pages/Goods_Order/service_goods_list/service_goods_list",
-        "pages/User/user_apply/user_apply",
+    "pages/User/user_apply/user_apply",
     "pages/test/test",
     "pages/C_aboutme/C_aboutme",
     "pages/C_wiki/C_wiki",
@@ -41,7 +41,8 @@
     "pages/C_user_login_create/C_user_login_create",
     "pages/C_user_login_passreset/C_user_login_passreset",
     "pages/others/complain_customer/complain_customer",
-    "pages/others/evaluation_customer/evaluation_customer"
+    "pages/others/evaluation_customer/evaluation_customer",
+    "pages/Customer/customer_store_info/customer_store_info"
   ],
   "window": {
     "navigationBarTextStyle": "black",

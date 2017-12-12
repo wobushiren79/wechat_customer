@@ -35,7 +35,7 @@
                 <text>{{item.order_price/100}}</text>
               </view>
             </view>
-            <navigator class="li_body"  url="../order_details/order_details?orderId={{item.id}}"hover-class="active">
+            <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">
               <image src="../../../images/right.png" class="icon"></image>
               <view>
                 <view class="header">
@@ -63,7 +63,8 @@
               </view>
             </navigator>
             <view class="li_footer" style='display:{{item.store_id!=null&& item.evaluation_id==null?"inner-display":"none"}}'>
-              <view class="header">
+        <view class="header" bindtap="tel" data-tel="{{item.store_user_phone}}">
+                <image src="../../../images/icon_call_phone.png"></image>联系顾问
               </view>
               <view class="footer">
                 <text type="primary" bindtap='evaluation' class="btn" data-orderid='{{item.id}}' data-storeuserid='{{item.store_user_id}}' data-storename='{{item.store_name}}'>评价</text>

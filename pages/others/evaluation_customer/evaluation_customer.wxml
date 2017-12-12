@@ -1,55 +1,55 @@
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
-     <view class="page__bd">
+  <view class="page__bd">
 
-          <!-- 门店名称 -->
-          <view class='stroe_name display_flex'>
-               <image src='../../../images/icon_mystroe.png' mode='widthFix'></image>
-               <text>{{storeName}}</text>
+    <!-- 门店名称 -->
+    <view class='stroe_name display_flex'>
+      <image src='../../../images/icon_mystroe.png' mode='widthFix'></image>
+      <text>{{storeName}}</text>
+    </view>
+    <form bindsubmit="formData">
+      <!-- 评分 -->
+      <view class='star_num display_flex'>
+        <text>服务评分</text>
+        <block wx:for="{{mark_set}}">
+          <image src='{{item.star}}' bindtap='markClickStar' data-index='{{item.index}}' data-score='{{item.score}}' mode='widthFix'></image>
+        </block>
+      </view>
+      <view class='love display_flex'>
+        <block wx:for="{{extent_Set}}">
+          <view class="display_flex {{item.isChecked?'active':''}}" data-index='{{item.index}}' data-extent='{{item.name}}' bindtap='extentChange'>
+            <image src='{{item.img}}' mode='widthFix'></image>
+            <text>{{item.name}}</text>
           </view>
-          <form bindsubmit="formData">
-               <!-- 评分 -->
-               <view class='star_num display_flex'>
-                    <text>服务评分</text>
-				<block wx:for="{{mark_set}}">
-                    	<image src='{{item.star}}' bindtap='markClickStar' data-index='{{item.index}}' data-score='{{item.score}}' mode='widthFix'></image>                    
-				</block>
-               </view>
-               <view class='love display_flex'>
-                    <block wx:for="{{extent_Set}}">
-					<view class="display_flex {{item.isChecked?'active':''}}" data-index='{{item.index}}' data-extent='{{item.name}}' bindtap='extentChange'>
-						<image src='{{item.img}}' mode='widthFix'></image>
-						<text>{{item.name}}</text>
-					</view>
-				</block>
-               </view>
+        </block>
+      </view>
 
-               <view class='textarea'>
-                    <textarea placeholder='评价內容' placeholder-class='placeholder' name='evaluationContent'></textarea>
-               </view>
-               <view class='label display_flex'  style='display:{{tagLoadStatus?"inner-display":"none"}}'>
-				<block wx:for="{{tag_Set}}">
-                    	<view class="{{item.isSelected?'active':''}}" data-id='{{item.id}}' bindtap='tagChange'>{{item.name}}</view>
-				</block>
-               </view>
-               <view class='files_img_wrap'>
-                    <view class="display_flex">
-                         图片上传
-                    </view>
-                    <view class="files_img display_flex">
-                         <block wx:for="{{imageFiles}}">
-                              <view class='img_wrap'>
-                                   <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
-                                   <image src='{{item.tempFilePath}}' mode='widthFix'></image>
-                              </view>
-                         </block>
-                         <view class='img_wrap'>
-                              <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
-                         </view>
-                    </view>
-               </view>
-               <button class='footer' form-type="submit">
-                    提交评价
-               </button>
-          </form>
-     </view>
+      <view class='textarea'>
+        <textarea placeholder='请输入评价内容' placeholder-class='placeholder' name='evaluationContent'></textarea>
+      </view>
+      <view class='label display_flex' style='display:{{tagLoadStatus?"inner-display":"none"}}'>
+        <block wx:for="{{tag_Set}}">
+          <view class="{{item.isSelected?'active':''}}" data-id='{{item.id}}' bindtap='tagChange'>{{item.name}}</view>
+        </block>
+      </view>
+      <view class='files_img_wrap'>
+        <view class="display_flex">
+          图片上传
+        </view>
+        <view class="files_img display_flex">
+          <block wx:for="{{imageFiles}}">
+            <view class='img_wrap'>
+              <image class='close' src='../../../images/cha.png' bindtap='deleteImage' mode='widthFix' data-remoteUrl='{{item.remoteFilePath}}' data-index='{{item.index}}'></image>
+              <image src='{{item.tempFilePath}}' mode='widthFix'></image>
+            </view>
+          </block>
+          <view class='img_wrap'>
+            <image src='../../../images/zhy_fileupload_button_normal.png' bindtap='chooseImage' mode='widthFix'></image>
+          </view>
+        </view>
+      </view>
+      <button class='footer' form-type="submit">
+        提交评价
+      </button>
+    </form>
+  </view>
 </view>

@@ -137,7 +137,7 @@ navigator:active {
   color: #3cc51f;
 }
 
-.drawer_box .weui-cells::before, .weui-cells::after {
+.drawer_box .weui-cells::before{
   border: black !important;
 }
 
@@ -237,7 +237,7 @@ input {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 8;
+  z-index: 8888;
 }
 
 /* 置底页脚 */

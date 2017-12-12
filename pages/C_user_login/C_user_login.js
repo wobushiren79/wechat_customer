@@ -13,6 +13,7 @@ Page({
   },
 
   onLoad: function (e) {
+    wx.clearStorageSync();
     content = this;
   },
 

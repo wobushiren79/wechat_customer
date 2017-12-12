@@ -27,7 +27,7 @@
 
       <!-- 价格 -->
       <view class="money">
-        ￥
+        指导销售价￥
         <text>{{list.price}}</text>
         <!-- <image src="../../../images/icon_money.png" bindtap="popup"></image> -->
       </view>

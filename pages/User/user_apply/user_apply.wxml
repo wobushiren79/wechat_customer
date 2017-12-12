@@ -21,9 +21,9 @@
     <!-- 信息礼俗咨询 -->
     <view class='weui-grids_title'>信息与咨询</view>
     <view class="weui-grids">
-      <navigator url="../../C_blank/C_blank" class="weui-grid">
+      <navigator url="../../C_wiki_list/C_wiki_list" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+          <image   class="weui-grid__icon" src="{{img_url}}" />
           <view class="weui-grid__label">殡葬百科</view>
         </view>
       </navigator>

@@ -11,10 +11,18 @@ Page({
   data: {
     tab_bd_title: 1,
     tab_hd: 1,
+    popup:false,
     right_nav: false,
     mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
 
   },
+  bind_popup_img: function (e) {
+    this.setData({
+      popup_img: e.target.dataset.pic,
+      popup: !this.data.popup
+    })
+  },
+
   bind_right_nav: function (e) {
     if (this.data.right_nav == 1) {
       this.setData({
@@ -109,7 +117,8 @@ Page({
           consultant_tel: data.consultant_tel,
           shop_location: data.shop_location,
           shop_latitude: data.shop_latitude,
-          shop_longitude: data.shop_longitude
+          shop_longitude: data.shop_longitude,
+          shop_pic: data.shop_img
         })
       },
       fail: function (data, res) {
@@ -275,5 +284,15 @@ Page({
       desc: '顾问门店详情',
       path: '/pages/Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId
     }
-  }
+  },
+  
+  /**
+   * 查看图片
+   */
+    bind_popup_img: function (e) {
+    this.setData({
+      popup_img: e.target.dataset.pic,
+      popup: !this.data.popup
+    })
+  },
 })

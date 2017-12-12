@@ -45,9 +45,8 @@ Page({
     },
     xuanzhe:function(options){
       wx.setStorageSync('xuanzhe', options.currentTarget.dataset)
-      wx.switchTab({
+      wx.redirectTo({
         url: '../C_wiki/C_wiki'
       })
     }
-
 });

@@ -327,3 +327,19 @@ position: relative;
   margin: 24rpx;
 }
 
+.popup_img{
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+.popup_img,
+.mask{
+  display: none;
+}
+.popup_img.active,
+.mask.active{
+  display: block;
+}
