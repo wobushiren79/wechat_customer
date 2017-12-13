@@ -1,14 +1,14 @@
 
 var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
-var toastUtil = require('../../../utils/ToastUtil.js')
+var toastUtil = require('../../../utils/ToastUtil.js');
 var content;
 var orderId;
 var payInfo;
 //获取应用实例
 var QR = require("../../../utils/qrcode.js");
-var util = require('../../../utils/util.js')
-var app = getApp()
+var util = require('../../../utils/util.js');
+var app = getApp();
 Page({
   data: {
     chaxun: false,
@@ -27,8 +27,8 @@ Page({
   },
 
   onLoad: function (evet) {
-    content = this
-    orderId = evet.orderId
+    content = this;
+    orderId = evet.orderId;
     content.getGoodsOrder();
   },
 
@@ -94,10 +94,10 @@ Page({
   orver: function () {
     var findFinanceDetailRequest = {
       id: orderId
-    }
+    };
     var findFinanceDetailCallBack = {
       success: function (data, res) {
-        var paymentStatus = data.paymentStatus
+        var paymentStatus = data.paymentStatus;
         if (paymentStatus == 0) {
 
         }
@@ -105,7 +105,7 @@ Page({
       fail: function (data, res) {
         toastUtil.showToast(data);
       }
-    }
+    };
 
     goodsHttp.findFinanceDetailByOrderId(findFinanceDetailRequest, findFinanceDetailCallBack);
   },
@@ -120,16 +120,16 @@ Page({
           orderId: orderId,
           total_fee: content.data.showTotalPrice*100,
           code: e.code
-        }
+        };
         var wechatPayCallBack = {
           success: function (data, res) {
-            payInfo=res.data.list
+            payInfo=res.data.list;
             content.relationGoodsAndWechatPay(orderId, res.data.out_trade_no);
           },
           fail: function (data, res) {
             toastUtil.showToast(data);
           }
-        }
+        };
         goodsPHPHttp.wechatPay(wechatPayRequest, wechatPayCallBack);
       }
     })
