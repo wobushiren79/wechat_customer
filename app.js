@@ -49,10 +49,10 @@ App({
 
     PHPGoodsUrl: "https://goodsmgr.e-funeral.cn/",
     PHPGoodsPicUrl: "https://goodsmgr.e-funeral.cn/Public/Uploads/",
-    // JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
-    // JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
-    JavaGoodsUrl:"https://goods.shianlife.cn/",
-    JavaPlatformUrl:"https://platform.shianlife.cn/",
+    JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
+    JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
+    // JavaGoodsUrl:"https://goods.shianlife.cn/",
+    // JavaPlatformUrl:"https://platform.shianlife.cn/",
     QiniuFilePathPrefix:"http://oq6rkq859.bkt.clouddn.com/",
     UploadFileNamePrefix:"customer_wechatSmallApp",
     AliyunFilePathPrefix: ""

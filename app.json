@@ -42,7 +42,8 @@
     "pages/C_user_login_passreset/C_user_login_passreset",
     "pages/others/complain_customer/complain_customer",
     "pages/others/evaluation_customer/evaluation_customer",
-    "pages/Customer/customer_store_info/customer_store_info"
+    "pages/Customer/customer_store_info/customer_store_info",
+    "pages/User/user_auto_login_and_register/user_auto_login_and_register"
   ],
   "window": {
     "navigationBarTextStyle": "black",

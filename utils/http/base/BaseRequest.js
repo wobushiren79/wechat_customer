@@ -18,10 +18,9 @@ function sendPostHttpForLogin(url, data, callback, isDialog) {
     success: function (data, res) {
       if (url.indexOf(getApp().globalData.JavaPlatformUrl) >= 0) {
         var ec = getKi4soEc(res);
-        wx.setStorageSync(storageKey.KI4SO_SERVER_EC, ec);
       }
       var baseUrl = getBaseUrl(url);
-      wx.setStorageSync(baseUrl, getSessionId(res));
+      var sessionId = getSessionId(res, baseUrl);
       if (callback && callback.success) {
         callback.success(data, res);
       }
@@ -106,6 +105,8 @@ function sendFileHttpForContent(url, filePath, fileName, callback, isDialog) {
  */
 function getKi4soEc(res) {
   var cookis = res.header['Set-Cookie']
+  if (cookis == null)
+    return;
   var cookisarr = cookis.split(";");
   if (cookisarr != -1)
     for (var i = 0; i < cookisarr.length; i++) {
@@ -113,6 +114,7 @@ function getKi4soEc(res) {
         var temp = cookisarr[i].replace(" HttpOnly,", "");
         var tempRemember = temp.replace("rememberMe=deleteMe", "");
         var returnTemp = tempRemember.replace(",", "").replace(" ", "");
+        wx.setStorageSync(storageKey.KI4SO_SERVER_EC, returnTemp);
         return returnTemp;
       }
     }
@@ -121,12 +123,15 @@ function getKi4soEc(res) {
 /**
  * 获取sessionId
  */
-function getSessionId(res) {
+function getSessionId(res, baseUrl) {
   var cookis = res.header['Set-Cookie']
+  if (cookis == null)
+    return;
   var cookisarr = cookis.split(";");
   if (cookisarr != -1)
     for (var i = 0; i < cookisarr.length; i++) {
       if (cookisarr[i].indexOf("JSESSIONID") >= 0) {
+        wx.setStorageSync(baseUrl, cookisarr[i]);
         return cookisarr[i];
       }
     }
@@ -148,7 +153,7 @@ function getBaseUrl(url) {
 function loginPlatForm() {
   if (wx.getStorageSync(storageKey.LOGIN_USER_NAME) == null || wx.getStorageSync(storageKey.LOGIN_USER_NAME).length == 0) {
     wx.navigateTo({
-      url: '../../../pages/C_user_login/C_user_login',
+      url: '../../../pages/User/user_auto_login_and_register/user_auto_login_and_register',
     });
     return
   }
@@ -176,7 +181,7 @@ function loginPlatForm() {
     },
     fail: function (data, res) {
       wx.navigateTo({
-        url: '../../../pages/C_user_login/C_user_login',
+        url: '../../../pages/User/user_auto_login_and_register/user_auto_login_and_register',
       });
     }
   }

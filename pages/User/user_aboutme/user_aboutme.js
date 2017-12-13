@@ -41,7 +41,7 @@ Page({
     var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
     if (userInfo == null || userInfo.length == 0) {
       wx.navigateTo({
-        url: '../../C_user_login/C_user_login',
+        url: '../user_auto_login_and_register/user_auto_login_and_register',
       })
     } else {
       content.setData({

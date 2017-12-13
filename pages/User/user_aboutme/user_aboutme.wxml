@@ -57,7 +57,7 @@
       </navigator> -->
     </view>
 
-    <navigator url="../../C_user_login/C_user_login" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="../user_auto_login_and_register/user_auto_login_and_register" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class='footer'>
         切换账号
       </view>

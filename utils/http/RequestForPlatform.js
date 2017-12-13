@@ -9,6 +9,13 @@ function loginPlatform(data, callback){
 }
 
 /**
+ * 手机号登陆
+ */
+function loginPlatformByPhone(data, callback) {
+  baseRequest.sendPostHttpForLogin(baseUrl + "appLoginMobileOther", data, callback, true)
+}
+
+/**
  * 修改密码发送短信验证
  */
 function changeForPassWord(data, callback) {
@@ -89,3 +96,4 @@ module.exports.findUserStarts = findUserStarts;
 module.exports.findListByEvaluateTag = findListByEvaluateTag;
 module.exports.queryCemeterySubsysListBySysEnumId = queryCemeterySubsysListBySysEnumId;
 module.exports.queryUserInfoById = queryUserInfoById;
+module.exports.loginPlatformByPhone = loginPlatformByPhone;
