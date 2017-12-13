@@ -70,7 +70,7 @@
       <navigator url="../../C_cem/C_cem" class="weui-grid">
         <view>
           <image class="weui-grid__icon" src="{{img_url}}" />
-          <view class="weui-grid__label">墓位位置</view>
+          <view class="weui-grid__label">查询墓位位置</view>
         </view>
       </navigator>
       <navigator class="weui-grid" url="../../C_blank/C_blank">
@@ -88,7 +88,7 @@
       <navigator url="../../C_order/C_order" class="weui-grid">
         <view>
           <image class="weui-grid__icon" src="{{img_url}}" />
-          <view class="weui-grid__label">购墓订单</view>
+          <view class="weui-grid__label">查询订单</view>
         </view>
       </navigator>
       <navigator url="../../others/complain_customer/complain_customer" class="weui-grid">

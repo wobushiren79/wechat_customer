@@ -11,7 +11,7 @@ Page({
   data: {
     tab_bd_title: 1,
     tab_hd: 1,
-    popup:false,
+    popup: false,
     right_nav: false,
     mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
 
@@ -48,7 +48,7 @@ Page({
     console.log(e.target.dataset.tab_hd)
     this.setData({
       tab_hd: e.target.dataset.tab_hd,
-      label:''
+      label: ''
     })
     pageUtil.initData();
     if (e.target.dataset.tab_hd == 1) {
@@ -100,7 +100,7 @@ Page({
     } else if (content.data.tab == 2) {
       content.getEvaluationList(storeUserId, content.data.label)
     }
-  
+
   },
   /**
    * 获取门店信息
@@ -285,11 +285,11 @@ Page({
       path: '/pages/Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId
     }
   },
-  
+
   /**
    * 查看图片
    */
-    bind_popup_img: function (e) {
+  bind_popup_img: function (e) {
     this.setData({
       popup_img: e.target.dataset.pic,
       popup: !this.data.popup
