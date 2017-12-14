@@ -106,6 +106,49 @@ function findPerformInfoByPerformId(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/order/findPerformInfoByPerformId', data, callback, true)
 }
 
+/**
+ * 获取送货地址列表
+ */
+function findServiceInfoAddressList(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/list', data, callback, true)
+}
+
+/**
+ * 设置默认送货地址
+ */
+function setServiceInfoDefaultAddress(data,callback){
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/default', data, callback, true)
+}
+
+/**
+ * 创建送货地址
+ */
+function createServiceInfoAddress(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/create', data, callback, true)
+}
+
+/**
+ * 更新送货地址
+ */
+function updateServiceInfoAddress(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/update', data, callback, true)
+}
+
+/**
+ * 删除送货地址
+ */
+function deleteServiceInfoAddress(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/delete', data, callback, true)
+}
+
+/**
+ * 查询默认送货地址
+ */
+function findServiceInfoDefaultAddress(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + 'api/goods/shipping/findDefaultAddress', data, callback, true)
+}
+
+
 module.exports.loginGoods = loginGoods;
 module.exports.getGoodsOrderList = getGoodsOrderList;
 module.exports.getGoodsOrderDetails = getGoodsOrderDetails;
@@ -121,3 +164,9 @@ module.exports.updateOutTradeNo = updateOutTradeNo;
 module.exports.findFinanceDetailByOrderId = findFinanceDetailByOrderId;
 module.exports.getShoppingNumber = getShoppingNumber;
 module.exports.findPerformInfoByPerformId = findPerformInfoByPerformId;
+module.exports.findServiceInfoAddressList = findServiceInfoAddressList;
+module.exports.setServiceInfoDefaultAddress = setServiceInfoDefaultAddress;
+module.exports.createServiceInfoAddress = createServiceInfoAddress;
+module.exports.updateServiceInfoAddress = updateServiceInfoAddress;
+module.exports.deleteServiceInfoAddress = deleteServiceInfoAddress;
+module.exports.findServiceInfoDefaultAddress = findServiceInfoDefaultAddress;

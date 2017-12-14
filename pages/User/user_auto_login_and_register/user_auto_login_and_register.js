@@ -159,7 +159,6 @@ function registeredAccount(mobile, password, msgcode) {
  * 验证码倒计时
  */
 function countdown(that) {
-  console.log(that.data.second);
   var second = that.data.second;
   if (second == 0) {
     // console.log("Time Out...");
