@@ -3,7 +3,7 @@ var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
 var pageUtil = require('../../../utils/PageUtil.js');
 var content;
-
+var searchData;
 Page({
 
   /**
@@ -67,7 +67,14 @@ Page({
   },
 
    bindconfirm:function(e){
-     var searchData = e.detail.value
+      searchData = e.detail.value
+     pageUtil.initData();
+     content.startSearch(searchData);
+   },
+  bindinput:function(e){
+    searchData = e.detail.value
+  },
+   searchBtn:function(e){
      pageUtil.initData();
      content.startSearch(searchData);
    }

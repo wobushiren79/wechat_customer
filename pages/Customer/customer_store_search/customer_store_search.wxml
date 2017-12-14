@@ -2,9 +2,9 @@
   <view class="page__bd">
     <view class="weui-panel weui-panel_access">
       <view class="weui-panel__hd">
-        <image src='{{userInfoAvatar}}' class="user"></image>
-        <input type='text' placeholder='搜索位置查找门店' bindconfirm="bindconfirm" ></input>
-        <image src='{{icon_blank}}' class='home'></image>
+        <image src='../../../images/map_me.png' class="user"></image>
+        <input type='text' placeholder='搜索位置查找门店' bindconfirm="bindconfirm" bindinput="bindinput"></input>
+        <image src='../../../images/icon_search.png' class='home' bindtap='searchBtn'></image>
       </view>
       <view class="weui-panel__bd">
         <block wx:for="{{listStore}}">

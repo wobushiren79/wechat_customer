@@ -6,13 +6,13 @@
     <view class="weui-grids">
       <navigator url="../../Goods_Order/order_shopping_cart/order_shopping_cart" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+          <image class="weui-grid__icon" src="../../../images/icon_apply_gwc.png" />
           <view class="weui-grid__label">购物车</view>
         </view>
       </navigator>
       <navigator url="../../Goods_Order/order_list_wait/order_list_wait" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+        <image class="weui-grid__icon" src="../../../images/icon_apply_wddd.png" />
           <view class="weui-grid__label">我的订单</view>
         </view>
       </navigator>
@@ -23,13 +23,13 @@
     <view class="weui-grids">
       <navigator url="../../C_wiki_list/C_wiki_list" class="weui-grid">
         <view>
-          <image   class="weui-grid__icon" src="{{img_url}}" />
+         <image class="weui-grid__icon" src="../../../images/icon_apply_bzbk.png" />
           <view class="weui-grid__label">殡葬百科</view>
         </view>
       </navigator>
       <navigator url="../../C_blank/C_blank" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+        <image class="weui-grid__icon" src="../../../images/icon_apply_hmbz.png" />
           <view class="weui-grid__label">惠民殡葬</view>
         </view>
       </navigator>
@@ -59,7 +59,7 @@
           <!-- <button open-type="contact" session-from="weapp">进入客服会话</button>   -->
           <!-- <button wx:if="{{canIUse}}" open-type="contact"> 客服消息 </button>
           <contact-button wx:else></contact-button> -->
-          <image class="weui-grid__icon" src="{{img_url}}" />
+        <image class="weui-grid__icon" src="../../../images/icon_apply_kf.png" />
           <view class="weui-grid__label">在线客服</view>
         </view>
       </view>
@@ -69,31 +69,31 @@
     <view class="weui-grids">
       <navigator url="../../C_cem/C_cem" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+                 <image class="weui-grid__icon" src="../../../images/icon_apply_mwcx.png" />
           <view class="weui-grid__label">查询墓位位置</view>
         </view>
       </navigator>
       <navigator class="weui-grid" url="../../C_blank/C_blank">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+                  <image class="weui-grid__icon" src="../../../images/icon_apply_glf.png" />
           <view class="weui-grid__label">管理费缴纳</view>
         </view>
       </navigator>
       <navigator url="../../C_blank/C_blank" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+                 <image class="weui-grid__icon" src="../../../images/icon_apply_dg.png" />
           <view class="weui-grid__label">订购墓位</view>
         </view>
       </navigator>
       <navigator url="../../C_order/C_order" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+                  <image class="weui-grid__icon" src="../../../images/icon_apply_gmdd.png" />
           <view class="weui-grid__label">查询订单</view>
         </view>
       </navigator>
       <navigator url="../../others/complain_customer/complain_customer" class="weui-grid">
         <view>
-          <image class="weui-grid__icon" src="{{img_url}}" />
+                  <image class="weui-grid__icon" src="../../../images/icon_apply_tsjy.png" />
           <view class="weui-grid__label">投诉建议</view>
         </view>
       </navigator>

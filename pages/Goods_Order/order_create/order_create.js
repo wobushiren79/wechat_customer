@@ -61,6 +61,8 @@ Page({
 
 
   onShow: function () {
+    //获取默认地址
+    findDefaultAddress();
     //取出客户信息
     wx.getStorage({
       key: storageKey.ORDER_SERVICE_INFO,
@@ -179,7 +181,7 @@ Page({
       //顾问总金额
       var totalPrice = that.data.adviser_Price
 
-      goodsOrder.orderPrice = totla_price* 100
+      goodsOrder.orderPrice = totla_price * 100
       goodsOrder.totalPrice = totalPrice * 100
       getdata.goodsOrder = goodsOrder
       // console.log(formData)
@@ -392,12 +394,7 @@ Page({
       }
       goodsHttp.createGoodsOrder(getdata, createOrderCallBack)
     } else {
-      wx.showToast({
-        title: '未填服务信息',
-        image: '../../images/icon_info.png',
-        // mask: true,
-        duration: 2000
-      })
+      toastUtil.showToast("未填服务信息");
     }
     // console.log(orderdata)
   },
@@ -406,3 +403,21 @@ Page({
 
   },
 });
+
+
+/**
+ * 获取默认地址
+ */
+function findDefaultAddress() {
+  var findDefaultAddressCallBack = {
+    success: function (data, res) {
+      content.setData({
+        defaultAddress: data
+      })
+    },
+    fail: function () {
+      toastUtil.showToast("获取地址失败");
+    }
+  }
+  goodsHttp.findServiceInfoDefaultAddress(null, findDefaultAddressCallBack)
+}
