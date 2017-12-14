@@ -28,7 +28,7 @@ Page({
   phoneBlur: function (e) {
     var that = this;
     var mobile = e.detail.value;
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    var myreg = getApp().myreg;
     if (mobile == "") {
       toastUtil.showToastReWrite('手机号不能为空', 'icon_info');
       that.setData({

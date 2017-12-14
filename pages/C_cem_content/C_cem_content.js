@@ -1,3 +1,5 @@
+var cemeteryHttp = require('../../utils/http/RequestForCemetery.js');
+var util = require('../../utils/util.js');
 Page({
     data: {
 
@@ -95,25 +97,31 @@ Page({
       }
     },
     onLoad: function (e) {
-      // console.log(e)
+      console.log(e)
       var that = this
       // 取出缓存选择信息
-      wx.getStorage({
-        key: 'muWei',
-        success: function (res) {
-          var muweiData=''
-          for(var i in res.data){
-            muweiData = res.data[e.key]
+      var positionId = e.positionId;
+      var detailsRequest = {
+        positionId:positionId
+      }
+      var detilasCallBack = {
+        success: function (dataContent, res) {
+          if (dataContent == null || dataContent.length == 0) {
+            return;
           }
-          // console.log(res)
+          var agentPhone = dataContent.agentPhone;
+          dataContent.agentPhone = agentPhone.replace(agentPhone.substr(3, 4), '****')
+          var endDate = dataContent.endDate;
+          dataContent.endDate = util.formatDate(new Date(endDate))
           that.setData({
-            muweiData: muweiData
-            // Class_a: res.data.class_a,
-            // Class_b: res.data.class_b,
-
+            positionData: dataContent
           })
+        },
+        fail: function () {
+          wx.stopPullDownRefresh()
         }
-      })
+      }
+      cemeteryHttp.queryMgtFeeByPositionId(detailsRequest, detilasCallBack);
     },
     formSubmit:function(option){
       var that=this

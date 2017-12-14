@@ -7,7 +7,7 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input weui-cell_head">
           <view class="weui-cell__hd">
-            {{muweiData.tombPositionText}}
+            {{positionData.tombPositionTxt}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
@@ -15,7 +15,7 @@
             使用者
           </view>
           <view class="weui-cell__bd">
-            {{muweiData.orderDeath.name}}
+            {{positionData.deadNames}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
@@ -23,7 +23,7 @@
             管理费到期时间
           </view>
           <view class="weui-cell__bd">
-            <input value="{{muweiData.managePayOverTime}}"/>
+            <input value="{{positionData.endDate}}" disabled='true'/>
           </view>
         </view>
         <!--<view class="weui-cell weui-cell_input">
@@ -39,15 +39,15 @@
             经办人
           </view>
           <view class="weui-cell__bd">
-             {{muweiData.orderAgent.agentmanName}}
+             {{positionData.agentName}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             手机尾号
           </view>
-          <view class="weui-cell__bd">
-            {{muweiData.agentManPhoneLastNumber}}
+          <view class="weui-cell__bd" readonly>
+            {{positionData.agentPhone}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
@@ -55,7 +55,7 @@
             安葬时间
           </view>
           <view class="weui-cell__bd">
-            {{muweiData.buryRecord.buryDatePre}}
+            {{positionData.buryRecord.buryDatePre}}
           </view>
         </view>
         <!--<view class="weui-cell weui-cell_input weui-cell_foot">

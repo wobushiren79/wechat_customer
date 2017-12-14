@@ -10,8 +10,8 @@
           <view class="weui-label">所在公墓</view>
         </view>
         <view class="weui-cell__bd">
-          <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{GmList}}">
-            <view class="weui-select weui-select_in-select-after">{{GmList[countryIndex]}}</view>
+          <picker bindchange="bindCemeteryChange" value="{{cemeteryIndex}}" range="{{GmList}}"  range-key='name'>
+            <view class="weui-select weui-select_in-select-after">{{GmList[cemeteryIndex].name}}</view>
           </picker>
         </view>
       </view>
@@ -21,10 +21,10 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">经办人姓名</view>
+          <view class="weui-label" >经办人姓名</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="姓名" name="agentManName"/>
+          <input class="weui-input" bindblur="bindAgentNameBlur" placeholder="姓名" name="agentManName"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
@@ -32,7 +32,7 @@
           <view class="weui-label">经办人电话</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="电话" name="agentManPhone"/>
+          <input class="weui-input" bindblur="bindAgentPhoneBlur"  maxlength='11' placeholder="电话" name="agentManPhone"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
@@ -40,17 +40,11 @@
           <view class="weui-label">使用者</view>
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="姓名" name="deadMan"/>
+          <input class="weui-input"  bindblur="bindDeathNameBlur" placeholder="姓名" name="deadMan"/>
         </view>
       </view>
     
     </view>
-
-
-
-
-
-
 
     <view class="weui-btn-area">
       <button class="weui-btn" type="primary" formType="submit">查询</button>

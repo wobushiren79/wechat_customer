@@ -1,22 +1,27 @@
+var toastUtil = require('../../utils/ToastUtil.js');
+var util = require('../../utils/util.js');
 Page({
-    data: {
+  data: {
 
 
-    },
-    onLoad:function(){
-      var that = this
-      // 取出缓存选择信息
-      wx.getStorage({
-        key: 'muWei',
-        success: function (res) {
-          // console.log(res)
-          that.setData({
-            listData:res.data
-            // Class_a: res.data.class_a,
-            // Class_b: res.data.class_b,
-
-          })
+  },
+  onLoad: function () {
+    var that = this
+    // 取出缓存选择信息
+    wx.getStorage({
+      key: 'key',
+      success: function (res) {
+        for (var i = 0; i < res.data.length; i++) {
+          var endDate = res.data[i].endDate;
+          res.data[i].endDate = util.formatDate(new Date(endDate))
         }
-      })
- }
+        that.setData({
+          listData: res.data
+        })
+      },
+      fail: function (res) {
+        toastUtil.showToastReWrite('服务器开小差啦', 'icon_info');
+      }
+    })
+  }
 });
