@@ -1,5 +1,6 @@
 var platformHttp = require('../../../utils/http/RequestForPlatform.js');
 var goodsHttp = require('../../../utils/http/RequestForGoods.js')
+var cemeteryHttp=require('../../../utils/http/RequestForCemetery.js');
 var storageKey = require('../../../utils/storage/StorageKey.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
 var modalUtil = require('../../../utils/ModalUtil.js');
@@ -83,13 +84,32 @@ Page({
   loginGoods: function () {
     var loginGoodsCallBack = {
       success: function (data, res) {
+        content.loginCemetery();
+      },
+      fail: function () {
+        content.loginCemetery();
+      }
+    }
+    goodsHttp.loginGoods(null, loginGoodsCallBack);
+  },
+  /**
+ * 登陆公墓
+ */
+  loginCemetery: function () {
+    var loginCemeteryCallBack = {
+      success: function (data, res) {
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      fail: function (data, res) {
         wx.navigateBack({
           delta: 1
         })
       }
     }
-    goodsHttp.loginGoods(null, loginGoodsCallBack);
-  },
+    cemeteryHttp.loginCemetery(null,loginCemeteryCallBack)
+  }
 })
 
 

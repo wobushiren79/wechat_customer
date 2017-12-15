@@ -194,16 +194,34 @@ function loginPlatForm() {
 function loginGoods() {
   var loginGoodsCallBack = {
     success: function (data, res) {
-      // wx.navigateBack({
-      //   delta: 1
-      // })
+      loginCemetery();
+    },
+    fail: function (data, res) {
+      loginCemetery();
+    }
+  }
+  sendPostHttpForLogin(getApp().globalData.JavaGoodsUrl + "login_sys_api", null, loginGoodsCallBack, true)
+}
+
+/**
+ * 登陆公墓
+ */
+function loginCemetery() {
+  var loginCemeteryCallBack = {
+    success: function (data, res) {
+      wx.reLaunch({
+        url: '../../../pages/C_map/C_map',
+      })
+    },
+    fail: function (data, res) {
       wx.reLaunch({
         url: '../../../pages/C_map/C_map',
       })
     }
   }
-  sendPostHttpForLogin(getApp().globalData.JavaGoodsUrl + "login_sys_api", null, loginGoodsCallBack, true)
+  sendPostHttpForLogin(getApp().globalData.JavaCemeteryUrl + "login_subsystem_api", null, loginCemeteryCallBack, true)
 }
+
 
 module.exports.sendPostHttpForLogin = sendPostHttpForLogin;
 module.exports.sendPostHttp = sendPostHttp;

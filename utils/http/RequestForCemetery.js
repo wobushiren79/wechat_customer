@@ -1,7 +1,12 @@
 var baseRequest = require('base/BaseRequest.js')
 var baseUrl = getApp().globalData.JavaCemeteryUrl;
 
-
+/**
+ * 登陆公墓
+ */
+function loginCemetery(data, callback) {
+  baseRequest.sendPostHttpForLogin(baseUrl + "login_subsystem_api", data, callback, true)
+}
 /**
  * 查询墓位信息
  */
@@ -17,4 +22,5 @@ function queryMgtFeeByPositionId(data, callback) {
 }
 
 module.exports.findPositionByCondition = findPositionByCondition;      
-module.exports.queryMgtFeeByPositionId = queryMgtFeeByPositionId;     
+module.exports.queryMgtFeeByPositionId = queryMgtFeeByPositionId;  
+module.exports.loginCemetery = loginCemetery;   

@@ -2,62 +2,42 @@
   <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__bd clearfix">
 
-      <!-- 填写服务信息 star -->
-      <view class="goods_address ">
-
-        <!-- 填写前 -->
-        <black wx:if="{{!show}}">
-          <navigator url="../order_service_info/order_service_info">
-            <view class="show clearfix">
-              <image src="../../../images/icon_edit.png" class="img"></image>
-              <view class="info">
-                <view class="title">填写服务信息</view>
-                <view class="content">请根据提示依次填入客户信息</view>
-              </view>
-              <image src="../../../images/right.png" class="icon"></image>
-            </view>
-          </navigator>
-        </black>
-
-        <!-- 填写后 -->
-        <black wx:if="{{show}}">
-          <navigator url="../order_service_info/order_service_info">
-            <view class="hide clearfix">
-              <image src="../../../images/icon_money_my.png" class="img "></image>
-
-              <!-- 信息 -->
-              <view class="info clearfix ">
-
-                <!-- 姓名 -->
-                <view class="title ">
-                  客户：
-                  <text>{{kehu.contact}}</text>
-                  <text class="phone ">{{kehu.contactPhone}}</text>
-                </view>
-                <view class="content ">
-
-                  <!-- 地址 -->
-                  <view class=" ">
-                    地址：
-                    <text>{{kehu.serviceLocation}}</text>
-                  </view>
-
-                  <!-- 服务时间 -->
-                  <view class=" ">
-                    服务时间：
-                    <text>{{kehu.bookTime}}</text>
-                  </view>
-                </view>
-              </view>
-              <image src="../../../images/right.png " class="icon "></image>
-            </view>
-          </navigator>
-        </black>
-
-        <!-- 分割线 -->
-        <image src="../../../images/hr.png " class="hr "></image>
+      <view class="dd">
+        <view class="header">
+          服务方式
+        </view>
+        <view class="footer">
+          <text class="btn {{btn_1?'active':''}} " bindtap="bind_btn_1">及时服务</text>
+          <text class="btn {{btn_2?'active':''}} " bindtap="bind_btn_2">预约服务</text>
+        </view>
       </view>
-      <!-- 填写服务信息 end -->
+      <block wx:if="{{btn_2}}">
+        <view class="dd order_time">
+          <view class="header ">
+            预约日期
+          </view>
+          <view class="footer ">
+            <picker mode="date" value="{{date}}" start="2015-09-01" end="2037-09-01" bindchange="bindDateChange">
+              <text>{{date}}</text>
+            </picker>
+          </view>
+          <image src="../../../images/right.png" class="icon"></image>
+        </view>
+        <view class="dd order_time">
+          <view class="header ">
+            预约时间
+          </view>
+          <view class="footer ">
+            <picker mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+              <text>{{time}}</text>
+            </picker>
+          </view>
+          <image src="../../../images/right.png" class="icon"></image>
+        </view>
+      </block>
+
+
+
 
 
       <!-- 填写收件地址 -->

@@ -45,22 +45,6 @@
               <input class="weui-input" type="text" placeholder="请输入验证码" name="msgCode" value="{{value4}}" />
             </view>
           </view>
-          <!-- <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-              <view class="weui-label">密码</view>
-            </view>
-            <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="请输入密码" name="password" value="{{value4}}" />
-            </view>
-          </view> -->
-          <!-- <view class="weui-cell weui-cell_input">
-            <view class="weui-cell__hd">
-              <view class="weui-label">新密码</view>
-            </view>
-            <view class="weui-cell__bd">
-              <input class="weui-input" type="text" placeholder="请输入新密码" name="keys" value="{{value4}}" />
-            </view>
-          </view> -->
         </block>
       </view>
       <view class="weui-btn-area">

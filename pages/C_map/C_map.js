@@ -84,7 +84,7 @@ Page({
         latitude: item.shop_latitude,
         longitude: item.shop_longitude,
         width: 40,
-        height: 40
+        height: 48
       };
     return markerItem;
   },

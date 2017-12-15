@@ -24,28 +24,6 @@ Page({
     userInfo: {},
     // chatxian:true
   },
-  // onShareAppMessage: function () {
-  //   var goods_id = this.data.goods_id
-  //   return {
-  //     title: '圆满人生公共殡葬服务平台',
-  //     // path: '/pages/service_forward/service_forward?goods_id='+goods_id,
-  //     path: '/pages/service_content/service_content?goods_id=' + goods_id,
-  //     success: function (res) {
-  //       wx.showToast({
-  //         title: '转发成功',
-  //         duration: 2000
-  //       })
-  //     },
-  //     fail: function (res) {
-  //       wx.showToast({
-  //         title: '转发失败',
-  //         image: '../../images/icon_info.png',
-  //         // mask:true,
-  //         duration: 2000
-  //       })
-  //     }
-  //   }
-  // },
   onLoad: function (event) {
     content = this;
     var that = this
