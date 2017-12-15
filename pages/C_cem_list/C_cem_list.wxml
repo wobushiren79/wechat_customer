@@ -3,10 +3,10 @@
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
     <block wx:for="{{listData}}">
-      <navigator url="../C_cem_content/C_cem_content?key={{index}}" class="weui-cells weui-cells_after-title">
+      <navigator url="../C_cem_content/C_cem_content?positionId={{item.id}}" class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input weui-cell_head">
           <view class="weui-cell__hd">
-            {{item.tombPositionText}}
+            {{item.tombPositionTxt}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
@@ -14,15 +14,18 @@
             使用者
           </view>
           <view class="weui-cell__bd">
-            {{item.orderDeath.name}}
+            {{item.deadNames}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             管理费到期时间
           </view>
-          <view class="weui-cell__bd">
-            {{item.managePayOverTime}}
+          <view class="weui-cell__bd" wx:if="{{item.endDate==null}}">
+            无缴费记录
+          </view>
+          <view class="weui-cell__bd" wx:else>
+            {{item.endDate}}
           </view>
         </view>
         <view class="weui-cell weui-cell_input">
