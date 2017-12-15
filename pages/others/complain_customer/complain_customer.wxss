@@ -95,15 +95,15 @@ page {
 .footer {
   position: fixed;
   bottom: 0;
-  left: 7.5%;
-  width: 85%;
+  left: 0;
+  width: 100%;
   border: none;
-  border-top: 1px solid #efefef;
+
   line-height: 100rpx;
   font-size: 32rpx;
-  color: #353535;
+  color: #fff;
   text-align: center;
-  background: transparent;
+  background: #48cfad;
   outline: none;
   border-radius: 0;
 }

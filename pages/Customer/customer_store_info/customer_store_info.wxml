@@ -34,21 +34,21 @@
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_access">
           <view class="weui-cell__hd">
-            <image src="{{icon}}"></image>
+              <image src="../../../images/icon_mystroe_info_server.png" mode='widthFix'></image>
           </view>
           <view class="weui-cell__bd aui-ellipsis-1" bindtap="navigationLocation" >{{shop_location}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
         <view class="weui-cell weui-cell_access" data-phone='{{consultant_tel}}' bindtap='bind_phone'>
           <view class="weui-cell__hd">
-            <image src="{{icon}}"></image>
+             <image src="../../../images/icon_mystroe_info_phone.png" mode='widthFix'></image>
           </view>
           <view class="weui-cell__bd aui-ellipsis-1">电话：{{consultant_tel}}</view>
           <view class="weui-cell__ft weui-cell__ft_in-access"></view>
         </view>
         <view class="weui-cell weui-cell_access">
           <view class="weui-cell__hd">
-            <image src="{{icon}}"></image>
+             <image src="../../../images/icon_mystroe_info_address.png" mode='widthFix'></image>
           </view>
           <view class="weui-cell__bd aui-ellipsis-1">服务区域：{{user_serviceArea}}</view>
         </view>

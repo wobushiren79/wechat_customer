@@ -100,7 +100,7 @@
         <view class='tab_bd_title'>
           <view class='num_wrap'>
             <text class='num'>{{user_scoring}}</text>
-            <text class='name'>门店评价</text>
+            <text class='name'>服务评价</text>
           </view>
           <view class='label_wrap'>
             <block wx:for="{{labelList}}">
@@ -163,7 +163,7 @@
         <navigator open-type="navigateBack" class='btn1'>
           <image src='../../../images/mystroe_right_nav_btn_index.png'></image>
         </navigator>
-        <navigator class='btn2' url="../../User/user_apply/user_apply">
+        <navigator class='btn2' url="../../User/user_aboutme/user_aboutme">
           <image src='../../../images/mystroe_right_nav_btn_my.png'></image>
         </navigator>
         <navigator class='btn3' url="../../Goods_Order/order_shopping_cart/order_shopping_cart">

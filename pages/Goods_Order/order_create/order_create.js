@@ -1,4 +1,3 @@
-
 var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
@@ -18,7 +17,7 @@ Page({
     orderType: 1,
     date: "请选择日期",
     time: "请选择时间",
-
+    btn_1:true
   },
   bind_list: function () {
     var that = this;

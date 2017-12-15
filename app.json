@@ -1,8 +1,7 @@
 {
   "pages": [
-        "pages/C_map/C_map",
-        "pages/Goods_Order/order_service_address/order_service_address",
-
+    "pages/C_map/C_map",
+    "pages/Goods_Order/order_service_address/order_service_address",
     "pages/Goods_Order/service_goods_pay/service_goods_pay",
     "pages/Customer/customer_store_search/customer_store_search",
     "pages/User/user_aboutme/user_aboutme",
@@ -46,7 +45,6 @@
     "pages/others/evaluation_customer/evaluation_customer",
     "pages/Customer/customer_store_info/customer_store_info",
     "pages/User/user_auto_login_and_register/user_auto_login_and_register"
-
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -2,44 +2,6 @@
   <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__bd clearfix">
 
-      <view class="dd">
-        <view class="header">
-          服务方式
-        </view>
-        <view class="footer">
-          <text class="btn {{btn_1?'active':''}} " bindtap="bind_btn_1">及时服务</text>
-          <text class="btn {{btn_2?'active':''}} " bindtap="bind_btn_2">预约服务</text>
-        </view>
-      </view>
-      <block wx:if="{{btn_2}}">
-        <view class="dd order_time">
-          <view class="header ">
-            预约日期
-          </view>
-          <view class="footer ">
-            <picker mode="date" value="{{date}}" start="2015-09-01" end="2037-09-01" bindchange="bindDateChange">
-              <text>{{date}}</text>
-            </picker>
-          </view>
-          <image src="../../../images/right.png" class="icon"></image>
-        </view>
-        <view class="dd order_time">
-          <view class="header ">
-            预约时间
-          </view>
-          <view class="footer ">
-            <picker mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
-              <text>{{time}}</text>
-            </picker>
-          </view>
-          <image src="../../../images/right.png" class="icon"></image>
-        </view>
-      </block>
-
-
-
-
-
       <!-- 填写收件地址 -->
       <view class="goods_address ">
         <navigator url="../order_service_address/order_service_address">
@@ -176,7 +138,7 @@
         </view>
       </view>
 
-      <!-- 购置物品 -->
+      <!-- 发票信息 -->
       <view class="goods_other list ">
         <view class="dl ">
           <navigator url="../order_service_invoice/order_service_invoice">
@@ -210,18 +172,49 @@
               <textarea placeholder="请填写订单备注信息 " name="orderComment" />
             </view>
           </view>
-          <view class="dd ">
-            <view class="header ">
-            </view>
-            <!-- <view class="footer ">
-              客户应付金额
-              <text> ￥</text>
-              <text>{{totla_price}}</text>
-            </view> -->
-          </view>
+          
         </view>
       </view>
 
+      <!-- 服务方式 -->
+
+      <view class='list server_style'>
+        <view class='dl'>
+          <view class="dd">
+            <view class="header">
+              服务方式
+            </view>
+            <view class="footer">
+              <text class="btn {{btn_1?'active':''}} " bindtap="bind_btn_1">及时服务</text>
+              <text class="btn {{btn_2?'active':''}} " bindtap="bind_btn_2">预约服务</text>
+            </view>
+          </view>
+          <block wx:if="{{btn_2}}">
+            <view class="dd order_time">
+              <view class="header ">
+                预约日期
+              </view>
+              <view class="footer ">
+                <picker mode="date" value="{{date}}" start="2015-09-01" end="2037-09-01" bindchange="bindDateChange">
+                  <text>{{date}}</text>
+                </picker>
+              </view>
+              <image src="../../../images/right.png" class="icon"></image>
+            </view>
+            <view class="dd order_time">
+              <view class="header ">
+                预约时间
+              </view>
+              <view class="footer ">
+                <picker mode="time" value="{{time}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+                  <text>{{time}}</text>
+                </picker>
+              </view>
+              <image src="../../../images/right.png" class="icon"></image>
+            </view>
+          </block>
+        </view>
+      </view>
       <!-- 固定底部 star -->
       <view class="footerfix clearfix">
 

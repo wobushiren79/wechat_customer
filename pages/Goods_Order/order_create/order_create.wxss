@@ -1,5 +1,4 @@
-
-.btn{
+.btn {
   display: inline-block;
   width: 160rpx;
   height: 60rpx;
@@ -13,8 +12,18 @@
   margin-left: 20rpx;
   margin-top: 2rpx;
 }
+
+.btn.active {
+  color: #48cfad;
+  border-color: #48cfad;
+}
+
+.list.server_style {
+  margin-bottom: 15px;
+}
+
 .goods_address {
-  height: 210rpx;
+  height: 190rpx;
   background: #fff;
   position: relative;
   margin-bottom: 15px;
@@ -313,7 +322,9 @@ button::after {
   position: relative;
   z-index: 8;
 }
-
+.goods_other {
+  margin-bottom: 15px;
+}
 .footerfix {
   position: fixed;
   bottom: 0;
@@ -323,6 +334,7 @@ button::after {
   text-align: center;
   background: #fff;
   border-top: 1px solid #efefef;
+  z-index: 999;
 }
 
 .footerfix .count, .footerfix .buy {
@@ -330,9 +342,7 @@ button::after {
   line-height: 100rpx;
 }
 
-.footerfix .home,
- .footerfix .count,
-  .footerfix .buy {
+.footerfix .home, .footerfix .count, .footerfix .buy {
   float: left;
   height: 100rpx;
   line-height: 100rpx;
@@ -341,7 +351,8 @@ button::after {
 .footerfix .home {
   padding: 0 16rpx;
 }
-.footerfix .home image{
+
+.footerfix .home image {
   width: 14rpx;
   height: 24rpx;
   display: inline-block;
@@ -350,11 +361,11 @@ button::after {
   position: relative;
   top: 7rpx;
 }
-.footerfix .home navigator{
-  display: inline-block;
-  color:#353535;
-font-size:24rpx;
 
+.footerfix .home navigator {
+  display: inline-block;
+  color: #353535;
+  font-size: 24rpx;
 }
 
 .footerfix .count {
@@ -364,12 +375,12 @@ font-size:24rpx;
   text-align: right;
 }
 
-.footerfix .count{
+.footerfix .count {
   color: #353535;
   font-size: 24rpx;
 }
 
-.footerfix .count text{
+.footerfix .count text {
   color: #fc8383;
   font-size: 28rpx;
 }
@@ -385,12 +396,13 @@ font-size:24rpx;
 .footerfix .buy {
   background: linear-gradient(to left, #3eb99a, #269080);
 }
+
 /* 套餐iQ定位 */
-.ispackage{
+
+.ispackage {
   width: 100rpx;
   height: 50rpx;
   position: absolute;
   left: 90rpx;
-  top:10rpx;
-
+  top: 10rpx;
 }

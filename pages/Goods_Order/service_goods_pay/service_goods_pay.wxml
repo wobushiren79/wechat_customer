@@ -32,7 +32,7 @@
               支付订单金额
             </view>
             <view class="money">
-              指导销售价￥
+              ￥
               <text>{{showTotalPrice}}</text>
             </view>
 

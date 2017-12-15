@@ -181,5 +181,16 @@ Page({
     wx.navigateTo({
       url: '../User/user_apply/user_apply',
     })
-  }
+  },
+
+    /**
+   * 分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: "圆满人生",
+      desc: '门店搜索',
+      path: '/pages/C_map/C_map'
+    }
+  },
 })

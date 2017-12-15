@@ -67,7 +67,7 @@
                 <image src="../../../images/icon_call_phone.png"></image>联系顾问
               </view>
               <view class="footer">
-                <text type="primary" bindtap='evaluation' class="btn" data-orderid='{{item.id}}' data-storeuserid='{{item.store_user_id}}' data-storename='{{item.store_name}}'>评价</text>
+                <text type="primary" bindtap='evaluation' class="btn" data-orderid='{{item.id}}' data-storeuserid='{{item.store_user_id}}' data-storename='{{item.store_name}}'>服务评价</text>
               </view>
             </view>
           </view>

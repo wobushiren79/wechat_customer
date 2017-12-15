@@ -16,7 +16,7 @@ image {
 .userinfo .info {
   display: flex;
   align-items: flex-start;
-  padding: 50rpx 48rpx 0rpx 48rpx;
+  padding: 35rpx 48rpx 0rpx 48rpx;
   font-size: 28rpx;
   color: #fff;
 }
@@ -55,7 +55,9 @@ image {
   height: 190rpx;
   border-radius: 10rpx;
 }
-
+.userinfo view{
+  margin-bottom: 10rpx;
+}
 .userinfo .text {
   color: #fff;
   flex: 1;
@@ -69,7 +71,10 @@ image {
 }
 
 .userinfo .name text {
+  display: block;
   font-size: 40rpx;
+  padding-left: 44rpx;
+  margin-top: -14rpx;
 }
 
 .userinfo .keyword text {
@@ -99,8 +104,8 @@ image {
 .section_more .weui-cell__hd {
   width: 32rpx;
   height: 32rpx;
-  background: #48cfad;
   margin-right: 24rpx;
+  margin-top: -2rpx;
 }
 
 .section_more .weui-cell {

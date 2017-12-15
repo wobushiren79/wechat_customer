@@ -86,6 +86,14 @@ contact-button{
 .info .info_text cover-view{
   line-height: 1.5;
 }
+.info .info_name_icon,
+.info .info_address_icon{
+  display: inline-block;
+  width: 20rpx; 
+  position: relative;
+  top: 16rpx;
+  margin-right: 6rpx;
+}
 
 /* 预约顾问 */
 .server{
@@ -142,7 +150,8 @@ contact-button{
 }
 
 .center{
-  width: 40rpx;
+  width: 55rpx;
+  height: 55rpx;
   position: absolute;
   top: 50%;
   left: 50%;

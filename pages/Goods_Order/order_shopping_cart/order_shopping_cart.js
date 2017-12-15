@@ -23,11 +23,11 @@ Page({
     })
   },
   onShow: function () {
-    content = this;
-    content.getGoodsShoppingList();
+  
   },
   onLoad: function () {
     content = this;
+    content.getGoodsShoppingList();
   },
   /**
    * 获取商品详情

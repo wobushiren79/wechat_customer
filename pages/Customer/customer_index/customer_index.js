@@ -6,6 +6,9 @@ var content;
 var storeId;
 var storeUserId;
 var goodsClassId;
+var storeName;
+
+var canPullGoodsList = false;//是否能下拉列表
 
 Page({
   data: {
@@ -96,7 +99,8 @@ Page({
   //上拉添加记录条数
   onReachBottom: function () {
     if (content.data.tab_hd == 1) {
-      content.getStoreGoods(storeId, content.goodsClassId);
+      if (canPullGoodsList)
+        content.getStoreGoods(storeId, content.goodsClassId);
     } else if (content.data.tab == 2) {
       content.getEvaluationList(storeUserId, content.data.label)
     }
@@ -120,6 +124,10 @@ Page({
           shop_longitude: data.shop_longitude,
           shop_pic: data.shop_img
         })
+        wx.setNavigationBarTitle({
+          title: data.shop_name,
+        });
+        storeName = data.shop_name;
       },
       fail: function (data, res) {
         toastUtil.showToast(data);
@@ -137,6 +145,12 @@ Page({
     };
     var storeGoodsClassCallBack = {
       success: function (data, res) {
+        if (!data) {
+          canPullGoodsList = false;
+          return
+        } else {
+          canPullGoodsList = true;
+        }
         content.setData({
           listGoodsClass: data,
           tab_bd_title: data[0].id
@@ -280,7 +294,7 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: '顾问门店',
+      title: storeName,
       desc: '顾问门店详情',
       path: '/pages/Customer/customer_index/customer_index?storeId=' + storeId + "&storeUserId=" + storeUserId
     }

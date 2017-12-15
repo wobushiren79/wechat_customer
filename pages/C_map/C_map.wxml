@@ -43,26 +43,6 @@
       </cover-view>
     </cover-view>
 
-    <!-- 门店简介
-    <cover-view class=' info {{showDiv}} ' bindtap='bind_go' data-url='{{info_url}} '>
-      <cover-image class='info_img ' src="{{info_img}}"></cover-image>
-      <cover-view class='info_text '>
-        <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
-        <cover-view class='info_name '>{{info_name}}</cover-view>
-        <cover-view class='info_address '>{{info_address}}</cover-view>
-      </cover-view>
-    </cover-view>
- -->
-
-    <!-- {{showDiv}} -->
-    <!-- <cover-view class='info' style='{{showDiv2}}' bindtap='bind_go' data-url='{{info_url}} '>
-      <cover-view class='info_text'>
-        <cover-view class='info_stroe {{showDiv}}'>xxx</cover-view>
-        <cover-view class='info_name {{showDiv}}'>fff</cover-view>
-        <cover-view class='info_address {{showDiv}}'>ccc</cover-view>
-      </cover-view>
-    </cover-view> -->
-
     <!-- 门店简介  -->
 
     <cover-view class='info' bindtap='bind_go' data-url='{{info_url}} ' wx:if="{{showDiv==1}}">
@@ -70,8 +50,8 @@
       <cover-image class='info_img ' src="{{info_img}}"></cover-image>
       <cover-view class='info_text '>
         <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
-        <cover-view class='info_name '>{{info_name}}</cover-view>
-        <cover-view class='info_address '>{{info_address}}</cover-view>
+        <cover-view class='info_name '><cover-image class='info_name_icon' src="../../../images/appraise_name.png"></cover-image>{{info_name}}</cover-view>
+        <cover-view class='info_address '><cover-image class='info_address_icon' src="../../../images/appraise_address.png"></cover-image>{{info_address}}</cover-view>
       </cover-view>
     </cover-view>
 

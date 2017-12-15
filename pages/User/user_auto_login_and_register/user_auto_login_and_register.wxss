@@ -30,6 +30,9 @@
   right: 15px;
 }
 
+.weui-label{
+  width: 120rpx;
+}
 /*页脚*/
 
 .foot {

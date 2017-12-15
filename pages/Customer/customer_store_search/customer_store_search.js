@@ -77,5 +77,10 @@ Page({
    searchBtn:function(e){
      pageUtil.initData();
      content.startSearch(searchData);
+   },
+   aboutMe:function(e){
+     wx.redirectTo({
+       url: '../../User/user_aboutme/user_aboutme',
+     })
    }
 })
