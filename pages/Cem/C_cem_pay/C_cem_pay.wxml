@@ -1,0 +1,107 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+    <form bindsubmit='formSubmit'>
+      <view class="weui-cells weui-cells_after-title info">
+
+        <view class="weui-cell weui-cell_input address">
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' value='{{positionData.tombPositionTxt}}' />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">使用者</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' name='deadName' value='{{positionData.deadNames}}' />
+          </view>
+          <view class="weui-cell__hd">
+            <view class="weui-label">安葬时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' value='2017-01-01' />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">经办人</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' value='{{positionData.agentName}}' />
+          </view>
+          <view class="weui-cell__hd">
+            <view class="weui-label">手机号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' value='{{positionData.agentPhone}}' />
+          </view>
+        </view>
+
+      </view>
+
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">到期时间1</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' value='{{positionData.endDate}}' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">起始时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name='beginDate' disabled='disabled' value='{{positionData.endDate}}' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+
+          <view class="weui-cell__hd">
+            <view class="weui-label">缴费年限(年)</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" bindblur='bindAgeLimitBlur' name='ageLimit' placeholder='请输入年限' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">到期时间2</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name='endDate' disabled='disabled' value='{{positionData.newEndDate}}' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">单价(元/年)</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' name='currentPrice' value='{{positionData.feeYear}}' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">总金额(元)</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" disabled='disabled' name='payAmount' value='{{positionData.currentPrice}}' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <!-- <block wx:if="{{isShowInput==1}}">
+            <input name="oldPositionId" disabled='disabled' type='hidden' value='{{positionData.tombPositionId}}' />
+            <input name="orderId" disabled='disabled' type='hidden' value='{{positionData.orderId}}' />
+            <input name="cemeteryId" disabled='disabled' type='hidden' value='{{positionData.cemeteryId}}' />
+          </block> -->
+        </view>
+      </view>
+      <button formType="submit" class='footer'>
+        缴纳费用
+      </button>
+    </form>
+  </view>
+</view>
