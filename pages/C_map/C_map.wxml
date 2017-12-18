@@ -51,9 +51,9 @@
         <cover-view class='info_text '>
           <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
           <cover-view class='info_name '>
-            <cover-image class='info_name_icon' src="../../../images/appraise_name.png"></cover-image>{{info_name}}</cover-view>
+            <cover-image class='info_name_icon ' src="../../images/appraise_name.png"></cover-image>{{info_name}}</cover-view>
           <cover-view class='info_address '>
-            <cover-image class='info_address_icon' src="../../../images/appraise_address.png"></cover-image>{{info_address}}</cover-view>
+            <cover-image class='info_address_icon' src="../../images/appraise_address.png"></cover-image>{{info_address}}</cover-view>
         </cover-view>
       </cover-view>
 

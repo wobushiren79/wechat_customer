@@ -108,14 +108,17 @@ function respsoneSuccessDeal(res, callback) {
     if (res.data.code == 1000) {
       if (callback.success)
         callback.success(res.data.content, res);
-    }
-    else {
+    } else if (res.data.code == 9999) {
+      if (callback.loginAgain) {
+        callback.loginAgain();
+      }
+    } else {
       if (callback.fail)
         callback.fail(res.data.message, res);
     }
   } else {
     if (res.data.indexOf("登录") >= 0) {
-      if(callback.loginAgain){
+      if (callback.loginAgain) {
         callback.loginAgain();
       }
       // wx.navigateTo({

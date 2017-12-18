@@ -89,17 +89,20 @@ navigator image, cover-view image {
 
 .info .info_text cover-view {
   line-height: 1.5;
+  
 }
 .info .info_name_icon, .info .info_address_icon {
-  display: inline-block;
-  /* display:block;  */
+  display: inline-block; 
   width: 20rpx;
-  height: 40rpx;
+  height: 36rpx;
   position: relative;
-  top: 16rpx;
-  margin-right: 6rpx;
+  top: -2rpx;
+  left: -24rpx;
 }
-
+.info .info_name,
+.info .info_address{
+  padding-left: 30rpx;
+}
 /* 预约顾问 */
 
 .server {

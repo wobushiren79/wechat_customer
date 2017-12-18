@@ -113,7 +113,7 @@ Page({
         content.getGoodsListDetails(str)
       },
       fail: function () {
-
+        toastUtil.showToast("获取数据失败");
       }
     }
     goodsHttp.getGoodsShoppingList(goodsShoppingListRequest, goodsShoppingListCallBack);
