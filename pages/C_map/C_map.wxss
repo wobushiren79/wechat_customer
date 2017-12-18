@@ -92,16 +92,24 @@ navigator image, cover-view image {
   
 }
 .info .info_name_icon, .info .info_address_icon {
-  display: inline-block; 
+  display: block; 
   width: 20rpx;
-  height: 36rpx;
+  height: 28rpx;
+    float: left;
   position: relative;
-  top: -2rpx;
-  left: -24rpx;
+   top: 4rpx; 
+  left: 0rpx;
+  margin-right: 6rpx;
+  line-height: 1;
 }
 .info .info_name,
 .info .info_address{
-  padding-left: 30rpx;
+  /* padding-left: 30rpx; */
+}
+.info_name_text,
+info_address_text{
+  display: block;
+  float: left;
 }
 /* 预约顾问 */
 
