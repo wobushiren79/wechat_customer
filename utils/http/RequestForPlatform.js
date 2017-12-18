@@ -80,6 +80,13 @@ function queryCemeterySubsysListBySysEnumId(data, callback) {
 	baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemList", data, callback);
 }
 
+/**
+ * 通过系统枚举id查询公墓列表不需要登录
+ */
+function queryCemeterySubsysListBySysEnumIdNoLogin(data, callback) {
+  baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemListNoLogin", data, callback);
+}
+
 function queryUserInfoById(data, callback){
   baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/queryById", data, callback)
 }
@@ -95,5 +102,6 @@ module.exports.queryTagsListByType = queryTagsListByType;
 module.exports.findUserStarts = findUserStarts;
 module.exports.findListByEvaluateTag = findListByEvaluateTag;
 module.exports.queryCemeterySubsysListBySysEnumId = queryCemeterySubsysListBySysEnumId;
+module.exports.queryCemeterySubsysListBySysEnumIdNoLogin = queryCemeterySubsysListBySysEnumIdNoLogin;
 module.exports.queryUserInfoById = queryUserInfoById;
 module.exports.loginPlatformByPhone = loginPlatformByPhone;
