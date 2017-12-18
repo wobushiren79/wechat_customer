@@ -1,60 +1,62 @@
 <!-- map.wxml -->
 <view class='page'>
-<view class='header'>
-  <!-- 我 -->
-  <navigator url='../User/user_aboutme/user_aboutme' class='me'>
-    <image src='../../images/map_me.png' mode="widthFix"></image>
-  </navigator>
-  <!-- 输入框 -->
-  <navigator class='input' bindtap='bind_address'>
-    <image src='../../images/index_search.png' mode="widthFix"></image>
-  </navigator>
-  <!-- list -->
-  <navigator url='../Customer/customer_store_search/customer_store_search' class='list'>
-    <image src='../../images/map_list.png' mode="widthFix"></image>
-  </navigator>
-</view>
+  <view class='header'>
+    <!-- 我 -->
+    <navigator url='../User/user_aboutme/user_aboutme' class='me'>
+      <image src='../../images/map_me.png' mode="widthFix"></image>
+    </navigator>
+    <!-- 输入框 -->
+    <navigator class='input' bindtap='bind_address'>
+      <image src='../../images/index_search.png' mode="widthFix"></image>
+    </navigator>
+    <!-- list -->
+    <navigator url='../Customer/customer_store_search/customer_store_search' class='list'>
+      <image src='../../images/map_list.png' mode="widthFix"></image>
+    </navigator>
+  </view>
 
 
-<view class='map_wrap'>
-  <map id="map" hidden='' longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='markertap' bindregionchange="bind_info_show" show-location='true'>
-    <!-- <cover-view> -->
-    <!-- 定位 -->
-    <cover-image src='../../images/map_address.png' mode="widthFix" class='address' bindtap='bind_location'>
-    </cover-image>
+  <view class='map_wrap'>
+    <map id="map" hidden='' longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" controls="{{controls}}" bindmarkertap="markertap" bindcallouttap='markertap' bindregionchange="bind_info_show" show-location='true'>
+      <!-- <cover-view> -->
+      <!-- 定位 -->
+      <cover-image src='../../images/map_address.png' mode="widthFix" class='address' bindtap='bind_location'>
+      </cover-image>
 
-    <!-- 更多 -->
-    <cover-image src='../../images/map_more.png' mode="widthFix" class='more' bindtap='my_apply'>
-    </cover-image>
+      <!-- 更多 -->
+      <cover-image src='../../images/map_more.png' mode="widthFix" class='more' bindtap='my_apply'>
+      </cover-image>
 
-    <!-- <cover-view  class='take_btn'>
+      <!-- <cover-view  class='take_btn'>
       <contact-button size="20" session-from="WeChat">
       </contact-button>
     </cover-view> -->
-    <!-- 中心点 -->
-    <cover-image class='center ' src="../../images/map_center.png"></cover-image>
+      <!-- 中心点 -->
+      <cover-image class='center ' src="../../images/map_center.png"></cover-image>
 
 
 
-   <!-- 预约 -->
-    <cover-view class='server' bindtap='bind_phone'>
-      <cover-view class='server_text'>
-        一键呼叫
+      <!-- 预约 -->
+      <cover-view class='server' bindtap='bind_phone'>
+        <cover-view class='server_text'>
+          一键呼叫
+        </cover-view>
       </cover-view>
-    </cover-view>
 
-    <!-- 门店简介  -->
+      <!-- 门店简介  -->
 
-    <cover-view class='info' bindtap='bind_go' data-url='{{info_url}} ' wx:if="{{showDiv==1}}">
+      <cover-view class='info' bindtap='bind_go' data-url='{{info_url}} ' wx:if="{{showDiv==1}}">
 
-      <cover-image class='info_img ' src="{{info_img}}"></cover-image>
-      <cover-view class='info_text '>
-        <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
-        <cover-view class='info_name '><cover-image class='info_name_icon' src="../../../images/appraise_name.png"></cover-image>{{info_name}}</cover-view>
-        <cover-view class='info_address '><cover-image class='info_address_icon' src="../../../images/appraise_address.png"></cover-image>{{info_address}}</cover-view>
+        <cover-image class='info_img ' src="{{info_img}}"></cover-image>
+        <cover-view class='info_text '>
+          <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
+          <cover-view class='info_name '>
+            <cover-image class='info_name_icon' src="../../../images/appraise_name.png"></cover-image>{{info_name}}</cover-view>
+          <cover-view class='info_address '>
+            <cover-image class='info_address_icon' src="../../../images/appraise_address.png"></cover-image>{{info_address}}</cover-view>
+        </cover-view>
       </cover-view>
-    </cover-view>
 
-  </map>
-</view>
+    </map>
+  </view>
 </view>

@@ -141,7 +141,7 @@
 
                   <view class='img'>
                     <block wx:for="{{item.picList}}" wx:for-item="jtem">
-                      <image src='{{jtem}}'bindtap='bind_popup_img' data-pic="{{jtem}}"></image>
+                      <image src='{{jtem}}' bindtap='bind_popup_img' data-pic="{{jtem}}"></image>
                     </block>
                   </view>
                 </view>
@@ -163,10 +163,10 @@
         <navigator open-type="navigateBack" class='btn1'>
           <image src='../../../images/mystroe_right_nav_btn_index.png'></image>
         </navigator>
-        <navigator class='btn2' url="../../User/user_aboutme/user_aboutme">
+        <navigator class='btn2' url="../../User/user_aboutme/user_aboutme" open-type="redirectTo">
           <image src='../../../images/mystroe_right_nav_btn_my.png'></image>
         </navigator>
-        <navigator class='btn3' url="../../Goods_Order/order_shopping_cart/order_shopping_cart">
+        <navigator class='btn3' url="../../Goods_Order/order_shopping_cart/order_shopping_cart" open-type="redirectTo">
           <image src='../../../images/mystroe_right_nav_btn_shopping.png'></image>
         </navigator>
         <view class='btn4'>
