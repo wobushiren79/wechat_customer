@@ -15,9 +15,8 @@ Page({
     tab_bd_title: 1,
     tab_hd: 1,
     popup: false,
-    right_nav: false,
+    right_nav: 0,
     mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
-
   },
   bind_popup_img: function (e) {
     this.setData({
@@ -27,13 +26,13 @@ Page({
   },
 
   bind_right_nav: function (e) {
-    if (this.data.right_nav == 1) {
-      this.setData({
+    if (content.data.right_nav == 1) {
+      content.setData({
         right_nav: 0,
         mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
       });
     } else {
-      this.setData({
+      content.setData({
         right_nav: 1,
         mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn_close.png'
       });
@@ -72,6 +71,10 @@ Page({
   },
 
   onShow: function () {
+    content.setData({
+      right_nav: 0,
+      mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
+    })
     content.getUserStarts();
   },
   onLoad: function (evet) {
@@ -104,8 +107,18 @@ Page({
     } else if (content.data.tab == 2) {
       content.getEvaluationList(storeUserId, content.data.label)
     }
-
   },
+
+  /**
+   * 滚动监听
+   */
+  onPageScroll:function(e){
+    content.setData({
+      right_nav: 0,
+      mystroe_right_nav_btn: '../../../images/mystroe_right_nav_btn.png'
+    })
+  },
+
   /**
    * 获取门店信息
    */

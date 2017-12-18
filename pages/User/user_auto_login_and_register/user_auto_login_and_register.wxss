@@ -29,9 +29,22 @@
 .weui-cell::before {
   right: 15px;
 }
+.phonenum button {
+  font-size: 16px;
+  border-color: #48cfad;
+  color: #48cfad;
+  width: 230rpx;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
+}
 
+.phonenum button.hidden {
+  display: none;
+}
 .weui-label{
   width: 120rpx;
+
 }
 /*页脚*/
 

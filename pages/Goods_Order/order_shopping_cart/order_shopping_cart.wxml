@@ -139,15 +139,8 @@
     </view>
     <!-- 固定底部 end -->
 
-    <view class='prompt' >
+    <view class='prompt' wx:if="{{listIsNull==true}}">
       <text>购物车为空</text>
     </view>
-
-    <black wx:if="{{popup}}">
-      <!-- 遮罩层 star -->
-      <view class="mask" bindtap="popup_close"></view>
-      <!-- 遮罩层 end -->.
-    </black>
-    <!--</form>-->
   </view>
 </view>

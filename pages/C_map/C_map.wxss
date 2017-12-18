@@ -50,7 +50,6 @@ navigator image, cover-view image {
 /* 门店信息 */
 
 .info {
-  display: flex;
   position: absolute;
   width: 724rpx;
   left: 50%;
@@ -60,7 +59,7 @@ navigator image, cover-view image {
   z-index: 999;
   border-radius: 10rpx;
   box-sizing: border-box;
-  padding: 40rpx;
+  padding: 25rpx;
 }
 
 .hidden {
@@ -70,21 +69,30 @@ navigator image, cover-view image {
 .show {
   display: flex !important;
 }
-
+.info_content{
+    display: flex;
+  position: relative;
+}
 .info .info_img {
   width: 140rpx;
   height: 140rpx;
   margin-right: 20rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
 }
 
 .info .info_text .info_stroe {
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: #000;
+  position: absolute;
+  top: -4rpx;
+  left: 160rpx;
 }
 
 .info .info_text {
-  font-size: 26rpx;
+  font-size: 28rpx;
   color: #666;
+
 }
 
 .info .info_text cover-view {
@@ -95,16 +103,22 @@ navigator image, cover-view image {
   display: block; 
   width: 20rpx;
   height: 28rpx;
-    float: left;
+  float: left;
   position: relative;
-   top: 4rpx; 
+  top: 6rpx; 
   left: 0rpx;
   margin-right: 6rpx;
   line-height: 1;
 }
-.info .info_name,
+.info .info_name{
+  position: absolute;
+  bottom: 40rpx;
+  left: 160rpx;
+}
 .info .info_address{
-  /* padding-left: 30rpx; */
+  position: absolute;
+  bottom: -4rpx;
+  left: 160rpx;
 }
 .info_name_text,
 info_address_text{

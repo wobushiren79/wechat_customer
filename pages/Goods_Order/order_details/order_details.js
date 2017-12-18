@@ -63,13 +63,41 @@ Page({
       package_a: false
     })
   },
-  onShow: function () {
+
+  onLoad: function (evet) {
+    content = this;
+    orderId = evet.orderId
+    content.getOrderDetails(orderId);
+  },
+
+  packages: function (e) {
+    wx.showLoading({
+      title: '请稍后',
+    })
+    var get_goodsItemPerforms = []
+    var id = e.currentTarget.dataset.id
+    var goodsItemPerforms = content.data.listData
+    for (var i in goodsItemPerforms.goodsPackages) {
+      if (goodsItemPerforms.goodsPackages[i].id == id) {
+        get_goodsItemPerforms = goodsItemPerforms.goodsPackages[i].goodsItemPerforms
+      }
+    }
+    content.setData({
+      get_goodsItemPerforms: get_goodsItemPerforms,
+      package_a: true
+    })
+    wx.hideLoading()
+  },
+  
+  /**
+   * 获取订单详情
+   */
+  getOrderDetails:function(orderId){
     var detailsRequest = {
       id: orderId
     }
     var detilasCallBack = {
       success: function (data) {
-
         content.setData({
           listData: data
         })
@@ -79,30 +107,6 @@ Page({
       }
     }
     goodsHttp.getGoodsOrderDetails(detailsRequest, detilasCallBack);
-  },
-  onLoad: function (evet) {
-    content = this;
-    orderId = evet.orderId
-  },
-
-  packages: function (e) {
-    var that = this
-    wx.showLoading({
-      title: '请稍后',
-    })
-    var get_goodsItemPerforms = []
-    var id = e.currentTarget.dataset.id
-    var goodsItemPerforms = that.data.listData
-    for (var i in goodsItemPerforms.goodsPackages) {
-      if (goodsItemPerforms.goodsPackages[i].id == id) {
-        get_goodsItemPerforms = goodsItemPerforms.goodsPackages[i].goodsItemPerforms
-      }
-    }
-    that.setData({
-      get_goodsItemPerforms: get_goodsItemPerforms,
-      package_a: true
-    })
-    wx.hideLoading()
   },
 
   /**
