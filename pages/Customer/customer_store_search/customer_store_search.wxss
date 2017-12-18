@@ -42,15 +42,15 @@
 }
 .weui-media-box {
   align-items: flex-start;
-  padding: 40rpx 24rpx;
-  height: 240rpx;
+  padding: 35rpx 24rpx;
+  /* height: 240rpx; */
   box-sizing: border-box;
 }
 
 .weui-media-box__hd {
   margin-right: 24rpx;
-  width: 160rpx;
-  height: 160rpx;
+  width: 135rpx;
+  height: 135rpx;
   border-radius: 6rpx;
   overflow: hidden;
   background: #efefef;
@@ -62,7 +62,7 @@
   font-weight: bold;
 }
 .weui-media-box  .weui-media-box__desc{
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: #9d9d9d;
   line-height: 1.7;
 
@@ -82,4 +82,8 @@
 }
 .weui-media-box  .weui-media-box__desc text{
   /* flex: 1; */
+}
+
+.prompt{
+  background: #f8f8f8
 }

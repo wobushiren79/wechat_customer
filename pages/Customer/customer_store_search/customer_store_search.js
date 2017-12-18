@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    listIsNull: true
   },
 
   /**
@@ -50,7 +50,7 @@ Page({
    */
   startSearch: function (searchData) {
     var storesSearchRequest = pageUtil.getPageData();
-    if (searchData&&searchData.length>0) {
+    if (searchData && searchData.length > 0) {
       storesSearchRequest.search = searchData;
     }
     var storesSearchCallBack = pageUtil.getPageCallBack(
@@ -58,6 +58,17 @@ Page({
         content.setData({
           listStore: data
         })
+
+        var allListData = pageUtil.getListData();
+        if (allListData != null && allListData.length > 0) {
+          content.setData({
+            listIsNull: false
+          })
+        }else{
+          content.setData({
+            listIsNull: true
+          })
+        }
       },
       function (data, res) {
 
@@ -66,21 +77,21 @@ Page({
     goodsPHPHttp.storesSearch(storesSearchRequest, storesSearchCallBack)
   },
 
-   bindconfirm:function(e){
-      searchData = e.detail.value
-     pageUtil.initData();
-     content.startSearch(searchData);
-   },
-  bindinput:function(e){
+  bindconfirm: function (e) {
+    searchData = e.detail.value
+    pageUtil.initData();
+    content.startSearch(searchData);
+  },
+  bindinput: function (e) {
     searchData = e.detail.value
   },
-   searchBtn:function(e){
-     pageUtil.initData();
-     content.startSearch(searchData);
-   },
-   aboutMe:function(e){
-     wx.redirectTo({
-       url: '../../User/user_aboutme/user_aboutme',
-     })
-   }
+  searchBtn: function (e) {
+    pageUtil.initData();
+    content.startSearch(searchData);
+  },
+  aboutMe: function (e) {
+    wx.redirectTo({
+      url: '../../User/user_aboutme/user_aboutme',
+    })
+  }
 })

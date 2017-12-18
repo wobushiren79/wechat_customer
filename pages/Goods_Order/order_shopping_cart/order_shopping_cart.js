@@ -9,6 +9,7 @@ Page({
   data: {
     edit: true,
     totla_price: 0,
+    listIsNull:true
   },
   bind_edit: function () {
     this.setData({
@@ -87,6 +88,11 @@ Page({
     var goodsShoppingListCallBack = {
       success: function (data, res) {
         content.shoppingCartList = data.content
+        if(data.content!=null&&data.content.length>0){
+          content.setData({
+            listIsNull: false
+          })
+        }
         var goodsId = ''
         var channelId = ''
         var goodsSpecId = ''

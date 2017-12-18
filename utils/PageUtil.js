@@ -23,7 +23,12 @@ function initData() {
 function getPageData() {
   return pageData;
 }
-
+/**
+ * 获取列表数据
+ */
+function getListData() {
+  return listData;
+}
 /**
  * 获取请求响应
  */
@@ -89,6 +94,8 @@ function setListaData(newListData) {
     }
 }
 
+
 module.exports.initData = initData;
 module.exports.getPageData = getPageData;
 module.exports.getPageCallBack = getPageCallBack;
+module.exports.getListData = getListData;
