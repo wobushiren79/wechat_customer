@@ -28,7 +28,7 @@
             <checkbox value="{{ite.id}}" checked="{{ite.isCheck}}" bindtap="check" data-id="{{ite.id}}" data-index="{{index}}" />
           </view>
           <view class="img_wrap">
-            <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+            <image src="{{ite.title_img}}"></image>
           </view>
 
           <black wx:if="{{edit}}">
@@ -74,7 +74,7 @@
           </view>
       <navigator url="../service_goods_pay_goodslist/service_goods_pay_goodslist?id={{ite.id}}">
           <view class="img_wrap">
-            <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+            <image src="{{ite.title_img}}"></image>
                         <!-- 套餐IQ -->
             <image src='../../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
           </view>

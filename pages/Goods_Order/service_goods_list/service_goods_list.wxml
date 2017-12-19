@@ -25,7 +25,7 @@
 
               <view class="img_wrap">
                 <!-- <image src="http://www.shiangoods.com/Public/Uploads/{{ite.title_img}}" mode='widthFix'></image> -->
-                 <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}" mode='widthFix'></image> 
+                 <image src="{{ite.title_img}}" mode='widthFix'></image> 
               </view>
               <view class="info show">
                 <view class="name aui-ellipsis-2">

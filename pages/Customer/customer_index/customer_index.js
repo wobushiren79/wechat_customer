@@ -191,7 +191,7 @@ Page({
     var storeGoodsCallBack = pageUtil.getPageCallBack(
       function (data, res, isLast) {
         for (var i = 0; i < data.length; i++) {
-          data[i].picUrl = getApp().globalData.PHPGoodsPicUrl + data[i].title_img;
+          data[i].picUrl =  data[i].title_img;
         }
         content.setData({
           listGoods: data

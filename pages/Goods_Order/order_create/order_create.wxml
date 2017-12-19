@@ -78,7 +78,7 @@
                       <checkbox value="value" checked="" />
                     </view>
                     <view class="img_wrap">
-                      <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+                      <image src="{{ite.title_img}}"></image>
                     </view>
                     <view class="info show">
                       <view class="name aui-ellipsis-2">
@@ -106,7 +106,7 @@
                         <checkbox value="value" checked="" />
                       </view>
                       <view class="img_wrap">
-                        <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{ite.title_img}}"></image>
+                        <image src="{{ite.title_img}}"></image>
                         <!-- 套餐IQ -->
                         <image src='../../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
                       </view>

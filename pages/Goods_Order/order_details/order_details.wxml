@@ -92,7 +92,7 @@
                 <checkbox value="value" checked="" />
               </view>
               <view class="img_wrap">
-                <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}"></image>
+                <image src="{{item.titleImg}}"></image>
               </view>
               <view class="info show">
                 <view class="name">
@@ -145,7 +145,7 @@
                 <checkbox value="value" checked="" />
               </view>
               <view class="img_wrap">
-                <image src="https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}"></image>
+                <image src="{{item.titleImg}}"></image>
                 <!-- 套餐IQ -->
                 <image src='../../../images/ispackage.png' class='ispackage' style='width: 100rpx;height: 50rpx;'></image>
               </view>
@@ -520,7 +520,7 @@
         <block wx:for="{{get_goodsItemPerforms}}">
           <view class='package_view_c clearfix'>
             <view class='package_view_d'>
-              <image class='package_img' src='https://goodsmgr.e-funeral.cn/Public/Uploads/{{item.titleImg}}'></image>
+              <image class='package_img' src='{{item.titleImg}}'></image>
               <!-- <image class='package_img' src='http://192.168.0.89/shian_goods/Public/Uploads/{{item.titleImg}}'></image> -->
             </view>
             <view class='package_view_a'>
