@@ -58,7 +58,7 @@ function sendBaseHttp(httpData, callback, isDialog) {
     });
   console.log(httpData);
   wx.request({
-    url: httpData.url,
+    url: httpData.url.replace(" ", ""),
     data: httpData.data,
     method: httpData.method,
     header: httpData.header,
@@ -79,7 +79,7 @@ function sendBaseHttp(httpData, callback, isDialog) {
  */
 function sendBaseFileHttp(httpData, callback, isDialog) {
   wx.uploadFile({
-    url: httpData.url,
+    url: httpData.url.replace(" ", ""),
     filePath: httpData.filePath,
     header: httpData.header,
     name: httpData.fileName,//文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
