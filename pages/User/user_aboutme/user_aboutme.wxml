@@ -57,9 +57,9 @@
       </navigator> -->
     </view>
 
-    <navigator url="../user_auto_login_and_register/user_auto_login_and_register" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class='footer'>
-        切换账号
+    <navigator  class="weui-cell weui-cell_access" bindtap='changeAccount' binhover-class="weui-cell_active">
+      <view class='footer' >
+        {{changeAccountTitle}}
       </view>
     </navigator>
   </view>

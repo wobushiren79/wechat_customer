@@ -4,7 +4,7 @@ var orderId;
 Page({
 
   data: {
-    list_show: false,
+    list_show: true,
     img_wrap: false,
     popup: false,
     package_a: false

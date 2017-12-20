@@ -1,10 +1,13 @@
 var platformHttp = require("../../../utils/http/RequestForPlatform.js")
 var storageKey = require("../../../utils/storage/StorageKey.js");
+var modalUtil = require("../../../utils/ModalUtil.js");
 var content;
+var userInfo;
 Page({
   data: {
     icon: "../../../images/dog.png",
-    pagesPositionUrl: null
+    pagesPositionUrl: null,
+    changeAccountTitle: "绑定手机号"
   },
   onShow: function () {
     var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
@@ -38,7 +41,7 @@ Page({
       pagesPositionUrl: pagesPositionUrlObj
     });
 
-    var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
+    userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
     if (userInfo == null || userInfo.length == 0) {
       wx.navigateTo({
         url: '../user_auto_login_and_register/user_auto_login_and_register',
@@ -46,7 +49,8 @@ Page({
     } else {
       content.setData({
         nickName: userInfo.name,
-        userPhone: userInfo.phone
+        userPhone: userInfo.phone,
+        changeAccountTitle: "切换账号"
       })
     }
   },
@@ -69,5 +73,21 @@ Page({
     }
 
     platformHttp.queryUserInfoById();
+  },
+
+  /**
+   * 切换账号
+   */
+  changeAccount: function (e) {
+    var confirm = function () {
+      wx.navigateTo({
+        url: "../user_auto_login_and_register/user_auto_login_and_register"
+      })
+    }
+    if (userInfo == null || userInfo.length == 0) {
+      confirm();
+    }else{
+      modalUtil.showModal("切换账号", "是否切换账号", confirm);
+    }
   }
 });

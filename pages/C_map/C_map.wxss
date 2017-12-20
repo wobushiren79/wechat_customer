@@ -92,7 +92,7 @@ navigator image, cover-view image {
 .info .info_text {
   font-size: 28rpx;
   color: #666;
-
+   flex: 1;
 }
 
 .info .info_text cover-view {
@@ -124,6 +124,7 @@ navigator image, cover-view image {
 info_address_text{
   display: block;
   float: left;
+  height: 42rpx;
 }
 /* 预约顾问 */
 

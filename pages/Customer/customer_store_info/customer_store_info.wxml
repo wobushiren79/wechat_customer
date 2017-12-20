@@ -57,7 +57,7 @@
 
     <view class='section_img'>
       <view class='title'>
-        图片
+        门店图片
       </view>
       <view class='img_list clearfix'>
        <block wx:for="{{store_pics}}">
@@ -80,14 +80,14 @@
         <view class="weui-cell__bd">
           <view>服务星级：五星级</view>
           <view>服务内容：洽谈服务、葬礼应道</view>
-          <view>考核成功时间：2017.10.10</view>
+          <view>考核通过时间：2017.10.10</view>
         </view>
       </view>
     </view>
 
     <view class='section_text'>
       <view class='title'>
-        个人介绍
+        服务点/顾问介绍
       </view>
       <view class='content'>
   {{shop_title}}

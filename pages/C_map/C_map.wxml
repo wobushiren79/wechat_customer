@@ -49,15 +49,16 @@
         <cover-view class='info_content'>
           <cover-image class='info_img ' src="{{info_img}}"></cover-image>
           <cover-view class='info_text '>
-            <cover-view class='info_stroe '>{{info_stroe}}</cover-view>
-            <cover-view class='info_name '>
-              <cover-image class='info_name_icon ' src="../../images/appraise_name.png"></cover-image>
-              <cover-view class='info_name_text'>{{info_name}}</cover-view>
-            </cover-view>
-            <cover-view class='info_address '>
-              <cover-image class='info_address_icon' src="../../images/appraise_address.png"></cover-image>
-              <cover-view class='info_address_text'>{{info_address}}</cover-view>
-            </cover-view>
+   
+             <cover-view class='info_stroe '>{{info_stroe}}</cover-view> 
+             <cover-view class='info_name '> 
+                <cover-image class='info_name_icon ' src="../../images/appraise_name.png"></cover-image>  
+               <cover-view class='info_name_text'>{{info_name}}</cover-view> 
+             </cover-view> 
+             <cover-view class='info_address '> 
+                <cover-image class='info_address_icon' src="../../images/appraise_address.png"></cover-image>  
+               <cover-view class='info_address_text'>{{info_address}}</cover-view> 
+             </cover-view> 
           </cover-view>
         </cover-view>
       </cover-view>
