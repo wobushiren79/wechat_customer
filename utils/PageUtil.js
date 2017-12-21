@@ -36,22 +36,32 @@ function getPageCallBack(dataSuccess, dataFail) {
   var pageCallBack = {
     success: function (data, res) {
       var isLast = false;
-      if (data && data.content) {
-        //java 后台page类型处理
-        if (data.totalPage == data.pageNumber || data.pageNumber == 0) {
-          isLast = true;
-        }
-        pageData.pageNumber = data.pageNumber;
-        if (data.total > listData.length) {
-          setListaData(data.content);
-        }
-        nextPage();
-      } else if (data) {
-        //php 后台page类型处理
-        if (!data.length || data.length == 0) {
-          isLast = true;
+      if(data){
+        if(data.content){
+          //java 后台page类型处理
+          if (data.totalPage == data.pageNumber || data.pageNumber == 0) {
+            isLast = true;
+          }
+          pageData.pageNumber = data.pageNumber;
+          if (data.total > listData.length) {
+            setListaData(data.content);
+          }
+          nextPage();
         }else{
-          setListaData(data);
+          //php 后台page类型处理
+          if (!data.length || data.length == 0) {
+            isLast = true;
+          } else {
+            setListaData(data);
+            nextPage();
+          }
+        }
+      }else{
+        //php 后台page类型处理
+        if (!res.data.list || res.data.list.length == 0) {
+          isLast = true;
+        } else {
+          setListaData(res.data.list);
           nextPage();
         }
       }
