@@ -44,9 +44,9 @@
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            手机号
+            手机尾号
           </view>
-          <view class="weui-cell__bd" readonly>
+          <view class="weui-cell__bd">
             {{positionData.agentPhone}}
           </view>
         </view>
@@ -71,10 +71,7 @@
             <button class="weui-btn" type="primary"  plain="true"  form-type="submit" disabled="{{is_disabled}}">发送至手机</button>
           </view>
           <view class="weui-cell__bd">
-            <button class="weui-btn" type="primary" bindtap="bindMgFeeHistory">缴费记录</button>
-          </view>
-          <view class="weui-cell__bd">
-            <button class="weui-btn" type="primary" bindtap="bindPayMgFee">缴管理费</button>
+            <button class="weui-btn" type="primary" bindtap="bindPayMgFee">缴纳管理费</button>
           </view>
         </view>
 

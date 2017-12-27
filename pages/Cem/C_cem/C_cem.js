@@ -19,7 +19,7 @@ Page({
      * 查询公墓列表初始化
      */
     var that = this;
-    
+
     var detailsRequest = {
       systemIndex: 1
     }
@@ -43,7 +43,7 @@ Page({
       }
     }
     platformHttp.queryCemeterySubsysListBySysEnumIdNoLogin(detailsRequest, detilasCallBack);
-    
+
   },
   bindCemeteryChange: function (e) {
     /**
@@ -58,10 +58,10 @@ Page({
     methodFunc.setData({
       cemeteryIndex: selectIndex,
       cemeteryName: name,
-      cemeteryId:id
+      cemeteryId: id
     })
   },
-  
+
   bindAgentNameBlur: function (e) {
     /**
      * 经办人姓名填写失去焦点后检查
@@ -73,7 +73,7 @@ Page({
     if (that.data.agentNameLength != null && that.data.agentNameLength == 1) {
       toastUtil.showToastReWrite('姓名请输入全名', 'icon_info');
     }
-    
+
   },
   bindDeathNameBlur: function (e) {
     /**
@@ -88,7 +88,7 @@ Page({
     }
 
   },
-  bindAgentPhoneBlur:function(e){
+  bindAgentPhoneBlur: function (e) {
     var that = this;
     var mobile = e.detail.value;
     var myreg = getApp().myreg;
@@ -110,19 +110,19 @@ Page({
     var deathNameLength = that.data.deathNameLength;
     var cemeteryId = that.data.cemeteryId;
     var formValues = e.detail.value;
-    if (cemeteryId == null){
+    if (cemeteryId == null) {
       cemeteryId = that.data.GmList[that.data.cemeteryIndex].id;
     }
-    if (phoneType == 0 && agentNameLength == 0 && deathNameLength == 0){
+    if (phoneType == 0 && agentNameLength == 0 && deathNameLength == 0) {
       toastUtil.showToastReWrite('请任选择一条件', 'icon_info');
-    }else if (phoneType == 1) {
+    } else if (phoneType == 1) {
       //验证手机号的格式
       toastUtil.showToastReWrite('请输入正确手机号', 'icon_info');
-    } else if (agentNameLength == 1 || deathNameLength == 1){
+    } else if (agentNameLength == 1 || deathNameLength == 1) {
       toastUtil.showToastReWrite('姓名请输入全名', 'icon_info');
-    }else{
+    } else {
       var dataRequest = {
-        cemeteryId:cemeteryId,
+        cemeteryId: cemeteryId,
         agentName: formValues.agentManName,
         agentPhone: formValues.agentManPhone,
         deathName: formValues.deadMan,
@@ -130,30 +130,30 @@ Page({
       var detilasCallBack = {
         success: function (data) {
           console.log(data.length)
-          if (data.length == 0){
+          if (data.length == 0) {
             toastUtil.showToastReWrite('暂无匹配项', 'icon_info');
-          }else{
-          wx.setStorage({
-            key: "key",
-            data: data
-          })
-          wx.redirectTo({
-            url: '../C_cem_list/C_cem_list?key=',
-          })
+          } else {
+            wx.setStorage({
+              key: "key",
+              data: data
+            })
+            wx.redirectTo({
+              url: '../C_cem_list/C_cem_list?key=',
+            })
           }
         },
         fail: function () {
           wx.stopPullDownRefresh()
         }
       }
-      cemeteryHttp.findPositionByCondition(dataRequest,detilasCallBack);
+      cemeteryHttp.findPositionByCondition(dataRequest, detilasCallBack);
     }
   },
   onLoad: function () {
     var that = this;
     that.cemeteryListQuery();
   },
-  onShow:function(){
+  onShow: function () {
     // var that = this;
     // console.log(that.data.GmList)
     // console.log(that.data.cemeteryIndex)

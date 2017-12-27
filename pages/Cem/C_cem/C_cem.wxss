@@ -1,12 +1,75 @@
-/* example/input/input.wxss */
-/*页脚*/
-.foot{
-  display: block;
-  text-align: center;
-  color: #48cfad;
-  margin-top: 48rpx;
+page {
+  background: #fff;
 }
-.weui-cells::before,
-.weui-cells::after{
-  border: none!important;
+.weui-btn-area{
+  margin-top: 75rpx;
+}
+.weui-btn-area button {
+  outline: none;
+  border: none;
+}
+
+.weui-btn-area button::after {
+  display: none;
+}
+
+.weui-cells::before, .weui-cells::after {
+  border: none !important;
+}
+
+.weui-cell {
+  line-height: 1;
+  height: 96rpx;
+  font-size: 32rpx;
+  padding-left: 60rpx;
+  color: #353535;
+}
+.placeholder{
+    color: #747474;
+      font-size: 28rpx;
+}
+.weui-cell_select {
+  color: #353535;
+}
+
+.weui-select {
+  border-right: none;
+}
+
+.weui-cell_select::after {
+  content: "*";
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  transform: translateY(-50%);
+  font-size: 32rpx;
+  color: #ffa592;
+  line-height: 1;
+  margin-top: 5rpx;
+}
+
+.weui-cells__title {
+  height: 84rpx;
+  line-height: 84rpx;
+  padding: 0 60rpx;
+  margin: 0;
+  background: #efefef;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.weui-cell:before {
+  left: 60rpx;
+  border-color: #efefef;
+}
+
+.content .weui-cell:last-of-type::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1rpx solid #efefef;
+  color: #d9d9d9;
+  left: 60rpx;
 }

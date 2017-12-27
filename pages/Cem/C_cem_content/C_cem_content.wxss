@@ -72,11 +72,9 @@
 }
 .weui-cell_btn .weui-cell__hd button{
   color: #48cfad;
-  
 
 border-color:  #48cfad;
-padding-left: 0;
-padding-right: 0;
+
 }
 .weui-cell_btn .weui-cell__bd{
   padding-left: 7.5px;

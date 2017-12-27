@@ -3,11 +3,10 @@
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
 
-
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
-        <view class="weui-cell__hd weui-cell__hd_in-select-after">
-          <view class="weui-label">所在公墓</view>
+        <view class="weui-cell__hd">
+          <!-- <view class="weui-label">所在公墓</view> -->
         </view>
         <view class="weui-cell__bd">
           <picker bindchange="bindCemeteryChange" value="{{cemeteryIndex}}" range="{{GmList}}"  range-key='name'>
@@ -18,29 +17,29 @@
     </view>
 
     <view class="weui-cells__title">以下选项请输入至少一条查询条件</view>
-    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cells weui-cells_after-title content">
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label" >经办人姓名</view>
+          <!-- <view class="weui-label">经办人姓名</view> -->
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" bindblur="bindAgentNameBlur" placeholder="姓名" name="agentManName"/>
+          <input class="weui-input" bindblur="bindAgentNameBlur" placeholder-class='placeholder' placeholder="经办人姓名" name="agentManName" />
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">经办人电话</view>
+          <!-- <view class="weui-label">经办人电话</view> -->
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input" bindblur="bindAgentPhoneBlur"  maxlength='11' placeholder="电话" name="agentManPhone"/>
+          <input class="weui-input" placeholder-class='placeholder' bindblur="bindAgentPhoneBlur"  maxlength='11' placeholder="经办人电话" name="agentManPhone"/>
         </view>
       </view>
       <view class="weui-cell weui-cell_input">
         <view class="weui-cell__hd">
-          <view class="weui-label">使用者</view>
+          <!-- <view class="weui-label">使用者</view> -->
         </view>
         <view class="weui-cell__bd">
-          <input class="weui-input"  bindblur="bindDeathNameBlur" placeholder="姓名" name="deadMan"/>
+          <input class="weui-input"  bindblur="bindDeathNameBlur" placeholder-class='placeholder' placeholder="使用者姓名" name="deadMan"/>
         </view>
       </view>
     

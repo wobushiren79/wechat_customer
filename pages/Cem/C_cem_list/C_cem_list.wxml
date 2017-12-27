@@ -2,39 +2,39 @@
 
   <view class="page__bd">
     <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">错误提示</view>
-    <block wx:for="{{listData}}">
-      <navigator url="../C_cem_content/C_cem_content?positionId={{item.id}}" class="weui-cells weui-cells_after-title">
-        <view class="weui-cell weui-cell_input weui-cell_head">
-          <view class="weui-cell__hd">
-            {{item.tombPositionTxt}}
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            使用者
-          </view>
-          <view class="weui-cell__bd">
-            {{item.deadNames}}
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_input">
-          <view class="weui-cell__hd">
-            管理费到期时间
-          </view>
-          <view class="weui-cell__bd" wx:if="{{item.endDate==null}}">
-            无缴费记录
-          </view>
-          <view class="weui-cell__bd" wx:else>
-            {{item.endDate}}
-          </view>
-        </view>
-        <view class="weui-cell weui-cell_input">
-          <view class="button-sp-area">
-            <button class="weui-btn mini-btn" type="primary" size="mini">查看详情</button>
-          </view>
-        </view>
-      </navigator>
-    </block>
 
+    <view class='ul'>
+      <block wx:for="{{listData}}">
+        <navigator url="../C_cem_content/C_cem_content?positionId={{item.id}}" class='li'>
+          <view class='li_hd'>
+            <text>{{item.tombPositionTxt}}</text>
+          </view>
+          <view class='li_bd'>
+            <view class='li_bd_item'>
+              <view>
+                <image src='../../../images/dead_names.png' mode='widthFix'></image>
+              </view>
+              <view>
+                使用者：
+              </view>
+              <view>
+                <text>{{item.deadNames}}</text>
+              </view>
+            </view>
+            <view class='li_bd_item'>
+              <view>
+                <image src='../../../images/agent_name.png' mode='widthFix'></image>
+              </view>
+              <view>
+                经办人：
+              </view>
+              <view>
+                <text>{{item.agentName}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </view>
   </view>
 </view>
