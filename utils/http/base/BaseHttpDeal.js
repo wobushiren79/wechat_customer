@@ -111,6 +111,8 @@ function respsoneSuccessDeal(res, callback) {
     } else if (res.data.code == 9999) {
       if (callback.loginAgain) {
         callback.loginAgain();
+      } else {
+        callback.success(null, res);
       }
     } else {
       if (callback.fail)
@@ -120,6 +122,8 @@ function respsoneSuccessDeal(res, callback) {
     if (res.data.indexOf("登录") >= 0) {
       if (callback.loginAgain) {
         callback.loginAgain();
+      } else {
+        callback.success(null, res);
       }
       // wx.navigateTo({
       //   url: '../../../pages/C_user_login/C_user_login',
