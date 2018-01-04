@@ -12,7 +12,7 @@
           <view class='li_bd'>
             <view class='li_bd_item'>
               <view>
-                <image src='../../../images/dead_names.png' mode='widthFix'></image>
+                <image src='/images/dead_names.png' mode='widthFix'></image>
               </view>
               <view>
                 使用者：
@@ -23,7 +23,7 @@
             </view>
             <view class='li_bd_item'>
               <view>
-                <image src='../../../images/agent_name.png' mode='widthFix'></image>
+                <image src='/images/agent_name.png' mode='widthFix'></image>
               </view>
               <view>
                 经办人：
