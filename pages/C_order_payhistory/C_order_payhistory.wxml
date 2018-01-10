@@ -1,46 +1,92 @@
-<view class="page">
-
+<view class="page page_service_order page_allot_order_list page_mystroe_order_list">
+  <!-- 
   <view class="page__bd">
     <view class="weui-cells__title">管理费到期时间</view>
     <view class="weui-panel weui-panel_access">
-      <!--<view class="weui-panel__hd"></view>-->
+      <!--<view class="weui-panel__hd"></view>
       <view class="weui-panel__bd">
         <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
 
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">
-              <view class="">{{danqian.endDate}}</view>
+              <view class="">2017-01-02</view>
 
             </view>
-            <!--<view class="weui-media-box__desc">{{danqian.payDate}}</view>-->
+            <view class="weui-media-box__desc">{{danqian.payDate}}</view>
           </view>
 
         </navigator>
 
       </view>
     </view>
+ -->
 
 
-    <view class="weui-cells__title">管理费缴纳记录</view>
-    <view class="weui-panel weui-panel_access">
-      <!--<view class="weui-panel__hd"></view>-->
-      <view class="weui-panel__bd">
-      <block wx:for="{{list}}">
-        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+  <view class="list">
+    <view class="ul">
+      <block wx:for="{{listdata}}">
+        <view class="li">
 
-          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">
-              <view class="">{{item.beginDate}}~{{item.endDate}}</view>
-              <view class="">￥{{item.payAmount}}</view>
+          <view class="li_header">
+            <view class="header">单号： {{item.order_number}}
             </view>
-            <view class="weui-media-box__desc">{{item.payDate}}</view>
           </view>
-          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="../../images/icon_pay_wx.png" />
-          </view>
-        </navigator>
-</block>
-      </view>
+          <navigator class="li_body" url="../order_details/order_details?orderId={{item.id}}" hover-class="active">
+            <image src="../../../images/right.png" class="icon"></image>
+            <view>
+              <view class="header">
+                墓位:
+              </view>
+              <view class="body">
+                {{item.tombPositionText}}
+              </view>
+            </view>
+            <view>
+              <view class="header">
+                使用者:
+              </view>
+              <view class="body">
+                {{item.dead_names}}
+              </view>
+            </view>
+            <view>
+              <view class="header">
+                年费:
+              </view>
+              <view class="body">
+                {{item.fee_year/100}}(元/年)
+              </view>
+            </view>
+            <view>
+              <view class="header">
+                缴费期限:
+              </view>
+              <view class="body">
+                {{item.begin_date}} ~ {{item.end_date}}
+              </view>
+            </view>
+          </navigator>
+
+        </view>
+      </block>
     </view>
   </view>
+  <navigator class='fix_new' url='../../new_easy/new_easy' open-type='redirectTo'>
+    <text>＋</text>
+  </navigator>
+  <block wx:if="{{notNumber}}">
+    <view class='prompt'>
+      <text>没有更多订单啦</text>
+    </view>
+  </block>
+
+
+
+
+
+
+
+
+
+
 </view>

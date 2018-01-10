@@ -42,9 +42,17 @@ function updateOutTradeNo(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "marketing/fee/updateOutTradeNo", data, callback, true)
 }
 
+/**
+ * 查询我的管理费缴费记录
+ */
+function getManageFeeList(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "marketing/fee/queryPositionMgtFeeByUserId", data, callback, true)
+}
+
 module.exports.findPositionByCondition = findPositionByCondition;
 module.exports.queryMgtFeeByPositionId = queryMgtFeeByPositionId;
 module.exports.loginCemetery = loginCemetery;
 module.exports.queryMgtFeePage = queryMgtFeePage;
 module.exports.payMgt = payMgt;
 module.exports.updateOutTradeNo = updateOutTradeNo;
+module.exports.getManageFeeList = getManageFeeList;
