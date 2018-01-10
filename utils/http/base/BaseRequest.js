@@ -153,7 +153,7 @@ function getBaseUrl(url) {
 function loginPlatForm() {
   if (wx.getStorageSync(storageKey.LOGIN_USER_NAME) == null || wx.getStorageSync(storageKey.LOGIN_USER_NAME).length == 0) {
     wx.navigateTo({
-      url: '../../../pages/User/user_auto_login_and_register/user_auto_login_and_register',
+      url: '/pages/User/user_auto_login_and_register/user_auto_login_and_register',
     });
     return
   }
@@ -181,7 +181,7 @@ function loginPlatForm() {
     },
     fail: function (data, res) {
       wx.navigateTo({
-        url: '../../../pages/User/user_auto_login_and_register/user_auto_login_and_register',
+        url: '/pages/User/user_auto_login_and_register/user_auto_login_and_register',
       });
     }
   }
@@ -210,12 +210,12 @@ function loginCemetery() {
   var loginCemeteryCallBack = {
     success: function (data, res) {
       wx.reLaunch({
-        url: '../../../pages/C_map/C_map',
+        url: '/pages/C_map/C_map',
       })
     },
     fail: function (data, res) {
       wx.reLaunch({
-        url: '../../../pages/C_map/C_map',
+        url: '/pages/C_map/C_map',
       })
     }
   }

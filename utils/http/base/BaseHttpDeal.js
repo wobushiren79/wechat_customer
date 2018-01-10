@@ -119,18 +119,21 @@ function respsoneSuccessDeal(res, callback) {
         callback.fail(res.data.message, res);
     }
   } else {
-    if (res.data.indexOf("登录") >= 0) {
-      if (callback.loginAgain) {
-        callback.loginAgain();
+    try {
+      if (res.data.indexOf("登录") >= 0) {
+        if (callback.loginAgain) {
+          callback.loginAgain();
+        } else {
+          if (callback.success)
+            callback.success(null, res);
+        }
       } else {
-        callback.success(null, res);
+        if (callback.success)
+          callback.success(res.data.content, res);
       }
-      // wx.navigateTo({
-      //   url: '../../../pages/C_user_login/C_user_login',
-      // });
-    } else {
+    } catch (error) {
       if (callback.success)
-        callback.success(res.data.content, res);
+        callback.success(null, res);
     }
   }
 

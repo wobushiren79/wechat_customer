@@ -15,7 +15,7 @@
               <view class="title ">
                 联系人：
                 <text>{{defaultAddress.recipientName}}</text>
-                <text class="phone ">{{defaultAddress.recipientPhone}}</text>
+                <text class="phone ">{{defaultAddress.rfapiaoecipientPhone}}</text>
               </view>
               <view class="content ">
 
