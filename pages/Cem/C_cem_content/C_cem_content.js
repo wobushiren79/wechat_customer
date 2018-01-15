@@ -119,6 +119,11 @@ Page({
           endDate = endDate.replace(/-/g, '/');
           dataContent.endDate = util.formatDate(new Date(endDate))
         }
+        //管理年费将 分 转换为 元 
+        if (dataContent.feeYear != null) {
+          var feeYear = dataContent.feeYear/100;
+          dataContent.feeYear = feeYear;
+        }
         that.setData({
           positionData: dataContent
         })

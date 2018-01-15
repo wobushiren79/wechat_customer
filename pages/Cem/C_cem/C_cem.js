@@ -42,7 +42,7 @@ Page({
         wx.stopPullDownRefresh()
       }
     }
-    platformHttp.queryCemeterySubsysListBySysEnumIdNoLogin(detailsRequest, detilasCallBack);
+    platformHttp.queryCemeterySubsysListBySysEnumId(detailsRequest, detilasCallBack);
 
   },
   bindCemeteryChange: function (e) {
@@ -66,26 +66,29 @@ Page({
     /**
      * 经办人姓名填写失去焦点后检查
      */
+    console.log(e)
     var that = this;
-    that.setData({
-      agentNameLength: e.detail.value.length
-    })
-    if (that.data.agentNameLength != null && that.data.agentNameLength == 1) {
+    var agentNameLength = e.detail.value.length;
+    
+    if (agentNameLength != null && agentNameLength == 1) {
       toastUtil.showToastReWrite('姓名请输入全名', 'icon_info');
     }
-
+    that.setData({
+      agentNameLength: agentNameLength
+    })
   },
   bindDeathNameBlur: function (e) {
     /**
      * 使用者姓名填写失去焦点后检查
      */
     var that = this;
-    that.setData({
-      deathNameLength: e.detail.value.length
-    })
-    if (that.data.agentNameLength != null && that.data.agentNameLength == 1) {
+    var deathNameLength = e.detail.value.length;
+    if (deathNameLength != null && deathNameLength == 1) {
       toastUtil.showToastReWrite('姓名请输入全名', 'icon_info');
     }
+    that.setData({
+      deathNameLength: deathNameLength
+    })
 
   },
   bindAgentPhoneBlur: function (e) {

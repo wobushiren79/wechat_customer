@@ -44,7 +44,7 @@
         </view>
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
-            手机尾号
+            手机号
           </view>
           <view class="weui-cell__bd">
             {{positionData.agentPhone}}

@@ -23,9 +23,6 @@ Page({
       },
     });
     var positionDetail = wx.getStorageSync(storageKey.CEMETERY_POSITION_MGFEE_DETAIL);
-    console.log("positionDetail");
-    console.log(positionDetail);
-    
     if (positionDetail) {
       positionDetail.currentPrice = 0;
       if (positionDetail.endDate == null) {
@@ -81,7 +78,8 @@ Page({
           that.weChatPay(dataContent.payAmount);
         },
         fail: function () {
-          wx.stopPullDownRefresh()
+          wx.stopPullDownRefresh();
+          toastUtil.showToastReWrite('缴费失败', 'icon_info');
         }
       }
       cemeteryHttp.payMgt(requestData, detilasCallBack);
