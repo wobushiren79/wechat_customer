@@ -30,10 +30,14 @@ function createPostHttpRequestForFormData(url, data, callback, header, isDialog)
 /**
  * 发送get请求
  */
-function createGetHttpRequest(url, data, callback, header, isDialog) {
-  var jsonData = JSON.stringify(data);
-  var httpData = new HttpRequestData(url, jsonData, "GET", header);
-  sendBaseHttp(httpData, callback, isDialog);
+function createGetHttpRequest(url, data, callback, header, isDialog, ec) {
+    var jsonData = JSON.stringify(data);
+    var dataStr = urlEncode(data);
+    if (ec != null) {
+        dataStr += ec
+    }
+    var httpData = new HttpRequestData(url + "?" + dataStr, jsonData, "GET", header);
+    sendBaseHttp(httpData, callback, isDialog);
 }
 
 /**

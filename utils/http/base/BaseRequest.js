@@ -34,8 +34,8 @@ function sendPostHttpForLogin(url, data, callback, isDialog) {
   if (url.indexOf(getApp().globalData.JavaPlatformUrl) >= 0) {
     baseHttp.createPostHttpRequest(url, contentData, inCallBack, header, isDialog);
   } else {
-    url += ("?" + wx.getStorageSync(storageKey.KI4SO_SERVER_EC));
-    baseHttp.createGetHttpRequest(url, contentData, inCallBack, header, isDialog);
+      var ec = wx.getStorageSync(storageKey.KI4SO_SERVER_EC);
+      baseHttp.createGetHttpRequest(url, contentData, inCallBack, header, isDialog, ec);
   }
 }
 
