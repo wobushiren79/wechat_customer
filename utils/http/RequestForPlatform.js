@@ -4,7 +4,7 @@ var baseUrl = getApp().globalData.JavaPlatformUrl;
 /**
  * 登陆平台
  */
-function loginPlatform(data, callback){
+function loginPlatform(data, callback) {
   baseRequest.sendPostHttpForLogin(baseUrl + "applogin", data, callback, true)
 }
 
@@ -25,8 +25,8 @@ function changeForPassWord(data, callback) {
 /**
  * 提交投诉
  */
-function submitComplaints(data,callback){
-  baseRequest.sendPostHttpForContent(baseUrl+"api/opinions/complaint", data , callback,true)
+function submitComplaints(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/opinions/complaint", data, callback, true)
 }
 
 /**
@@ -56,7 +56,7 @@ function sendVerificationCode(data, callback) {
  * 通过类型查询标签列表
  */
 function queryTagsListByType(data, callback) {
-	baseRequest.sendPostHttpForContent(baseUrl + "api/tags/listByType", data, callback)
+  baseRequest.sendPostHttpForContent(baseUrl + "api/tags/listByType", data, callback)
 }
 
 /**
@@ -77,7 +77,7 @@ function findListByEvaluateTag(data, callback) {
  * 通过系统枚举id查询公墓列表
  */
 function queryCemeterySubsysListBySysEnumId(data, callback) {
-	baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemList", data, callback);
+  baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemList", data, callback);
 }
 
 /**
@@ -87,11 +87,17 @@ function queryCemeterySubsysListBySysEnumIdNoLogin(data, callback) {
   baseRequest.sendPostHttp(baseUrl + "api/syssystem/getSubsystemListNoLogin", data, callback);
 }
 
-function queryUserInfoById(data, callback){
+function queryUserInfoById(data, callback) {
   baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/queryById", data, callback)
 }
 
-
+/**
+ * 查询用户级别
+ */
+function queryUserLevel(data, callback) {
+  baseRequest.sendPostHttpForContent(baseUrl + "api/level/findbyuserids", data, callback)
+}
+module.exports.queryUserLevel = queryUserLevel; 
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
 module.exports.submitComplaints = submitComplaints;

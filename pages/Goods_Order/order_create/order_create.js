@@ -1,11 +1,12 @@
 var goodsHttp = require('../../../utils/http/RequestForGoods.js');
 var goodsPHPHttp = require('../../../utils/http/RequestForPHPGoods.js');
+var platformHttp=require('../../../utils/http/RequestForPlatform.js');
 var toastUtil = require('../../../utils/ToastUtil.js');
 var storageKey = require('../../../utils/storage/StorageKey.js');
 var formData;
 var content;
 
-var serviceWay = 0;
+var serviceWay;
 Page({
   data: {
     show: false,
@@ -17,7 +18,7 @@ Page({
     orderType: 1,
     date: "请选择日期",
     time: "请选择时间",
-    btn_1:true
+    btn_1: true,
   },
   bind_list: function () {
     var that = this;
@@ -52,6 +53,7 @@ Page({
     })
   },
   onLoad: function () {
+    serviceWay = 0;
     content = this;
     formData = wx.getStorageSync(storageKey.STORE_BUY_GOODS);
     var goodsnumber = 0;
@@ -72,12 +74,14 @@ Page({
       adviser_Price: adviserPrice,
       class_name: goodsClassNameList
     })
+
+    getUserLevel(formData[0].storeUserId)
   },
 
   /**
    * 获取商品分类名称
    */
-  getGoodsClassNameList() {
+  getGoodsClassNameList:function() {
     var goodsClassNameList = new Array();
     if (formData) {
       for (var i in formData) {
@@ -240,6 +244,21 @@ Page({
         packagelist.titleImg = formData[i].title_img
         packagelist.unit = formData[i].unit
         packagelist.specName = formData[i].spec_name
+        //提成级别
+        var listGoodsOrderItemsLevel = new Array();
+        // var listCommission = levelHandle(formData[i].commission)
+        var listCommission = formData[i].commission
+        if (listCommission != null)
+          for (var h in listCommission) {
+            var goodsOrderItemsLevel = new Object();
+            var commissionItem = listCommission[h];
+            goodsOrderItemsLevel.levelName = commissionItem.levelName;
+            goodsOrderItemsLevel.levelType = commissionItem.type;
+            goodsOrderItemsLevel.levelId = commissionItem.amateur_id;
+            goodsOrderItemsLevel.commissionRatio = commissionItem.commission;
+            listGoodsOrderItemsLevel.push(goodsOrderItemsLevel);
+          }
+        packagelist.listGoodsOrderItemsLevel = listGoodsOrderItemsLevel
         //  goodslist.ementPrice = parseFloat(formData[i].ement_price)
         var num1 = r.test(parseFloat(formData[i].ement_price))
         if (num1) {
@@ -315,6 +334,25 @@ Page({
         goodslist.titleImg = formData[i].title_img
         goodslist.unit = formData[i].unit
         goodslist.specName = formData[i].spec_name
+
+
+        //提成级别
+        var listGoodsOrderItemsLevel = new Array();
+        // var listCommission = levelHandle(formData[i].commission)
+        var listCommission = formData[i].commission
+        if (listCommission != null)
+          for (var h in listCommission) {
+            var goodsOrderItemsLevel = new Object();
+            var commissionItem = listCommission[h];
+            goodsOrderItemsLevel.levelName = commissionItem.levelName;
+            goodsOrderItemsLevel.levelType = commissionItem.type;
+            goodsOrderItemsLevel.levelId = commissionItem.amateur_id;
+            goodsOrderItemsLevel.commissionRatio = commissionItem.commission;
+            listGoodsOrderItemsLevel.push(goodsOrderItemsLevel);
+          }
+        goodslist.listGoodsOrderItemsLevel = listGoodsOrderItemsLevel
+
+
         //  goodslist.ementPrice = parseFloat(formData[i].ement_price)
         var num1 = r.test(parseFloat(formData[i].ement_price))
         if (num1) {
@@ -381,6 +419,11 @@ Page({
     }
 
     getdata.goodsServiceInfo = goodsServiceInfo
+
+    //关联此单的角色
+    var listUserLevel = getAllUserLevel();
+    getdata.listUserLevel = listUserLevel;
+
     orderdata = { content: getdata }
     var createOrderCallBack = {
       success: function (data, res) {
@@ -418,4 +461,47 @@ function findDefaultAddress() {
     }
   }
   goodsHttp.findServiceInfoDefaultAddress(null, findDefaultAddressCallBack)
+}
+/**
+ * 获取此下单关联的角色
+ */
+function getAllUserLevel() {
+  var listUserLevel = new Array();
+  var buildLevelData = content.data.buildUserLevel;
+  if (buildLevelData == null || buildLevelData.systemLevel == null) {
+    return listUserLevel
+  }
+  var userLevel = {
+    levelId: buildLevelData.systemLevel.id,
+    levelType: buildLevelData.systemLevel.levelType,
+    levelName: buildLevelData.systemLevel.levelName
+  }
+  var formData = content.data.formData
+  userLevel.userId = formData[0].storeUserId;
+  listUserLevel.push(userLevel);
+  return listUserLevel;
+}
+/**
+ * 查询用户级别
+ */
+function getUserLevel(userId) {
+  var queryLevelRequest = {
+    userIds: [userId]
+  }
+  var queryLevelCallBack = {
+    success: function (data, res) {
+      if (data.resultList && data.resultList.length > 0)
+        for (var i in data.resultList) {
+          if (data.resultList[i].systemLevel.levelType == "orderC.build") {
+            content.setData({
+              buildUserLevel: data.resultList[i]
+            })
+          }
+        }
+    },
+    fail: function (data, res) {
+      toastUtil.showToast("查询级别失败");
+    }
+  }
+  platformHttp.queryUserLevel(queryLevelRequest, queryLevelCallBack);
 }
