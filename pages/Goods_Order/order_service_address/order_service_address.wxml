@@ -9,7 +9,7 @@
             <view class='weui-cell__bd'>{{item.recipientPhone}}</view>
           </view>
           <view class='li_bd weui-cell'>
-            {{item.address}}
+            {{item.addressStr}}
           </view>
           <view class='li_ft weui-cell'>
             <label class='weui-cell__hd'>
@@ -24,12 +24,12 @@
               </block>
             </label>
             <view class='weui-cell__bd'>
-              <view bindtap='bind_popup_form' data-submittype="2">
-                <image src='../../../images/icon_cddress_edit.png' mode='widthFix'></image>
-                <text data-submittype="2" data-updatedata="{{item}}">编辑</text>
+              <view bindtap='bind_popup_form' data-submittype="2" data-updatedata="{{item}}">
+                <image src='/images/icon_cddress_edit.png' mode='widthFix'></image>
+                <text  >编辑</text>
               </view>
               <view bindtap='deleteAddress' data-addressid="{{item.id}}">
-                <image src='../../../images/icon_address_close.png' mode='widthFix'></image>
+                <image src='/images/icon_address_close.png' mode='widthFix'></image>
                 <text >删除</text>
               </view>
             </view>
@@ -37,12 +37,15 @@
         </view>
       </block>
     </radio-group>
-
+<block wx:if="{{listAddress.length == 0}}">
+<import src="/template/template.wxml"/>
+<template is="nullData"/>
+</block>
     <view class='popup {{popup?"active":""}}'>
       <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="weui-cells weui-cells_after-title">
           <view class="weui-cells-title">
-            编辑地址
+            {{addTitle}}
           </view>
 
           <view class="weui-cell weui-cell_input">
@@ -78,7 +81,7 @@
               <view class="weui-label">详细地址</view>
             </view> -->
             <view class="weui-cell__bd">
-              <input class="weui-input" placeholder="详细地址" name="addressDetails" value='{{submitAddressDetail}}' />
+              <input class="weui-input" placeholder="详细地址" name="addressDetails" value='{{addressInfo}}' />
             </view>
           </view>
         </view>

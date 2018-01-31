@@ -9,21 +9,28 @@ Page({
     customItem: '全部'
   },
   bindRegionChange: function (e) {
-    this.setData({
+    content.setData({
       region: e.detail.value
     })
   },
   bind_popup_form: function (e) {
-    var submitData = e.target.dataset.updatedata;
-    if (e.target.dataset.submittype == "1"){
-      setSubmitData("", "", "");
+    var submitData = e.currentTarget.dataset.updatedata;
+    var submitType = e.currentTarget.dataset.submittype;
+
+    if (submitType != undefined) {
+      content.setData({
+        submitType: submitType
+      })
     }
-    if (submitData != null && e.target.dataset.submittype=="2"){
-      setSubmitData(submitData.recipientName, submitData.recipientPhone, "");
+
+    if (submitType == "1") {
+      setSubmitData(null, "", "", "", "添加地址");
+    } else if (submitType == "2") {
+      setSubmitData(submitData.id, submitData.recipientName, submitData.recipientPhone, submitData.address, "编辑地址");
     }
-    this.setData({
-      popup: !this.data.popup,
-      submitType: e.target.dataset.submittype
+
+    content.setData({
+      popup: !content.data.popup
     })
   },
   /**
@@ -47,14 +54,15 @@ Page({
    */
   formSubmit: function (e) {
     var submitType = e.detail.target.dataset.submittype
+    var value = e.detail.value;
+    var selectId = content.data.selectId
     //创建地址
     if (submitType == "1") {
-      var value = e.detail.value;
       addAddress(value.addressCity, value.addressDetails, value.recipientName, value.recipientPhone);
     }
     //更新地址
     else if (submitType == "2") {
-
+      updateServiceInfoAddress(selectId, value.addressCity, value.addressDetails, value.recipientName, value.recipientPhone)
     }
 
   },
@@ -75,11 +83,31 @@ Page({
 /**
  * 设置提交数据
  */
-function setSubmitData(name, phone, address) {
+function setSubmitData(id, name, phone, address, title) {
+  var addressArray;
+  if (address == null || address.length == 0) {
+    addressArray = ['四川省', '成都市', '全部', ""];
+  } else {
+    var addressArrayTemp = address.split(",");
+    if (addressArrayTemp.length < 4) {
+      addressArray = ['', '', '', addressArrayTemp[0]];
+    } else {
+      addressArray = addressArrayTemp;
+    }
+  }
+  var addressDetails = "";
+  for (var i in addressArray) {
+    if (i >= 3) {
+      addressDetails += addressArray[i];
+    }
+  }
   content.setData({
     submitName: name,
     submitPhone: phone,
-    submitAddressDetail: address
+    region: [addressArray[0], addressArray[1], addressArray[2]],
+    addressInfo: addressDetails,
+    selectId: id,
+    addTitle: title
   })
 }
 
@@ -90,8 +118,11 @@ function getAddressList() {
   var addressListCallBack = {
     success: function (data, res) {
       listAddress = data;
+      for (var i in listAddress) {
+        listAddress[i].addressStr = listAddress[i].address.split(",").join("");;
+      }
       content.setData({
-        listAddress: data
+        listAddress: data,
       })
     },
     fail: function (data, res) {
@@ -110,7 +141,7 @@ function setDefaultAddress(id) {
   }
   var setDefaultAddressCallBack = {
     success: function (data, res) {
-      toastUtil.showToast("设置成功");
+      toastUtil.showToastReWrite("设置成功");
     },
     fail: function (data, res) {
       toastUtil.showToast("设置失败");
@@ -138,7 +169,11 @@ function addAddress(addressCity, addressDetails, recipientName, recipientPhone) 
 
   var address = "";
   for (var i in addressCity) {
-    address += addressCity[i];
+    if (addressCity[i].indexOf("全部") >= 0 || addressCity[i].length == 0) {
+      toastUtil.showToast("还未选择城市");
+      return;
+    }
+    address += addressCity[i] + ",";
   }
   address += addressDetails
 
@@ -184,4 +219,52 @@ function deleteAddress(id) {
     }
   }
   goodsHttp.deleteServiceInfoAddress(deleteAddressRequest, deleteAddressCallBack);
+}
+
+
+/**
+ * 更新地址
+ */
+function updateServiceInfoAddress(id, addressCity, addressDetails, recipientName, recipientPhone) {
+  if (recipientName == null || recipientName.length == 0) {
+    toastUtil.showToast("联系人为空");
+    return;
+  }
+  if (recipientPhone == null || recipientPhone.length == 0) {
+    toastUtil.showToast("联系电话为空");
+    return;
+  }
+  if (addressDetails == null || addressDetails.length == 0) {
+    toastUtil.showToast("地址不能为空");
+    return;
+  }
+
+  var address = "";
+  for (var i in addressCity) {
+    if (addressCity[i].indexOf("全部") >= 0 || addressCity[i].length == 0) {
+      toastUtil.showToast("还未选择城市");
+      return;
+    }
+    address += addressCity[i] + ",";
+  }
+  address += addressDetails
+
+  var updateRequest = {
+    id: id,
+    address: address,
+    recipientName: recipientName,
+    recipientPhone: recipientPhone
+  }
+  var updateCallBack = {
+    success: function (data, res) {
+      content.setData({
+        popup: !content.data.popup
+      })
+      getAddressList();
+    },
+    fail: function (data, res) {
+      toastUtil.showToast("更新失败");
+    }
+  }
+  goodsHttp.updateServiceInfoAddress(updateRequest, updateCallBack);
 }
