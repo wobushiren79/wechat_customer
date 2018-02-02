@@ -62,7 +62,6 @@ Page({
     platformHttp.loginPlatformByPhone(sendSmsCodeData, sendSmsCodeCallBack);
   },
 
-
   formSubmit: function (e) {
     var formValues = e.detail.value
     if (!checkMobile(formValues.mobile)) {
@@ -75,8 +74,6 @@ Page({
     }
     loginByMoBile(formValues.mobile, formValues.msgCode);
   },
-
-
 
   /**
    * 登陆单项
