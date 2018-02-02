@@ -98,13 +98,13 @@ Page({
   loginCemetery: function () {
     var loginCemeteryCallBack = {
       success: function (data, res) {
-        wx.reLaunch({
-          url: '../../C_map/C_map',
+        wx.navigateBack({
+          delta:1
         })
       },
       fail: function (data, res) {
-        wx.reLaunch({
-          url: '../../C_map/C_map',
+        wx.navigateBack({
+          delta: 1
         })
       }
     }
