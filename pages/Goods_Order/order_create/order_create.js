@@ -177,8 +177,7 @@ Page({
     goodsOrder.orderPrice = totla_price * 100
     goodsOrder.totalPrice = totalPrice * 100
     getdata.goodsOrder = goodsOrder
-    console.log("数据")    
-    console.log(formData)
+    // console.log(formData)
     //商品ID
     for (var i in formData) {
       if (formData[i].is_package == 1) {
@@ -204,7 +203,23 @@ Page({
         packagelist.goodsOrderItems = goodsOrderItemss
         packagelist.packageId = parseInt(formData[i].package_id)
         packagelist.packageSpecId = parseInt(formData[i].spec_id)
-
+        if (levelId != false) {
+          if (levelId == 0) {
+            packagelist.commissionRatio = 0
+          } else {
+            if (formData[i].commission == null) {
+              packagelist.commissionRatio = 0
+            } else {
+              for (var p in formData[i].commission) {
+                if (formData[i].commission[p].amateur_id == levelId) {
+                  packagelist.commissionRatio = formData[i].commission[p].commission
+                }
+              }
+            }
+          }
+        } else {
+          packagelist.commissionRatio = ''
+        }
         var num2 = r.test(parseFloat(formData[i].spec_price))
         if (num2) {
           packagelist.specOrderedPrice = parseFloat(formData[i].spec_price) * 100
@@ -225,21 +240,6 @@ Page({
         packagelist.titleImg = formData[i].title_img
         packagelist.unit = formData[i].unit
         packagelist.specName = formData[i].spec_name
-        //提成级别
-        var listGoodsOrderItemsLevel = new Array();
-        // var listCommission = levelHandle(formData[i].commission)
-        var listCommission = formData[i].commission
-        if (listCommission != null)
-          for (var h in listCommission) {
-            var goodsOrderItemsLevel = new Object();
-            var commissionItem = listCommission[h];
-            goodsOrderItemsLevel.levelName = commissionItem.levelName;
-            goodsOrderItemsLevel.levelType = commissionItem.type;
-            goodsOrderItemsLevel.levelId = commissionItem.amateur_id;
-            goodsOrderItemsLevel.commissionRatio = commissionItem.commission;
-            listGoodsOrderItemsLevel.push(goodsOrderItemsLevel);
-          }
-        packagelist.listGoodsOrderItemsLevel = listGoodsOrderItemsLevel
         //  goodslist.ementPrice = parseFloat(formData[i].ement_price)
         var num1 = r.test(parseFloat(formData[i].ement_price))
         if (num1) {
@@ -274,6 +274,25 @@ Page({
       } else {
         var goodslist = {}
 
+        if (levelId != false) {
+          if (levelId == 0) {
+            goodslist.commissionRatio = 0
+          } else {
+            if (formData[i].commission == null) {
+              goodslist.commissionRatio = 0
+            } else {
+              for (var o in formData[i].commission) {
+                if (formData[i].commission[o].amateur_id == levelId) {
+                  goodslist.commissionRatio = formData[i].commission[o].commission
+                }
+              }
+            }
+          }
+        } else {
+          goodslist.commissionRatio = ''
+        }
+
+
         goodslist.goodsId = parseInt(formData[i].goods_id)
         goodslist.goodsSpecId = parseInt(formData[i].spec_id)
         var num2 = r.test(parseFloat(formData[i].spec_price))
@@ -296,21 +315,6 @@ Page({
         goodslist.titleImg = formData[i].title_img
         goodslist.unit = formData[i].unit
         goodslist.specName = formData[i].spec_name
-        //提成级别
-        var listGoodsOrderItemsLevel = new Array();
-        // var listCommission = levelHandle(formData[i].commission)
-        var listCommission = formData[i].commission
-        if (listCommission != null)
-          for (var h in listCommission) {
-            var goodsOrderItemsLevel = new Object();
-            var commissionItem = listCommission[h];
-            goodsOrderItemsLevel.levelName = commissionItem.levelName;
-            goodsOrderItemsLevel.levelType = commissionItem.type;
-            goodsOrderItemsLevel.levelId = commissionItem.amateur_id;
-            goodsOrderItemsLevel.commissionRatio = commissionItem.commission;
-            listGoodsOrderItemsLevel.push(goodsOrderItemsLevel);
-          }
-        goodslist.listGoodsOrderItemsLevel = listGoodsOrderItemsLevel
         //  goodslist.ementPrice = parseFloat(formData[i].ement_price)
         var num1 = r.test(parseFloat(formData[i].ement_price))
         if (num1) {
@@ -345,11 +349,8 @@ Page({
         // console.log(goodslist)
       }
     }
-
     getdata.goodsOrderItems = goodsOrderItems
     getdata.goodsPackages = goodsPackages
-
-   
     //发票信息组装
     if (fapiao) {
       goodsInvoice.titleType = fapiao.titleType
@@ -380,7 +381,6 @@ Page({
     }
 
     getdata.goodsServiceInfo = goodsServiceInfo
-
     orderdata = { content: getdata }
     var createOrderCallBack = {
       success: function (data, res) {
@@ -394,6 +394,7 @@ Page({
     }
     goodsHttp.createGoodsOrder(getdata, createOrderCallBack)
 
+    // console.log(orderdata)
   },
   price: function () {
 

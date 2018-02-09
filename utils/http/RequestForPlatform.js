@@ -90,12 +90,7 @@ function queryCemeterySubsysListBySysEnumIdNoLogin(data, callback) {
 function queryUserInfoById(data, callback){
   baseRequest.sendPostHttpForContent(baseUrl + "api/usersInfo/queryById", data, callback)
 }
-/**
- * 查询用户级别
- */
-function queryUserLevel(data, callback) {
-  baseRequest.sendPostHttpForContent(baseUrl + "api/level/findbyuserids", data, callback)
-}
+
 
 module.exports.loginPlatform = loginPlatform;
 module.exports.changeForPassWord = changeForPassWord;
@@ -110,4 +105,3 @@ module.exports.queryCemeterySubsysListBySysEnumId = queryCemeterySubsysListBySys
 module.exports.queryCemeterySubsysListBySysEnumIdNoLogin = queryCemeterySubsysListBySysEnumIdNoLogin;
 module.exports.queryUserInfoById = queryUserInfoById;
 module.exports.loginPlatformByPhone = loginPlatformByPhone;
-module.exports.queryUserLevel = queryUserLevel;
