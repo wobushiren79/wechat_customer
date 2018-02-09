@@ -11,6 +11,16 @@ function HttpRequestData(url, data, method, header) {
   this.filePath = '';//文件地址
   this.fileName = '';//文件名称
 }
+
+/**
+ * 请求数据
+ */
+function TempRequestData(httpData, callback, isDialog) {
+  this.httpData = httpData;
+  this.callback = callback;
+  this.isDialog = isDialog
+  this.isUpFile = false;
+}
 //-------------------------------------------------------------------------------------------------------------------
 /**
  * 发送post请求
@@ -30,9 +40,13 @@ function createPostHttpRequestForFormData(url, data, callback, header, isDialog)
 /**
  * 发送get请求
  */
-function createGetHttpRequest(url, data, callback, header, isDialog) {
+function createGetHttpRequest(url, data, callback, header, isDialog, ec) {
   var jsonData = JSON.stringify(data);
-  var httpData = new HttpRequestData(url, jsonData, "GET", header);
+  var dataStr = urlEncode(data);
+  if (ec != null) {
+    dataStr += ec
+  }
+  var httpData = new HttpRequestData(url + "?" + dataStr, jsonData, "GET", header);
   sendBaseHttp(httpData, callback, isDialog);
 }
 
@@ -51,6 +65,11 @@ function createFileHttpRequest(url, filePath, fileName, callback, header, isDial
  * 参数：HttpRequestData
  */
 function sendBaseHttp(httpData, callback, isDialog) {
+  var tempData = null;
+  if (callback.loginAgain) {
+    tempData = new TempRequestData(httpData, callback, isDialog);
+  }
+
   if (isDialog)
     wx.showLoading({
       title: '加载中!请稍后',
@@ -63,7 +82,7 @@ function sendBaseHttp(httpData, callback, isDialog) {
     method: httpData.method,
     header: httpData.header,
     success: function (res) {
-      respsoneSuccessDeal(res, callback);
+      respsoneSuccessDeal(res, callback, tempData);
     },
     fail: function (res) {
       respsoneFailDeal(res, callback);
@@ -78,13 +97,19 @@ function sendBaseHttp(httpData, callback, isDialog) {
  * 发送http请求（上传文件）
  */
 function sendBaseFileHttp(httpData, callback, isDialog) {
+  var tempData = null;
+  if (callback.loginAgain) {
+    tempData = new TempRequestData(httpData, callback, isDialog);
+    tempData.isUpFile = true;
+  }
+
   wx.uploadFile({
     url: httpData.url.replace(" ", ""),
     filePath: httpData.filePath,
     header: httpData.header,
     name: httpData.fileName,//文件对应的 key , 开发者在服务器端通过这个 key 可以获取到文件二进制内容
     success: function (res) {//接口调用成功的回调函数
-      respsoneSuccessDeal(res, callback);
+      respsoneSuccessDeal(res, callback, tempData);
     },
     fail: function (res) {
       respsoneFailDeal(res, callback);
@@ -98,7 +123,7 @@ function sendBaseFileHttp(httpData, callback, isDialog) {
 /**
  *  请求成功结果处理
  */
-function respsoneSuccessDeal(res, callback) {
+function respsoneSuccessDeal(res, callback, tempData) {
   wx.hideLoading()
   console.log("RespsoneSuccess");
   console.log(res);
@@ -110,7 +135,7 @@ function respsoneSuccessDeal(res, callback) {
         callback.success(res.data.content, res);
     } else if (res.data.code == 9999) {
       if (callback.loginAgain) {
-        callback.loginAgain();
+        callback.loginAgain(tempData);
       } else {
         callback.success(null, res);
       }
@@ -122,7 +147,7 @@ function respsoneSuccessDeal(res, callback) {
     try {
       if (res.data.indexOf("登录") >= 0) {
         if (callback.loginAgain) {
-          callback.loginAgain();
+          callback.loginAgain(tempData);
         } else {
           if (callback.success)
             callback.success(null, res);
@@ -136,7 +161,6 @@ function respsoneSuccessDeal(res, callback) {
         callback.success(null, res);
     }
   }
-
 }
 
 /**
@@ -159,6 +183,27 @@ function respsoneCompleteDeal(res, callback) {
 
 }
 
+/** 
+ * param 将要转为URL参数字符串的对象 
+ * key URL参数字符串的前缀 
+ * encode true/false 是否进行URL编码,默认为true 
+ *  
+ * return URL参数字符串 
+ */
+function urlEncode(param, key, encode) {
+  if (param == null) return '';
+  var paramStr = '';
+  var t = typeof (param);
+  if (t == 'string' || t == 'number' || t == 'boolean') {
+    paramStr += '&' + key + '=' + ((encode == null || encode) ? encodeURIComponent(param) : param);
+  } else {
+    for (var i in param) {
+      var k = key == null ? i : key + (param instanceof Array ? '[' + i + ']' : '.' + i);
+      paramStr += urlEncode(param[i], k, encode);
+    }
+  }
+  return paramStr;
+};
 //-------------------------------------------------------------------------------------------------------------------
 
 
@@ -167,3 +212,5 @@ module.exports.createPostHttpRequest = createPostHttpRequest;
 module.exports.createPostHttpRequestForFormData = createPostHttpRequestForFormData;
 module.exports.createGetHttpRequest = createGetHttpRequest;
 module.exports.createFileHttpRequest = createFileHttpRequest;
+module.exports.sendBaseHttp = sendBaseHttp;
+module.exports.sendBaseFileHttp = sendBaseFileHttp;

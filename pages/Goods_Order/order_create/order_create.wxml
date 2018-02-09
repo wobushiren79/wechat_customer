@@ -22,7 +22,7 @@
                 <!-- 地址 -->
                 <view class=" ">
                   地址：
-                  <text>{{defaultAddress.address}}</text>
+                  <text>{{defaultAddress.addressStr}}</text>
                 </view>
               </view>
             </view>

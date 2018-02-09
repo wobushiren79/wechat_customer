@@ -9,7 +9,7 @@ var content;
 var app = getApp()
 Page({
   data: {
-    logo_src: "../../images/logo.png",
+    logo_src: "/images/logo.png",
   },
 
   onLoad: function (e) {
