@@ -1,0 +1,5 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="page__bd">
+     <web-view src='{{url}}'>正在加载...</web-view>   
+  </view>
+</view>

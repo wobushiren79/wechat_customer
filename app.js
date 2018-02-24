@@ -49,6 +49,7 @@ App({
         // PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
 
         PHPGoodsUrl: "https://goodsmgr.e-funeral.cn/",
+        //PHPGoodsUrl: "http://192.168.0.61/shian_goods/",
         PHPGoodsPicUrl: "https://goodsmgr.e-funeral.cn/Public/Uploads/",
         // JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
         // JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
