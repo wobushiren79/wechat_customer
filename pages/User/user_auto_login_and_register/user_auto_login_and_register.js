@@ -14,7 +14,7 @@ Page({
     value2: "公墓服務",
     selected: false,
     selected1: true,
-    logo_src: "../../../images/logo.png",
+    logo_src: "/images/logo.png",
     systemType: 2,
     value3: '',
     value4: '',
@@ -178,7 +178,6 @@ function registeredAccount(mobile, password, msgcode) {
 function countdown(that) {
   var second = that.data.second;
   if (second == 0) {
-    // console.log("Time Out...");
     that.setData({
       selected: false,
       selected1: true,

@@ -13,7 +13,7 @@
 
     <!-- 列表 -->
     <view class="weui-cells weui-cells_after-title">
-      <navigator  open-type="navigateBack" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <navigator  open-type="redirectTo" class="weui-cell weui-cell_access" hover-class="weui-cell_active" url='/pages/C_map/C_map'>
         <view class="weui-cell__hd">
           <image src="../../../images/icon_aboutme1.png"></image>
         </view>
