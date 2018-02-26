@@ -228,8 +228,9 @@ Page({
   }
   ,
   my_apply: function () {
+    // ../User/user_apply/user_apply
     wx.navigateTo({
-      url: '../User/user_apply/user_apply',
+      url: '/pages/User/user_more_app/user_more_app'
     })
   },
 

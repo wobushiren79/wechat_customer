@@ -46,7 +46,8 @@
     "pages/others/evaluation_customer/evaluation_customer",
     "pages/Customer/customer_store_info/customer_store_info",
     "pages/User/user_auto_login_and_register/user_auto_login_and_register",
-    "pages/others/web/web"
+    "pages/others/web/web",
+    "pages/User/user_more_app/user_more_app"
   ],
   "window": {
     "navigationBarTextStyle": "black",

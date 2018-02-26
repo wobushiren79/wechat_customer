@@ -1,0 +1,122 @@
+<!--pages/demo1/demo1.wxml-->
+<view class="moreApp">
+	<view class="middleNavArea">
+		<view class="middleNav">
+			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/goodss.html">
+				<view class='middleNavItemCell'>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_dg.png"></image>
+				</view>
+				<view class="middleNavItemTxt">看墓</view>				
+			</view>
+			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/plans.html">
+				<view class='middleNavItemCell'>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_bzbk.png"></image>
+				</view>
+				<view class="middleNavItemTxt">殡仪套餐</view>				
+			</view>
+			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/yybsgw.html">
+				<view class='middleNavItemCell'>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_kf.png"></image>
+				</view>
+				<view class="middleNavItemTxt">预约</view>				
+			</view>
+			<view class="middleNavItem" bindtap='toSmallApp'>
+				<view class='middleNavItemCell'>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_bzbk.png"></image>
+				</view>
+				<view class="middleNavItemTxt">案例</view>				
+			</view>
+		</view>
+	</view>
+	<view class="smallNavArea">
+		<view class='smallNavTitle'>预约服务</view>
+		<view class="smallNav">
+			<navigator url="/pages/Goods_Order/order_shopping_cart/order_shopping_cart">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_gwc.png"></image>
+					</view>
+					<view class="smallNavItemTxt">购物车</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/Goods_Order/order_list_wait/order_list_wait">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_wddd.png"></image>
+					</view>
+					<view class="smallNavItemTxt">我的订单</view>
+				</view>
+			</navigator>
+		</view>
+		<view class='smallNavTitle'>信息与咨询</view>
+		<view class="smallNav">
+			<navigator url="/pages/C_wiki_list/C_wiki_list">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_bzbk.png"></image>
+					</view>
+					<view class="smallNavItemTxt">殡葬百科</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/C_blank/C_blank">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_hmbz.png"></image>
+					</view>
+					<view class="smallNavItemTxt">惠民殡葬</view>
+				</view>
+			</navigator>			
+			<view class="smallNavItem">				
+				<button class="onlineKfContactBtn" open-type="contact" plain="true" session-from="weapp">1</button>			
+				<view class="smallNavItemCell onlineKf">
+					<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_kf.png"></image>
+				</view>
+				<view class="smallNavItemTxt onlineKf">在线客服</view>								
+			</view>
+			
+		</view>
+		<view class='smallNavTitle'>公墓服务</view>
+		<view class="smallNav">
+			<navigator url="/pages/Cem/C_cem/C_cem">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_mwcx.png"></image>
+					</view>
+					<view class="smallNavItemTxt">查询墓位位置</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/C_blank/C_blank">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_glf.png"></image>
+					</view>
+					<view class="smallNavItemTxt">管理费缴纳</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/C_blank/C_blank">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_dg.png"></image>
+					</view>
+					<view class="smallNavItemTxt">订购墓位</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/C_order/C_order">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_gmdd.png"></image>
+					</view>
+					<view class="smallNavItemTxt">查询订单</view>
+				</view>
+			</navigator>
+			<navigator url="/pages/others/complain_customer/complain_customer">
+				<view class="smallNavItem">
+					<view class="smallNavItemCell">
+						<image class="smallNavItemCellImg" mode='aspectFit' src="/images/icon_apply_tsjy.png"></image>
+					</view>
+					<view class="smallNavItemTxt">投诉建议</view>
+				</view>
+			</navigator>
+		</view>
+	</view>
+</view>

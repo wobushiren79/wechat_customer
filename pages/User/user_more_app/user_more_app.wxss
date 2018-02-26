@@ -1,0 +1,97 @@
+/* pages/demo1/demo1.wxss */
+.moreApp,.middleNavArea,.smallNavArea{
+	width: 100%;
+	float: left;
+}
+.moreApp{
+	position: absolute;
+	height:100%;
+	background-color: #ffffff;
+}
+/* 顶部未分类 */
+.middleNavArea{
+	background-color: #fcfcfc;
+	padding-bottom: 20rpx;
+	box-shadow:30rpx 4rpx 20rpx #cccccc;
+	-moz-box-shadow:30rpx 4rpx 20rpx #cccccc;
+	-webkit-box-shadow:30rpx 2rpx 20rpx #cccccc;	
+}
+.middleNav,.smallNav{
+	width: 96%;
+	float: left;
+}
+.middleNavItem,.smallNavItem{
+	width: 20%;
+	float: left;
+	margin-left:5%;
+}
+.middleNavItemCell,.smallNavItemCell{
+	width: 90%;
+	margin-left:5%;
+}
+.middleNavItemCellImg{
+	width: 90%;
+	height: 120rpx;
+	margin-left:5%;
+}
+.middleNavItemTxt,.smallNavItemTxt{
+	width:100%;
+	font-size: 32rpx;
+	text-align: center;
+	margin-top: -18%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: clip;
+}
+/* 分类  */
+.smallNavArea{
+	margin-top:10rpx;		
+}
+.smallNavTitle {
+  float: left;
+  position: relative;
+  font-size: 30rpx;
+  color: #7e7e7e;
+  margin-left: 5%;
+  margin-bottom: 10rpx;
+}
+.smallNavTitle,.smallNavItem{
+	margin-top: 20rpx;
+}
+.smallNavTitle:first-child{
+	margin-top: 10rpx;
+}
+.smallNavTitle:after{
+  content: "";
+  display: block!important;
+  position: absolute!important;
+  top: 50%;
+  left: -24rpx;
+  transform: translateY(-50%);
+  width: 12rpx;
+  height: 28rpx;
+  background: #48cfad;
+  border-radius: 10rpx
+}
+.smallNavItemCellImg{
+	width: 50%;
+	height: 60rpx;
+	margin-left: 25%;	
+}
+.smallNavItemTxt{
+	font-size: 24rpx;
+	margin-top: -10%;
+}
+/* 在线客服 */
+.onlineKf{
+	position: relative;
+	z-index: 9998;
+}
+.onlineKfContactBtn{
+	width: 20%;	
+	height: 10%;
+	position: absolute;
+	z-index: 9999;
+	opacity: 0.01;
+	border: 0rpx;
+}
