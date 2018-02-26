@@ -160,7 +160,7 @@
         <view class='btn' bindtap='bind_right_nav'>
           <image src='{{mystroe_right_nav_btn}}'></image>
         </view>
-        <navigator open-type="redirectTo" class='btn1' url="/pages/C_map/C_map">
+        <navigator open-type="reLaunch"  url='/pages/C_map/C_map'  class='btn1'>
           <image src='../../../images/mystroe_right_nav_btn_index.png'></image>
         </navigator>
         <navigator class='btn2' url="../../User/user_aboutme/user_aboutme" open-type="redirectTo">

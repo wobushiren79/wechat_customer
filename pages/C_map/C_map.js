@@ -98,10 +98,12 @@ Page({
           itemType: itemType
         };
     } else if (itemType == 2) {
+      var price=item.price/1000000;
+      var name = item.name + "(￥" + price +"万起)";
       markerItem =
         {
           iconPath: "/images/zuobiao.png",
-          id: [item.web_app_url, item.title, item.name, item.location, item.img, itemType ,item.id],
+          id: [item.web_app_url, item.title, name, item.location, item.img, itemType ,item.id],
           alpha: 1,
           callout: {
             content: item.name,
