@@ -28,7 +28,7 @@ Page({
      return {
        title: "圆满人生",
        desc: '详情',
-	  path: 'pages/others/web/web?webUrl=' + webUrl
+	  path: '/pages/others/web/web?webUrl=' + webUrl
      };
    }
 })
