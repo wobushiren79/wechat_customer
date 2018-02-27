@@ -1,5 +1,6 @@
 // pages/others/web/web.js
 var content;
+var web_url;
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     content=this;
-    var web_url=  options.webUrl;
+    web_url=  options.webUrl;
     content.setData({
       url: web_url
     })
@@ -24,7 +25,7 @@ Page({
      return {
        title: "圆满人生",
        desc: '详情',
-       path: '/pages/others/web/web'
+       path: '/pages/others/web/web?webUrl=' + webUrl
      }
    }
 })
