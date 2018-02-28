@@ -4,25 +4,25 @@
 		<view class="middleNav">
 			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/goodss.html">
 				<view class='middleNavItemCell'>
-					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_dg.png"></image>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_look_tomb.png"></image>
 				</view>
 				<view class="middleNavItemTxt">看墓</view>				
 			</view>
 			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/plans.html">
 				<view class='middleNavItemCell'>
-					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_bzbk.png"></image>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_moutn_hall_package.png"></image>
 				</view>
-				<view class="middleNavItemTxt">殡仪套餐</view>				
+				<view class="middleNavItemTxt">灵堂套餐</view>				
 			</view>
 			<view class="middleNavItem" bindtap='toWebShow' data-url="https://m.e-funeral.cn/yybsgw.html">
 				<view class='middleNavItemCell'>
-					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_kf.png"></image>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_bespeak.png"></image>
 				</view>
 				<view class="middleNavItemTxt">预约</view>				
 			</view>
 			<view class="middleNavItem" bindtap='toSmallApp'>
 				<view class='middleNavItemCell'>
-					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_apply_bzbk.png"></image>
+					<image class="middleNavItemCellImg" mode='aspectFit' src="/images/icon_case.png"></image>
 				</view>
 				<view class="middleNavItemTxt">案例</view>				
 			</view>
