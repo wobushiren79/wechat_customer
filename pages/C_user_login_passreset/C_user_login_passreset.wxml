@@ -20,7 +20,7 @@
             </view>
             <view class="weui-cell-ft">
               <!-- <button  type="submit">获取验证码</button> -->
-              <button class="{{selected?'phone_huo':'hidden'}}" disabled="disabled" bindtap="countdown">再次获取({{second}})</button>
+              <button class="{{selected?'phone_huo':'hidden'}}" disabled="disabled" bindtap="countdown">{{second}}秒</button>
               <button class="{{selected1?'phone_huo':'hidden'}}" formType="submit">获取验证码</button>
             </view>
           </view>

@@ -26,14 +26,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "123",
-					"pathName": "pages/Goods_Order/order_service_address/order_service_address",
-					"query": ""
-				}
-			]
+			"list": []
 		}
 	}
 }
