@@ -102,7 +102,7 @@ Page({
       var name = item.name + "(￥" + price +"万起)";
       markerItem =
         {
-          iconPath: "/images/zuobiao.png",
+          iconPath: "/images/zuobiao2.png",
           id: [item.web_app_url, item.title, name, item.location, item.img, itemType ,item.id],
           alpha: 1,
           callout: {
