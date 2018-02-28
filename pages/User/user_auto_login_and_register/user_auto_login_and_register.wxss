@@ -11,6 +11,9 @@
   padding: 100rpx;
 }
 
+.weui-input{
+ margin-left: 20rpx;
+}
 /*按钮*/
 
 .weui-btn-area {
