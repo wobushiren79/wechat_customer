@@ -69,5 +69,5 @@ App({
         "evaluation_customer":"/pages/others/evaluation_customer/evaluation_customer"
     },
     platformId: 0,//平台id为0
-    myreg: /^(((13[0-9]{1})|(147)|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/,//手机号验证
+    myreg: /^1[2|3|4|5|6|7|8][0-9]\d{8}$/,//手机号验证
 })
