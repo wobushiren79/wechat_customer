@@ -199,7 +199,8 @@ function countdown(that) {
  * 检测手机号
  */
 function checkMobile(mobile) {
-  if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile))) {
+  debugger
+  if (!(/^1[2|3|4|5|6|7|8][0-9]\d{8}$/.test(mobile))) {
     return false;
   } else {
     return true;
