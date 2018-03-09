@@ -7,16 +7,17 @@ Page({
   data: {
     icon: "../../../images/dog.png",
     pagesPositionUrl: null,
-    changeAccountTitle: "绑定手机号"
+    changeAccountTitle: "切换账号"
   },
   onShow: function () {
     var userInfo = wx.getStorageSync(storageKey.PLATFORM_USER_OBJ);
 
     content.setData({
       nickName: userInfo.name,
-      userPhone: userInfo.phone
+      userPhone: userInfo.phone,
+      changeAccountTitle: "切换账号"
     })
-
+    
   },
   onLoad: function () {
     content = this;
