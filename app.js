@@ -1,3 +1,33 @@
+// var urlType = "local"
+var urlType = "remote"
+var urlData = (urlType == "local") ?
+  {
+    ShanWebUrl: "https://m.e-funeral.cn/",
+    ByUrl: "https://t-cemetery-api.shianlife.cn/shianlife-adviser-1.0-SNAPSHOT/",
+    GmUrl:"http://192.168.0.37:8088/app/",
+    PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
+    PHPGoodsUrl: "http://192.168.0.61/shian_goods/",
+    JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
+    JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
+    JavaCemeteryUrl: "http://192.168.0.57:8089/app/",
+    QiniuFilePathPrefix: "http://oq6rkq859.bkt.clouddn.com/",
+    UploadFileNamePrefix: "customer_wechatSmallApp",
+    AliyunFilePathPrefix: "",
+  }
+  :
+  {
+    ShanWebUrl: "https://m.e-funeral.cn/",
+    ByUrl: "https://t-cemetery-api.shianlife.cn/shianlife-adviser-1.0-SNAPSHOT/",
+    GmUrl: "https://t-cemetery-api.shianlife.cn/shianlife-advisor-cemetery-1.0-SNAPSHOT/",
+    PHPGoodsUrl: "https://goodsmgr.e-funeral.cn/",
+    PHPGoodsPicUrl: "https://goodsmgr.e-funeral.cn/Public/Uploads/",
+    JavaGoodsUrl: "https://goods.shianlife.cn/",
+    JavaPlatformUrl: "https://platform.shianlife.cn/",
+    JavaCemeteryUrl: "https://t-cemetery-api.shianlife.cn/",
+    QiniuFilePathPrefix: "http://oq6rkq859.bkt.clouddn.com/",
+    UploadFileNamePrefix: "customer_wechatSmallApp",
+    AliyunFilePathPrefix: "",
+  };
 App({
     onLaunch: function () {
         console.log('App Launch')
@@ -38,31 +68,7 @@ App({
             })
         }
     },
-    globalData: {
-
-        userInfo: null,
-        ShanWebUrl: "https://m.e-funeral.cn/",
-        ByUrl: "https://t-cemetery-api.shianlife.cn/shianlife-adviser-1.0-SNAPSHOT/",
-        GmUrl: "https://t-cemetery-api.shianlife.cn/shianlife-advisor-cemetery-1.0-SNAPSHOT/",
-        // GmUrl:"http://192.168.0.37:8088/app/",
-        // PHPGoodsUrl: "http://192.168.0.54/shian_goods/",
-        // PHPGoodsPicUrl: "http://192.168.0.54/shian_goods/Public/Uploads/",
-
-        PHPGoodsUrl: "https://goodsmgr.e-funeral.cn/",
-        //PHPGoodsUrl: "http://192.168.0.61/shian_goods/",
-        PHPGoodsPicUrl: "https://goodsmgr.e-funeral.cn/Public/Uploads/",
-        // JavaGoodsUrl: "http://192.168.0.57:8089/goods/",
-        // JavaPlatformUrl: "http://192.168.0.57:8080/ki4so-web/",
-        // JavaCemeteryUrl: "http://192.168.0.57:8089/app/",
-
-        JavaGoodsUrl:"https://goods.shianlife.cn/",
-        JavaPlatformUrl:"https://platform.shianlife.cn/",
-        JavaCemeteryUrl:"https://t-cemetery-api.shianlife.cn/",
-        QiniuFilePathPrefix:"http://oq6rkq859.bkt.clouddn.com/",
-        UploadFileNamePrefix:"customer_wechatSmallApp",
-        AliyunFilePathPrefix: "",
-
-    },
+    globalData: urlData,
     pagesPositionUrl:{
         "C_aboutme": "/pages/C_aboutme/C_aboutme",
         "complain_customer":"/pages/others/complain_customer/complain_customer",
