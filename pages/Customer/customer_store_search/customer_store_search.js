@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     content = this;
     pageUtil.initData();
-    content.startSearch(null);
+     //content.startSearch(null);
   },
 
   /**
